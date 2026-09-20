@@ -1,0 +1,66 @@
+[build-system]
+requires = ["hatchling>=1.20"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+path = "src/scholarmend/_version.py"
+
+[project]
+name = "scholarmend"
+dynamic = ["version"]
+description = "Recover true venue, year and track for Google Scholar exports, so screening reasons over facts rather than truncations."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+keywords = ["systematic-review", "google-scholar", "ris", "openreview", "prisma", "bibliometrics"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3 :: Only",
+  "Topic :: Scientific/Engineering",
+  "Typing :: Typed",
+]
+# No runtime dependencies, matching refaudit. Tier-1 mining is pure stdlib
+# string work, and the network tiers use urllib rather than pulling in requests.
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "mypy>=1.5", "ruff>=0.4"]
+
+[project.scripts]
+scholarmend = "scholarmend.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/uw-share-lab/scholarmend"
+Issues = "https://github.com/uw-share-lab/scholarmend/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/scholarmend"]
+artifacts = ["src/scholarmend/py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+markers = [
+  # The suite is hermetic: tier-1 miners are pure functions and the network
+  # tiers are served from the committed cache. The live check is the deliberate
+  # exception and needs real OpenReview credentials.
+  "live: talks to the real APIs; needs SCHOLARMEND_OPENREVIEW_USER and _PASSWORD",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.mypy]
+python_version = "3.10"
+warn_unused_ignores = true
+disallow_untyped_defs = false
