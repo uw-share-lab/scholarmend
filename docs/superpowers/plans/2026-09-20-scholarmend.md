@@ -1083,7 +1083,7 @@ def mine_all(urls: Iterable[str]) -> list[Claim]:
 - [ ] **Step 7: Run the tests to verify they pass**
 
 Run: `pytest tests/ -v`
-Expected: all tests pass, 43 total
+Expected: all tests pass, zero failures. (Do not treat the suite TOTAL as a target — it drifts as earlier tasks add tests during review. Per-file counts in the steps above are the meaningful numbers.)
 
 - [ ] **Step 8: Prove the 99% tier-1 key coverage from the spec**
 
@@ -2767,7 +2767,7 @@ if __name__ == "__main__":  # pragma: no cover
 - [ ] **Step 4: Run the whole suite**
 
 Run: `pytest -v`
-Expected: all tests pass, 108 total
+Expected: all tests pass, zero failures. (The suite total drifts; per-file counts are the meaningful check.)
 
 - [ ] **Step 5: Add the usage section to `README.md`**
 
@@ -3024,7 +3024,7 @@ ruff check src tests
 mypy src
 ```
 
-Expected: all tests pass, 117 total; ruff and mypy clean.
+Expected: all tests pass with zero failures; ruff and mypy clean. (The suite total drifts as tasks add tests; do not treat any total as a target.)
 
 - [ ] **Step 4: Add the Validation section to `README.md`**
 
