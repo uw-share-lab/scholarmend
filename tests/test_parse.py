@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import pytest
+
 from scholarmend.parse import emit_ris, parse_file, parse_ris
 
 FIXTURE = Path(__file__).parent / "fixtures" / "sample.ris"
@@ -53,7 +55,18 @@ def test_a_record_with_no_year_reports_empty_string():
 
 
 def test_content_before_the_first_record_is_refused():
-    import pytest
-
     with pytest.raises(ValueError, match="content before the first record"):
         parse_ris("junk\nTY  - JOUR\nER  - \n", "bad.ris")
+
+
+def test_record_is_deliberately_unhashable():
+    # Record holds a mutable fields view. frozen=True would otherwise
+    # auto-generate a __hash__ that raises a confusing "unhashable type: dict".
+    record = parse_file(FIXTURE)[0]
+    with pytest.raises(TypeError, match="unhashable type: 'Record'"):
+        hash(record)
+
+
+def test_records_still_compare_by_value():
+    a, b = parse_file(FIXTURE)[0], parse_file(FIXTURE)[0]
+    assert a == b

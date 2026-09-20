@@ -20,6 +20,13 @@ class Record:
     fields: dict[str, list[str]]
     source_file: str
 
+    # Record holds a mutable ``fields`` dict, so it is deliberately not
+    # hashable. Without this, frozen=True would auto-generate a __hash__
+    # that raises a confusing "unhashable type: 'dict'" the first time
+    # someone puts a Record in a set or uses one as a dict key. Identify
+    # records by title or source_file, never by hashing.
+    __hash__ = None
+
     def first(self, tag: str, default: str = "") -> str:
         values = self.fields.get(tag)
         return values[0] if values else default
