@@ -1108,7 +1108,7 @@ for f in sorted(glob.glob("../Trust-Evals-LitReview/corpus/*.ris")):
 for k, v in kinds.most_common():
     print(f"{k:34s}{v:5d}  {100*v/total:5.1f}%")
 assert kinds["no miner"] == 21, kinds["no miner"]
-print("OK: 21 records have no miner, matching the spec")
+print("OK: 21 records have no miner at this point (Task 8 adds PMC, taking it to 17)")
 EOF
 ```
 
@@ -2300,7 +2300,7 @@ The JSON is the real output. The RIS is a projection for Covidence and `venuetri
 
 **Interfaces:**
 - Consumes: `Record`, `Ledger`, `RESOLVED_FIELDS`.
-- Produces: `to_json(record: Record, ledger: Ledger) -> dict`; `project_ris(record: Record, ledger: Ledger) -> str`; `emit_corpus(pairs: Iterable[tuple[Record, Ledger]]) -> str`.
+- Produces: `to_json(record: Record, ledger: Ledger) -> dict`; `project_ris(record: Record, ledger: Ledger) -> str`.
 
 - [ ] **Step 1: Write the failing tests**
 
@@ -2407,13 +2407,18 @@ feed to a parser that was written against Scholar's exact output.
 from __future__ import annotations
 
 import re
-from typing import Iterable
 
 from .ledger import Ledger
 from .models import Record
 from .pipeline import RESOLVED_FIELDS
 
 # Which RIS tag carries each resolved field. Only these are ever rewritten.
+#
+# Authors and abstracts are deliberately absent. Rewriting AU means deleting N
+# lines and inserting M, which is far more invasive than substituting a line in
+# place and puts the round-trip guarantee -- the projection's whole safety
+# argument -- at risk. Resolved authors and abstracts live in the canonical
+# JSON, which is the record; RIS is a projection for tools that cannot read it.
 _TAG_FOR = {"year": "PY", "venue": "JF"}
 
 
@@ -2474,9 +2479,6 @@ def project_ris(record: Record, ledger: Ledger) -> str:
             out.append(line)
     return "\n".join(out)
 
-
-def emit_corpus(pairs: Iterable[tuple[Record, Ledger]]) -> str:
-    return "".join(project_ris(record, ledger) for record, ledger in pairs)
 ```
 
 - [ ] **Step 4: Run the tests to verify they pass**
@@ -2789,9 +2791,15 @@ def test_the_corpus_is_the_one_the_spec_measured():
     assert sum(1 for _ in corpus_records()) == 2413
 
 
-def test_tier_one_leaves_exactly_twenty_one_records_with_no_miner():
+def test_tier_one_leaves_exactly_seventeen_records_with_no_miner():
+    """The true manual floor for this corpus.
+
+    The spec quotes 21, measured before the PMC miner existed; PMC covers four
+    of those, so the registry as built leaves 17. Changing this number means a
+    miner was added or removed, which is worth noticing.
+    """
     unmined = [r for r in corpus_records() if not miners.mine_all(r.urls)]
-    assert len(unmined) == 21, len(unmined)
+    assert len(unmined) == 17, len(unmined)
 
 
 def test_proceedings_mining_covers_the_measured_1854():
