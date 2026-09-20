@@ -1198,6 +1198,52 @@ def test_keys_with_awkward_characters_are_safe_on_disk(tmp_path):
     assert cache.get(key) == {"ok": True}
 
 
+def test_rate_limit_pause_is_skipped_while_budget_remains():
+    from scholarmend.http import _respect_rate_limit
+
+    class Response:
+        headers = {"ratelimit-remaining": "497", "ratelimit-reset": "3400"}
+
+    slept = []
+    _respect_rate_limit(Response(), sleep=slept.append)
+    assert slept == []
+
+
+def test_rate_limit_pause_waits_for_the_window_when_budget_is_spent():
+    # OpenReview allows 500 requests an hour; tier 2 needs 527, so the run
+    # must wait out the window rather than fail 27 calls from the end.
+    from scholarmend.http import _respect_rate_limit
+
+    class Response:
+        headers = {"ratelimit-remaining": "0", "ratelimit-reset": "120"}
+
+    slept = []
+    _respect_rate_limit(Response(), sleep=slept.append)
+    assert slept and 120 <= slept[0] <= 122
+
+
+def test_rate_limit_wait_is_capped_against_a_hostile_header():
+    from scholarmend.http import MAX_RATELIMIT_WAIT, _respect_rate_limit
+
+    class Response:
+        headers = {"ratelimit-remaining": "0", "ratelimit-reset": "999999"}
+
+    slept = []
+    _respect_rate_limit(Response(), sleep=slept.append)
+    assert slept[0] <= MAX_RATELIMIT_WAIT + 1
+
+
+def test_missing_rate_limit_headers_are_simply_ignored():
+    from scholarmend.http import _respect_rate_limit
+
+    class Response:
+        headers = {}
+
+    slept = []
+    _respect_rate_limit(Response(), sleep=slept.append)
+    assert slept == []
+
+
 def test_stored_files_are_readable_json_for_auditing(tmp_path):
     import json
 
@@ -1298,6 +1344,30 @@ class HttpError(RuntimeError):
     pass
 
 
+# The largest window any server here advertises is one hour. Cap the wait so a
+# malformed or hostile header cannot park a run indefinitely.
+MAX_RATELIMIT_WAIT = 3700.0
+
+
+def _respect_rate_limit(response, sleep=time.sleep) -> None:
+    """Pause when the server says the budget is spent.
+
+    OpenReview advertises ``ratelimit-policy: 500;w=3600`` -- 500 requests an
+    hour, per token. Tier 2 needs 527 forum lookups, so an unbroken run runs
+    out 27 calls from the end. Waiting for the window to roll over turns that
+    from a failed run into a slow one, and because every response is cached,
+    the wait is paid once ever rather than once per run.
+    """
+    remaining = response.headers.get("ratelimit-remaining")
+    if remaining is None or not remaining.strip().isdigit():
+        return
+    if int(remaining) > 0:
+        return
+    reset = response.headers.get("ratelimit-reset", "")
+    seconds = float(reset) if reset.strip().replace(".", "", 1).isdigit() else 60.0
+    sleep(min(max(seconds, 0.0), MAX_RATELIMIT_WAIT) + 1.0)
+
+
 def get_json(
     url: str,
     headers: dict[str, str] | None = None,
@@ -1315,7 +1385,9 @@ def get_json(
         request = urllib.request.Request(url, headers=headers or {})
         try:
             with urllib.request.urlopen(request, timeout=timeout) as response:
-                return json.loads(response.read().decode("utf-8"))
+                payload = json.loads(response.read().decode("utf-8"))
+                _respect_rate_limit(response)
+                return payload
         except urllib.error.HTTPError as error:
             last = error
             if error.code != 429 and error.code < 500:
@@ -1330,13 +1402,13 @@ def get_json(
 - [ ] **Step 5: Run the tests to verify they pass**
 
 Run: `pytest tests/test_cache.py -v`
-Expected: 8 passed
+Expected: 12 passed
 
 - [ ] **Step 6: Commit**
 
 ```bash
 git add src/scholarmend/cache.py src/scholarmend/http.py tests/test_cache.py
-git commit -m "feat: add the committed response cache and a stdlib HTTP client"
+git commit -m "feat: add the committed cache and a rate-limit-aware HTTP client"
 ```
 
 ---
@@ -1443,7 +1515,7 @@ Expected: FAIL, `ModuleNotFoundError: No module named 'scholarmend.resolvers.ope
 
 - [ ] **Step 3: Write `resolvers/openreview.py`**
 
-Use the exact JSON path and header form recorded in `docs/openreview-auth.md` by Task 1.
+Use the exact JSON path and header form recorded in `docs/openreview-auth.md` by Task 1. That spike confirmed `notes[0].content.venueid.value`, `Authorization: Bearer <token>`, a 24-hour token lifetime, and a budget of **500 requests per rolling hour** against the 527 lookups tier 2 needs. The pacing lives in `http.get_json` (Task 6) and needs nothing further here.
 
 ```python
 """OpenReview venue resolution.
