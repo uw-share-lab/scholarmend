@@ -1646,18 +1646,60 @@ def test_every_verified_venueid_parses_into_a_venue_and_a_workshop_verdict():
         assert got.get("track"), f"{forum_id}: no track from {venueid!r}"
 
 
+RESOLUTIONS = (
+    Path(__file__).parents[2] / "Trust-Evals-LitReview" / "verification"
+    / "review-bucket-resolutions.json"
+)
+
+
+def _predict(venueid: str) -> str:
+    """The binary rule the classifier actually uses.
+
+    Deliberately NOT ``endswith("/Conference")``. OpenReview carries the same
+    track diversity the proceedings URLs do -- ICML.cc/2025/Position_Paper_Track
+    is main track, and the reviewers labelled it MAIN -- so anything that is not
+    a workshop is main track. Counting only ``/Conference`` would drop that
+    record, which is the false-drop direction the design calls silent and
+    unrecoverable.
+    """
+    return "WORKSHOP" if "Workshop" in venueid else "MAIN"
+
+
 @pytest.mark.skipif(not GOLD.exists(), reason="validation corpus not checked out alongside")
 def test_workshop_detection_matches_the_reviewers_labels():
     venues = json.loads(GOLD.read_text())
-    workshops = sum(1 for v in venues.values() if "Workshop" in v)
-    main = sum(1 for v in venues.values() if v.endswith("/Conference"))
-    # 73 workshop and 17 main-track, per review-bucket-resolutions.json.
-    assert workshops == 73, workshops
-    assert main == 17, main
+    predicted = [_predict(v) for v in venues.values()]
+    assert predicted.count("WORKSHOP") == 73, predicted.count("WORKSHOP")
+    assert predicted.count("MAIN") == 17, predicted.count("MAIN")
+
+
+@pytest.mark.skipif(
+    not (GOLD.exists() and RESOLUTIONS.exists()),
+    reason="validation corpus not checked out alongside",
+)
+def test_no_venueid_prediction_disagrees_with_a_reviewer_label():
+    """Per-record agreement, which aggregate counts cannot prove.
+
+    Two wrong predictions in opposite directions still sum to 73/17, so the
+    counts above are necessary but not sufficient. This asserts the stronger
+    claim the acceptance criterion actually rests on: zero disagreements.
+    """
+    venues = json.loads(GOLD.read_text())
+    truth = {
+        row["forum"]: row["truth"]
+        for row in json.loads(RESOLUTIONS.read_text())
+        if row.get("forum")
+    }
+    disagreements = [
+        (forum, venueid, _predict(venueid), truth[forum])
+        for forum, venueid in venues.items()
+        if forum in truth and _predict(venueid) != truth[forum]
+    ]
+    assert disagreements == [], disagreements
 ```
 
 Run: `pytest tests/test_resolver_openreview.py -v`
-Expected: 12 passed. **If the two counts differ from 73 and 17, stop and report it** — the acceptance target in the spec is derived from them.
+Expected: 13 passed. **If the counts differ from 73 and 17, or any record disagrees with its reviewer label, stop and report it** — the acceptance target in the spec is derived from them.
 
 - [ ] **Step 6: Commit**
 
