@@ -52,3 +52,20 @@ class Record:
         """The four-digit year. Scholar writes ``PY  - 2025///``."""
         match = re.search(r"\d{4}", self.first("PY"))
         return match.group(0) if match else ""
+
+
+@dataclass(frozen=True)
+class Claim:
+    """One source's assertion about one field of one record.
+
+    Frozen, and every attribute is a scalar, so claims are hashable and
+    set-comparable. A mutable dataclass in this position caused a blocking
+    defect during venuetriage's implementation; the shape here forecloses it.
+    """
+
+    field: str
+    value: str
+    source: str
+    tier: int
+    confidence: float
+    evidence: str
