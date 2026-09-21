@@ -2050,7 +2050,7 @@ def test_titles_match_rejects_a_different_paper():
 def test_resolve_returns_venue_and_year_from_cache(tmp_path):
     cache = Cache(tmp_path)
     cache.put(
-        "s2:search:attention is all you need",
+        key_for("Attention Is All You Need"),
         {"data": [{"title": "Attention Is All You Need", "year": 2017,
                    "venue": "Neural Information Processing Systems",
                    "externalIds": {"DOI": "10.5555/3295222"}}]},
