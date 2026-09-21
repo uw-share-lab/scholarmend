@@ -22,6 +22,15 @@ def parse_ris(text: str, source_file: str) -> list[Record]:
     """Split ``text`` into records, keeping each one's original slice."""
     starts = [m.start() for m in _RECORD_START.finditer(text)]
     if not starts:
+        # A blank file is genuinely empty. A file with content but no TY line
+        # is a file that silently vanishes -- the false-drop direction, which
+        # is unrecoverable because nothing downstream can tell it apart from a
+        # corpus that never contained those records.
+        if text.strip():
+            raise ValueError(
+                f"{source_file}: {len(text)} bytes but no 'TY  - ' line; "
+                f"refusing to drop the whole file"
+            )
         return []
     if text[: starts[0]].strip():
         raise ValueError(f"{source_file}: content before the first record; refusing to guess")

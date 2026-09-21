@@ -70,3 +70,15 @@ def test_record_is_deliberately_unhashable():
 def test_records_still_compare_by_value():
     a, b = parse_file(FIXTURE)[0], parse_file(FIXTURE)[0]
     assert a == b
+
+
+def test_a_file_with_content_but_no_ty_line_is_refused():
+    # The false-drop direction: returning [] here made a whole file vanish with
+    # no error, and nothing downstream could tell that apart from an empty one.
+    with pytest.raises(ValueError, match="no 'TY  - ' line"):
+        parse_ris("AU  - Someone\nTI  - Not actually a record\n", "headerless.ris")
+
+
+def test_a_blank_file_is_still_simply_empty():
+    assert parse_ris("", "empty.ris") == []
+    assert parse_ris("\n  \n", "blank.ris") == []

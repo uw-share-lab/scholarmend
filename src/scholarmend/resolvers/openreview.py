@@ -17,6 +17,7 @@ from __future__ import annotations
 import json
 import re
 import urllib.request
+from collections.abc import Callable
 
 from ..cache import Cache
 from ..models import Claim
@@ -65,15 +66,29 @@ def parse_venueid(venueid: str) -> list[Claim]:
 
 
 class OpenReviewResolver:
-    def __init__(self, cache: Cache, token: str | None = None) -> None:
+    """Forum ids to claims, from the committed cache or, failing that, the API.
+
+    ``token`` may be a callable rather than a string. A committed cache answers
+    every forum the corpus contains without an account, so a warm run must not
+    log in at all; passing a callable defers the login to the first genuine
+    miss, which is the only moment credentials are actually needed.
+    """
+
+    def __init__(
+        self, cache: Cache, token: str | Callable[[], str | None] | None = None
+    ) -> None:
         self.cache = cache
         self.token = token
+
+    def _bearer(self) -> str | None:
+        return self.token() if callable(self.token) else self.token
 
     def resolve(self, forum_id: str) -> list[Claim]:
         """Claims for one forum id, from cache or from the API."""
 
         def loader() -> dict:
-            if not self.token:
+            token = self._bearer()
+            if not token:
                 raise AuthError(
                     "OpenReview needs credentials: the anonymous API returns "
                     "ChallengeRequiredError. Set SCHOLARMEND_OPENREVIEW_USER and "
@@ -84,7 +99,7 @@ class OpenReviewResolver:
 
             payload = get_json(
                 f"{API}/notes?forum={forum_id}&limit=1",
-                headers={"Authorization": f"Bearer {self.token}"},
+                headers={"Authorization": f"Bearer {token}"},
             )
             notes = payload.get("notes") or []
             content = (notes[0].get("content") if notes else {}) or {}

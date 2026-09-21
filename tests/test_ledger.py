@@ -84,3 +84,25 @@ def test_precedence_excludes_preprint_sources_from_venue_and_year():
 def test_key_fields_exist_so_tier_one_can_hand_identifiers_to_tier_two():
     for field in ("forum_id", "pmlr_volume", "arxiv_id", "pmc_id"):
         assert field in PRECEDENCE
+
+
+def test_a_pmlr_venue_id_resolves_through_the_ledger(tmp_path):
+    """Not merely emitted -- resolved.
+
+    The resolver has always produced "PMLR v318", but venue_id's precedence
+    listed only openreview_api, so the ledger returned None for it on every
+    PMLR record and the claim was configuration-dead.
+    """
+    from scholarmend.cache import Cache
+    from scholarmend.resolvers.pmlr_index import PmlrIndexResolver
+
+    cache = Cache(tmp_path)
+    cache.put("pmlr:volume:318", {"title": "Proceedings of the Canadian Conference on AI"})
+
+    led = Ledger()
+    for claim in PmlrIndexResolver(cache).resolve("318"):
+        led.add(claim)
+
+    resolved = led.resolve("venue_id")
+    assert resolved is not None and resolved.value == "PMLR v318"
+    assert resolved.source == "pmlr_index"

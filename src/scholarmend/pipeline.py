@@ -14,7 +14,9 @@ from .models import Claim, Record
 
 CONFIDENCE_FLOOR = 0.80
 
-RESOLVED_FIELDS = ("venue", "year", "track", "version", "authors", "abstract", "doi")
+RESOLVED_FIELDS = (
+    "venue", "year", "track", "version", "authors", "abstract", "doi", "venue_id",
+)
 
 _SCHOLAR_FIELDS = {
     "venue": lambda r: r.venue,

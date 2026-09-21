@@ -91,15 +91,25 @@ def test_workshop_status_matches_every_reviewer_label():
     assert disagreements == [], disagreements
 
 
-def test_the_headline_target_at_least_103_of_112_settled_automatically():
-    """The acceptance criterion from the spec.
+def test_at_least_103_of_112_have_an_automated_resolution_path():
+    """Reach, not correctness. The distinction matters, so it is in the name.
 
-    103 is what two people reached by hand over a day. Anything less means the
-    pipeline has not yet paid for itself.
+    What this measures is whether each labelled record has something for the
+    pipeline to work with: a miner emitted a venue, or emitted a key some
+    resolver consumes. It does not check that the resulting venue or year is
+    right. A build in which every resolver returned garbage would still report
+    104 of 112 here.
 
-    This joins the labelled rows back to their real corpus records and asks the
+    Correctness is verified separately, and only for the 90 OpenReview records
+    the reviewers hand-labelled: test_the_openreview_bucket_is_the_ninety_the
+    _reviewers_resolved and test_workshop_status_matches_every_reviewer_label
+    check those values against the labels. The remaining 14 are reached but
+    unchecked -- no label exists for them, so nothing here asserts they came
+    out right.
+
+    It joins the labelled rows back to their real corpus records and asks the
     miners what they actually extract, rather than pattern-matching the
-    publisher column -- a test that reads the label to predict the answer would
+    publisher column -- a test that read the label to predict the answer would
     pass whether or not any code works.
     """
     import re
@@ -153,17 +163,29 @@ def test_all_ten_hand_merged_titles_agree_on_year_after_resolution():
     for record in corpus_records():
         by_title.setdefault(record.title.strip().lower(), []).append(record)
 
+    from scholarmend.emit import project_ris
+
     collapsed = 0
     for title in listed:
         copies = by_title.get(title, [])
         if len(copies) < 2:
             continue
-        years = set()
+        years, projections = set(), []
         for record in copies:
-            claim = resolve_record(record).resolve("year")
+            ledger = resolve_record(record)
+            claim = ledger.resolve("year")
             years.add(claim.value if claim else None)
+            projections.append(project_ris(record, ledger))
         if len(years) == 1 and None not in years:
             collapsed += 1
+            # The ledger agreeing is not the deliverable. Covidence and
+            # venuetriage read only the RIS, so a year that agrees in the
+            # ledger and is missing from the projection collapses nothing.
+            # This assertion is the one that would have caught a projection
+            # that could substitute a PY line but never insert one.
+            year = next(iter(years))
+            for projected in projections:
+                assert f"PY  - {year}///" in projected, title
     assert collapsed >= 4, f"tier-1 mining collapsed only {collapsed} of the 10"
 
 

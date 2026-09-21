@@ -20,7 +20,11 @@ PRECEDENCE: dict[str, tuple[str, ...]] = {
     # The OpenReview venueid was correct in 92 of 92 hand-checked cases.
     "venue": ("openreview_api", "proceedings_url", "pmlr_index", "semanticscholar", "scholar"),
     "track": ("openreview_api", "proceedings_url"),
-    "venue_id": ("openreview_api",),
+    # pmlr_index emits "PMLR v318" as a venue_id too. Listing only
+    # openreview_api here made resolve("venue_id") return None for every
+    # PMLR record, discarding the identity evidence a human adjudicating
+    # one of them needs.
+    "venue_id": ("openreview_api", "pmlr_index"),
     "version": ("proceedings_url", "openreview_api", "pmlr_index", "arxiv_url"),
     # Preprint sources are welcome here: Scholar truncates 71% of author lists.
     "authors": ("openreview_api", "semanticscholar", "openalex", "arxiv_url", "scholar"),

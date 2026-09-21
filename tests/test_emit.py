@@ -3,6 +3,8 @@ from __future__ import annotations
 from pathlib import Path
 
 from scholarmend.emit import project_ris, to_json
+from scholarmend.ledger import Ledger
+from scholarmend.models import Claim
 from scholarmend.parse import parse_file
 from scholarmend.pipeline import resolve_record
 
@@ -67,6 +69,9 @@ def test_ris_projection_leaves_every_untouched_line_byte_identical():
     duplicated lines, because it only asks whether each original line appears
     somewhere. The guarantee this module rests on is stronger: same lines, same
     order, same count, with only the corrected tags differing.
+
+    This record already carries both PY and JF, so nothing is inserted into it
+    and the index pairing holds exactly. Insertion is covered separately.
     """
     record, ledger = first()
     before = record.raw.split("\n")
@@ -79,18 +84,82 @@ def test_ris_projection_leaves_every_untouched_line_byte_identical():
         assert projected == original
 
 
-def test_ris_projection_never_changes_the_line_count():
-    # Surgical substitution only: never insert, never delete. This is what
-    # makes the projection safe to feed to a parser written against Scholar's
-    # exact output.
+def test_ris_projection_grows_by_exactly_the_number_of_inserted_tags():
+    """Never delete, and insert only what was genuinely absent.
+
+    The predecessor of this test asserted the line count never changed at all.
+    That was wrong, and expensively so: 331 corpus records carry no PY line,
+    so a projection that could only substitute silently dropped every year
+    tier 2 resolved for them. The invariant is that the count rises by exactly
+    the number of corrected tags the record did not already have, and never
+    falls.
+    """
     for record in parse_file(FIXTURE):
-        out = project_ris(record, resolve_record(record))
-        assert len(out.split("\n")) == len(record.raw.split("\n"))
+        ledger = resolve_record(record)
+        out = project_ris(record, ledger)
+        corrected = {
+            tag
+            for field, tag in (("year", "PY"), ("venue", "JF"))
+            if (claim := ledger.resolve(field)) is not None and claim.source != "scholar"
+        }
+        inserted = sum(1 for tag in corrected if f"{tag}  - " not in record.raw)
+        assert len(out.split("\n")) == len(record.raw.split("\n")) + inserted
+
+
+def test_a_resolved_year_is_inserted_when_the_record_has_no_py_line():
+    record = parse_file(FIXTURE)[2]  # openreview only: no PY line at all
+    assert "PY  - " not in record.raw
+
+    ledger = resolve_record(record)
+    ledger.add(Claim(field="year", value="2025", source="openreview_api", tier=2,
+                     confidence=0.99, evidence="venueid=ICLR.cc/2025/Conference"))
+    out = project_ris(record, ledger)
+
+    lines = out.split("\n")
+    assert "PY  - 2025///" in lines
+    assert len(lines) == len(record.raw.split("\n")) + 1
+    # Immediately before ER, not appended after the record has ended.
+    assert lines[lines.index("PY  - 2025///") + 1].startswith("ER  -")
+
+
+def test_an_insertion_leaves_the_er_lines_trailing_space_intact():
+    record = parse_file(FIXTURE)[2]
+    ledger = resolve_record(record)
+    ledger.add(Claim(field="year", value="2025", source="openreview_api", tier=2,
+                     confidence=0.99, evidence="venueid=ICLR.cc/2025/Conference"))
+    assert "ER  - \n" in project_ris(record, ledger)
+
+
+def test_an_existing_py_line_is_substituted_rather_than_duplicated():
+    record, ledger = first()
+    out = project_ris(record, ledger)
+    assert [line for line in out.split("\n") if line.startswith("PY  - ")] == ["PY  - 2025///"]
+
+
+def test_a_record_with_no_er_line_still_gets_its_inserted_tag():
+    """Malformed input must not crash, and must not lose the record.
+
+    A false drop is silent and unrecoverable; an appended line at the end of a
+    record that never terminated is neither.
+    """
+    from scholarmend.models import Record
+
+    raw = "TY  - JOUR\nTI  - A record that never ended\n"
+    record = Record(raw=raw, fields={"TY": ["JOUR"], "TI": ["A record that never ended"]},
+                    source_file="broken.ris")
+    ledger = Ledger()
+    ledger.add(Claim(field="year", value="2025", source="openreview_api", tier=2,
+                     confidence=0.99, evidence="venueid=ICLR.cc/2025/Conference"))
+
+    out = project_ris(record, ledger)
+    assert out == "TY  - JOUR\nTI  - A record that never ended\nPY  - 2025///\n"
 
 
 def test_ris_projection_changes_only_py_and_jf_lines():
     # Guards _TAG_FOR's scope from the outside: if a future change added AU or
-    # AB to it, this fails rather than silently altering author lines.
+    # AB to it, this fails rather than silently altering author lines. The
+    # comparison runs over the lines the two texts have in common; insertion is
+    # covered by its own tests.
     changed_tags = set()
     for record in parse_file(FIXTURE):
         out = project_ris(record, resolve_record(record))
@@ -108,3 +177,46 @@ def test_ris_projection_keeps_the_trailing_space_on_the_er_line():
 def test_a_record_with_nothing_to_correct_round_trips_exactly():
     record = parse_file(FIXTURE)[2]  # openreview only, no miner claims
     assert project_ris(record, resolve_record(record)) == record.raw
+
+
+def test_an_arxiv_only_records_identifier_survives_into_the_json():
+    """The evidence a human adjudicating this record would need.
+
+    arxiv_id is a key, not an answer: it never wins a field, so it has no entry
+    in `fields`. It must still reach `claims`, because a record no resolver
+    settled is exactly the one somebody has to look up by hand, and the id is
+    what they would look it up with.
+    """
+    from scholarmend.models import Record
+
+    raw = ("TY  - JOUR\n"
+           "TI  - A preprint nobody has published yet\n"
+           "UR  - https://arxiv.org/abs/2501.01234\n"
+           "ER  - \n")
+    record = Record(raw=raw, fields={"TY": ["JOUR"],
+                                     "TI": ["A preprint nobody has published yet"],
+                                     "UR": ["https://arxiv.org/abs/2501.01234"]},
+                    source_file="preprints.ris")
+    doc = to_json(record, resolve_record(record))
+
+    identifiers = [c for c in doc["claims"] if c["field"] == "arxiv_id"]
+    assert [c["value"] for c in identifiers] == ["2501.01234"]
+
+
+def test_every_field_the_precedence_table_knows_can_reach_the_claims_array():
+    # A hand-listed subset dropped pmlr_volume, pmc_id and arxiv_id silently.
+    from scholarmend.ledger import PRECEDENCE
+
+    record, ledger = first()
+    for field in PRECEDENCE:
+        ledger.add(Claim(field=field, value="x", source="scholar", tier=0,
+                         confidence=0.1, evidence="e"))
+    fields = {c["field"] for c in to_json(record, ledger)["claims"]}
+    assert set(PRECEDENCE) <= fields, set(PRECEDENCE) - fields
+
+
+def test_the_json_reports_a_resolved_venue_id():
+    record, ledger = first()
+    ledger.add(Claim(field="venue_id", value="ICLR.cc/2025/Conference",
+                     source="openreview_api", tier=2, confidence=0.99, evidence="e"))
+    assert to_json(record, ledger)["fields"]["venue_id"]["value"] == "ICLR.cc/2025/Conference"
