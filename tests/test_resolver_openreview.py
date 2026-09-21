@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import pytest
+
 from scholarmend.cache import Cache
 from scholarmend.resolvers.openreview import (
     OpenReviewResolver,
@@ -39,12 +41,35 @@ def test_a_non_iclr_venueid_keeps_its_own_organisation():
     assert value(claims, "venue") == "AAAI"
 
 
-def test_a_submission_suffix_is_stripped_from_the_track():
-    # AAAI.org/2026/Workshop/AIGOV/Submission -> the trailing /Submission is
-    # routing detail, not venue. Without this assertion the strip could be
-    # deleted and every other test would still pass.
-    claims = parse_venueid("AAAI.org/2026/Workshop/AIGOV/Submission")
-    assert value(claims, "track") == "Workshop/AIGOV"
+@pytest.mark.parametrize("venueid", [
+    "ICLR.cc/2025/Conference/Submission",  # under review, or never accepted
+    "ICLR.cc/2025/Conference/Rejected_Submission",
+    "ICLR.cc/2025/Conference/Withdrawn_Submission",
+    "ICLR.cc/2025/Conference/Desk_Rejected_Submission",
+    "AAAI.org/2026/Workshop/AIGOV/Submission",
+])
+def test_a_submission_venueid_is_not_reported_as_proceedings(venueid):
+    """OpenReview gives an accepted paper the bare venue (…/Conference) and
+    keeps a *Submission suffix on everything else. The suffix used to be
+    stripped as routing detail, which turned an unaccepted submission into
+    track=Conference, version=proceedings. BACKLOG §8."""
+    claims = parse_venueid(venueid)
+    assert value(claims, "version") is None
+    assert value(claims, "track") == venueid.split("/", 2)[2]  # verbatim
+
+
+def test_a_submission_venueid_still_says_where_and_when_it_was_submitted():
+    claims = parse_venueid("ICLR.cc/2025/Conference/Rejected_Submission")
+    assert (value(claims, "venue"), value(claims, "year")) == ("ICLR", "2025")
+
+
+@pytest.mark.parametrize("venueid", [
+    "ICML.cc/2025/Conference",
+    "ICML.cc/2025/Position_Paper_Track",
+    "ICML.cc/2026/Workshop/AI4GOOD",
+])
+def test_a_published_venueid_is_still_proceedings(venueid):
+    assert value(parse_venueid(venueid), "version") == "proceedings"
 
 
 def test_a_track_without_a_submission_suffix_is_left_alone():

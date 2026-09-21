@@ -5,6 +5,7 @@ A ``venueid`` states venue, year and workshop status in one string:
     ICML.cc/2025/Conference                        -> ICML 2025, main track
     ICML.cc/2026/Workshop/AI4GOOD                   -> ICML 2026, a workshop
     NeurIPS.cc/2025/Workshop_Mexico_City/ResponsibleFM
+    ICLR.cc/2025/Conference/Rejected_Submission     -> submitted, not published
 
 That single field is what 90 of the 112 hand-resolved records needed. It is
 validated here against all 90 of those venueids, with zero per-record
@@ -98,14 +99,20 @@ def parse_venueid(venueid: str) -> list[Claim]:
     match = _VENUEID.match(venueid)
     if match is None:
         return claims
-    # Trailing /Submission and similar suffixes are routing detail, not venue.
-    track = re.sub(r"/Submission$", "", match.group("track"))
+    # OpenReview gives an accepted paper the bare venue (".../Conference") and
+    # keeps a *Submission suffix on everything else: under review, rejected,
+    # withdrawn, desk-rejected. The suffix is the acceptance status, not
+    # routing detail, so the track is kept verbatim and such a paper is not
+    # claimed as proceedings. Venue and year stay: they say where and when it
+    # was submitted, which is true either way.
+    track = match.group("track")
     claims += [
         claim("venue", match.group("org")),
         claim("year", match.group("year")),
         claim("track", track),
-        claim("version", "proceedings"),
     ]
+    if not track.endswith("Submission"):
+        claims.append(claim("version", "proceedings"))
     return claims
 
 

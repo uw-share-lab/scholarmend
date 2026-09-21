@@ -113,28 +113,37 @@ Each was reviewed, measured where measurable, and judged not worth blocking on.
 
 ---
 
-## 8. A rejected submission's venueid is reported as proceedings
+## 8. ~~A rejected submission's venueid is reported as proceedings~~ — CLOSED 2026-09-21
 
-Verified 2026-09-21 by calling the function:
+`parse_venueid` keeps the track verbatim and emits no `version = proceedings`
+for any track ending in `Submission`. It had also been stripping a trailing
+`/Submission` as "routing detail", but in OpenReview's API v2 that suffix marks
+a paper under review or never accepted -- accepted papers get the bare venue --
+so an unaccepted submission read as `track = Conference`, published. Venue and
+year are still claimed: they say where and when it was submitted. No corpus
+number moved; the one cached `*Submission` venueid is a workshop's.
 
-    parse_venueid("ICLR.cc/2025/Conference/Rejected_Submission")
-    -> venue = ICLR, year = 2025, track = Conference/Rejected_Submission,
-       version = proceedings
+## 9. A venueid derived from an invitation cannot carry acceptance status
 
-OpenReview files rejected, withdrawn and desk-rejected papers under the
-conference's own venueid, and Scholar indexes their forum pages. The `track`
-value exposes it to a careful reader, but `version = proceedings` is simply
-false, and `venue = ICLR` reads as a publication to anyone who does not check
-the track. None of the 238 cached answers is such a case, so the corpus has not
-hit it yet — which is why it went unnoticed, not evidence it cannot happen.
+When `/notes?forum=…&limit=1` returns a Decision note rather than the
+submission (25 of 96 real forums), `venueid_from_invitations` derives the venue
+from `…/Conference/Submission5047/-/Decision` -> `…/Conference`. Every paper
+at that conference has such an invitation, accepted or not, so a rejected paper
+with a public forum (ICLR publishes them) would read as main track, published.
+The cache stores the venueid *after* derivation, so derived and genuine entries
+cannot be told apart from the committed cache alone.
 
-venuescout already guards against it (its `MAIN_TRACKS` allowlist makes such a
-record UNKNOWN; see its BACKLOG §3). **Do:** in `parse_venueid`, emit no
-`version = proceedings` for a `*_Submission` track that is not plain
-`Submission`, and consider leaving `venue` unset for it, so that the invariant
-("a field is never guessed") holds here too. A companion change worth making at
-the same time: give PMLR claims a structured `title` rather than only
-`evidence`, which venuescout currently pattern-matches (its BACKLOG §8).
+No harm measured: the reviewers found 0 disagreements over the 90 labelled
+venueids, and all 166 records venuescout's escalation moves to MAIN are MAIN by
+the reviewers' labels. The corpus is accepted papers; the gap is latent.
+
+**Do:** fetch the submission note itself -- in API v2 the forum id is the
+submission note's id, so `GET /notes?id={forum}` returns the note that carries
+`content.venueid` -- and drop the invitation fallback, or keep it only with a
+`derived: true` flag in the cached payload that downstream treats as no
+evidence of acceptance. Either way the existing cache needs repopulating
+(`scripts/repopulate.py`, credentials required). Verify the `?id=` behaviour
+against the live API before building on it; it is from memory, not measured.
 
 ## Provenance
 
