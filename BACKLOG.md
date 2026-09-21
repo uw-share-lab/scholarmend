@@ -113,6 +113,29 @@ Each was reviewed, measured where measurable, and judged not worth blocking on.
 
 ---
 
+## 8. A rejected submission's venueid is reported as proceedings
+
+Verified 2026-09-21 by calling the function:
+
+    parse_venueid("ICLR.cc/2025/Conference/Rejected_Submission")
+    -> venue = ICLR, year = 2025, track = Conference/Rejected_Submission,
+       version = proceedings
+
+OpenReview files rejected, withdrawn and desk-rejected papers under the
+conference's own venueid, and Scholar indexes their forum pages. The `track`
+value exposes it to a careful reader, but `version = proceedings` is simply
+false, and `venue = ICLR` reads as a publication to anyone who does not check
+the track. None of the 238 cached answers is such a case, so the corpus has not
+hit it yet — which is why it went unnoticed, not evidence it cannot happen.
+
+venuescout already guards against it (its `MAIN_TRACKS` allowlist makes such a
+record UNKNOWN; see its BACKLOG §3). **Do:** in `parse_venueid`, emit no
+`version = proceedings` for a `*_Submission` track that is not plain
+`Submission`, and consider leaving `venue` unset for it, so that the invariant
+("a field is never guessed") holds here too. A companion change worth making at
+the same time: give PMLR claims a structured `title` rather than only
+`evidence`, which venuescout currently pattern-matches (its BACKLOG §8).
+
 ## Provenance
 
 The build ran as thirteen planned tasks with a review after each, then a
