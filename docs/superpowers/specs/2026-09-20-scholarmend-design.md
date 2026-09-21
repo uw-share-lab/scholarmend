@@ -90,13 +90,40 @@ the unauthenticated rate limit depresses its measured hit rate.
 
 ## Goals
 
-1. Recover venue, year, track, full author list, abstract and identifiers for
-   Scholar records, preferring authoritative sources over Scholar in every case.
+1. Recover venue, year, track, version and identifiers for Scholar records,
+   preferring authoritative sources over Scholar in every case.
 2. Retain every claim, with its source and evidence, so that provenance is
    auditable and PRISMA reporting can cite it.
 3. Work offline and deterministically wherever the data permits, and reproduce
    byte-identically on a rerun months later.
 4. Never silently drop or guess. An unresolvable record survives, flagged.
+
+### Not delivered: authors and abstracts
+
+An earlier draft of these goals also promised to recover the full author list
+and the full abstract, and the problem statement above still reports that
+Scholar truncates 71% of author lists. **scholarmend does not fix that.** No
+component emits an `authors` or `abstract` claim; measured over the corpus, both
+fields come from Scholar in 2,413 of 2,413 records.
+
+This is deliberate rather than overlooked, but it was overlooked first: the
+implementation plan's self-review checked that every file in the architecture
+had a task and passed, without checking that every goal had one. The gap
+surfaced only when the assembled pipeline was measured.
+
+It stays unbuilt because it would currently buy nothing. The RIS projection
+rewrites only `PY` and `JF` (see *Output*), so recovered authors would sit in
+the canonical JSON with no consumer: Covidence and `venuetriage` both read the
+RIS. Closing the gap properly means three changes together, not one — emitting
+the fields (OpenReview's API already returns `authors` and `abstract` in a
+note's `content`, and Semantic Scholar would need a wider field list),
+extending the projection to rewrite `AU` and `AB`, and accepting the risk that
+rewriting an author list — deleting N lines and inserting M — carries for the
+byte-identical round-trip guarantee.
+
+`PRECEDENCE` retains entries for `authors` and `abstract` so that policy exists
+the day a resolver supplies them. Note that `openalex` appears there and has no
+resolver at all.
 
 ## Non-goals
 
@@ -118,7 +145,7 @@ and PRISMA counting (`venuetriage`, sub-project C). Any user interface
     │   openreview.py   forum id → venueid
     │   pmlr_index.py   volume → proceedings title
     │   pmc.py          PMC id → citation_volume
-    │   semanticscholar.py  dblp.py  openalex.py  crossref.py
+    │   semanticscholar.py          (dblp, openalex and crossref: see below)
     ├─ ledger.py      claim accumulation, precedence, confidence, conflicts
     ├─ cache.py       content-addressed on-disk store
     ├─ emit.py        canonical JSON + RIS projection
@@ -226,7 +253,15 @@ alongside the precedence table.
 | 0 | Scholar's own RIS fields | free | 100%, lowest precedence, always retained |
 | 1 | Offline URL miners | free, deterministic | **99% yield a key; 77% fully resolved** |
 | 2 | Identifier-keyed APIs: OpenReview `venueid`, PMLR index, PMC | cached network | the 22% holding OpenReview forum ids |
-| 3 | Fuzzy title match: Semantic Scholar first, then DBLP, OpenAlex, Crossref | cached network | remainder, always flagged low-confidence |
+| 3 | Fuzzy title match: Semantic Scholar | cached network | remainder, always flagged low-confidence |
+
+Only Semantic Scholar was built at tier 3. DBLP was unreachable during the
+measurements above and remains unmeasured; OpenAlex was measured and rejected,
+because it described the arXiv preprint rather than the published paper in every
+case where it named a venue at all; Crossref shares that DOI-centric weakness on
+this corpus. `PRECEDENCE` still lists `openalex` for `authors` and `abstract`,
+where a preprint's values are legitimate, so the policy exists the day a
+resolver supplies them.
 
 Tier-1 breakdown, measured:
 
@@ -304,7 +339,25 @@ The 2026-09-20 verification effort produced a labelled gold set, committed in
 `verification/`. It is the acceptance criterion.
 
 **Headline test: of the 112 records that required human resolution, scholarmend
-settles at least 103, with zero disagreements against the hand-verified labels.**
+provides an automated resolution path for at least 103.**
+
+That is a claim about reach, and it must not be bundled with the separate,
+stronger claim about correctness. Stated precisely, and as the shipped suite
+verifies them:
+
+- **reach** — at least 103 of the 112 yield something a live resolver consumes
+  (measured: 104). Asserted by running the real miners over records joined to
+  the corpus, not by inspecting the labels.
+- **correctness** — for the 90 reached through an OpenReview `venueid`, the
+  predicted workshop-or-main verdict agrees with the reviewers' label for every
+  single record. Zero disagreements, compared one record at a time, because two
+  errors in opposite directions would still sum to the right totals.
+
+The remaining 14 are reached but not checked against truth by this suite. Ten
+resolve to PMLR volumes outside this review's scope, where the resolver
+deliberately declines to name a venue and emits only the proceedings title as
+evidence for a human. The suite is hermetic and offline, so verifying those
+predictions would require their lookups to be committed into the cache first.
 
 103 is not aspirational. It is the count actually reached by hand, so the test
 asserts that the pipeline reproduces a day of human work.

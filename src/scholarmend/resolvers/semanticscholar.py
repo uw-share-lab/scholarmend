@@ -1,0 +1,72 @@
+"""Semantic Scholar, the tier-3 fallback for records no miner covers.
+
+Measured on a 30-title sample of this corpus, its hit rate was low but its
+venue was correct on every hit -- unlike OpenAlex, which matched more titles
+and described the arXiv preprint rather than the published paper in every case
+where it named a venue at all. Low recall with high precision is the right
+shape for a last resort, so its claims are admitted but marked down.
+"""
+
+from __future__ import annotations
+
+import re
+import urllib.parse
+
+from ..cache import Cache
+from ..models import Claim
+
+API = "https://api.semanticscholar.org/graph/v1/paper/search"
+FIELDS = "title,year,venue,externalIds"
+
+
+def _normalise(title: str) -> str:
+    return re.sub(r"[^a-z0-9]", "", title.lower())
+
+
+def titles_match(a: str, b: str) -> bool:
+    """Whether two titles denote the same paper.
+
+    A prefix comparison on the normalised strings, because Scholar and
+    Semantic Scholar disagree about subtitles and trailing punctuation more
+    often than they disagree about papers.
+    """
+    x, y = _normalise(a), _normalise(b)
+    if not x or not y:
+        return False
+    return x[:45] == y[:45]
+
+
+class SemanticScholarResolver:
+    def __init__(self, cache: Cache, api_key: str | None = None) -> None:
+        self.cache = cache
+        self.api_key = api_key
+
+    def resolve(self, title: str) -> list[Claim]:
+        def loader() -> dict:
+            from ..http import get_json
+
+            query = urllib.parse.quote(title[:200])
+            headers = {"x-api-key": self.api_key} if self.api_key else {}
+            return get_json(f"{API}?query={query}&limit=1&fields={FIELDS}", headers=headers)
+
+        payload = self.cache.fetch(f"s2:search:{_normalise(title)[:80]}", loader)
+        results = payload.get("data") or []
+        if not results:
+            return []
+        paper = results[0]
+        if not titles_match(title, paper.get("title") or ""):
+            return []
+
+        def claim(field: str, value: str) -> Claim:
+            return Claim(field=field, value=value, source="semanticscholar", tier=3,
+                         confidence=0.75, evidence=f"s2:{paper.get('title','')[:60]}")
+
+        claims = []
+        if paper.get("venue"):
+            claims.append(claim("venue", paper["venue"]))
+        if paper.get("year"):
+            claims.append(claim("year", str(paper["year"])))
+        doi = (paper.get("externalIds") or {}).get("DOI")
+        if doi:
+            claims.append(claim("doi", doi))
+        return claims

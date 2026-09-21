@@ -1083,7 +1083,7 @@ def mine_all(urls: Iterable[str]) -> list[Claim]:
 - [ ] **Step 7: Run the tests to verify they pass**
 
 Run: `pytest tests/ -v`
-Expected: all tests pass, 43 total
+Expected: all tests pass, zero failures. (Do not treat the suite TOTAL as a target — it drifts as earlier tasks add tests during review. Per-file counts in the steps above are the meaningful numbers.)
 
 - [ ] **Step 8: Prove the 99% tier-1 key coverage from the spec**
 
@@ -1108,7 +1108,7 @@ for f in sorted(glob.glob("../Trust-Evals-LitReview/corpus/*.ris")):
 for k, v in kinds.most_common():
     print(f"{k:34s}{v:5d}  {100*v/total:5.1f}%")
 assert kinds["no miner"] == 21, kinds["no miner"]
-print("OK: 21 records have no miner, matching the spec")
+print("OK: 21 records have no miner at this point (Task 8 adds PMC, taking it to 17)")
 EOF
 ```
 
@@ -1196,6 +1196,52 @@ def test_keys_with_awkward_characters_are_safe_on_disk(tmp_path):
     key = "s2:Attention Is All You Need?/\\:*"
     cache.put(key, {"ok": True})
     assert cache.get(key) == {"ok": True}
+
+
+def test_rate_limit_pause_is_skipped_while_budget_remains():
+    from scholarmend.http import _respect_rate_limit
+
+    class Response:
+        headers = {"ratelimit-remaining": "497", "ratelimit-reset": "3400"}
+
+    slept = []
+    _respect_rate_limit(Response(), sleep=slept.append)
+    assert slept == []
+
+
+def test_rate_limit_pause_waits_for_the_window_when_budget_is_spent():
+    # OpenReview allows 500 requests an hour; tier 2 needs 527, so the run
+    # must wait out the window rather than fail 27 calls from the end.
+    from scholarmend.http import _respect_rate_limit
+
+    class Response:
+        headers = {"ratelimit-remaining": "0", "ratelimit-reset": "120"}
+
+    slept = []
+    _respect_rate_limit(Response(), sleep=slept.append)
+    assert slept and 120 <= slept[0] <= 122
+
+
+def test_rate_limit_wait_is_capped_against_a_hostile_header():
+    from scholarmend.http import MAX_RATELIMIT_WAIT, _respect_rate_limit
+
+    class Response:
+        headers = {"ratelimit-remaining": "0", "ratelimit-reset": "999999"}
+
+    slept = []
+    _respect_rate_limit(Response(), sleep=slept.append)
+    assert slept[0] <= MAX_RATELIMIT_WAIT + 1
+
+
+def test_missing_rate_limit_headers_are_simply_ignored():
+    from scholarmend.http import _respect_rate_limit
+
+    class Response:
+        headers = {}
+
+    slept = []
+    _respect_rate_limit(Response(), sleep=slept.append)
+    assert slept == []
 
 
 def test_stored_files_are_readable_json_for_auditing(tmp_path):
@@ -1298,6 +1344,30 @@ class HttpError(RuntimeError):
     pass
 
 
+# The largest window any server here advertises is one hour. Cap the wait so a
+# malformed or hostile header cannot park a run indefinitely.
+MAX_RATELIMIT_WAIT = 3700.0
+
+
+def _respect_rate_limit(response, sleep=time.sleep) -> None:
+    """Pause when the server says the budget is spent.
+
+    OpenReview advertises ``ratelimit-policy: 500;w=3600`` -- 500 requests an
+    hour, per token. Tier 2 needs 527 forum lookups, so an unbroken run runs
+    out 27 calls from the end. Waiting for the window to roll over turns that
+    from a failed run into a slow one, and because every response is cached,
+    the wait is paid once ever rather than once per run.
+    """
+    remaining = response.headers.get("ratelimit-remaining")
+    if remaining is None or not remaining.strip().isdigit():
+        return
+    if int(remaining) > 0:
+        return
+    reset = response.headers.get("ratelimit-reset", "")
+    seconds = float(reset) if reset.strip().replace(".", "", 1).isdigit() else 60.0
+    sleep(min(max(seconds, 0.0), MAX_RATELIMIT_WAIT) + 1.0)
+
+
 def get_json(
     url: str,
     headers: dict[str, str] | None = None,
@@ -1315,7 +1385,9 @@ def get_json(
         request = urllib.request.Request(url, headers=headers or {})
         try:
             with urllib.request.urlopen(request, timeout=timeout) as response:
-                return json.loads(response.read().decode("utf-8"))
+                payload = json.loads(response.read().decode("utf-8"))
+                _respect_rate_limit(response)
+                return payload
         except urllib.error.HTTPError as error:
             last = error
             if error.code != 429 and error.code < 500:
@@ -1330,13 +1402,13 @@ def get_json(
 - [ ] **Step 5: Run the tests to verify they pass**
 
 Run: `pytest tests/test_cache.py -v`
-Expected: 8 passed
+Expected: 12 passed
 
 - [ ] **Step 6: Commit**
 
 ```bash
 git add src/scholarmend/cache.py src/scholarmend/http.py tests/test_cache.py
-git commit -m "feat: add the committed response cache and a stdlib HTTP client"
+git commit -m "feat: add the committed cache and a rate-limit-aware HTTP client"
 ```
 
 ---
@@ -1443,7 +1515,7 @@ Expected: FAIL, `ModuleNotFoundError: No module named 'scholarmend.resolvers.ope
 
 - [ ] **Step 3: Write `resolvers/openreview.py`**
 
-Use the exact JSON path and header form recorded in `docs/openreview-auth.md` by Task 1.
+Use the exact JSON path and header form recorded in `docs/openreview-auth.md` by Task 1. That spike confirmed `notes[0].content.venueid.value`, `Authorization: Bearer <token>`, a 24-hour token lifetime, and a budget of **500 requests per rolling hour** against the 527 lookups tier 2 needs. The pacing lives in `http.get_json` (Task 6) and needs nothing further here.
 
 ```python
 """OpenReview venue resolution.
@@ -1574,18 +1646,60 @@ def test_every_verified_venueid_parses_into_a_venue_and_a_workshop_verdict():
         assert got.get("track"), f"{forum_id}: no track from {venueid!r}"
 
 
+RESOLUTIONS = (
+    Path(__file__).parents[2] / "Trust-Evals-LitReview" / "verification"
+    / "review-bucket-resolutions.json"
+)
+
+
+def _predict(venueid: str) -> str:
+    """The binary rule the classifier actually uses.
+
+    Deliberately NOT ``endswith("/Conference")``. OpenReview carries the same
+    track diversity the proceedings URLs do -- ICML.cc/2025/Position_Paper_Track
+    is main track, and the reviewers labelled it MAIN -- so anything that is not
+    a workshop is main track. Counting only ``/Conference`` would drop that
+    record, which is the false-drop direction the design calls silent and
+    unrecoverable.
+    """
+    return "WORKSHOP" if "Workshop" in venueid else "MAIN"
+
+
 @pytest.mark.skipif(not GOLD.exists(), reason="validation corpus not checked out alongside")
 def test_workshop_detection_matches_the_reviewers_labels():
     venues = json.loads(GOLD.read_text())
-    workshops = sum(1 for v in venues.values() if "Workshop" in v)
-    main = sum(1 for v in venues.values() if v.endswith("/Conference"))
-    # 73 workshop and 17 main-track, per review-bucket-resolutions.json.
-    assert workshops == 73, workshops
-    assert main == 17, main
+    predicted = [_predict(v) for v in venues.values()]
+    assert predicted.count("WORKSHOP") == 73, predicted.count("WORKSHOP")
+    assert predicted.count("MAIN") == 17, predicted.count("MAIN")
+
+
+@pytest.mark.skipif(
+    not (GOLD.exists() and RESOLUTIONS.exists()),
+    reason="validation corpus not checked out alongside",
+)
+def test_no_venueid_prediction_disagrees_with_a_reviewer_label():
+    """Per-record agreement, which aggregate counts cannot prove.
+
+    Two wrong predictions in opposite directions still sum to 73/17, so the
+    counts above are necessary but not sufficient. This asserts the stronger
+    claim the acceptance criterion actually rests on: zero disagreements.
+    """
+    venues = json.loads(GOLD.read_text())
+    truth = {
+        row["forum"]: row["truth"]
+        for row in json.loads(RESOLUTIONS.read_text())
+        if row.get("forum")
+    }
+    disagreements = [
+        (forum, venueid, _predict(venueid), truth[forum])
+        for forum, venueid in venues.items()
+        if forum in truth and _predict(venueid) != truth[forum]
+    ]
+    assert disagreements == [], disagreements
 ```
 
 Run: `pytest tests/test_resolver_openreview.py -v`
-Expected: 12 passed. **If the two counts differ from 73 and 17, stop and report it** — the acceptance target in the spec is derived from them.
+Expected: 13 passed. **If the counts differ from 73 and 17, or any record disagrees with its reviewer label, stop and report it** — the acceptance target in the spec is derived from them.
 
 - [ ] **Step 6: Commit**
 
@@ -1903,11 +2017,26 @@ Create `tests/test_resolver_s2.py`:
 from __future__ import annotations
 
 from scholarmend.cache import Cache
-from scholarmend.resolvers.semanticscholar import SemanticScholarResolver, titles_match
+from scholarmend.resolvers.semanticscholar import (
+    SemanticScholarResolver,
+    _normalise,
+    titles_match,
+)
 
 
 def value(claims, field):
     return next((c.value for c in claims if c.field == field), None)
+
+
+def key_for(title: str) -> str:
+    """Build the cache key exactly as the resolver builds it.
+
+    Never hardcode a key literal here. ``_normalise`` strips everything
+    non-alphanumeric, so a literal like ``"s2:search:some paper"`` misses the
+    cache, the loader runs, and the test silently makes a real network call --
+    which is how this file first went red against a live 429.
+    """
+    return f"s2:search:{_normalise(title)[:80]}"
 
 
 def test_titles_match_ignores_case_and_punctuation():
@@ -1921,7 +2050,7 @@ def test_titles_match_rejects_a_different_paper():
 def test_resolve_returns_venue_and_year_from_cache(tmp_path):
     cache = Cache(tmp_path)
     cache.put(
-        "s2:search:attention is all you need",
+        key_for("Attention Is All You Need"),
         {"data": [{"title": "Attention Is All You Need", "year": 2017,
                    "venue": "Neural Information Processing Systems",
                    "externalIds": {"DOI": "10.5555/3295222"}}]},
@@ -1934,23 +2063,60 @@ def test_resolve_returns_venue_and_year_from_cache(tmp_path):
 
 def test_a_title_that_does_not_match_is_discarded(tmp_path):
     cache = Cache(tmp_path)
-    cache.put("s2:search:some paper", {"data": [{"title": "A Totally Different Paper",
+    cache.put(key_for('Some Paper'), {"data": [{"title": "A Totally Different Paper",
                                                  "year": 2020, "venue": "ICML"}]})
     assert SemanticScholarResolver(cache).resolve("Some Paper") == []
 
 
 def test_an_empty_result_yields_no_claims(tmp_path):
     cache = Cache(tmp_path)
-    cache.put("s2:search:nothing here", {"data": []})
+    cache.put(key_for('Nothing Here'), {"data": []})
     assert SemanticScholarResolver(cache).resolve("Nothing Here") == []
 
 
 def test_claims_are_tier_three_and_lower_confidence(tmp_path):
     cache = Cache(tmp_path)
-    cache.put("s2:search:x", {"data": [{"title": "X", "year": 2021, "venue": "ICLR"}]})
+    cache.put(key_for('X'), {"data": [{"title": "X", "year": 2021, "venue": "ICLR"}]})
     for claim in SemanticScholarResolver(cache).resolve("X"):
         assert claim.tier == 3
         assert claim.confidence < 0.9
+```
+
+- [ ] **Step 1b: Make the no-network constraint enforceable**
+
+Create `tests/conftest.py`. Every test in this suite is meant to run from a
+pre-populated cache or from pure functions; none should reach the internet. That
+was a rule in prose until a mismatched cache key turned it into a live HTTP 429.
+This makes it a rule the suite enforces.
+
+```python
+"""Suite-wide guards."""
+
+from __future__ import annotations
+
+import urllib.request
+
+import pytest
+
+
+@pytest.fixture(autouse=True)
+def no_network(monkeypatch):
+    """Fail loudly if any test tries to open a real connection.
+
+    A test that reaches the network is not merely slow: it passes or fails on
+    someone else's rate limit rather than on this code. The failure that
+    prompted this guard looked like a normal assertion error, three layers
+    down, on a title that happened to normalise differently from its
+    hardcoded cache key.
+    """
+
+    def refuse(*args, **kwargs):
+        raise AssertionError(
+            "a test attempted a real network call; use a pre-populated Cache "
+            "and build keys with the same helper production uses"
+        )
+
+    monkeypatch.setattr(urllib.request, "urlopen", refuse)
 ```
 
 - [ ] **Step 2: Run the tests to verify they fail**
@@ -2038,12 +2204,12 @@ class SemanticScholarResolver:
 - [ ] **Step 4: Run the tests to verify they pass**
 
 Run: `pytest tests/test_resolver_s2.py -v`
-Expected: 6 passed
+Expected: 6 passed, none of them touching the network
 
 - [ ] **Step 5: Commit**
 
 ```bash
-git add src/scholarmend/resolvers/semanticscholar.py tests/test_resolver_s2.py
+git add src/scholarmend/resolvers/semanticscholar.py tests/test_resolver_s2.py tests/conftest.py
 git commit -m "feat: add Semantic Scholar as the tier-3 resolver"
 ```
 
@@ -2300,7 +2466,7 @@ The JSON is the real output. The RIS is a projection for Covidence and `venuetri
 
 **Interfaces:**
 - Consumes: `Record`, `Ledger`, `RESOLVED_FIELDS`.
-- Produces: `to_json(record: Record, ledger: Ledger) -> dict`; `project_ris(record: Record, ledger: Ledger) -> str`; `emit_corpus(pairs: Iterable[tuple[Record, Ledger]]) -> str`.
+- Produces: `to_json(record: Record, ledger: Ledger) -> dict`; `project_ris(record: Record, ledger: Ledger) -> str`.
 
 - [ ] **Step 1: Write the failing tests**
 
@@ -2407,13 +2573,18 @@ feed to a parser that was written against Scholar's exact output.
 from __future__ import annotations
 
 import re
-from typing import Iterable
 
 from .ledger import Ledger
 from .models import Record
 from .pipeline import RESOLVED_FIELDS
 
 # Which RIS tag carries each resolved field. Only these are ever rewritten.
+#
+# Authors and abstracts are deliberately absent. Rewriting AU means deleting N
+# lines and inserting M, which is far more invasive than substituting a line in
+# place and puts the round-trip guarantee -- the projection's whole safety
+# argument -- at risk. Resolved authors and abstracts live in the canonical
+# JSON, which is the record; RIS is a projection for tools that cannot read it.
 _TAG_FOR = {"year": "PY", "venue": "JF"}
 
 
@@ -2474,9 +2645,6 @@ def project_ris(record: Record, ledger: Ledger) -> str:
             out.append(line)
     return "\n".join(out)
 
-
-def emit_corpus(pairs: Iterable[tuple[Record, Ledger]]) -> str:
-    return "".join(project_ris(record, ledger) for record, ledger in pairs)
 ```
 
 - [ ] **Step 4: Run the tests to verify they pass**
@@ -2526,10 +2694,24 @@ def setup_input(tmp_path):
     return corpus
 
 
+def run(tmp_path, corpus, out, *extra):
+    """Run the CLI offline.
+
+    Every test here runs with --offline. Without it the tier-2 and tier-3
+    resolvers reach for the network on any record tier 1 could not settle, and
+    tests/conftest.py rightly refuses. Offline is also the honest shape for a
+    unit test: it exercises the degradation path a researcher hits on a train.
+    """
+    return main(["--input", str(corpus), "--out", str(out),
+                 "--cache", str(tmp_path / "c"), "--offline", *extra])
+
+
 def test_writes_both_outputs(tmp_path):
     corpus = setup_input(tmp_path)
     out = tmp_path / "out"
-    assert main(["--input", str(corpus), "--out", str(out), "--cache", str(tmp_path / "c")]) == 0
+    # 1 rather than 0: offline with an empty cache is a PARTIAL run, and a
+    # partial run must say so rather than looking successful.
+    assert run(tmp_path, corpus, out) == 1
     assert (out / "resolved.json").exists()
     assert (out / "mended.ris").exists()
 
@@ -2537,21 +2719,21 @@ def test_writes_both_outputs(tmp_path):
 def test_the_json_has_one_object_per_record(tmp_path):
     corpus = setup_input(tmp_path)
     out = tmp_path / "out"
-    main(["--input", str(corpus), "--out", str(out), "--cache", str(tmp_path / "c")])
+    run(tmp_path, corpus, out)
     assert len(json.loads((out / "resolved.json").read_text())) == 4
 
 
 def test_the_ris_output_carries_the_corrected_year(tmp_path):
     corpus = setup_input(tmp_path)
     out = tmp_path / "out"
-    main(["--input", str(corpus), "--out", str(out), "--cache", str(tmp_path / "c")])
+    run(tmp_path, corpus, out)
     assert "PY  - 2025///" in (out / "mended.ris").read_text(encoding="utf-8")
 
 
 def test_a_report_lists_what_stayed_unresolved(tmp_path):
     corpus = setup_input(tmp_path)
     out = tmp_path / "out"
-    main(["--input", str(corpus), "--out", str(out), "--cache", str(tmp_path / "c")])
+    run(tmp_path, corpus, out)
     report = (out / "report.txt").read_text()
     assert "unresolved" in report.lower()
 
@@ -2560,24 +2742,22 @@ def test_offline_without_a_cache_still_completes_on_tier_one(tmp_path):
     # Offline must not crash: tier-1 mining needs no network at all.
     corpus = setup_input(tmp_path)
     out = tmp_path / "out"
-    code = main(["--input", str(corpus), "--out", str(out),
-                 "--cache", str(tmp_path / "c"), "--offline"])
-    assert code in (0, 1)
+    # A CacheMiss must degrade this record, not abort the other 2,412.
+    assert run(tmp_path, corpus, out) == 1
     assert (out / "mended.ris").exists()
+    assert "PY  - 2025///" in (out / "mended.ris").read_text(encoding="utf-8")
 
 
 def test_an_empty_input_directory_is_an_error_not_a_silent_success(tmp_path):
     empty = tmp_path / "empty"
     empty.mkdir()
-    assert main(["--input", str(empty), "--out", str(tmp_path / "o"),
-                 "--cache", str(tmp_path / "c")]) == 2
+    assert run(tmp_path, empty, tmp_path / "o") == 2
 
 
 def test_running_twice_produces_identical_output(tmp_path):
     corpus = setup_input(tmp_path)
     for name in ("a", "b"):
-        main(["--input", str(corpus), "--out", str(tmp_path / name),
-              "--cache", str(tmp_path / "c")])
+        run(tmp_path, corpus, tmp_path / name)
     assert (tmp_path / "a" / "mended.ris").read_bytes() == (tmp_path / "b" / "mended.ris").read_bytes()
     assert (tmp_path / "a" / "resolved.json").read_bytes() == (tmp_path / "b" / "resolved.json").read_bytes()
 ```
@@ -2604,6 +2784,8 @@ from .cache import Cache
 from .emit import project_ris, to_json
 from .parse import parse_file
 from .pipeline import RESOLVED_FIELDS, resolve_record
+from .cache import CacheMiss
+from .http import HttpError
 from .resolvers.openreview import AuthError, OpenReviewResolver, login
 from .resolvers.pmc import PmcResolver
 from .resolvers.pmlr_index import PmlrIndexResolver
@@ -2660,8 +2842,12 @@ def main(argv: list[str] | None = None) -> int:
                 ledger = resolve_record(record, openreview=openreview,
                                         pmlr_index=pmlr_index, pmc=pmc,
                                         semanticscholar=semanticscholar)
-            except AuthError as error:
-                print(f"tier 2 unavailable: {error}", file=sys.stderr)
+            except (AuthError, CacheMiss, HttpError) as error:
+                # Degrade, never abort. One unreachable lookup must not cost
+                # the other 2,412 records their tier-1 resolution, which needs
+                # no network at all. The run reports itself partial via exit 1.
+                if not degraded:
+                    print(f"falling back to tier 1 for some records: {error}", file=sys.stderr)
                 degraded = True
                 ledger = resolve_record(record, openreview=None, pmlr_index=None,
                                         pmc=None, semanticscholar=None)
@@ -2693,7 +2879,7 @@ if __name__ == "__main__":  # pragma: no cover
 - [ ] **Step 4: Run the whole suite**
 
 Run: `pytest -v`
-Expected: all tests pass, 108 total
+Expected: all tests pass, zero failures. (The suite total drifts; per-file counts are the meaningful check.)
 
 - [ ] **Step 5: Add the usage section to `README.md`**
 
@@ -2789,9 +2975,15 @@ def test_the_corpus_is_the_one_the_spec_measured():
     assert sum(1 for _ in corpus_records()) == 2413
 
 
-def test_tier_one_leaves_exactly_twenty_one_records_with_no_miner():
+def test_tier_one_leaves_exactly_seventeen_records_with_no_miner():
+    """The true manual floor for this corpus.
+
+    The spec quotes 21, measured before the PMC miner existed; PMC covers four
+    of those, so the registry as built leaves 17. Changing this number means a
+    miner was added or removed, which is worth noticing.
+    """
     unmined = [r for r in corpus_records() if not miners.mine_all(r.urls)]
-    assert len(unmined) == 21, len(unmined)
+    assert len(unmined) == 17, len(unmined)
 
 
 def test_proceedings_mining_covers_the_measured_1854():
@@ -2944,7 +3136,7 @@ ruff check src tests
 mypy src
 ```
 
-Expected: all tests pass, 117 total; ruff and mypy clean.
+Expected: all tests pass with zero failures; ruff and mypy clean. (The suite total drifts as tasks add tests; do not treat any total as a target.)
 
 - [ ] **Step 4: Add the Validation section to `README.md`**
 
@@ -2962,7 +3154,7 @@ with the evidence for each recorded.
 | Workshop status against reviewer labels | zero disagreements |
 | Scholar's year losing every disagreement | all 1,264 |
 | Proceedings mining coverage | exactly 1,854 of 2,413 |
-| Records with no miner at all | exactly 21 |
+| Records with no miner at all | exactly 17 |
 | Hand-maintained merge list | retired; 4 collapse at tier 1, 6 at tier 2 |
 
 Run them with the review repository checked out alongside this one:

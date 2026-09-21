@@ -1,0 +1,39 @@
+﻿TY  - JOUR
+AU  - Huang, S
+AU  - Yang, L
+AU  - ...
+TI  - Thinkbench: Dynamic out-of-distribution evaluation for robust llm reasoning
+JF  - … Neural Information …
+PB  - proceedings.neurips.cc
+UR  - https://proceedings.neurips.cc/paper_files/paper/2025/hash/4da4f3c0dd1b907c48e2119afb2e2fde-Abstract-Datasets_and_Benchmarks_Track.html
+PY  - 2026///
+ER  - 
+
+TY  - JOUR
+AU  - Huang, Y
+AU  - ...
+TI  - TrustGen: A Platform of Dynamic Benchmarking
+JF  - … Representations
+PB  - proceedings.iclr.cc
+UR  - https://proceedings.iclr.cc/paper_files/paper/2026/hash/635a38ee326fb0464e0c2b1c1a0b0c1d-Abstract-Conference.html
+PY  - 2026///
+ER  - 
+
+TY  - JOUR
+AU  - Zhang, Y
+AU  - Xie, F
+TI  - Meta-Router: Bridging Gold-standard and Preference-based Evaluations
+JF  - … on Learning Representations
+PB  - openreview.net
+UR  - https://openreview.net/forum?id=r0BFucF2dH
+ER  - 
+
+TY  - JOUR
+AU  - Nasr, M
+AU  - ...
+TI  - Scalable extraction of training data from aligned, production language models
+JF  - … Representations
+PB  - proceedings.iclr.cc
+UR  - https://proceedings.iclr.cc/paper_files/paper/2025/file/aaaabbbbccccddddeeeeffff00001111-Paper-Conference.pdf?utm_source=chatgpt.com
+PY  - 2025///
+ER  - 
