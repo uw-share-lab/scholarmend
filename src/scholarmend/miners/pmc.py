@@ -12,11 +12,16 @@ from urllib.parse import urlparse
 from ..models import Claim
 
 _ID = re.compile(r"/articles/(?P<id>PMC\d+)")
+_HOSTS = {
+    "pmc.ncbi.nlm.nih.gov",
+    "www.ncbi.nlm.nih.gov",
+    "ncbi.nlm.nih.gov",
+}
 
 
 def mine(url: str) -> list[Claim]:
     parsed = urlparse(url)
-    if not parsed.netloc.lower().endswith("ncbi.nlm.nih.gov"):
+    if parsed.netloc.lower() not in _HOSTS:
         return []
     match = _ID.search(parsed.path)
     if match is None:

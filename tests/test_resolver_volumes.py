@@ -19,6 +19,21 @@ def test_pmc_miner_ignores_other_hosts():
     assert pmc_miner.mine("https://arxiv.org/abs/2501.00001") == []
 
 
+def test_pmc_miner_rejects_a_lookalike_host():
+    # endswith("ncbi.nlm.nih.gov") would accept these; exact membership must not.
+    assert pmc_miner.mine("https://notncbi.nlm.nih.gov/articles/PMC99999999/") == []
+    assert pmc_miner.mine("https://evilncbi.nlm.nih.gov/articles/PMC12345678/") == []
+
+
+def test_pmc_miner_rejects_a_suffix_domain_trick():
+    assert pmc_miner.mine("https://ncbi.nlm.nih.gov.attacker.com/articles/PMC1/") == []
+
+
+def test_pmc_miner_accepts_the_bare_and_www_hosts():
+    assert pmc_miner.mine("https://ncbi.nlm.nih.gov/articles/PMC13004626/")
+    assert pmc_miner.mine("https://www.ncbi.nlm.nih.gov/articles/PMC13004626/")
+
+
 def test_venue_from_title_recognises_an_icml_volume():
     title = "Proceedings of the 42nd International Conference on Machine Learning"
     assert venue_from_title(title) == "ICML"
@@ -58,10 +73,26 @@ def test_an_out_of_scope_volume_still_reports_its_proceedings_title(tmp_path):
     assert value(claims, "venue_id") == "PMLR v318"
 
 
+def test_an_out_of_scope_volume_emits_no_venue_claim(tmp_path):
+    cache = Cache(tmp_path)
+    cache.put("pmlr:volume:318", {"title": "Proceedings of the Canadian Conference on AI"})
+    claims = PmlrIndexResolver(cache).resolve("318")
+    assert value(claims, "venue") is None          # never coerced onto a known venue
+    assert value(claims, "venue_id") == "PMLR v318"  # but evidence is still carried forward
+
+
 def test_pmc_resolver_returns_the_pmlr_volume(tmp_path):
     cache = Cache(tmp_path)
     cache.put("pmc:esummary:PMC13004626",
               {"result": {"PMC13004626": {"volume": "267"}}})
+    assert value(PmcResolver(cache).resolve("PMC13004626"), "pmlr_volume") == "267"
+
+
+def test_pmc_resolver_handles_a_result_keyed_by_the_bare_numeric_id(tmp_path):
+    # esummary keys its result by either "PMC13004626" or "13004626"; the
+    # fallback branch is the only thing that reads the second form.
+    cache = Cache(tmp_path)
+    cache.put("pmc:esummary:PMC13004626", {"result": {"13004626": {"volume": "267"}}})
     assert value(PmcResolver(cache).resolve("PMC13004626"), "pmlr_volume") == "267"
 
 
