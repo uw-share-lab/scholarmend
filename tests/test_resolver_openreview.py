@@ -1,7 +1,11 @@
 from __future__ import annotations
 
 from scholarmend.cache import Cache
-from scholarmend.resolvers.openreview import OpenReviewResolver, parse_venueid
+from scholarmend.resolvers.openreview import (
+    OpenReviewResolver,
+    parse_venueid,
+    venueid_from_invitations,
+)
 
 
 def value(claims, field):
@@ -59,6 +63,66 @@ def test_an_unparseable_venueid_yields_only_the_raw_id():
 
 def test_claims_are_tier_two():
     assert all(c.tier == 2 for c in parse_venueid("ICML.cc/2025/Conference"))
+
+
+def test_venueid_from_invitations_strips_decision_and_submission_suffixes():
+    # Real forum FKi6yjXwCN: /notes returned a Decision note with no venueid.
+    assert venueid_from_invitations(
+        ["ICML.cc/2025/Conference/Submission5047/-/Decision",
+         "ICML.cc/2025/Conference/-/Edit"]
+    ) == "ICML.cc/2025/Conference"
+
+
+def test_venueid_from_invitations_handles_a_neurips_decision_note():
+    # Real forum tahkGZjjWA.
+    assert venueid_from_invitations(
+        ["NeurIPS.cc/2025/Conference/Submission4248/-/Decision",
+         "NeurIPS.cc/2025/Conference/-/Edit"]
+    ) == "NeurIPS.cc/2025/Conference"
+
+
+def test_venueid_from_invitations_leaves_a_named_workshop_track_alone():
+    # No numeric /Submission segment here, so nothing should be stripped
+    # beyond the trailing /-/Submission action suffix.
+    assert venueid_from_invitations(
+        ["ICML.cc/2026/Workshop/AI4GOOD/-/Submission"]
+    ) == "ICML.cc/2026/Workshop/AI4GOOD"
+
+
+def test_venueid_from_invitations_on_an_empty_list_is_none():
+    assert venueid_from_invitations([]) is None
+
+
+def test_venueid_from_invitations_on_garbage_is_none():
+    assert venueid_from_invitations(["not-a-real-invitation-string"]) is None
+
+
+def test_venueid_from_invitations_falls_back_to_a_common_prefix():
+    # These disagree after stripping (one keeps a trailing "Reviewer2"
+    # segment the other doesn't), but their longest common prefix still
+    # parses as a venueid, so it is used rather than giving up.
+    assert venueid_from_invitations(
+        ["ICML.cc/2025/Conference/Submission1/-/Decision",
+         "ICML.cc/2025/Conference/Submission1/Reviewer2/-/Official_Review"]
+    ) == "ICML.cc/2025/Conference"
+
+
+def test_venueid_from_invitations_returns_none_when_nothing_parses():
+    assert venueid_from_invitations(["one/two/-/Decision", "three/four/-/Edit"]) is None
+
+
+def test_resolve_follows_a_derived_venueid_cached_by_the_invitations_fallback(tmp_path):
+    # A cache entry produced via the invitations fallback has the same
+    # {"venueid": ...} shape as one produced from content.venueid, so it must
+    # resolve identically -- nothing downstream should need to know which
+    # path derived it.
+    cache = Cache(tmp_path)
+    cache.put("openreview:notes:FKi6yjXwCN", {"venueid": "ICML.cc/2025/Conference"})
+    resolver = OpenReviewResolver(cache=cache, token=None)
+    claims = resolver.resolve("FKi6yjXwCN")
+    assert value(claims, "venue") == "ICML"
+    assert value(claims, "year") == "2025"
+    assert value(claims, "track") == "Conference"
 
 
 def test_resolve_serves_a_cached_forum_without_network(tmp_path):

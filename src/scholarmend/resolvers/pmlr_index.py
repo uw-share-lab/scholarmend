@@ -32,6 +32,22 @@ def venue_from_title(title: str) -> str | None:
     return None
 
 
+def title_from_html(html: str) -> str:
+    """The volume page's heading, or ``""`` if neither heading is present.
+
+    PMLR volume pages use ``<h1>`` on some volumes and ``<h2>`` on others
+    (v318, for one, is an ``<h2>``); whichever appears first is taken. The
+    heading reads ``"Volume NNN: <proceedings title>"``, and the ``"Volume
+    NNN: "`` prefix is stripped since it is routing detail that
+    ``venue_from_title`` has no use for and would otherwise have to ignore.
+    """
+    match = re.search(r"<h([12])[^>]*>(.*?)</h\1>", html, re.DOTALL | re.IGNORECASE)
+    if not match:
+        return ""
+    title = re.sub(r"<[^>]+>", "", match.group(2)).strip()
+    return re.sub(r"^Volume\s+\d+:\s*", "", title)
+
+
 class PmlrIndexResolver:
     def __init__(self, cache: Cache) -> None:
         self.cache = cache
@@ -42,9 +58,7 @@ class PmlrIndexResolver:
 
             with urllib.request.urlopen(INDEX.format(volume=volume), timeout=20) as response:
                 html = response.read().decode("utf-8", "replace")
-            match = re.search(r"<h1[^>]*>(.*?)</h1>", html, re.DOTALL | re.IGNORECASE)
-            title = re.sub(r"<[^>]+>", "", match.group(1)).strip() if match else ""
-            return {"title": title}
+            return {"title": title_from_html(html)}
 
         payload = self.cache.fetch(f"pmlr:volume:{volume}", loader)
         title = payload.get("title") or ""

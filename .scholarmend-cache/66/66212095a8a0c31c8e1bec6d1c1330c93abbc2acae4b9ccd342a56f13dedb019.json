@@ -1,0 +1,80 @@
+{
+ "key": "pmc:esummary:PMC13322355",
+ "payload": {
+  "header": {
+   "type": "esummary",
+   "version": "0.3"
+  },
+  "result": {
+   "13322355": {
+    "articleids": [
+     {
+      "idtype": "pmid",
+      "value": "42389650"
+     },
+     {
+      "idtype": "MID",
+      "value": "NIHMS2189027"
+     },
+     {
+      "idtype": "pmcid",
+      "value": "PMC13322355"
+     }
+    ],
+    "authors": [
+     {
+      "authtype": "Author",
+      "name": "Chandak P"
+     },
+     {
+      "authtype": "Author",
+      "name": "Healey E"
+     },
+     {
+      "authtype": "Author",
+      "name": "Villa-Tamayo MF"
+     },
+     {
+      "authtype": "Author",
+      "name": "Scheideman AF"
+     },
+     {
+      "authtype": "Author",
+      "name": "Shao MM"
+     },
+     {
+      "authtype": "Author",
+      "name": "Fabris C"
+     },
+     {
+      "authtype": "Author",
+      "name": "Mandl KD"
+     },
+     {
+      "authtype": "Author",
+      "name": "Kohane I"
+     },
+     {
+      "authtype": "Author",
+      "name": "Klonoff DC"
+     }
+    ],
+    "epubdate": "",
+    "fulljournalname": "Proceedings of machine learning research",
+    "issue": "",
+    "pages": "136-151",
+    "pmclivedate": "2026/07/02",
+    "printpubdate": "2025 Dec",
+    "pubdate": "2025 Dec",
+    "sortdate": "2025/12/01 00:00",
+    "source": "Proc Mach Learn Res",
+    "title": "What do LLMs value? An evaluation framework for revealing subjective trade-offs in assessment of glycemic control.",
+    "uid": "13322355",
+    "volume": "297"
+   },
+   "uids": [
+    "13322355"
+   ]
+  }
+ }
+}

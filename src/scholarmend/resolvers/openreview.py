@@ -43,6 +43,50 @@ def login(user: str, password: str) -> str:
     return token
 
 
+def venueid_from_invitations(invitations: list[str]) -> str | None:
+    """Recover a venueid from a note's ``invitations`` when it has none.
+
+    ``GET /notes?forum={id}&limit=1`` returns an arbitrary note from the
+    forum, not necessarily the submission -- on 25 of 96 real forums it
+    returned a Decision note instead, whose ``content`` carries no
+    ``venueid`` at all. This mirrors what the human reviewers did in that
+    case (see ``../Trust-Evals-LitReview/verification/README.md``): derive
+    the venue from the invitation string instead, e.g.
+    ``ICML.cc/2025/Conference/Submission5047/-/Decision`` names the same
+    venue as ``ICML.cc/2025/Conference``.
+
+    Each invitation has its trailing ``/-/<Something>`` action suffix and any
+    ``/Submission<digits>`` routing segment stripped. When the invitations
+    disagree after stripping, the longest common path-segment prefix is used
+    if it still parses as a venueid; otherwise ``None`` is returned, same as
+    an empty or unparseable input.
+    """
+    stripped = []
+    for invitation in invitations:
+        if not invitation:
+            continue
+        candidate = re.sub(r"/-/[^/]+$", "", invitation)
+        candidate = re.sub(r"/Submission\d+", "", candidate)
+        if candidate:
+            stripped.append(candidate)
+    if not stripped:
+        return None
+
+    unique = list(dict.fromkeys(stripped))
+    if len(unique) == 1:
+        candidate = unique[0]
+        return candidate if _VENUEID.match(candidate) else None
+
+    segments = [candidate.split("/") for candidate in unique]
+    common: list[str] = []
+    for parts in zip(*segments):
+        if len(set(parts)) != 1:
+            break
+        common.append(parts[0])
+    prefix = "/".join(common)
+    return prefix if prefix and _VENUEID.match(prefix) else None
+
+
 def parse_venueid(venueid: str) -> list[Claim]:
     """Claims derived from a venueid string."""
 
@@ -102,8 +146,15 @@ class OpenReviewResolver:
                 headers={"Authorization": f"Bearer {token}"},
             )
             notes = payload.get("notes") or []
-            content = (notes[0].get("content") if notes else {}) or {}
+            note = notes[0] if notes else {}
+            content = note.get("content") or {}
             venueid = (content.get("venueid") or {}).get("value")
+            if not venueid:
+                invitations = note.get("invitations")
+                if not invitations:
+                    single = note.get("invitation")
+                    invitations = [single] if single else []
+                venueid = venueid_from_invitations(invitations)
             return {"venueid": venueid} if venueid else {}
 
         cached = self.cache.fetch(f"openreview:notes:{forum_id}", loader)

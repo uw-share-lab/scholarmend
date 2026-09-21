@@ -3,7 +3,7 @@ from __future__ import annotations
 from scholarmend.cache import Cache
 from scholarmend.miners import pmc as pmc_miner
 from scholarmend.resolvers.pmc import PmcResolver
-from scholarmend.resolvers.pmlr_index import PmlrIndexResolver, venue_from_title
+from scholarmend.resolvers.pmlr_index import PmlrIndexResolver, title_from_html, venue_from_title
 
 
 def value(claims, field):
@@ -48,6 +48,43 @@ def test_venue_from_title_leaves_an_unrelated_conference_alone():
     # v318 is the Canadian Conference on AI: out of scope, and it must not be
     # coerced into one of the three venues under review.
     assert venue_from_title("Proceedings of the Canadian Conference on AI") is None
+
+
+def test_title_from_html_reads_an_h2_heading():
+    # Real markup from proceedings.mlr.press/v318/.
+    html = ("<h2>Volume 318: The 39th Canadian Conference on Artificial "
+            "Intelligence, 25-29 May 2026, Simon ...</h2>")
+    assert title_from_html(html) == (
+        "The 39th Canadian Conference on Artificial Intelligence, "
+        "25-29 May 2026, Simon ..."
+    )
+
+
+def test_title_from_html_reads_an_h1_heading():
+    html = "<h1>Proceedings of the 42nd International Conference on Machine Learning</h1>"
+    assert title_from_html(html) == "Proceedings of the 42nd International Conference on Machine Learning"
+
+
+def test_title_from_html_with_neither_heading_is_empty():
+    assert title_from_html("<div>no heading here</div>") == ""
+
+
+def test_title_from_html_strips_the_volume_number_prefix():
+    html = "<h2>Volume 267: Proceedings of the 42nd International Conference on Machine Learning</h2>"
+    title = title_from_html(html)
+    assert not title.startswith("Volume")
+    assert title == "Proceedings of the 42nd International Conference on Machine Learning"
+
+
+def test_the_canadian_conference_title_from_an_h2_page_stays_unresolved_to_a_venue():
+    html = ("<h2>Volume 318: The 39th Canadian Conference on Artificial "
+            "Intelligence, 25-29 May 2026, Simon ...</h2>")
+    assert venue_from_title(title_from_html(html)) is None
+
+
+def test_an_icml_title_from_an_h1_page_resolves_to_icml():
+    html = "<h1>Volume 267: Proceedings of the 42nd International Conference on Machine Learning</h1>"
+    assert venue_from_title(title_from_html(html)) == "ICML"
 
 
 def test_pmlr_index_resolves_a_cached_volume(tmp_path):
