@@ -86,9 +86,13 @@ with the evidence for each recorded.
 | Check | Bar |
 |-------|-----|
 | Records with an automated resolution path, of those 112 | at least 103 (measured: 104) |
-| …of which, venue determined **and verified against the reviewers' labels** | 90, zero per-record disagreements |
-| …the other 14 | evidence retrieved automatically, final judgement not verified here — see below |
-| Workshop status against reviewer labels (the 90) | zero disagreements |
+| …of which, venue determined **and verified against the reviewers' labels** | **103**, zero disagreements |
+| …the remaining 1 | a sibling proceedings URL, reached but not separately asserted |
+| Workshop status against reviewer labels (the 90 OpenReview records) | zero per-record disagreements |
+| PMLR volumes against the reviewers' `venue_true` | 10, all out of scope, all correctly declined |
+| PMC bridge against the reviewers' override decisions | 3, v267 named ICML 2025, v287 and v297 declined |
+| Verdict flips in `decisions.csv` without a recorded reason | 112 flips, **0** unreasoned |
+| Per-record overrides | 5 of 10 reproduced; the other 5 asserted unreachable |
 | Scholar's year losing every disagreement | all 1,264 |
 | Proceedings mining coverage | exactly 1,854 of 2,413 |
 | Records with no miner at all | exactly 17 |
@@ -101,22 +105,26 @@ resolver consumes — a venue directly, or an OpenReview forum id, a PMLR volume
 or a PMC id. That is a claim about *reach*, not about correctness, and the two
 halves of it are verified to different depths:
 
-- **90 records** are settled *and checked*: their OpenReview `venueid` yields a
-  venue, a year and a workshop verdict, and every one of the 90 agrees with the
-  reviewers' hand-verified label. Zero disagreements, compared record by record.
-- **14 records** are settled in the weaker sense. Ten resolve to PMLR volumes
-  that are out of scope for this review — the Canadian Conference on AI, a
-  workshop at ACML, an AAAI bridge programme — and for those the resolver
-  deliberately declines to name a venue rather than coerce an unfamiliar
-  conference onto a known one. It retrieves the proceedings title, which is the
-  expensive part of the work, but a human still reads the result and makes the
-  call. Three arrive via the PMC bridge, and one via a sibling proceedings URL.
+- **90 records** reached through an OpenReview `venueid`: venue, year and a
+  workshop verdict, every one agreeing with the reviewers' hand-verified label.
+  Zero disagreements, compared record by record.
+- **10 PMLR volumes**, all out of scope for this review — the Canadian
+  Conference on AI, a workshop at ACML, an AAAI bridge programme, a parsimony
+  conference. The resolver retrieves each proceedings title and **deliberately
+  declines to name a venue**, rather than coerce an unfamiliar conference onto a
+  known one. Verified against the volume the reviewers recorded in `venue_true`.
+- **3 records via the PMC bridge**, reproducing the reviewers' override
+  decisions exactly: PMC volume 267 → PMLR v267 → ICML 2025, named; v287 (CHIL)
+  and v297 (ML4H) retrieved and declined.
+- **1 record** reached by a sibling proceedings URL, not separately asserted.
 - **8 records** have no automated route at all: NSF landing pages, Google Books
   chapters, an SPIE paper, a PDF on a personal page. These needed human
-  judgement before and still do.
+  judgement before and still do — and the suite asserts they resolve to nothing,
+  so the day a miner starts covering one, a test says so.
 
 So the honest summary is that scholarmend **determines and verifies** the venue
-for 90 of the 112, **gathers the evidence** for 14 more, and leaves 8 untouched.
+for **103** of the 112, reaches 1 more without a separate assertion, and leaves
+8 untouched.
 
 Run them with the review repository checked out alongside this one:
 

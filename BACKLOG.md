@@ -10,29 +10,18 @@ that lives outside the test suite, and one deliberate scope decision.
 
 ---
 
-## 1. The suite asserts less than has been verified
+## 1. ~~The suite asserts less than has been verified~~ — CLOSED 2026-09-20
 
-**Impact: the project's headline claim is weaker in CI than in fact.**
+`tests/test_acceptance.py` now asserts all 103 verified records, not 90. Four
+tests added: PMLR volumes against the reviewers' `venue_true`, the PMC bridge
+against their override decisions, `decisions.csv` verdict-flip reasons, and the
+ten per-record overrides split into 5 reproduced and 5 asserted unreachable.
+Each was falsified before committing — sabotage the guard, the bridge or a
+miner and the corresponding test fails with a real assertion error.
 
-`README.md` states that venue correctness is verified against the reviewers'
-labels for **90** of the 112 hand-resolved records. That is what
-`tests/test_acceptance.py` asserts. But 103 were checked by hand at merge time:
+This also closed §2 below.
 
-| Route | n | Checked against | Result |
-|-------|---|-----------------|--------|
-| OpenReview `venueid` | 90 | `verification/openreview-venues.json` | 90/90 exact, asserted by the suite |
-| PMLR volumes | 10 | reviewers' `venue_true` strings | all agree; out-of-scope correctly declined — **not asserted** |
-| PMC bridge | 3 | reviewers' override decisions | v267 ICML 2025 named; v287 CHIL and v297 ML4H retrieved, venue declined — **not asserted** |
-
-The 13 unasserted checks were run from a scratch script, so the claim currently
-rests on trusting that script rather than on something anyone can re-run. The
-cache is committed, so all 13 lookups replay offline — a test *can* assert them.
-
-**Do:** extend `tests/test_acceptance.py` to verify the PMLR and PMC routes
-against `review-bucket-resolutions.json` and `overrides-2026-09-20.csv`, then
-raise the README's figure from 90 to 103.
-
-## 2. Two validation suites the spec names have no test
+## 2. ~~Two validation suites the spec names have no test~~ — CLOSED 2026-09-20
 
 The design document lists four validation suites. Two are implemented.
 

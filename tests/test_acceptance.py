@@ -198,3 +198,212 @@ def test_no_record_is_ever_dropped():
         assert project_ris(record, resolve_record(record)).strip()
         count += 1
     assert count == 2413
+
+
+# --- ground truth beyond the OpenReview bucket -----------------------------
+#
+# The tests above verify the 90 records reached through an OpenReview venueid.
+# The four below cover the routes that were reached but unchecked when this
+# package first merged: the PMLR volumes, the PMC bridge, the verdict-flip
+# record, and the per-record overrides. Together they take the number of
+# hand-verified records the suite actually asserts from 90 to 103.
+#
+# Everything here runs offline from the committed cache. A lookup the cache
+# lacks is itself a finding: the cache exists to back these claims.
+
+OVERRIDES = GOLD / "verification" / "overrides-2026-09-20.csv"
+DECISIONS = GOLD / "out" / "decisions.csv"
+RESOLUTIONS = GOLD / "verification" / "review-bucket-resolutions.json"
+
+
+def _cache():
+    from scholarmend.cache import Cache
+
+    return Cache(Path(__file__).parents[1] / ".scholarmend-cache", offline=True)
+
+
+def _resolvers():
+    from scholarmend.resolvers.openreview import OpenReviewResolver
+    from scholarmend.resolvers.pmc import PmcResolver
+    from scholarmend.resolvers.pmlr_index import PmlrIndexResolver
+
+    cache = _cache()
+    return {
+        "openreview": OpenReviewResolver(cache),
+        "pmlr_index": PmlrIndexResolver(cache),
+        "pmc": PmcResolver(cache),
+    }
+
+
+def _normalise(title: str) -> str:
+    import re
+
+    return re.sub(r"[^a-z0-9]", "", (title or "").lower())[:50]
+
+
+def _by_title() -> dict[str, list]:
+    index: dict[str, list] = {}
+    for record in corpus_records():
+        index.setdefault(_normalise(record.title), []).append(record)
+    return index
+
+
+def _resolve(record):
+    """Resolve one record through the cache, degrading exactly as the CLI does."""
+    from scholarmend.cache import CacheMiss
+    from scholarmend.http import HttpError
+    from scholarmend.resolvers.openreview import AuthError
+
+    try:
+        return resolve_record(record, **_resolvers())
+    except (AuthError, CacheMiss, HttpError):
+        return resolve_record(record)
+
+
+def test_pmlr_volumes_match_the_reviewers_determinations():
+    """The out-of-scope guard, checked against ground truth rather than itself.
+
+    The reviewers recorded each PMLR volume's identity in `venue_true`, e.g.
+    "PMLR v318 - Canadian Conference on AI". scholarmend must retrieve a
+    proceedings title for the same volume AND decline to name a venue, because
+    none of these is ICML, NeurIPS or ICLR. Coercing an unfamiliar conference
+    onto a known one is how out-of-scope work gets screened in.
+    """
+    import re
+
+    from scholarmend.resolvers.pmlr_index import venue_from_title
+
+    rows = json.loads(RESOLUTIONS.read_text())
+    index = _by_title()
+    checked = []
+    for row in rows:
+        venue_true = row.get("venue_true") or ""
+        match = re.search(r"PMLR v(\d+)", venue_true)
+        if not match:
+            continue
+        volume = match.group(1)
+        records = index.get(_normalise(row["title"]), [])
+        assert records, f"{row['title'][:50]!r} did not join to the corpus"
+
+        claims = {c.field: c.value for c in _resolvers()["pmlr_index"].resolve(volume)}
+        assert claims, f"PMLR v{volume} is not in the committed cache"
+        assert claims["venue_id"] == f"PMLR v{volume}"
+        # Every PMLR volume the reviewers met was out of scope for this review.
+        assert row["truth"] == "OUT_OF_SCOPE", row["truth"]
+        assert claims.get("venue") is None, (
+            f"v{volume} named {claims['venue']!r}; the reviewers ruled it out of scope"
+        )
+        title = (_cache().get(f"pmlr:volume:{volume}") or {}).get("title", "")
+        assert venue_from_title(title) is None
+        checked.append(volume)
+
+    assert len(checked) == 10, checked
+    assert set(checked) == {"310", "317", "318", "328"}, sorted(set(checked))
+
+
+def test_the_pmc_bridge_reproduces_the_reviewers_override_decisions():
+    """PMC id -> article volume -> PMLR index -> venue, against three rulings.
+
+    The hardest path in the package, and the one the reviewers followed by hand:
+    "PMC citation_volume 267 = PMLR v267 = ICML 2025". Note the asymmetry that
+    matters - v267 is named ICML, while v287 (CHIL) and v297 (ML4H) have their
+    titles retrieved and their venue deliberately left unnamed.
+    """
+    expected = {
+        "PMC13004626": ("267", "ICML"),
+        "PMC12477612": ("287", None),
+        "PMC13322355": ("297", None),
+    }
+    resolvers = _resolvers()
+    for pmc_id, (volume, venue) in expected.items():
+        bridged = {c.field: c.value for c in resolvers["pmc"].resolve(pmc_id)}
+        assert bridged.get("pmlr_volume") == volume, (pmc_id, bridged)
+
+        claims = {c.field: c.value for c in resolvers["pmlr_index"].resolve(volume)}
+        assert claims, f"PMLR v{volume} is not in the committed cache"
+        assert claims.get("venue") == venue, (volume, claims.get("venue"), venue)
+        assert claims["venue_id"] == f"PMLR v{volume}"
+
+
+def test_no_verdict_flipped_without_a_recorded_reason():
+    """The spec's third validation suite, which had no committed test.
+
+    A flip is legitimate when the record was in the REVIEW bucket (its whole
+    purpose was to be resolved by lookup) or when an override note records the
+    evidence. A flip with neither is a verdict changed for no stated reason,
+    which is exactly what an audit trail exists to make impossible.
+    """
+    rows = list(csv.DictReader(DECISIONS.open(encoding="utf-8-sig")))
+    assert len(rows) == 1759, len(rows)
+
+    flipped = [r for r in rows if r["verdict"] != r["final_verdict"]]
+    assert len(flipped) == 112, len(flipped)
+
+    unreasoned = [
+        r for r in flipped
+        if r["verdict"] != "REVIEW" and not (r["override_note"] or "").strip()
+    ]
+    assert unreasoned == [], [r["title"][:60] for r in unreasoned]
+
+
+def test_every_override_is_either_reproduced_or_declared_unreachable():
+    """The reviewers' ten per-record rulings, split honestly.
+
+    Five have an automated route and scholarmend must reach the same venue the
+    note records. Five do not - NSF landing pages, two Google Books chapters, a
+    personal-page PDF - and the test asserts they resolve to NOTHING rather than
+    quietly omitting them. That turns "we cannot check these" into a fact the
+    suite states, and makes it fail the day a miner starts covering them, which
+    would be news worth having.
+    """
+    index = _by_title()
+    reachable, unreachable = [], []
+    for row in csv.DictReader(OVERRIDES.open(encoding="utf-8-sig")):
+        records = index.get(_normalise(row["title"]), [])
+        assert records, f"override {row['title'][:50]!r} did not join to the corpus"
+
+        fields: set[str] = set()
+        for record in records:
+            fields |= {c.field for c in miners.mine_all(record.urls)}
+        keys = fields & {"venue", "forum_id", "pmlr_volume", "pmc_id"}
+        (reachable if keys else unreachable).append((row, records))
+
+    assert len(reachable) == 5, [r["title"][:40] for r, _ in reachable]
+    assert len(unreachable) == 5, [r["title"][:40] for r, _ in unreachable]
+
+    for row, records in reachable:
+        # A venue claim always exists, because Scholar is the last resort in
+        # PRECEDENCE. What matters is whether anything BETTER than Scholar
+        # spoke. For an out-of-scope PMLR volume the answer is venue_id alone:
+        # scholarmend retrieves the volume identity and deliberately declines
+        # to name a venue, which is the behaviour under test.
+        resolved = None
+        for record in records:
+            ledger = _resolve(record)
+            for field in ("venue", "venue_id"):
+                claim = ledger.resolve(field)
+                if claim is not None and claim.source != "scholar":
+                    resolved = claim
+                    break
+            if resolved is not None:
+                break
+        assert resolved is not None, (
+            f"{row['title'][:50]!r} has a route but nothing beyond Scholar spoke"
+        )
+        # The resolved identity must be traceable in the reviewer's own note.
+        note = (row["note"] or "").lower()
+        value = resolved.value.lower()
+        assert value in note or any(
+            token in note for token in value.split() if len(token) > 3
+        ), f"{row['title'][:40]!r}: resolved {resolved.value!r}, note says {row['note'][:80]!r}"
+
+    for row, records in unreachable:
+        for record in records:
+            ledger = _resolve(record)
+            for field in ("venue", "year", "track", "venue_id"):
+                claim = ledger.resolve(field)
+                assert claim is None or claim.source == "scholar", (
+                    f"{row['title'][:40]!r} now resolves {field} from "
+                    f"{claim.source!r} - a miner has started covering it, which "
+                    f"is good news, but this test and the README must be updated"
+                )
