@@ -25,7 +25,7 @@ class Record:
     # that raises a confusing "unhashable type: 'dict'" the first time
     # someone puts a Record in a set or uses one as a dict key. Identify
     # records by title or source_file, never by hashing.
-    __hash__ = None
+    __hash__ = None  # type: ignore[assignment]
 
     def first(self, tag: str, default: str = "") -> str:
         values = self.fields.get(tag)

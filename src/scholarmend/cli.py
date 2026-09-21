@@ -8,12 +8,11 @@ import os
 import sys
 from pathlib import Path
 
-from .cache import Cache
+from .cache import Cache, CacheMiss
 from .emit import project_ris, to_json
+from .http import HttpError
 from .parse import parse_file
 from .pipeline import RESOLVED_FIELDS, resolve_record
-from .cache import CacheMiss
-from .http import HttpError
 from .resolvers.openreview import AuthError, OpenReviewResolver, login
 from .resolvers.pmc import PmcResolver
 from .resolvers.pmlr_index import PmlrIndexResolver

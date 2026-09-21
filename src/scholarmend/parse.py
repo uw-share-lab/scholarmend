@@ -8,8 +8,9 @@ rather than by careful re-serialisation.
 from __future__ import annotations
 
 import re
+from collections.abc import Iterable
+from itertools import pairwise
 from pathlib import Path
-from typing import Iterable
 
 from .models import Record
 
@@ -27,7 +28,7 @@ def parse_ris(text: str, source_file: str) -> list[Record]:
 
     records = []
     bounds = starts + [len(text)]
-    for begin, end in zip(bounds, bounds[1:]):
+    for begin, end in pairwise(bounds):
         raw = text[begin:end]
         records.append(Record(raw=raw, fields=_fields(raw), source_file=source_file))
     return records

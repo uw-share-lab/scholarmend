@@ -53,8 +53,10 @@ def test_arxiv_pdf_url_yields_the_same_id():
 
 def test_mine_all_runs_every_miner_over_every_url():
     urls = [
-        "https://proceedings.iclr.cc/paper_files/paper/2026/hash/"
-        "635a38ee326fb0464e0c2b1c1a0b0c1d-Abstract-Conference.html",
+        (
+            "https://proceedings.iclr.cc/paper_files/paper/2026/hash/"
+            "635a38ee326fb0464e0c2b1c1a0b0c1d-Abstract-Conference.html"
+        ),
         "https://openreview.net/forum?id=r0BFucF2dH",
     ]
     claims = miners.mine_all(urls)

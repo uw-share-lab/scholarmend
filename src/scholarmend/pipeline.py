@@ -79,9 +79,12 @@ def resolve_record(
             ledger.add(claim)
 
     # Tier 3: last resort, for records no miner covered.
-    if semanticscholar is not None and record.title:
-        if any(_needs_escalation(ledger, f) for f in ("venue", "year")):
-            for claim in semanticscholar.resolve(record.title):
-                ledger.add(claim)
+    if (
+        semanticscholar is not None
+        and record.title
+        and any(_needs_escalation(ledger, f) for f in ("venue", "year"))
+    ):
+        for claim in semanticscholar.resolve(record.title):
+            ledger.add(claim)
 
     return ledger

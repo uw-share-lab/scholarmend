@@ -27,7 +27,7 @@ _TAG_FOR = {"year": "PY", "venue": "JF"}
 
 def to_json(record: Record, ledger: Ledger) -> dict:
     """The canonical record: winning values, and every claim behind them."""
-    fields = {}
+    fields: dict[str, dict[str, object]] = {}
     for field in RESOLVED_FIELDS:
         claim = ledger.resolve(field)
         if claim is None:
@@ -75,9 +75,9 @@ def project_ris(record: Record, ledger: Ledger) -> str:
     out = []
     for line in record.raw.split("\n"):
         match = re.match(r"^([A-Z][A-Z0-9])  - ", line)
-        tag = match.group(1) if match else None
-        if tag in corrections:
-            out.append(_rewrite_line(line, tag, corrections[tag]))
+        line_tag: str | None = match.group(1) if match else None
+        if line_tag in corrections:
+            out.append(_rewrite_line(line, line_tag, corrections[line_tag]))
         else:
             out.append(line)
     return "\n".join(out)

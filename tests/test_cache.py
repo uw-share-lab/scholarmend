@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from typing import ClassVar
+
 import pytest
 
 from scholarmend.cache import Cache, CacheMiss
@@ -61,7 +63,7 @@ def test_rate_limit_pause_is_skipped_while_budget_remains():
     from scholarmend.http import _respect_rate_limit
 
     class Response:
-        headers = {"ratelimit-remaining": "497", "ratelimit-reset": "3400"}
+        headers: ClassVar[dict[str, str]] = {"ratelimit-remaining": "497", "ratelimit-reset": "3400"}
 
     slept = []
     _respect_rate_limit(Response(), sleep=slept.append)
@@ -74,7 +76,7 @@ def test_rate_limit_pause_waits_for_the_window_when_budget_is_spent():
     from scholarmend.http import _respect_rate_limit
 
     class Response:
-        headers = {"ratelimit-remaining": "0", "ratelimit-reset": "120"}
+        headers: ClassVar[dict[str, str]] = {"ratelimit-remaining": "0", "ratelimit-reset": "120"}
 
     slept = []
     _respect_rate_limit(Response(), sleep=slept.append)
@@ -85,7 +87,7 @@ def test_rate_limit_wait_is_capped_against_a_hostile_header():
     from scholarmend.http import MAX_RATELIMIT_WAIT, _respect_rate_limit
 
     class Response:
-        headers = {"ratelimit-remaining": "0", "ratelimit-reset": "999999"}
+        headers: ClassVar[dict[str, str]] = {"ratelimit-remaining": "0", "ratelimit-reset": "999999"}
 
     slept = []
     _respect_rate_limit(Response(), sleep=slept.append)
@@ -96,7 +98,7 @@ def test_missing_rate_limit_headers_are_simply_ignored():
     from scholarmend.http import _respect_rate_limit
 
     class Response:
-        headers = {}
+        headers: ClassVar[dict[str, str]] = {}
 
     slept = []
     _respect_rate_limit(Response(), sleep=slept.append)

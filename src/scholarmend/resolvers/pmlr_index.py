@@ -19,9 +19,9 @@ INDEX = "https://proceedings.mlr.press/v{volume}/"
 # proceedings title and is left for a human, because coercing an unfamiliar
 # conference into a known one is how out-of-scope work gets screened in.
 _VENUES = (
-    (re.compile(r"International Conference on Machine Learning", re.I), "ICML"),
-    (re.compile(r"Neural Information Processing Systems", re.I), "NeurIPS"),
-    (re.compile(r"International Conference on Learning Representations", re.I), "ICLR"),
+    (re.compile(r"International Conference on Machine Learning", re.IGNORECASE), "ICML"),
+    (re.compile(r"Neural Information Processing Systems", re.IGNORECASE), "NeurIPS"),
+    (re.compile(r"International Conference on Learning Representations", re.IGNORECASE), "ICLR"),
 )
 
 
@@ -42,7 +42,7 @@ class PmlrIndexResolver:
 
             with urllib.request.urlopen(INDEX.format(volume=volume), timeout=20) as response:
                 html = response.read().decode("utf-8", "replace")
-            match = re.search(r"<h1[^>]*>(.*?)</h1>", html, re.S | re.I)
+            match = re.search(r"<h1[^>]*>(.*?)</h1>", html, re.DOTALL | re.IGNORECASE)
             title = re.sub(r"<[^>]+>", "", match.group(1)).strip() if match else ""
             return {"title": title}
 
