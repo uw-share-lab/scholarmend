@@ -116,27 +116,24 @@ so an unaccepted submission read as `track = Conference`, published. Venue and
 year are still claimed: they say where and when it was submitted. No corpus
 number moved; the one cached `*Submission` venueid is a workshop's.
 
-## 9. A venueid derived from an invitation cannot carry acceptance status
+## 9. ~~A venueid derived from an invitation cannot carry acceptance status~~ — CLOSED 2026-09-21
 
-When `/notes?forum=…&limit=1` returns a Decision note rather than the
-submission (25 of 96 real forums), `venueid_from_invitations` derives the venue
-from `…/Conference/Submission5047/-/Decision` -> `…/Conference`. Every paper
-at that conference has such an invitation, accepted or not, so a rejected paper
-with a public forum (ICLR publishes them) would read as main track, published.
-The cache stores the venueid *after* derivation, so derived and genuine entries
-cannot be told apart from the committed cache alone.
+Verified live before building: for rejected ICLR 2025 paper `zkNCWtw2fd`,
+`?forum=…&limit=1` returned its Decision note and the old code derived
+`ICLR.cc/2025/Conference`, `version = proceedings`. `GET /notes?id={forum}`
+returns the submission note with `content.venueid` directly.
 
-No harm measured: the reviewers found 0 disagreements over the 90 labelled
-venueids, and all 166 records venuescout's escalation moves to MAIN are MAIN by
-the reviewers' labels. The corpus is accepted papers; the gap is latent.
+The loader now asks for the note by id, trusts only a note whose id is the
+forum's and that states its own venueid, and derives nothing; the invitation
+fallback is gone. Entries moved to a new key, `openreview:note:` (via
+`openreview_key`), so derived and direct values can never mix; all 238 forums
+were refetched and the 238 old entries removed (git history keeps them).
 
-**Do:** fetch the submission note itself -- in API v2 the forum id is the
-submission note's id, so `GET /notes?id={forum}` returns the note that carries
-`content.venueid` -- and drop the invitation fallback, or keep it only with a
-`derived: true` flag in the cached payload that downstream treats as no
-evidence of acceptance. Either way the existing cache needs repopulating
-(`scripts/repopulate.py`, credentials required). Verify the `?id=` behaviour
-against the live API before building on it; it is from memory, not measured.
+236 of 238 came back identical -- every derived entry had been an accepted
+paper, so no corpus output was ever wrong. The 2 that changed were empty
+before and now state `nesyconf.org/NeSy/2025/Conference[_Phase_2]`
+(`psXDX4Q8E5`, `yCwcRijfXz`): the two neuro-symbolic records the R5 audit left
+unresolved, now settled as a venue outside the review.
 
 ## Provenance
 

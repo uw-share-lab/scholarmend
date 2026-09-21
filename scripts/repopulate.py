@@ -33,7 +33,7 @@ from scholarmend.http import HttpError
 from scholarmend.resolvers.openreview import AuthError, OpenReviewResolver, login
 from scholarmend.resolvers.pmlr_index import PmlrIndexResolver
 
-OPENREVIEW_PREFIX = "openreview:notes:"
+OPENREVIEW_PREFIX = "openreview:note:"
 PMLR_PREFIX = "pmlr:volume:"
 
 

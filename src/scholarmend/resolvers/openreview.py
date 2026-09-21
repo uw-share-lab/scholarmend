@@ -44,48 +44,16 @@ def login(user: str, password: str) -> str:
     return token
 
 
-def venueid_from_invitations(invitations: list[str]) -> str | None:
-    """Recover a venueid from a note's ``invitations`` when it has none.
+def openreview_key(forum_id: str) -> str:
+    """The cache key for one forum's venueid. Tests build keys with this too.
 
-    ``GET /notes?forum={id}&limit=1`` returns an arbitrary note from the
-    forum, not necessarily the submission -- on 25 of 96 real forums it
-    returned a Decision note instead, whose ``content`` carries no
-    ``venueid`` at all. This mirrors what the human reviewers did in that
-    case (see ``../Trust-Evals-LitReview/verification/README.md``): derive
-    the venue from the invitation string instead, e.g.
-    ``ICML.cc/2025/Conference/Submission5047/-/Decision`` names the same
-    venue as ``ICML.cc/2025/Conference``.
-
-    Each invitation has its trailing ``/-/<Something>`` action suffix and any
-    ``/Submission<digits>`` routing segment stripped. When the invitations
-    disagree after stripping, the longest common path-segment prefix is used
-    if it still parses as a venueid; otherwise ``None`` is returned, same as
-    an empty or unparseable input.
+    ``openreview:note:`` replaced ``openreview:notes:`` when the lookup changed
+    from ``?forum=…&limit=1`` to ``?id=…``. Entries under the old prefix may
+    hold a venueid derived from a Decision note's invitation, which cannot
+    show acceptance, and nothing distinguishes them from direct ones -- so the
+    old prefix is simply no longer read.
     """
-    stripped = []
-    for invitation in invitations:
-        if not invitation:
-            continue
-        candidate = re.sub(r"/-/[^/]+$", "", invitation)
-        candidate = re.sub(r"/Submission\d+", "", candidate)
-        if candidate:
-            stripped.append(candidate)
-    if not stripped:
-        return None
-
-    unique = list(dict.fromkeys(stripped))
-    if len(unique) == 1:
-        candidate = unique[0]
-        return candidate if _VENUEID.match(candidate) else None
-
-    segments = [candidate.split("/") for candidate in unique]
-    common: list[str] = []
-    for parts in zip(*segments):
-        if len(set(parts)) != 1:
-            break
-        common.append(parts[0])
-    prefix = "/".join(common)
-    return prefix if prefix and _VENUEID.match(prefix) else None
+    return f"openreview:note:{forum_id}"
 
 
 def parse_venueid(venueid: str) -> list[Claim]:
@@ -148,22 +116,24 @@ class OpenReviewResolver:
                 )
             from ..http import get_json
 
+            # The forum id is the submission note's own id in API v2, and the
+            # submission note is the one that states content.venueid. Asking
+            # for "any note in the forum" returned a Decision note on 25 of 96
+            # real forums, and deriving a venue from its invitation turned a
+            # rejected ICLR paper into ICLR main track (verified live,
+            # zkNCWtw2fd). A note that does not state its own venueid records
+            # nothing: unresolved goes to a human, derived does not.
             payload = get_json(
-                f"{API}/notes?forum={forum_id}&limit=1",
+                f"{API}/notes?id={forum_id}",
                 headers={"Authorization": f"Bearer {token}"},
             )
             notes = payload.get("notes") or []
             note = notes[0] if notes else {}
-            content = note.get("content") or {}
-            venueid = (content.get("venueid") or {}).get("value")
-            if not venueid:
-                invitations = note.get("invitations")
-                if not invitations:
-                    single = note.get("invitation")
-                    invitations = [single] if single else []
-                venueid = venueid_from_invitations(invitations)
+            if note.get("id") != forum_id:
+                return {}
+            venueid = ((note.get("content") or {}).get("venueid") or {}).get("value")
             return {"venueid": venueid} if venueid else {}
 
-        cached = self.cache.fetch(f"openreview:notes:{forum_id}", loader)
+        cached = self.cache.fetch(openreview_key(forum_id), loader)
         venueid = cached.get("venueid")
         return parse_venueid(venueid) if venueid else []

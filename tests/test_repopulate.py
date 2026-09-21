@@ -24,7 +24,7 @@ repopulate = importlib.util.module_from_spec(spec)
 sys.modules["repopulate"] = repopulate  # @dataclass resolves its module here
 spec.loader.exec_module(repopulate)
 
-OR = "openreview:notes:"
+OR = "openreview:note:"
 PM = "pmlr:volume:"
 
 

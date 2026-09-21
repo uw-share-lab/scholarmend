@@ -5,6 +5,7 @@ import shutil
 from pathlib import Path
 
 from scholarmend.cli import main
+from scholarmend.resolvers.openreview import openreview_key
 
 FIXTURE = Path(__file__).parent / "fixtures" / "sample.ris"
 
@@ -109,7 +110,7 @@ def test_a_warm_cache_resolves_tier_two_without_credentials_or_network(tmp_path,
     cache_dir = tmp_path / "warm"
     # r0BFucF2dH is the forum id on the third fixture record, which carries no
     # PY line and no resolvable venue without tier 2.
-    Cache(cache_dir).put("openreview:notes:r0BFucF2dH", {"venueid": "ICLR.cc/2025/Conference"})
+    Cache(cache_dir).put(openreview_key("r0BFucF2dH"), {"venueid": "ICLR.cc/2025/Conference"})
 
     out = tmp_path / "out"
     code = main(["--input", str(corpus), "--out", str(out), "--cache", str(cache_dir)])
@@ -136,7 +137,7 @@ def test_without_credentials_the_message_does_not_claim_tier_two_is_disabled(
 
     corpus = setup_input(tmp_path)
     cache_dir = tmp_path / "warm"
-    Cache(cache_dir).put("openreview:notes:r0BFucF2dH", {"venueid": "ICLR.cc/2025/Conference"})
+    Cache(cache_dir).put(openreview_key("r0BFucF2dH"), {"venueid": "ICLR.cc/2025/Conference"})
 
     main(["--input", str(corpus), "--out", str(tmp_path / "out"), "--cache", str(cache_dir)])
     assert "tier 2 disabled" not in capsys.readouterr().err

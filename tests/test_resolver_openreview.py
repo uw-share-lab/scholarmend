@@ -5,8 +5,8 @@ import pytest
 from scholarmend.cache import Cache
 from scholarmend.resolvers.openreview import (
     OpenReviewResolver,
+    openreview_key,
     parse_venueid,
-    venueid_from_invitations,
 )
 
 
@@ -90,69 +90,61 @@ def test_claims_are_tier_two():
     assert all(c.tier == 2 for c in parse_venueid("ICML.cc/2025/Conference"))
 
 
-def test_venueid_from_invitations_strips_decision_and_submission_suffixes():
-    # Real forum FKi6yjXwCN: /notes returned a Decision note with no venueid.
-    assert venueid_from_invitations(
-        ["ICML.cc/2025/Conference/Submission5047/-/Decision",
-         "ICML.cc/2025/Conference/-/Edit"]
-    ) == "ICML.cc/2025/Conference"
+def fake_api(monkeypatch, notes):
+    """Stand in for scholarmend.http.get_json; records the URLs asked for."""
+    asked = []
+
+    def get_json(url, headers=None):
+        asked.append(url)
+        return {"notes": notes}
+
+    monkeypatch.setattr("scholarmend.http.get_json", get_json)
+    return asked
 
 
-def test_venueid_from_invitations_handles_a_neurips_decision_note():
-    # Real forum tahkGZjjWA.
-    assert venueid_from_invitations(
-        ["NeurIPS.cc/2025/Conference/Submission4248/-/Decision",
-         "NeurIPS.cc/2025/Conference/-/Edit"]
-    ) == "NeurIPS.cc/2025/Conference"
+def test_the_loader_asks_for_the_submission_note_itself(tmp_path, monkeypatch):
+    """`?forum=…&limit=1` returned an arbitrary note -- a Decision note on 25 of
+    96 real forums -- and the venue was then derived from its invitation,
+    which every paper at a conference has, accepted or not. Verified live
+    2026-09-21: rejected ICLR 2025 paper zkNCWtw2fd came out as
+    ICLR.cc/2025/Conference, proceedings. In API v2 the forum id is the
+    submission note's id, so ask for that note. BACKLOG §9."""
+    asked = fake_api(monkeypatch, [{"id": "F1", "content": {"venueid": {"value": "ICLR.cc/2025/Conference"}}}])
+    OpenReviewResolver(Cache(tmp_path), token="t").resolve("F1")
+    assert asked == ["https://api2.openreview.net/notes?id=F1"]
 
 
-def test_venueid_from_invitations_leaves_a_named_workshop_track_alone():
-    # No numeric /Submission segment here, so nothing should be stripped
-    # beyond the trailing /-/Submission action suffix.
-    assert venueid_from_invitations(
-        ["ICML.cc/2026/Workshop/AI4GOOD/-/Submission"]
-    ) == "ICML.cc/2026/Workshop/AI4GOOD"
+def test_a_rejected_submission_is_recorded_as_rejected(tmp_path, monkeypatch):
+    fake_api(monkeypatch, [{"id": "zkNCWtw2fd",
+                            "content": {"venueid": {"value": "ICLR.cc/2025/Conference/Rejected_Submission"}}}])
+    claims = OpenReviewResolver(Cache(tmp_path), token="t").resolve("zkNCWtw2fd")
+    assert value(claims, "track") == "Conference/Rejected_Submission"
+    assert value(claims, "version") is None
 
 
-def test_venueid_from_invitations_on_an_empty_list_is_none():
-    assert venueid_from_invitations([]) is None
-
-
-def test_venueid_from_invitations_on_garbage_is_none():
-    assert venueid_from_invitations(["not-a-real-invitation-string"]) is None
-
-
-def test_venueid_from_invitations_falls_back_to_a_common_prefix():
-    # These disagree after stripping (one keeps a trailing "Reviewer2"
-    # segment the other doesn't), but their longest common prefix still
-    # parses as a venueid, so it is used rather than giving up.
-    assert venueid_from_invitations(
-        ["ICML.cc/2025/Conference/Submission1/-/Decision",
-         "ICML.cc/2025/Conference/Submission1/Reviewer2/-/Official_Review"]
-    ) == "ICML.cc/2025/Conference"
-
-
-def test_venueid_from_invitations_returns_none_when_nothing_parses():
-    assert venueid_from_invitations(["one/two/-/Decision", "three/four/-/Edit"]) is None
-
-
-def test_resolve_follows_a_derived_venueid_cached_by_the_invitations_fallback(tmp_path):
-    # A cache entry produced via the invitations fallback has the same
-    # {"venueid": ...} shape as one produced from content.venueid, so it must
-    # resolve identically -- nothing downstream should need to know which
-    # path derived it.
+@pytest.mark.parametrize("notes", [
+    [],                                                        # no such note
+    [{"id": "F1", "content": {}}],                             # no venueid
+    [{"id": "F1", "invitations": ["ICLR.cc/2025/Conference/Submission9/-/Decision"]}],
+    [{"id": "OTHER", "content": {"venueid": {"value": "ICLR.cc/2025/Conference"}}}],
+])
+def test_a_note_that_does_not_state_its_own_venueid_records_nothing(tmp_path, monkeypatch, notes):
+    """Nothing is derived. An unresolved venue goes to a human; a guessed one does not."""
+    fake_api(monkeypatch, notes)
     cache = Cache(tmp_path)
-    cache.put("openreview:notes:FKi6yjXwCN", {"venueid": "ICML.cc/2025/Conference"})
-    resolver = OpenReviewResolver(cache=cache, token=None)
-    claims = resolver.resolve("FKi6yjXwCN")
-    assert value(claims, "venue") == "ICML"
-    assert value(claims, "year") == "2025"
-    assert value(claims, "track") == "Conference"
+    assert OpenReviewResolver(cache, token="t").resolve("F1") == []
+    assert cache.get(openreview_key("F1")) == {}
+
+
+def test_the_cache_key_is_new_so_derived_entries_cannot_mix_with_direct_ones():
+    """Entries under the old openreview:notes: prefix may hold a derived venueid
+    and cannot be told apart; nothing reads that prefix any more."""
+    assert openreview_key("F1") == "openreview:note:F1"
 
 
 def test_resolve_serves_a_cached_forum_without_network(tmp_path):
     cache = Cache(tmp_path)
-    cache.put("openreview:notes:XYZ", {"venueid": "ICLR.cc/2026/Conference"})
+    cache.put(openreview_key("XYZ"), {"venueid": "ICLR.cc/2026/Conference"})
     resolver = OpenReviewResolver(cache=cache, token=None)
     # token is None, so any network attempt would raise; a cache hit must not.
     assert value(resolver.resolve("XYZ"), "venue") == "ICLR"

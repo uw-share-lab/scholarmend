@@ -72,7 +72,7 @@ for why, and what closing that gap would actually take.
 ```bash
 pip install -e ".[dev]"
 
-pytest                         # 190 tests, offline, ~0.6s
+pytest                         # 189 tests, offline, ~0.6s
 ruff check src tests
 mypy src
 
