@@ -2694,10 +2694,24 @@ def setup_input(tmp_path):
     return corpus
 
 
+def run(tmp_path, corpus, out, *extra):
+    """Run the CLI offline.
+
+    Every test here runs with --offline. Without it the tier-2 and tier-3
+    resolvers reach for the network on any record tier 1 could not settle, and
+    tests/conftest.py rightly refuses. Offline is also the honest shape for a
+    unit test: it exercises the degradation path a researcher hits on a train.
+    """
+    return main(["--input", str(corpus), "--out", str(out),
+                 "--cache", str(tmp_path / "c"), "--offline", *extra])
+
+
 def test_writes_both_outputs(tmp_path):
     corpus = setup_input(tmp_path)
     out = tmp_path / "out"
-    assert main(["--input", str(corpus), "--out", str(out), "--cache", str(tmp_path / "c")]) == 0
+    # 1 rather than 0: offline with an empty cache is a PARTIAL run, and a
+    # partial run must say so rather than looking successful.
+    assert run(tmp_path, corpus, out) == 1
     assert (out / "resolved.json").exists()
     assert (out / "mended.ris").exists()
 
@@ -2705,21 +2719,21 @@ def test_writes_both_outputs(tmp_path):
 def test_the_json_has_one_object_per_record(tmp_path):
     corpus = setup_input(tmp_path)
     out = tmp_path / "out"
-    main(["--input", str(corpus), "--out", str(out), "--cache", str(tmp_path / "c")])
+    run(tmp_path, corpus, out)
     assert len(json.loads((out / "resolved.json").read_text())) == 4
 
 
 def test_the_ris_output_carries_the_corrected_year(tmp_path):
     corpus = setup_input(tmp_path)
     out = tmp_path / "out"
-    main(["--input", str(corpus), "--out", str(out), "--cache", str(tmp_path / "c")])
+    run(tmp_path, corpus, out)
     assert "PY  - 2025///" in (out / "mended.ris").read_text(encoding="utf-8")
 
 
 def test_a_report_lists_what_stayed_unresolved(tmp_path):
     corpus = setup_input(tmp_path)
     out = tmp_path / "out"
-    main(["--input", str(corpus), "--out", str(out), "--cache", str(tmp_path / "c")])
+    run(tmp_path, corpus, out)
     report = (out / "report.txt").read_text()
     assert "unresolved" in report.lower()
 
@@ -2728,24 +2742,22 @@ def test_offline_without_a_cache_still_completes_on_tier_one(tmp_path):
     # Offline must not crash: tier-1 mining needs no network at all.
     corpus = setup_input(tmp_path)
     out = tmp_path / "out"
-    code = main(["--input", str(corpus), "--out", str(out),
-                 "--cache", str(tmp_path / "c"), "--offline"])
-    assert code in (0, 1)
+    # A CacheMiss must degrade this record, not abort the other 2,412.
+    assert run(tmp_path, corpus, out) == 1
     assert (out / "mended.ris").exists()
+    assert "PY  - 2025///" in (out / "mended.ris").read_text(encoding="utf-8")
 
 
 def test_an_empty_input_directory_is_an_error_not_a_silent_success(tmp_path):
     empty = tmp_path / "empty"
     empty.mkdir()
-    assert main(["--input", str(empty), "--out", str(tmp_path / "o"),
-                 "--cache", str(tmp_path / "c")]) == 2
+    assert run(tmp_path, empty, tmp_path / "o") == 2
 
 
 def test_running_twice_produces_identical_output(tmp_path):
     corpus = setup_input(tmp_path)
     for name in ("a", "b"):
-        main(["--input", str(corpus), "--out", str(tmp_path / name),
-              "--cache", str(tmp_path / "c")])
+        run(tmp_path, corpus, tmp_path / name)
     assert (tmp_path / "a" / "mended.ris").read_bytes() == (tmp_path / "b" / "mended.ris").read_bytes()
     assert (tmp_path / "a" / "resolved.json").read_bytes() == (tmp_path / "b" / "resolved.json").read_bytes()
 ```
@@ -2772,6 +2784,8 @@ from .cache import Cache
 from .emit import project_ris, to_json
 from .parse import parse_file
 from .pipeline import RESOLVED_FIELDS, resolve_record
+from .cache import CacheMiss
+from .http import HttpError
 from .resolvers.openreview import AuthError, OpenReviewResolver, login
 from .resolvers.pmc import PmcResolver
 from .resolvers.pmlr_index import PmlrIndexResolver
@@ -2828,8 +2842,12 @@ def main(argv: list[str] | None = None) -> int:
                 ledger = resolve_record(record, openreview=openreview,
                                         pmlr_index=pmlr_index, pmc=pmc,
                                         semanticscholar=semanticscholar)
-            except AuthError as error:
-                print(f"tier 2 unavailable: {error}", file=sys.stderr)
+            except (AuthError, CacheMiss, HttpError) as error:
+                # Degrade, never abort. One unreachable lookup must not cost
+                # the other 2,412 records their tier-1 resolution, which needs
+                # no network at all. The run reports itself partial via exit 1.
+                if not degraded:
+                    print(f"falling back to tier 1 for some records: {error}", file=sys.stderr)
                 degraded = True
                 ledger = resolve_record(record, openreview=None, pmlr_index=None,
                                         pmc=None, semanticscholar=None)
@@ -3136,7 +3154,7 @@ with the evidence for each recorded.
 | Workshop status against reviewer labels | zero disagreements |
 | Scholar's year losing every disagreement | all 1,264 |
 | Proceedings mining coverage | exactly 1,854 of 2,413 |
-| Records with no miner at all | exactly 21 |
+| Records with no miner at all | exactly 17 |
 | Hand-maintained merge list | retired; 4 collapse at tier 1, 6 at tier 2 |
 
 Run them with the review repository checked out alongside this one:
