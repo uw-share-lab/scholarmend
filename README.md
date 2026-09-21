@@ -3,8 +3,31 @@
 Recover true bibliographic metadata for Google Scholar exports, so that
 screening tools reason over facts rather than over Scholar's truncations.
 
-Status: **design approved, implementation not started.** See
-`docs/superpowers/specs/2026-09-20-scholarmend-design.md`.
+## Usage
+
+    pip install -e ".[dev]"
+    scholarmend --input ../Trust-Evals-LitReview/corpus --out out
+
+Tier 1 needs no configuration and resolves venue, year and track for 77% of a
+Scholar corpus. Tier 2 needs an OpenReview account:
+
+    export SCHOLARMEND_OPENREVIEW_USER='you@example.edu'
+    export SCHOLARMEND_OPENREVIEW_PASSWORD='...'
+
+Every response is written to `--cache` (default `.scholarmend-cache`). Commit
+it: a rerun then reproduces byte-identically and makes no API calls.
+
+    scholarmend --input ../Trust-Evals-LitReview/corpus --out out --offline
+
+`--offline` fails loudly on a cache miss rather than reaching the network.
+
+### Outputs
+
+| File | Contents |
+|------|----------|
+| `resolved.json` | canonical records: winning value per field, plus every claim behind it |
+| `mended.ris` | the RIS projection, for Covidence and venuetriage |
+| `report.txt` | what stayed unresolved, and why |
 
 ## The problem
 
