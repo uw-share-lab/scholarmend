@@ -28,7 +28,7 @@ PRECEDENCE: dict[str, tuple[str, ...]] = {
     "doi": ("openreview_api", "semanticscholar", "openalex", "arxiv_url"),
     # Keys, not answers: these carry an identifier from tier 1 to tier 2.
     "forum_id": ("openreview_url",),
-    "pmlr_volume": ("pmlr_url",),
+    "pmlr_volume": ("pmlr_url", "pmc_api"),
     "arxiv_id": ("arxiv_url",),
     "pmc_id": ("pmc_url",),
 }

@@ -9,13 +9,14 @@ from __future__ import annotations
 from typing import Callable, Iterable
 
 from ..models import Claim
-from . import arxiv, openreview, pmlr, proceedings
+from . import arxiv, openreview, pmc, pmlr, proceedings
 
 ALL: tuple[Callable[[str], list[Claim]], ...] = (
     proceedings.mine,
     openreview.mine,
     pmlr.mine,
     arxiv.mine,
+    pmc.mine,
 )
 
 
