@@ -6,8 +6,10 @@ A ``venueid`` states venue, year and workshop status in one string:
     ICML.cc/2026/Workshop/AI4GOOD                   -> ICML 2026, a workshop
     NeurIPS.cc/2025/Workshop_Mexico_City/ResponsibleFM
 
-That single field is what 90 of the 112 hand-resolved records needed, and it
-was correct in 92 of 92 spot checks against the reviewers' own verification.
+That single field is what 90 of the 112 hand-resolved records needed. It is
+validated here against all 90 of those venueids, with zero per-record
+disagreements; separately, the reviewers spot-checked 92 workshop-bucket
+records against OpenReview and found no false positives.
 """
 
 from __future__ import annotations

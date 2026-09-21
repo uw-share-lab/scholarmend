@@ -35,6 +35,18 @@ def test_a_non_iclr_venueid_keeps_its_own_organisation():
     assert value(claims, "venue") == "AAAI"
 
 
+def test_a_submission_suffix_is_stripped_from_the_track():
+    # AAAI.org/2026/Workshop/AIGOV/Submission -> the trailing /Submission is
+    # routing detail, not venue. Without this assertion the strip could be
+    # deleted and every other test would still pass.
+    claims = parse_venueid("AAAI.org/2026/Workshop/AIGOV/Submission")
+    assert value(claims, "track") == "Workshop/AIGOV"
+
+
+def test_a_track_without_a_submission_suffix_is_left_alone():
+    assert value(parse_venueid("ICML.cc/2026/Workshop/AI4GOOD"), "track") == "Workshop/AI4GOOD"
+
+
 def test_the_venueid_itself_is_retained_as_a_claim():
     assert value(parse_venueid("ICML.cc/2025/Conference"), "venue_id") == "ICML.cc/2025/Conference"
 
