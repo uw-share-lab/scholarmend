@@ -90,13 +90,40 @@ the unauthenticated rate limit depresses its measured hit rate.
 
 ## Goals
 
-1. Recover venue, year, track, full author list, abstract and identifiers for
-   Scholar records, preferring authoritative sources over Scholar in every case.
+1. Recover venue, year, track, version and identifiers for Scholar records,
+   preferring authoritative sources over Scholar in every case.
 2. Retain every claim, with its source and evidence, so that provenance is
    auditable and PRISMA reporting can cite it.
 3. Work offline and deterministically wherever the data permits, and reproduce
    byte-identically on a rerun months later.
 4. Never silently drop or guess. An unresolvable record survives, flagged.
+
+### Not delivered: authors and abstracts
+
+An earlier draft of these goals also promised to recover the full author list
+and the full abstract, and the problem statement above still reports that
+Scholar truncates 71% of author lists. **scholarmend does not fix that.** No
+component emits an `authors` or `abstract` claim; measured over the corpus, both
+fields come from Scholar in 2,413 of 2,413 records.
+
+This is deliberate rather than overlooked, but it was overlooked first: the
+implementation plan's self-review checked that every file in the architecture
+had a task and passed, without checking that every goal had one. The gap
+surfaced only when the assembled pipeline was measured.
+
+It stays unbuilt because it would currently buy nothing. The RIS projection
+rewrites only `PY` and `JF` (see *Output*), so recovered authors would sit in
+the canonical JSON with no consumer: Covidence and `venuetriage` both read the
+RIS. Closing the gap properly means three changes together, not one — emitting
+the fields (OpenReview's API already returns `authors` and `abstract` in a
+note's `content`, and Semantic Scholar would need a wider field list),
+extending the projection to rewrite `AU` and `AB`, and accepting the risk that
+rewriting an author list — deleting N lines and inserting M — carries for the
+byte-identical round-trip guarantee.
+
+`PRECEDENCE` retains entries for `authors` and `abstract` so that policy exists
+the day a resolver supplies them. Note that `openalex` appears there and has no
+resolver at all.
 
 ## Non-goals
 
