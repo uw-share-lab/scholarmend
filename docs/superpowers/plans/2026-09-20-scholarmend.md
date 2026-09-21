@@ -2017,11 +2017,26 @@ Create `tests/test_resolver_s2.py`:
 from __future__ import annotations
 
 from scholarmend.cache import Cache
-from scholarmend.resolvers.semanticscholar import SemanticScholarResolver, titles_match
+from scholarmend.resolvers.semanticscholar import (
+    SemanticScholarResolver,
+    _normalise,
+    titles_match,
+)
 
 
 def value(claims, field):
     return next((c.value for c in claims if c.field == field), None)
+
+
+def key_for(title: str) -> str:
+    """Build the cache key exactly as the resolver builds it.
+
+    Never hardcode a key literal here. ``_normalise`` strips everything
+    non-alphanumeric, so a literal like ``"s2:search:some paper"`` misses the
+    cache, the loader runs, and the test silently makes a real network call --
+    which is how this file first went red against a live 429.
+    """
+    return f"s2:search:{_normalise(title)[:80]}"
 
 
 def test_titles_match_ignores_case_and_punctuation():
@@ -2048,23 +2063,60 @@ def test_resolve_returns_venue_and_year_from_cache(tmp_path):
 
 def test_a_title_that_does_not_match_is_discarded(tmp_path):
     cache = Cache(tmp_path)
-    cache.put("s2:search:some paper", {"data": [{"title": "A Totally Different Paper",
+    cache.put(key_for('Some Paper'), {"data": [{"title": "A Totally Different Paper",
                                                  "year": 2020, "venue": "ICML"}]})
     assert SemanticScholarResolver(cache).resolve("Some Paper") == []
 
 
 def test_an_empty_result_yields_no_claims(tmp_path):
     cache = Cache(tmp_path)
-    cache.put("s2:search:nothing here", {"data": []})
+    cache.put(key_for('Nothing Here'), {"data": []})
     assert SemanticScholarResolver(cache).resolve("Nothing Here") == []
 
 
 def test_claims_are_tier_three_and_lower_confidence(tmp_path):
     cache = Cache(tmp_path)
-    cache.put("s2:search:x", {"data": [{"title": "X", "year": 2021, "venue": "ICLR"}]})
+    cache.put(key_for('X'), {"data": [{"title": "X", "year": 2021, "venue": "ICLR"}]})
     for claim in SemanticScholarResolver(cache).resolve("X"):
         assert claim.tier == 3
         assert claim.confidence < 0.9
+```
+
+- [ ] **Step 1b: Make the no-network constraint enforceable**
+
+Create `tests/conftest.py`. Every test in this suite is meant to run from a
+pre-populated cache or from pure functions; none should reach the internet. That
+was a rule in prose until a mismatched cache key turned it into a live HTTP 429.
+This makes it a rule the suite enforces.
+
+```python
+"""Suite-wide guards."""
+
+from __future__ import annotations
+
+import urllib.request
+
+import pytest
+
+
+@pytest.fixture(autouse=True)
+def no_network(monkeypatch):
+    """Fail loudly if any test tries to open a real connection.
+
+    A test that reaches the network is not merely slow: it passes or fails on
+    someone else's rate limit rather than on this code. The failure that
+    prompted this guard looked like a normal assertion error, three layers
+    down, on a title that happened to normalise differently from its
+    hardcoded cache key.
+    """
+
+    def refuse(*args, **kwargs):
+        raise AssertionError(
+            "a test attempted a real network call; use a pre-populated Cache "
+            "and build keys with the same helper production uses"
+        )
+
+    monkeypatch.setattr(urllib.request, "urlopen", refuse)
 ```
 
 - [ ] **Step 2: Run the tests to verify they fail**
@@ -2152,12 +2204,12 @@ class SemanticScholarResolver:
 - [ ] **Step 4: Run the tests to verify they pass**
 
 Run: `pytest tests/test_resolver_s2.py -v`
-Expected: 6 passed
+Expected: 6 passed, none of them touching the network
 
 - [ ] **Step 5: Commit**
 
 ```bash
-git add src/scholarmend/resolvers/semanticscholar.py tests/test_resolver_s2.py
+git add src/scholarmend/resolvers/semanticscholar.py tests/test_resolver_s2.py tests/conftest.py
 git commit -m "feat: add Semantic Scholar as the tier-3 resolver"
 ```
 
