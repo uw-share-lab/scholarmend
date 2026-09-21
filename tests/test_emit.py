@@ -61,11 +61,43 @@ def test_ris_projection_corrects_the_ellipsized_venue():
 
 
 def test_ris_projection_leaves_every_untouched_line_byte_identical():
+    """Index-paired, not membership.
+
+    `line in out.split("\\n")` would pass even if the projection reordered or
+    duplicated lines, because it only asks whether each original line appears
+    somewhere. The guarantee this module rests on is stronger: same lines, same
+    order, same count, with only the corrected tags differing.
+    """
     record, ledger = first()
-    out = project_ris(record, ledger)
-    untouched = [ln for ln in record.raw.split("\n") if not ln.startswith(("PY  - ", "JF  - "))]
-    for line in untouched:
-        assert line in out.split("\n")
+    before = record.raw.split("\n")
+    after = project_ris(record, ledger).split("\n")
+
+    assert len(after) == len(before)
+    for original, projected in zip(before, after):
+        if original.startswith(("PY  - ", "JF  - ")):
+            continue
+        assert projected == original
+
+
+def test_ris_projection_never_changes_the_line_count():
+    # Surgical substitution only: never insert, never delete. This is what
+    # makes the projection safe to feed to a parser written against Scholar's
+    # exact output.
+    for record in parse_file(FIXTURE):
+        out = project_ris(record, resolve_record(record))
+        assert len(out.split("\n")) == len(record.raw.split("\n"))
+
+
+def test_ris_projection_changes_only_py_and_jf_lines():
+    # Guards _TAG_FOR's scope from the outside: if a future change added AU or
+    # AB to it, this fails rather than silently altering author lines.
+    changed_tags = set()
+    for record in parse_file(FIXTURE):
+        out = project_ris(record, resolve_record(record))
+        for original, projected in zip(record.raw.split("\n"), out.split("\n")):
+            if original != projected:
+                changed_tags.add(original[:2])
+    assert changed_tags <= {"PY", "JF"}, changed_tags
 
 
 def test_ris_projection_keeps_the_trailing_space_on_the_er_line():
