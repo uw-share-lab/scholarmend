@@ -33,19 +33,14 @@ The design document lists four validation suites. Two are implemented.
 
 **Do:** commit both as tests rather than leaving them to ad-hoc scripts.
 
-## 3. `scripts/repopulate.py` can lose cache entries
+## 3. ~~`scripts/repopulate.py` can lose cache entries~~ — CLOSED 2026-09-21
 
-It deletes every poisoned entry before re-fetching, and `openreview.resolve` in
-its refetch loop is unguarded. Run without credentials or with the network down,
-it deletes ~29 entries and aborts on the first `AuthError`, restoring none.
-
-The deletion *condition* is narrow and safe — prefix-scoped, and only entries
-whose payload is `{}` or whose `title` is `""`. A legitimately-empty result is
-only ever re-fetched to the same empty value. So the exposure is a lost cache
-entry, recoverable by re-running with credentials, not a wrong one.
-
-**Do:** check credentials before deleting anything, or delete each entry only
-once its replacement has been fetched.
+Each entry is now set aside rather than deleted, and put back in a `finally`
+unless a replacement was actually written -- on AuthError, HttpError, network
+failure and Ctrl-C alike. One failure no longer stops the rest; without
+credentials the OpenReview entries are not touched at all. `tests/test_repopulate.py`
+(the old script fails all 8); a dry run on a copy of the committed cache
+without credentials leaves it byte-identical.
 
 ## 4. One test is vacuous on inserted lines
 
