@@ -42,18 +42,16 @@ credentials the OpenReview entries are not touched at all. `tests/test_repopulat
 (the old script fails all 8); a dry run on a copy of the committed cache
 without credentials leaves it byte-identical.
 
-## 4. One test is vacuous on inserted lines
+## 4. ~~One test is vacuous on inserted lines~~ — CLOSED 2026-09-21
 
-`tests/test_emit.py::test_ris_projection_changes_only_py_and_jf_lines` pairs
-input and output lines by `zip` index. Since `project_ris` gained the ability to
-*insert* a line, any record where an insertion shifts lines makes the comparison
-meaningless. Its stated purpose — guarding `_TAG_FOR`'s scope on *substitution*
-— still holds, and the comment discloses the limit.
-
-This is the fifth instance in this build of a test whose name claimed a
-guarantee it did not check. The other four were fixed.
-
-**Do:** align by tag rather than index, so the guard survives insertions.
+Worse than recorded. `test_ris_projection_changes_only_py_and_jf_lines` could
+not fail on the change it exists to catch: with `"authors": "AU"` added to
+`_TAG_FOR` it still passed, because no fixture record carries a non-Scholar
+authors claim, and no fixture record triggers an insertion either. It now
+aligns lines by diff rather than by `zip`, rejects deletions and restructuring,
+adds a tier-2 case carrying year, authors and abstract claims, and asserts that
+both the substitution and insertion paths ran. With `AU` added it fails; before,
+it did not.
 
 ## 5. Authors and abstracts are never recovered
 

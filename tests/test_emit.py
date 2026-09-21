@@ -158,15 +158,46 @@ def test_a_record_with_no_er_line_still_gets_its_inserted_tag():
 def test_ris_projection_changes_only_py_and_jf_lines():
     # Guards _TAG_FOR's scope from the outside: if a future change added AU or
     # AB to it, this fails rather than silently altering author lines. The
-    # comparison runs over the lines the two texts have in common; insertion is
-    # covered by its own tests.
-    changed_tags = set()
-    for record in parse_file(FIXTURE):
-        out = project_ris(record, resolve_record(record))
-        for original, projected in zip(record.raw.split("\n"), out.split("\n")):
-            if original != projected:
-                changed_tags.add(original[:2])
-    assert changed_tags <= {"PY", "JF"}, changed_tags
+    # allowed tags are written out here, not imported, for that reason.
+    #
+    # Lines are aligned by diff, not by position. Pairing them with zip() made
+    # every line after an inserted one compare against its neighbour, so on
+    # any record with an insertion the test checked nothing (BACKLOG §4).
+    import difflib
+
+    allowed = {"PY", "JF"}
+    cases = [(record, resolve_record(record)) for record in parse_file(FIXTURE)]
+    # No fixture record needs an insertion offline, so add the one a tier-2
+    # run makes: record 2 has no PY line. Non-Scholar authors and abstract
+    # claims go in too -- without them, adding AU or AB to _TAG_FOR would
+    # change no line here and this guard would pass by name only.
+    record = parse_file(FIXTURE)[2]
+    ledger = resolve_record(record)
+    for field, value in (("year", "2025"), ("authors", "Someone Else"), ("abstract", "Other.")):
+        ledger.add(Claim(field=field, value=value, source="openreview_api", tier=2,
+                         confidence=0.99, evidence="venueid=ICLR.cc/2025/Conference"))
+    cases.append((record, ledger))
+
+    substituted = inserted = 0
+    for record, ledger in cases:
+        before = record.raw.split("\n")
+        after = project_ris(record, ledger).split("\n")
+        matcher = difflib.SequenceMatcher(None, before, after, autojunk=False)
+        for op, i1, i2, j1, j2 in matcher.get_opcodes():
+            if op == "equal":
+                continue
+            assert op != "delete", f"projection deleted lines: {before[i1:i2]}"
+            if op == "replace":
+                # A substitution replaces a line with one of the same tag.
+                assert i2 - i1 == j2 - j1, f"restructured: {before[i1:i2]} -> {after[j1:j2]}"
+                for old, new in zip(before[i1:i2], after[j1:j2]):
+                    assert old[:2] == new[:2] and old[:2] in allowed, (old, new)
+                substituted += i2 - i1
+            if op == "insert":
+                assert {line[:2] for line in after[j1:j2]} <= allowed, after[j1:j2]
+                inserted += j2 - j1
+    # Both paths must actually be exercised, or this guards one of them by name only.
+    assert substituted and inserted, (substituted, inserted)
 
 
 def test_ris_projection_keeps_the_trailing_space_on_the_er_line():
