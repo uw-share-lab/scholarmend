@@ -145,7 +145,7 @@ and PRISMA counting (`venuetriage`, sub-project C). Any user interface
     │   openreview.py   forum id → venueid
     │   pmlr_index.py   volume → proceedings title
     │   pmc.py          PMC id → citation_volume
-    │   semanticscholar.py  dblp.py  openalex.py  crossref.py
+    │   semanticscholar.py          (dblp, openalex and crossref: see below)
     ├─ ledger.py      claim accumulation, precedence, confidence, conflicts
     ├─ cache.py       content-addressed on-disk store
     ├─ emit.py        canonical JSON + RIS projection
@@ -253,7 +253,15 @@ alongside the precedence table.
 | 0 | Scholar's own RIS fields | free | 100%, lowest precedence, always retained |
 | 1 | Offline URL miners | free, deterministic | **99% yield a key; 77% fully resolved** |
 | 2 | Identifier-keyed APIs: OpenReview `venueid`, PMLR index, PMC | cached network | the 22% holding OpenReview forum ids |
-| 3 | Fuzzy title match: Semantic Scholar first, then DBLP, OpenAlex, Crossref | cached network | remainder, always flagged low-confidence |
+| 3 | Fuzzy title match: Semantic Scholar | cached network | remainder, always flagged low-confidence |
+
+Only Semantic Scholar was built at tier 3. DBLP was unreachable during the
+measurements above and remains unmeasured; OpenAlex was measured and rejected,
+because it described the arXiv preprint rather than the published paper in every
+case where it named a venue at all; Crossref shares that DOI-centric weakness on
+this corpus. `PRECEDENCE` still lists `openalex` for `authors` and `abstract`,
+where a preprint's values are legitimate, so the policy exists the day a
+resolver supplies them.
 
 Tier-1 breakdown, measured:
 
