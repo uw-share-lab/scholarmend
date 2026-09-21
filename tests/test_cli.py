@@ -73,7 +73,15 @@ def test_offline_without_a_cache_still_completes_on_tier_one(tmp_path):
 def test_an_empty_input_directory_is_an_error_not_a_silent_success(tmp_path):
     empty = tmp_path / "empty"
     empty.mkdir()
-    assert run(tmp_path, empty, tmp_path / "o") == 2
+    out = tmp_path / "o"
+
+    assert run(tmp_path, empty, out) == 2
+
+    # The name of this test is the assertion that matters. A run that wrote
+    # empty outputs and then returned 2 would be a silent success wearing an
+    # error code: a later step reading mended.ris would see a valid, empty
+    # corpus. The early return must happen before anything is created.
+    assert not out.exists(), sorted(p.name for p in out.iterdir())
 
 
 def test_running_twice_produces_identical_output(tmp_path):
