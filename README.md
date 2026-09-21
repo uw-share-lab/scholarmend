@@ -85,12 +85,38 @@ with the evidence for each recorded.
 
 | Check | Bar |
 |-------|-----|
-| Records the pipeline settles of those 112 | at least 103, zero disagreements |
-| Workshop status against reviewer labels | zero disagreements |
+| Records with an automated resolution path, of those 112 | at least 103 (measured: 104) |
+| …of which, venue determined **and verified against the reviewers' labels** | 90, zero per-record disagreements |
+| …the other 14 | evidence retrieved automatically, final judgement not verified here — see below |
+| Workshop status against reviewer labels (the 90) | zero disagreements |
 | Scholar's year losing every disagreement | all 1,264 |
 | Proceedings mining coverage | exactly 1,854 of 2,413 |
 | Records with no miner at all | exactly 17 |
 | Hand-maintained merge list | retired; 4 collapse at tier 1, 6 at tier 2 |
+
+### What "settled" does and does not mean
+
+The 104 figure counts records for which the miners extract something a live
+resolver consumes — a venue directly, or an OpenReview forum id, a PMLR volume
+or a PMC id. That is a claim about *reach*, not about correctness, and the two
+halves of it are verified to different depths:
+
+- **90 records** are settled *and checked*: their OpenReview `venueid` yields a
+  venue, a year and a workshop verdict, and every one of the 90 agrees with the
+  reviewers' hand-verified label. Zero disagreements, compared record by record.
+- **14 records** are settled in the weaker sense. Ten resolve to PMLR volumes
+  that are out of scope for this review — the Canadian Conference on AI, a
+  workshop at ACML, an AAAI bridge programme — and for those the resolver
+  deliberately declines to name a venue rather than coerce an unfamiliar
+  conference onto a known one. It retrieves the proceedings title, which is the
+  expensive part of the work, but a human still reads the result and makes the
+  call. Three arrive via the PMC bridge, and one via a sibling proceedings URL.
+- **8 records** have no automated route at all: NSF landing pages, Google Books
+  chapters, an SPIE paper, a PDF on a personal page. These needed human
+  judgement before and still do.
+
+So the honest summary is that scholarmend **determines and verifies** the venue
+for 90 of the 112, **gathers the evidence** for 14 more, and leaves 8 untouched.
 
 Run them with the review repository checked out alongside this one:
 

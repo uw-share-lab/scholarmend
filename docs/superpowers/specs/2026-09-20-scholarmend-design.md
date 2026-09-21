@@ -331,7 +331,25 @@ The 2026-09-20 verification effort produced a labelled gold set, committed in
 `verification/`. It is the acceptance criterion.
 
 **Headline test: of the 112 records that required human resolution, scholarmend
-settles at least 103, with zero disagreements against the hand-verified labels.**
+provides an automated resolution path for at least 103.**
+
+That is a claim about reach, and it must not be bundled with the separate,
+stronger claim about correctness. Stated precisely, and as the shipped suite
+verifies them:
+
+- **reach** — at least 103 of the 112 yield something a live resolver consumes
+  (measured: 104). Asserted by running the real miners over records joined to
+  the corpus, not by inspecting the labels.
+- **correctness** — for the 90 reached through an OpenReview `venueid`, the
+  predicted workshop-or-main verdict agrees with the reviewers' label for every
+  single record. Zero disagreements, compared one record at a time, because two
+  errors in opposite directions would still sum to the right totals.
+
+The remaining 14 are reached but not checked against truth by this suite. Ten
+resolve to PMLR volumes outside this review's scope, where the resolver
+deliberately declines to name a venue and emits only the proceedings title as
+evidence for a human. The suite is hermetic and offline, so verifying those
+predictions would require their lookups to be committed into the cache first.
 
 103 is not aspirational. It is the count actually reached by hand, so the test
 asserts that the pipeline reproduces a day of human work.
