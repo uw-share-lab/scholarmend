@@ -76,6 +76,28 @@ returned a correct conference venue for **none** of them, describing the arXiv
 preprint instead. The preprint carries a DOI and the proceedings version does
 not, so a DOI-anchored index indexes the preprint.
 
+## Validation
+
+scholarmend is tested against hand-verified ground truth rather than against
+its own output. The Trust-Evals-LitReview review produced labels for 112
+records that escaped an automated rule table and were resolved individually,
+with the evidence for each recorded.
+
+| Check | Bar |
+|-------|-----|
+| Records the pipeline settles of those 112 | at least 103, zero disagreements |
+| Workshop status against reviewer labels | zero disagreements |
+| Scholar's year losing every disagreement | all 1,264 |
+| Proceedings mining coverage | exactly 1,854 of 2,413 |
+| Records with no miner at all | exactly 17 |
+| Hand-maintained merge list | retired; 4 collapse at tier 1, 6 at tier 2 |
+
+Run them with the review repository checked out alongside this one:
+
+    pytest tests/test_acceptance.py -v
+
+They skip cleanly when it is not.
+
 ## Relationship to other tools
 
 - [`venuetriage`](../Trust-Evals-LitReview) — consumes scholarmend's output to
