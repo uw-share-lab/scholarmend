@@ -69,7 +69,19 @@ def get_json(
     attempts: int = 3,
     sleep=time.sleep,
 ) -> dict:
-    """GET ``url`` and parse JSON, retrying on transient failure.
+    """GET ``url`` and parse JSON, retrying on transient failure. See ``get_text``."""
+    return json.loads(get_text(url, headers, timeout, attempts, sleep, parse=json.loads))
+
+
+def get_text(
+    url: str,
+    headers: dict[str, str] | None = None,
+    timeout: float = 20.0,
+    attempts: int = 3,
+    sleep=time.sleep,
+    parse=None,
+) -> str:
+    """GET ``url`` as text, retrying on transient failure.
 
     429 and 5xx are retried; 4xx other than 429 is raised at once, because
     retrying a refusal only spends someone else's rate limit. A 429 waits for
@@ -77,6 +89,10 @@ def get_json(
     for the exponential backoff the other failures get: OpenReview's window is
     an hour wide, so backing off for one second and then two and then giving up
     fails the run while doing nothing to let the budget recover.
+
+    ``parse``, if given, is applied inside the retry loop only to validate the
+    body, so that a truncated JSON response is retried like any other
+    transient failure.
     """
     last: Exception | None = None
     for attempt in range(attempts):
@@ -84,9 +100,11 @@ def get_json(
         request = urllib.request.Request(url, headers=headers or {})
         try:
             with urllib.request.urlopen(request, timeout=timeout) as response:
-                payload = json.loads(response.read().decode("utf-8"))
+                body = response.read().decode("utf-8")
+                if parse is not None:
+                    parse(body)
                 _respect_rate_limit(response, sleep)
-                return payload
+                return body
         except urllib.error.HTTPError as error:
             last = error
             if error.code != 429 and error.code < 500:

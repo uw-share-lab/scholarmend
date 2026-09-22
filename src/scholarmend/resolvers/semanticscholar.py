@@ -70,3 +70,33 @@ class SemanticScholarResolver:
         if doi:
             claims.append(claim("doi", doi))
         return claims
+
+    def abstract(self, title: str) -> list[Claim]:
+        """An abstract, for the few records no proceedings page or forum covers.
+
+        A separate query and key from ``resolve``: widening ``FIELDS`` there
+        would leave every committed search entry without the new field.
+        """
+        from .proceedings_page import one_line
+
+        def loader() -> dict:
+            from ..http import get_json
+
+            query = urllib.parse.quote(title[:200])
+            headers = {"x-api-key": self.api_key} if self.api_key else {}
+            return get_json(f"{API}?query={query}&limit=1&fields=title,abstract",
+                            headers=headers)
+
+        payload = self.cache.fetch(abstract_key(title), loader)
+        results = payload.get("data") or []
+        if not results or not titles_match(title, results[0].get("title") or ""):
+            return []
+        text = one_line(results[0].get("abstract") or "")
+        if not text:
+            return []
+        return [Claim(field="abstract", value=text, source="semanticscholar", tier=3,
+                      confidence=0.75, evidence=f"s2:{results[0].get('title', '')[:60]}")]
+
+
+def abstract_key(title: str) -> str:
+    return f"s2:abstract:{_normalise(title)[:80]}"

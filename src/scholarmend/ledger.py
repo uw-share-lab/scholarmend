@@ -28,7 +28,11 @@ PRECEDENCE: dict[str, tuple[str, ...]] = {
     "version": ("proceedings_url", "openreview_api", "pmlr_index", "arxiv_url"),
     # Preprint sources are welcome here: Scholar truncates 71% of author lists.
     "authors": ("openreview_api", "semanticscholar", "openalex", "arxiv_url", "scholar"),
-    "abstract": ("openreview_api", "semanticscholar", "openalex", "arxiv_url", "scholar"),
+    # Scholar's AB is a search snippet on every record, so it answers last.
+    # The proceedings page is the published abstract itself; it outranks the
+    # OpenReview note, which a camera-ready revision can leave behind.
+    "abstract": ("proceedings_page", "openreview_api", "semanticscholar", "openalex",
+                 "arxiv_url", "scholar"),
     "doi": ("openreview_api", "semanticscholar", "openalex", "arxiv_url"),
     # Keys, not answers: these carry an identifier from tier 1 to tier 2.
     "forum_id": ("openreview_url",),

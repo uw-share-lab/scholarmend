@@ -155,17 +155,19 @@ def test_a_record_with_no_er_line_still_gets_its_inserted_tag():
     assert out == "TY  - JOUR\nTI  - A record that never ended\nPY  - 2025///\n"
 
 
-def test_ris_projection_changes_only_py_and_jf_lines():
-    # Guards _TAG_FOR's scope from the outside: if a future change added AU or
-    # AB to it, this fails rather than silently altering author lines. The
-    # allowed tags are written out here, not imported, for that reason.
+def test_ris_projection_changes_only_py_jf_and_ab_lines():
+    # Guards _TAG_FOR's scope from the outside: if a future change added AU to
+    # it, this fails rather than silently altering author lines. The allowed
+    # tags are written out here, not imported, for that reason. AB joined them
+    # deliberately: it is one line per record, so it is substituted, never
+    # restructured.
     #
     # Lines are aligned by diff, not by position. Pairing them with zip() made
     # every line after an inserted one compare against its neighbour, so on
     # any record with an insertion the test checked nothing (BACKLOG §4).
     import difflib
 
-    allowed = {"PY", "JF"}
+    allowed = {"PY", "JF", "AB"}
     cases = [(record, resolve_record(record)) for record in parse_file(FIXTURE)]
     # No fixture record needs an insertion offline, so add the one a tier-2
     # run makes: record 2 has no PY line. Non-Scholar authors and abstract
@@ -251,3 +253,36 @@ def test_the_json_reports_a_resolved_venue_id():
     ledger.add(Claim(field="venue_id", value="ICLR.cc/2025/Conference",
                      source="openreview_api", tier=2, confidence=0.99, evidence="e"))
     assert to_json(record, ledger)["fields"]["venue_id"]["value"] == "ICLR.cc/2025/Conference"
+
+
+
+def _with_snippet():
+    """A record shaped like the real corpus: every one carries one AB snippet."""
+    from scholarmend.models import Record
+
+    raw = ("TY  - JOUR\n"
+           "TI  - A paper\n"
+           "AB  - … we observe that the benchmark metrics exhibit large …\n"
+           "PY  - 2025///\n"
+           "ER  - \n")
+    fields = {"TY": ["JOUR"], "TI": ["A paper"],
+              "AB": ["… we observe that the benchmark metrics exhibit large …"],
+              "PY": ["2025///"], "ER": [""]}
+    return Record(raw=raw, fields=fields, source_file="s.ris")
+
+
+def test_a_recovered_abstract_replaces_the_snippet_on_its_own_line():
+    record = _with_snippet()
+    ledger = resolve_record(record)
+    ledger.add(Claim(field="abstract", value="The full abstract.\nSecond  line.",
+                     source="proceedings_page", tier=2, confidence=0.99, evidence="e"))
+    out = project_ris(record, ledger)
+    assert out == record.raw.replace(
+        "AB  - … we observe that the benchmark metrics exhibit large …",
+        "AB  - The full abstract. Second line.",
+    )
+
+
+def test_scholars_own_snippet_is_never_rewritten():
+    record = _with_snippet()
+    assert project_ris(record, resolve_record(record)) == record.raw

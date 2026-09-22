@@ -16,6 +16,7 @@ from .pipeline import RESOLVED_FIELDS, resolve_record
 from .resolvers.openreview import AuthError, OpenReviewResolver, login
 from .resolvers.pmc import PmcResolver
 from .resolvers.pmlr_index import PmlrIndexResolver
+from .resolvers.proceedings_page import ProceedingsPageResolver
 from .resolvers.semanticscholar import SemanticScholarResolver
 
 
@@ -24,16 +25,21 @@ def _build_parser() -> argparse.ArgumentParser:
         prog="scholarmend",
         description="Recover true venue, year and track for Google Scholar RIS exports.",
     )
-    parser.add_argument("--input", required=True, type=Path, help="directory of .ris files")
+    parser.add_argument("--input", required=True, type=Path,
+                        help="a .ris file, or a directory of them")
     parser.add_argument("--out", required=True, type=Path, help="directory to write outputs to")
     parser.add_argument("--cache", default=Path(".scholarmend-cache"), type=Path,
                         help="response cache; commit it for reproducibility")
     parser.add_argument("--offline", action="store_true",
                         help="never call the network; fail on a cache miss")
+    parser.add_argument("--abstracts", action="store_true",
+                        help="replace Scholar's AB snippet with the full abstract, from the "
+                             "proceedings page, OpenReview or Semantic Scholar")
     return parser
 
 
-def _report(documents: list[dict], unresolved: list[tuple[str, list[str]]]) -> str:
+def _report(documents: list[dict], unresolved: list[tuple[str, list[str]]],
+            abstracts_requested: bool = False) -> str:
     """What a human still has to look at, with the structurally impossible removed.
 
     A field no source in this run could supply -- doi, which nothing resolved
@@ -65,16 +71,29 @@ def _report(documents: list[dict], unresolved: list[tuple[str, list[str]]]) -> s
         lines.append(
             f"no source in this run could supply: {','.join(absent)} (excluded above and below)"
         )
+    # Scholar's AB always "resolves", to its own snippet, so the count above
+    # cannot show these. They are the records a screener reads a fragment for.
+    snippets = [doc["title"] for doc in documents
+                if abstracts_requested and doc["fields"]["abstract"].get("source") == "scholar"]
+    if abstracts_requested:
+        lines.append(f"abstract still Scholar's snippet: {len(snippets)}")
     lines.append("")
     for title, missing in rows[:200]:
         lines.append(f"  unresolved {','.join(missing):28s} {title[:70]}")
+    if snippets:
+        lines.append("")
+    for title in snippets:
+        lines.append(f"  snippet    {title[:70]}")
     return "\n".join(lines) + "\n"
 
 
 def main(argv: list[str] | None = None) -> int:
     args = _build_parser().parse_args(argv)
 
-    files = sorted(args.input.glob("*.ris"))
+    # A single file is how venuetriage's clean.ris -- the Covidence upload,
+    # already deduplicated and triaged -- gets its abstracts: its directory
+    # also holds removed.ris, which must not be merged into the upload.
+    files = [args.input] if args.input.is_file() else sorted(args.input.glob("*.ris"))
     if not files:
         print(f"no .ris files in {args.input}", file=sys.stderr)
         return 2
@@ -127,6 +146,18 @@ def main(argv: list[str] | None = None) -> int:
     pmlr_index = PmlrIndexResolver(cache)
     pmc = PmcResolver(cache)
     semanticscholar = SemanticScholarResolver(cache, os.environ.get("SCHOLARMEND_S2_KEY"))
+    proceedings_page = ProceedingsPageResolver(cache)
+
+    abstract_errors: list[str] = []
+
+    def abstract_failed(error: Exception) -> None:
+        """An abstract lookup failed: keep the snippet, and say so once."""
+        nonlocal degraded
+        if not abstract_errors:
+            print(f"some abstracts not recovered, Scholar's snippet kept: {error}",
+                  file=sys.stderr)
+        abstract_errors.append(str(error))
+        degraded = True
 
     documents, projections, unresolved = [], [], []
     for path in files:
@@ -134,7 +165,10 @@ def main(argv: list[str] | None = None) -> int:
             try:
                 ledger = resolve_record(record, openreview=openreview,
                                         pmlr_index=pmlr_index, pmc=pmc,
-                                        semanticscholar=semanticscholar)
+                                        semanticscholar=semanticscholar,
+                                        proceedings_page=proceedings_page,
+                                        abstracts=args.abstracts,
+                                        on_error=abstract_failed)
             except (AuthError, CacheMiss, HttpError) as error:
                 # Degrade, never abort. One unreachable lookup must not cost
                 # the other 2,412 records their tier-1 resolution, which needs
@@ -142,8 +176,13 @@ def main(argv: list[str] | None = None) -> int:
                 if not degraded:
                     print(f"falling back to tier 1 for some records: {error}", file=sys.stderr)
                 degraded = True
+                # The proceedings page needs no key the failed lookup could
+                # have supplied, so the abstract is still worth trying.
                 ledger = resolve_record(record, openreview=None, pmlr_index=None,
-                                        pmc=None, semanticscholar=None)
+                                        pmc=None, semanticscholar=None,
+                                        proceedings_page=proceedings_page,
+                                        abstracts=args.abstracts,
+                                        on_error=abstract_failed)
             documents.append(to_json(record, ledger))
             projections.append(project_ris(record, ledger))
             unresolved.append((record.title, [f for f in RESOLVED_FIELDS
@@ -157,9 +196,14 @@ def main(argv: list[str] | None = None) -> int:
     # round-trips record by record but not as a file.
     (args.out / "mended.ris").write_text("".join(projections), encoding="utf-8-sig")
 
-    (args.out / "report.txt").write_text(_report(documents, unresolved), encoding="utf-8")
+    (args.out / "report.txt").write_text(_report(documents, unresolved, args.abstracts), encoding="utf-8")
 
+    recovered = sum(1 for doc in documents
+                    if doc["fields"]["abstract"].get("source") not in (None, "scholar"))
     print(f"wrote {len(documents)} records to {args.out}")
+    if args.abstracts:
+        print(f"{recovered} with a recovered abstract; "
+              f"{len(abstract_errors)} abstract lookups failed")
     return 1 if degraded else 0
 
 

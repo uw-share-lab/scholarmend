@@ -10,3 +10,6 @@ build/
 .ruff_cache/
 .env
 .superpowers/
+out/
+out-*/
+*.log

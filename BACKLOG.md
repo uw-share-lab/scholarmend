@@ -53,25 +53,29 @@ adds a tier-2 case carrying year, authors and abstract claims, and asserts that
 both the substitution and insertion paths ran. With `AU` added it fails; before,
 it did not.
 
-## 5. Authors and abstracts are never recovered
+## 5. Authors are never recovered — abstracts CLOSED 2026-09-21
 
-Measured: 0 of 2,413 records get either field from a non-Scholar source. Scholar
-truncates 71% of author lists and effectively every abstract, and scholarmend
-leaves both exactly as it found them.
+**Abstracts: closed.** Screening in Covidence turned out to be the consumer this
+section said was missing: reviewers were reading Scholar's `…`-joined snippets,
+with the query term highlighted, in place of every abstract. `--abstracts` now
+recovers them from the proceedings page, the OpenReview submission note, then
+Semantic Scholar, each admitted only when the source shows the record's own
+title. The third objection below did not apply to `AB`: every corpus record has
+exactly one `AB` line, and every claim is collapsed to one line, so it is a
+one-line substitution like `PY`. Opt-in, because it costs a fetch per record
+and the venue work needs none of them.
 
-This is deliberate, and documented in the design document and the README. It
-stays unbuilt because it would currently buy nothing: the RIS projection rewrites
-only `PY` and `JF`, so recovered authors would sit in the canonical JSON with no
-consumer — Covidence and `venuetriage` both read the RIS.
+**Authors: still open**, for the reasons below. Scholar truncates 71% of author
+lists and scholarmend leaves them exactly as it found them.
 
-**Closing it properly needs three changes together, not one:**
+Closing it properly needs three changes together, not one:
 
-1. emit the fields — OpenReview's API already returns `authors` and `abstract`
-   in a note's `content`, and Semantic Scholar needs a wider field list
-2. extend the projection to rewrite `AU` and `AB`
+1. emit the field — OpenReview's API already returns `authors` in a note's
+   `content`, and Semantic Scholar needs a wider field list
+2. extend the projection to rewrite `AU`
 3. accept what that costs the round-trip guarantee: rewriting an author list
    means deleting N lines and inserting M, which is categorically unlike the
-   single-line insertion the projection does today
+   single-line substitution the projection does today
 
 Doing one third of it adds code and delivers nothing.
 

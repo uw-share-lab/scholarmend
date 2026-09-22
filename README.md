@@ -63,12 +63,20 @@ leaves a gap.
 Every claim is retained with its source, tier, confidence and evidence, so the
 losing values stay auditable rather than being overwritten silently.
 
-**What it does not recover: authors and abstracts.** Scholar truncates 71% of
-author lists and effectively every abstract, and scholarmend leaves both as it
-found them — measured over the corpus, they come from Scholar in 2,413 of 2,413
-records. The RIS projection rewrites only `PY` and `JF`, so recovered authors
-would have no consumer today. See the design document for what closing the gap
-would take.
+**Abstracts, on request.** Scholar's `AB` is a search snippet on every record —
+fragments joined by `…` around the query terms — and that is what a screening
+tool shows reviewers. `--abstracts` replaces it with the paper's abstract, from
+the proceedings page, the OpenReview submission note, or Semantic Scholar, in
+that order, admitting each only when the source names the record's own title.
+Run it on the deduplicated, triaged upload rather than the whole corpus:
+
+    scholarmend --input ../Trust-Evals-LitReview/out/clean.ris --out out-covidence --abstracts
+
+`report.txt` lists every record whose abstract is still Scholar's snippet.
+
+**What it does not recover: authors.** Scholar truncates 71% of author lists,
+and scholarmend leaves them as it found them: rewriting `AU` would restructure a
+repeated field, which the projection never does. See `BACKLOG.md` §5.
 
 Querying a structured database instead does not work here, and the spec records
 the measurement: on a 30-title sample, OpenAlex matched 63% of titles and

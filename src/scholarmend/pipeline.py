@@ -50,6 +50,9 @@ def resolve_record(
     pmlr_index=None,
     pmc=None,
     semanticscholar=None,
+    proceedings_page=None,
+    abstracts: bool = False,
+    on_error=None,
 ) -> Ledger:
     """Build the full claim ledger for one record."""
     ledger = Ledger()
@@ -89,4 +92,46 @@ def resolve_record(
         for claim in semanticscholar.resolve(record.title):
             ledger.add(claim)
 
+    # Opt-in: it costs a fetch per record, and the venue and year work --
+    # including every validated number in the acceptance suite -- needs none.
+    if abstracts:
+        _resolve_abstract(record, ledger, openreview, semanticscholar, proceedings_page,
+                          on_error)
     return ledger
+
+
+def _resolve_abstract(record, ledger, openreview, semanticscholar, proceedings_page,
+                      on_error) -> None:
+    """Replace Scholar's snippet with the paper's abstract, first source to answer.
+
+    Its own step, with its own failure handling. A lookup that fails here
+    leaves the snippet in place and reports the error; it must not send the
+    record back to tier 1, which would discard a venue and year already
+    resolved for it -- the fields venuetriage actually decides on.
+    """
+    lookups = []
+    if proceedings_page is not None:
+        lookups.append(lambda: proceedings_page.resolve(record.title, record.urls))
+    forum = ledger.resolve("forum_id")
+    if openreview is not None and forum is not None:
+        lookups.append(lambda: openreview.abstract(forum.value, record.title))
+    if semanticscholar is not None and record.title:
+        lookups.append(lambda: semanticscholar.abstract(record.title))
+
+    from .cache import CacheMiss
+    from .http import HttpError
+    from .resolvers.openreview import AuthError
+
+    for lookup in lookups:
+        winner = ledger.resolve("abstract")
+        if winner is not None and winner.source != "scholar":
+            return
+        try:
+            claims = lookup()
+        except (AuthError, CacheMiss, HttpError) as error:
+            if on_error is None:
+                raise
+            on_error(error)
+            continue
+        for claim in claims:
+            ledger.add(claim)

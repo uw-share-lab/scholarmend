@@ -137,3 +137,42 @@ class OpenReviewResolver:
         cached = self.cache.fetch(openreview_key(forum_id), loader)
         venueid = cached.get("venueid")
         return parse_venueid(venueid) if venueid else []
+
+    def abstract(self, forum_id: str, title: str) -> list[Claim]:
+        """The submission note's own abstract, under a key of its own.
+
+        Kept apart from ``openreview_key`` so that the venueid entries -- each
+        validated against the reviewers' labels -- are neither refetched nor
+        rewritten to add a field they never needed.
+        """
+        from .proceedings_page import one_line
+        from .semanticscholar import titles_match
+
+        def loader() -> dict:
+            token = self._bearer()
+            if not token:
+                raise AuthError("OpenReview needs credentials to fetch an abstract")
+            from ..http import get_json
+
+            payload = get_json(f"{API}/notes?id={forum_id}",
+                               headers={"Authorization": f"Bearer {token}"})
+            notes = payload.get("notes") or []
+            note = notes[0] if notes else {}
+            if note.get("id") != forum_id:
+                return {}
+            content = note.get("content") or {}
+            return {
+                "title": (content.get("title") or {}).get("value") or "",
+                "abstract": (content.get("abstract") or {}).get("value") or "",
+            }
+
+        cached = self.cache.fetch(abstract_key(forum_id), loader)
+        text = one_line(cached.get("abstract") or "")
+        if not text or not titles_match(title, cached.get("title") or ""):
+            return []
+        return [Claim(field="abstract", value=text, source="openreview_api", tier=2,
+                      confidence=0.99, evidence=f"openreview:{forum_id}")]
+
+
+def abstract_key(forum_id: str) -> str:
+    return f"openreview:abstract:{forum_id}"

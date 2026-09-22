@@ -18,13 +18,18 @@ from .pipeline import RESOLVED_FIELDS
 
 # Which RIS tag carries each resolved field. Only these are ever rewritten.
 #
-# Authors and abstracts are deliberately absent. Rewriting AU means deleting N
-# lines and inserting M -- restructuring a repeated field -- which is a
-# different act from substituting one line or inserting one missing line, and
-# puts the round-trip guarantee -- the projection's whole safety argument -- at
-# risk. Resolved authors and abstracts live in the canonical JSON, which is the
-# record; RIS is a projection for tools that cannot read it.
-_TAG_FOR = {"year": "PY", "venue": "JF"}
+# Authors are deliberately absent. Rewriting AU means deleting N lines and
+# inserting M -- restructuring a repeated field -- which is a different act from
+# substituting one line or inserting one missing line, and puts the round-trip
+# guarantee -- the projection's whole safety argument -- at risk. Resolved
+# authors live in the canonical JSON, which is the record; RIS is a projection
+# for tools that cannot read it.
+#
+# Abstracts are present because AB is not that case: every corpus record has
+# exactly one AB line, and every abstract claim is collapsed to one line, so a
+# recovered abstract is a one-line substitution like PY or JF. Screening in
+# Covidence reads AB, and Scholar's is a snippet on every record.
+_TAG_FOR = {"year": "PY", "venue": "JF", "abstract": "AB"}
 
 
 def to_json(record: Record, ledger: Ledger) -> dict:
@@ -65,7 +70,10 @@ def _line(tag: str, value: str) -> str:
     """One RIS line, preserving Scholar's ``2025///`` year shape."""
     if tag == "PY":
         return f"PY  - {value}///"
-    return f"{tag}  - {value}"
+    # One value, one line, whatever a resolver handed over: a newline here
+    # would split the field into a continuation line no downstream parser
+    # agrees on how to read.
+    return f"{tag}  - {' '.join(value.split())}"
 
 
 def _insert_at(lines: list[str]) -> int:
@@ -93,7 +101,7 @@ def project_ris(record: Record, ledger: Ledger) -> str:
     would drop every year it resolved for them.
 
     Inserting one line is not the same as restructuring a multi-line field.
-    ``AU`` and ``AB`` stay out of ``_TAG_FOR`` for exactly that reason.
+    ``AU`` stays out of ``_TAG_FOR`` for exactly that reason.
     """
     corrections = {}
     for field, tag in _TAG_FOR.items():

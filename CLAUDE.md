@@ -45,9 +45,9 @@ track. A confident wrong answer is harder to notice than a crash.
   reading it, not only by replaying it.
 - **The RIS projection substitutes and inserts; it never restructures.**
   `emit.project_ris` may replace a line or insert a missing one before `ER  - `.
-  It must never delete N lines and insert M — which is why `AU` and `AB` are not
-  in `_TAG_FOR`. Downstream tools were written against Scholar's exact output,
-  including the trailing space on `ER  - ` and the `AU  - ...` truncation marker.
+  It must never delete N lines and insert M — which is why `AU` is not in
+  `_TAG_FOR`. `AB` is: one line per record, substituted whole. Downstream
+  tools were written against Scholar's exact output, including the trailing space on `ER  - ` and the `AU  - ...` truncation marker.
   `tests/test_emit.py` guards this; read it before touching the projection.
 
 ## The validation corpus
@@ -64,15 +64,22 @@ plan were found by people who stopped instead of editing a number to pass.
 
 ## What it does not do
 
-It never recovers authors or abstracts: 0 of 2,413 records. See `BACKLOG.md` §5
-for why, and what closing that gap would actually take.
+It never recovers authors. See `BACKLOG.md` §5 for why.
+
+Abstracts are recovered only with `--abstracts` (opt-in: one fetch per record,
+none of which the venue work needs), from the proceedings page, then the
+OpenReview note, then Semantic Scholar. Each source must show the record's own
+title before its abstract is admitted. Run it on venuetriage's `clean.ris`, the
+Covidence upload, not on the corpus:
+
+    scholarmend --input ../Trust-Evals-LitReview/out/clean.ris --out out-covidence --abstracts
 
 ## Commands
 
 ```bash
 pip install -e ".[dev]"
 
-pytest                         # 189 tests, offline, ~0.6s
+pytest                         # 204 tests, offline, ~0.6s
 ruff check src tests
 mypy src
 
