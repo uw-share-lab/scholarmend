@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2026/hash/e045c55a71fb4fc04d9a20579415247d-Abstract-Conference.html",
+ "payload": {
+  "abstract": "We present MARTI (Multi-Agent Reinforced Training and Inference), an open-source framework designed to facilitate scalable and efficient learning of multi-agent LLM systems. MARTI supports centralized multi-agent interactions and distributed policy training, with the added capability of multi-turn asynchronous rollouts to enhance training efficiency. The framework includes dynamic workflows for multi-agent interactions, which integrate both rule-based verifiable rewards and LLM-based generative rewards. We validate the effectiveness of MARTI through comprehensive experiments on diverse mathematical tasks, demonstrating that multi-agent LLM-based systems outperform single-agent systems within the same inference budget after convergence. Our contributions lay the foundation for exploring scalable collaborations within LLM-based multi-agent systems and advancing the capabilities of large reasoning models.",
+  "title": "MARTI: A Framework for Multi-Agent LLM Systems Reinforced Training and Inference"
+ }
+}

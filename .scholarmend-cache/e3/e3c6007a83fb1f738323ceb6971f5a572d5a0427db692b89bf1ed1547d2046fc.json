@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2026/hash/06d5f1fe6509b001e6d4e0ec1afd83dd-Abstract-Conference.html",
+ "payload": {
+  "abstract": "While humans naturally learn and adapt from past experiences, large language models (LLMs) and their agentic counterparts often fail to retain reasoning from previous tasks and apply it to future contexts. We introduce Log-Augmented Generation (LAG), a novel framework that directly reuses prior computation and reasoning from past logs at test time, enabling models to learn from previous tasks to perform better on new, unseen challenges, without sacrificing efficiency or scalability. Our approach represents task logs as key-value (KV) caches that encode the reasoning context of prior tasks, while storing KV values for only a selected subset of tokens. When a new task arises, LAG retrieves KV values from relevant logs to augment generation. Unlike reflection-based memory mechanisms, which require additional extraction or distillation steps, LAG reuses prior reasoning verbatim. Moreover, it extends beyond existing KV caching techniques, primarily designed for efficiency, by explicitly improving accuracy through log reuse. Experiments on knowledge- and reasoning-intensive datasets demonstrate that our method significantly outperforms standard agentic systems without log utilization, as well as existing approaches based on reflection and KV cache techniques.",
+  "title": "Log-Augmented Generation: Scaling Test-Time Reasoning with Reusable Computation"
+ }
+}

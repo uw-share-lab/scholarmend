@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:dSRLxMgwxd",
+ "payload": {
+  "abstract": "Large language models (LLMs) often employ Retrieval-Augmented Generation (RAG) to improve factuality. However, this also increases the risk of sensitive private information leakage. Differential Privacy (DP) has therefore been integrated into LLM inference and is widely regarded as a standard safeguard; yet most studies focus narrowly on the privacy–utility trade-off, leaving the trustworthiness of DP outputs underexplored. To assess trustworthiness, we employ the confidence gap (CG), which quantifies an LLM’s internal knowledge conflict. We show that CG correlates with both hallucination and exposure of personally identifiable information (PII). Building on this insight, we propose PEARL, a CG‑guided, entropy‑aware private decoding framework. PEARL adaptively allocates the privacy budget across tokens and sentences based on CG, concentrating protection on PII-bearing spans while stabilizing low-confidence, hallucination-prone regions. In experiments, PEARL improves both trustworthiness and robustness against PII extraction attacks. Notably, while applying DP alone significantly increases hallucination, our framework demonstrates that it is possible to preserve privacy while reducing hallucination.",
+  "title": "PEARL: Differentially Private and Entropy-Aware Regulated Language Generation"
+ }
+}

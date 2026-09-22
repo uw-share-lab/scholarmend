@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:gllCfOG1Gt",
+ "payload": {
+  "abstract": "Large Language Models (LLMs) show strong reasoning abilities, yet their reliability is hindered by hallucinations, where fluent reasoning becomes factually or logically incorrect.\nMost existing uncertainty-based detectors rely on sequence-level averaging, which ignores the step-wise dynamics of reasoning and often misclassifies hard-but-correct or easy-but-wrong samples.\nWe propose a dynamic perspective that models reasoning as a trajectory on a latent Evidence Manifold, where each step is supported by local evidence.\nHallucinations are characterized as Evidence Drops, i.e., sudden declines in local evidence support that indicate topological deviations from this manifold.\nBased on this insight, we design a training-free and model-agnostic detector that identifies hallucinations via the worst-case Evidence Drop and enables step-level error localization.\nExperiments on GSM8K, MATH, and ProcessBench show consistent improvements over sequence-level uncertainty baselines in selective accuracy and risk–coverage trade-offs.",
+  "title": "Mind the Gap: Catching Hallucinations via Evidence Drop on the Reasoning Manifold"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:IBLJ5MNcgy",
+ "payload": {
+  "abstract": "VideoQA models can be accurate yet often fail to align answers with the correct video segments (the \\emph{grounding gap}). We introduce \\textbf{LINGUA} (\\textbf{L}anguage-based \\textbf{IN}ference for \\textbf{G}rounded Video \\textbf{U}nderstanding \\textbf{A}gent), a memory-based agent that performs grounded VideoQA by reasoning in an explicit \\emph{linguistic belief state}. LINGUA uses five mechanisms: (1) event-driven perception (retains 8--12\\% of frames while preserving 94\\% of question-relevant events); (2) typed memory for episodic narratives, semantic affordances, and procedural scripts; (3) Belief-Action-Verification loops with postcondition and temporal checks; (4) meta reflection with contrastive refinement; and (5) Bayesian reliability tracking for continual learning without gradient updates. Built with Gemma3-4B (Ollama, 4-bit), LINGUA outperforms strong baselines on five VideoQA benchmarks, reaching 82.4\\% on NExT-QA and 42.3\\% Acc@GQA on NExT-GQA (answer + IoU$\\geq$0.5 temporal localization), while running 2.6$\\times$ faster than dense-frame methods. In continual learning over 100 videos, accuracy rises from 45.2\\% (first 10) to 61.8\\% (last 10) without catastrophic forgetting, indicating online adaptation via memory refinement.",
+  "title": "LINGUA: Bridging the Grounding Gap in VideoQA via Typed Memory and Belief-State Reasoning"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2026/hash/0850e04a62e0f3407780852581c5fcf4-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Existing rule-based explanations for Graph Neural Networks (GNNs) provide global interpretability but often optimize and assess fidelity in an intermediate, uninterpretable concept space, overlooking the grounding quality of the final subgraph explanations for end users. This gap yields explanations that may appear faithful yet be unreliable in practice. To this end, we propose LogicXGNN, a post hoc framework that constructs logical rules over reliable predicates explicitly designed to capture the GNN's message-passing structure, thereby ensuring effective grounding. We further introduce data-grounded fidelity ($Fid_D$), a realistic metric that evaluates explanations in their final-graph form, along with complementary utility metrics such as coverage and validity. Across extensive experiments, LogicXGNN improves $Fid_D$ by over 20% on average relative to state-of-the-art methods while being 10-100 times faster. With strong scalability and utility performance, LogicXGNN produces explanations that are faithful to the model's logic and reliably grounded in observable data.",
+  "title": "LogicXGNN:  Grounded Logical Rules for Explaining Graph Neural Networks"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:hIATBu13gC",
+ "payload": {
+  "abstract": "Developing reliable machine translation (MT) systems hinges on our ability to distinguish superior translations from inferior ones. However, existing evaluation paradigms, whether limited to coarse overall rankings or misaligned with human preferences, fail to deliver interpretable, fine‑grained feedback in reference‑free settings. We present a Fine-Grained Ranking Evaluation method (FiRE) that leverages off‑the‑shelf large language models to perform criterion‑driven pairwise comparison across three complementary dimensions: faithfulness, fluency, and consistency of style, instead of producing a single holistic judgment. To enable rigorous meta‑evaluation of evaluation paradigms in the absence of any suitable testbed, we construct the first human‑annotated, reference‑free benchmark for fine-grained ranking evaluation, achieving substantial inter‑annotator agreement. Through meta‑evaluation on this benchmark and existing MQM datasets, FiRE demonstrably outperforms regression‑based and error‑analysis metrics in aligning with human comparative judgments, while providing more informative insights into translation quality. Finally, our examination of LLM evaluator biases (position and self-enhancement) and their handling of tied cases offers guidance for more nuanced MT evaluation. Code and benchmark resources are available at https://github.com/wygao8/FiRE-MT.",
+  "title": "FiRE: Fine-grained Ranking Evaluation for Machine Translation"
+ }
+}

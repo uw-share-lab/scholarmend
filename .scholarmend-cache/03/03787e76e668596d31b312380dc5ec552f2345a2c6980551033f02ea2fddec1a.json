@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:L3uLMA5OqJ",
+ "payload": {
+  "abstract": "Monitoring marine mammal communication in the St. Lawrence Estuary presents unique challenges: vocalizations range from low-frequency moans to ultrasonic clicks, often overlap across species, and are masked by heavy anthropogenic and environmental noise. To address these complexities, we propose a multi-modal, attention-guided framework that integrates spectrogram-based segmentation with raw acoustic inputs for robust denoising and species detection. By generating \"pseudo attention\" masks of biologically relevant energy and combining them with original inputs through mid-level fusion, our model learns to emphasize salient communication cues while preserving contextual information. Using field recordings from the Saguenay–St. Lawrence Marine Park, we demonstrate improved discrimination of beluga and porpoise signals, reduced false detections, and reliable presence estimates under diverse noise conditions. Beyond technical advances in multimodal bioacoustic processing, this work contributes to AI-driven approaches for decoding marine mammal communication and supports biodiversity monitoring efforts critical to conservation and climate adaptation.",
+  "title": "Marine Mammals Recognition: a Multi-Modal Framework for Bioacoustic Monitoring"
+ }
+}

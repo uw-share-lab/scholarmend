@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:msoH5OGwdt",
+ "payload": {
+  "abstract": "Deep learning–based watermarking has substantially improved robustness to real-world noise, but its performance degrades as the payload dimension increases. In contrast, coding-based methods such as quantization index modulation (QIM) do not suffer from this curse of dimensionality, although they are less robust to real-world noise. To leverage the strengths of both approaches, we propose OrthoMark, a framework that decouples robust feature extraction from message encoding. OrthoMark first learns a distortion-invariant feature representation using a deep robust feature extractor, and then performs watermark encoding and decoding in this feature domain using coding-based methods. Extensive experiments demonstrate that OrthoMark significantly improves the trade-off among visual quality, robustness, and capacity compared to prior deep watermarking methods, with particularly large gains in the high capacity regime, effectively overcoming the curse of dimensionality. Our code is available at \\url{https://github.com/QQiuyp/OrthoMark}.",
+  "title": "Revisiting Coding-Based Approaches to Overcome the Curse of Dimensionality in Learning-Based Watermarking"
+ }
+}

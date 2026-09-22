@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/01d5b44366f50df931fc14cac12bee60-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Balancing resource efficiency and fairness is critical in networked systems that support modern learning applications. We introduce the _Fair Minimum Labeling_ (FML) problem: the task of designing a minimum-cost temporal edge activation plan that ensures each group of nodes in a network has sufficient access to a designated target set, according to specified coverage requirements. FML captures key trade-offs in systems where edge activations incur resource costs and equitable access is essential, such as distributed data collection, update dissemination in edge-cloud systems, and fair service restoration in critical infrastructure. We show that FML is NP-hard and $\\Omega(\\log |V|)$-hard to approximate, where $V$ is the set of nodes, and we present probabilistic approximation algorithms that match this bound, achieving the best possible guarantee for the activation cost. We demonstrate the practical utility of FML in a fair multi-source data aggregation task for training a shared model. Empirical results show that FML enforces group-level fairness with substantially lower activation cost than baseline heuristics, underscoring its potential for building resource-efficient, equitable temporal reachability in learning-integrated networks.",
+  "title": "Fair Minimum Labeling: Efficient Temporal Network Activations for Reachability and Equity"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/9ded239c04ffa90ba51125d13c6c0c39-Abstract-Position_Paper_Track.html",
+ "payload": {
+  "abstract": "The \"right to be forgotten\" and the data privacy laws that encode it have motivated machine unlearning since its earliest days. Now, some argue that an inbound wave of artificial intelligence regulations — like the European Union's Artificial Intelligence Act (AIA) — may offer important new use cases for machine unlearning. However, this position paper argues, this opportunity will only be realized if researchers proactively bridge the (sometimes sizable) gaps between machine unlearning's state of the art and its potential applications to AI regulation. To demonstrate this point, we use the AIA as our primary case study. Specifically, we deliver a \"state of the union\" as regards machine unlearning's current potential (or, in many cases, lack thereof) for aiding compliance with the AIA. This starts with a precise cataloging of the potential applications of machine unlearning to AIA compliance. For each, we flag the technical gaps that exist between the potential application and the state of the art of machine unlearning. Finally, we end with a call to action: for machine learning researchers to solve the open technical questions that could unlock machine unlearning's potential to assist compliance with the AIA — and other AI regulation like it.",
+  "title": "Position: Bridge the Gaps between Machine Unlearning and AI Regulation"
+ }
+}

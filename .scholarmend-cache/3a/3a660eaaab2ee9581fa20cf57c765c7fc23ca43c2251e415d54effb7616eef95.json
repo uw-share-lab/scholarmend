@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:u6UnapBLWr",
+ "payload": {
+  "abstract": "Infrared and visible image fusion (IVIF) aims to synergize complementary thermal radiation and textural details for comprehensive scene perception. However, existing unsupervised paradigms often overlook the intrinsic topological consistency shared across modalities. Lacking explicit geometric regularization, encoders frequently succumb to degenerate numerical shortcuts, capturing superficial high-frequency noise rather than domain-invariant semantic structures to satisfy reconstruction objectives. To address this, we propose LaRA-Fusion, a framework achieving Latent-Robust Adaptation via Dual-Loop Manifold Constraints. We construct a strictly constrained latent space where an inner loop enforces geometric reversibility, while an outer loop aligns the generated representations with the target data distribution. This mechanism effectively mitigates latent space collapse, compelling the model to extract topologically aligned features that remain robust against modality-specific variations. Extensive experiments demonstrate that LaRA-Fusion outperforms state-of-the-art methods with superior robustness and interpretability.",
+  "title": "LaRA-Fusion: Latent-Robust Adaptation via Dual-Loop Constraints for Infrared and Visible Image Fusion"
+ }
+}

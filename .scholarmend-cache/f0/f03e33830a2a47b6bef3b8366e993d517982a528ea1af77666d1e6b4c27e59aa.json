@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/4f49a7095adc91ebcf82a9a1f5a6cde4-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Thompson Sampling is a principled method for balancing exploration and exploitation, but its real-world adoption faces computational challenges in large-scale or non-conjugate settings. While ensemble-based approaches offer partial remedies, they typically require prohibitively large ensemble sizes. We propose Ensemble++, a scalable exploration framework using a novel shared-factor ensemble architecture with random linear combinations. For linear bandits, we provide theoretical guarantees showing that Ensemble++ achieves regret comparable to exact Thompson Sampling with only $\\Theta(d \\log T)$ ensemble sizes--significantly outperforming prior methods. Crucially, this efficiency holds across both compact and finite action sets with either time-invariant or time-varying contexts without configuration changes. We extend this theoretical foundation to nonlinear rewards by replacing fixed features with learnable neural representations while preserving the same incremental update principle, effectively bridging theory and practice for real-world tasks. Comprehensive experiments across linear, quadratic, neural, and GPT-based contextual bandits validate our theoretical findings and demonstrate Ensemble++'s superior regret-computation tradeoff versus state-of-the-art methods.",
+  "title": "Scalable Exploration via Ensemble++"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/18559d6e47b4f5375e25fccbf235ac9e-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Graph Convolutional Networks (GCNs) based on linear aggregation have been widely applied across various domains due to their exceptional performance. To enhance performance, these networks often utilize the graph Laplacian norm to suppress the propagation of information from first-order neighbors. However, this approach may dilute valuable interaction information and make the model slowly learn sparse interaction relationships from neighbors, which increases training time and negatively affects performance. To address these issues, we introduce BoostGCN, a novel linear GCN model that focuses on amplifying significant interactions with first-order neighbors, which enables the model to accurately and quickly capture significant relationships. BoostGCN has relatively fixed parameters, making it user-friendly. Experiments on four real-world datasets demonstrate that BoostGCN outperforms existing state-of-the-art GCN models in both performance and efficiency.",
+  "title": "Revolutionizing Graph Aggregation: From Suppression to Amplification via BoostGCN"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/e8ddc03b001d4c4b44b29bc1167e7fdd-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Watermarking LLM-generated text is critical for content attribution and misinformation prevention, yet existing methods compromise text quality and require white-box model access with logit manipulation or training, which exclude API-based models and multilingual scenarios. We propose SAEMark, an inference-time framework for multi-bit watermarking that embeds personalized information through feature-based rejection sampling, fundamentally different from logit-based or rewriting-based approaches: we do not modify model outputs directly and require only black-box access, while naturally supporting multi-bit message embedding and generalizing across diverse languages and domains. We instantiate the framework using Sparse Autoencoders as deterministic feature extractors and provide theoretical worst-case analysis relating watermark accuracy to computational budget. Experiments across 4 datasets demonstrate strong watermarking performance on English, Chinese, and code while preserving text quality. SAEMark establishes a new paradigm for scalable, quality-preserving watermarks that work seamlessly with closed-source LLMs across languages and domains.",
+  "title": "SAEMark: Steering Personalized Multilingual LLM Watermarks with Sparse Autoencoders"
+ }
+}

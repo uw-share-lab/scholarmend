@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/2608470747b9b55b89de1c0d70418cab-Abstract-Conference.html",
+ "payload": {
+  "abstract": "This paper addresses the problem of robust estimation in gossip algorithms over arbitrary communication graphs. Gossip algorithms are fully decentralized, relying only on local neighbor-to-neighbor communication, making them well-suited for situations where communication is constrained. A fundamental challenge in existing mean-based gossip algorithms is their vulnerability to malicious or corrupted nodes. In this paper, we show that an outlier-robust mean can be computed by globally estimating a robust statistic. More specifically, we propose a novel gossip algorithm for rank estimation, referred to as \\textsc{GoRank}, and leverage it to design a gossip procedure dedicated to trimmed mean estimation, coined \\textsc{GoTrim}. In addition to a detailed description of the proposed methods, a key contribution of our work is a precise convergence analysis: we establish an $\\mathcal{O}(1/t)$ rate for rank estimation and an $\\mathcal{O}(1 / {t})$ rate for trimmed mean estimation, where by $t$ is meant the number of iterations. Moreover, we provide a breakdown point analysis of \\textsc{GoTrim}. We empirically validate our theoretical results through experiments on diverse network topologies, data distributions and contamination schemes.",
+  "title": "Robust Distributed Estimation: Extending Gossip Algorithms to Ranking and Trimmed Means"
+ }
+}

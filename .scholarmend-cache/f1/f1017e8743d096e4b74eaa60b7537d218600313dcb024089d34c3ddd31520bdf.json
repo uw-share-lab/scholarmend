@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:jojAir1F71",
+ "payload": {
+  "abstract": "Large reasoning models (LRMs) achieve strong performance by explicitly generating chain-of-thought (CoT) reasoning, but this reasoning process can be manipulated by adversarial prompts.\nInference-time CoT interventions offer a simple and lightweight approach to improving safety, yet existing methods typically apply static heuristics that ignore the dynamic nature of reasoning, leading to an inherent trade-off between robustness and over-refusal.\nThis paper introduces *SafeCompass*, a plug-and-play framework for dynamically steering chain-of-thought reasoning using inference-time safety signals extracted from internal states.\nAt different reasoning positions, *SafeCompass* derives a latent safety direction through contrastive analysis of internal representations and uses this direction to quantify the model’s current safety state.\nThese signals enable selective intervention, allowing the model’s reasoning trajectory to be modified only when and where it becomes unsafe.\nExtensive experiments demonstrate that *SafeCompass* significantly improves robustness, reducing the average attack success rate up to $10\\times$ compared to the best baseline, while preserving general reasoning performance and minimizing over-refusal rates.",
+  "title": "SafeCompass: Dynamic Chain-of-Thought Steering via Inference-Time Safety Signals"
+ }
+}

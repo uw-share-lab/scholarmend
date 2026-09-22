@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2026/hash/78abb5f1206ca54c375084223de9c2ef-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Retrieval Augmented Generation (RAG) systems are increasingly vital in dynamic domains like online gaming, yet the lack of a dedicated benchmark has impeded standardized evaluation in this area. The core difficulty lies in Dual Dynamics: the constant interplay between game content updates and the shifting focus of the player community. Furthermore, the necessity of automating such a benchmark introduces a critical requirement for player-centric authenticity to ensure generated questions are realistic. To address this integrated challenge, we introduce ChronoPlay, a novel framework for the automated and continuous generation of game RAG benchmarks. ChronoPlay utilizes a dual-dynamic update mechanism to track both forms of change, and a dual-source synthesis engine that draws from official sources and player community to ensure both factual correctness and authentic query patterns. We instantiate our framework on three distinct games to create the first dynamic RAG benchmark for the gaming domain, offering new insights into model performance under these complex and realistic conditions. Our code is available at: https://github.com/hly1998/ChronoPlay.",
+  "title": "ChronoPlay: A Framework for Modeling Dual Dynamics and Authenticity in Game RAG Benchmarks"
+ }
+}

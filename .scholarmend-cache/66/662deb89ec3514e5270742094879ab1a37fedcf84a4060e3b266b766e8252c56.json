@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/a03037317560b8c5f2fb4b6466d4c439-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Out-of-distribution (OOD) detection is essential for reliably deploying machine learning models in the wild. Yet, most methods treat large pre-trained models as monolithic encoders and rely solely on their final-layer representations for detection. We challenge this wisdom. We reveal the intermediate layers of pre-trained models, shaped by residual connections that subtly transform input projections, can encode surprisingly rich and diverse signals for detecting distributional shifts. Importantly, to exploit latent representation diversity across layers, we introduce an entropy-based criterion to automatically identify layers offering the most complementary information in a training-free setting, without access to OOD data. We show that selectively incorporating these intermediate representations can increase the accuracy of OOD detection by up to $10\\%$ in far-OOD and over $7\\%$ in near-OOD benchmarks compared to state-of-the-art training-free methods across various model architectures and training objectives. Our findings reveal a new avenue for OOD detection research and uncover the impact of various training objectives and model architectures on confidence-based OOD detection methods.",
+  "title": "Mysteries of the Deep: Role of Intermediate Representations in Out of Distribution Detection"
+ }
+}

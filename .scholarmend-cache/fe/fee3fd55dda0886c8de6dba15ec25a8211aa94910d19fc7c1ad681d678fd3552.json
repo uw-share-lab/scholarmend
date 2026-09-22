@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2025/hash/1c6decac1477fbcc2cbf12d314ce0133-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Large Language Models (LLMs) can produce biased responses that can cause representational harms. However, conventional studies are insufficient to thoroughlyevaluate biases across LLM responses for different demographic groups (a.k.a.counterfactual bias), as they do not scale to large number of inputs and do notprovide guarantees. Therefore, we propose the first framework, LLMCert-B thatcertifies LLMs for counterfactual bias on distributions of prompts. A certificateconsists of high-confidence bounds on the probability of unbiased LLM responsesfor any set of counterfactual prompts - prompts differing by demographic groups,sampled from a distribution. We illustrate counterfactual bias certification fordistributions of counterfactual prompts created by applying prefixes sampled fromprefix distributions, to a given set of prompts. We consider prefix distributions consisting random token sequences, mixtures of manual jailbreaks, and perturbationsof jailbreaks in LLM’s embedding space. We generate non-trivial certificates forSOTA LLMs, exposing their vulnerabilities over distributions of prompts generatedfrom computationally inexpensive prefix distributions.",
+  "title": "Certifying Counterfactual Bias in LLMs"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:VzZxoRiU3G",
+ "payload": {
+  "abstract": "Medical Large Vision-Language Models (Med-LVLMs) suffer from severe hallucinations, posing critical safety risks in clinical deployment. Editing LVLM activations has shown promise for mitigating hallucination with minimal cost. However, due to the requirements of medical domain expertise, existing methods struggle to capture imaging manifestations and diagnostic principles that are critical for clinical interpretation, thereby limiting their effectiveness. To address these limitations, we propose the first MEDical-oriented Activation Editing (MEDA) method by integrating Query-decisive Manifestation Steering (QMS) and Principle-driven Diagnosis Induction (PDI) to promote Med-LVLM's expertise elicitation. Specifically, QMS retrieves positive query-decisive imaging manifestations as trusted guidance for activation steering, while PDI constructs positive principle-embedded diagnostic prompts to induce expert-like clinical reasoning. Extensive experiments across six benchmarks and six LVLMs demonstrate that MEDA efficiently improves the response factuality with up to a 10.2\\% gain on IU-Xray, while exhibiting strong generalization and few-shot robustness.",
+  "title": "MEDA: Medical-Oriented Activation Editing for Hallucination Mitigation in Medical Large Vision-Language Model"
+ }
+}

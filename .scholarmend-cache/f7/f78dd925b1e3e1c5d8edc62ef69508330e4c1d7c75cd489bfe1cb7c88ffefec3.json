@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/468a018d4eb4ef57a2a5715d16658b24-Abstract-Conference.html",
+ "payload": {
+  "abstract": "As AI models are deployed with increasing autonomy, it is important to ensure they do not take harmful actions unnoticed. As a potential mitigation, we investigate Chain-of-Thought (CoT) monitoring, wherein a weaker trusted monitor model continuously oversees the intermediate reasoning steps of a more powerful but untrusted model. We compare CoT monitoring to action-only monitoring, where only final outputs are reviewed, in a red-teaming setup where the untrusted model is instructed to pursue harmful side tasks while completing a coding problem. We find that while CoT monitoring is more effective than overseeing only model outputs in scenarios where action-only monitoring fails to reliably identify sabotage, reasoning traces can contain misleading rationalizations that deceive the CoT monitors, reducing performance in obvious sabotage cases. To address this, we introduce a hybrid protocol that independently scores model reasoning and actions, and combines them using a weighted average. Our hybrid monitor consistently outperforms both CoT and action-only monitors across all tested models and tasks, with detection rates twice higher than action-only monitoring for subtle deception scenarios.",
+  "title": "CoT Red-Handed: Stress Testing Chain-of-Thought Monitoring"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2026/hash/1baeb4973da3e78e523024030ea81cf5-Abstract-Conference.html",
+ "payload": {
+  "abstract": "As AI becomes more personal, e.g., Agentic AI, there is an increasing need for personalizing models for various use cases. Personalized federated learning (PFL) enables each client to collaboratively leverage other clients' knowledge for better adaptation to the task of interest, without privacy risks. Despite its potential, existing PFL methods remain confined to rather simplified scenarios where data and models are the same across clients. To move towards realistic scenarios, we move beyond these restrictive assumptions by addressing both data and model heterogeneity. We propose a task-relevance-aware model aggregation strategy to reduce parameter interference under heterogeneous data. Moreover, we introduce Co-LoRA, a dimension-invariant module that enables knowledge sharing across heterogeneous architectures. To mimic the real-world task diversity, we propose a multi-modal PFL benchmark spanning 40 distinct tasks with distribution shifts over time. Extensive experiments shows that our proposed method significantly outperforms the state-of-the-art PFL methods under heterogeneous scenarios. Code is available at https://github.com/snumprlab/fedmosaic.",
+  "title": "Co-LoRA: Collaborative Model Personalization on Heterogeneous Multi-Modal Clients"
+ }
+}

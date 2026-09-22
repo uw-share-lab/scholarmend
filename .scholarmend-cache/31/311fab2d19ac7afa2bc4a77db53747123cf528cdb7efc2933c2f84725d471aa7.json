@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/863d42e2c34d5f65b9ccec5b0ddc2827-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Deep learning systems deployed in real-world applications often encounter data that is different from their in-distribution (ID). A reliable model should ideally abstain from making decisions in this out-of-distribution (OOD) setting. Existing state-of-the-art methods primarily focus on feature distances, such as k-th nearest neighbors and distances to decision boundaries, either overlooking or ineffectively using in-distribution statistics. In this work, we propose a novel angle-based metric for OOD detection that is computed relative to the in-distribution structure. We demonstrate that the angles between feature representations and decision boundaries, viewed from the mean of in-distribution features, serve as an effective discriminative factor between ID and OOD data. We evaluate our method on nine ImageNet-pretrained models. Our approach achieves the lowest FPR in 5 out of 9 ImageNet models, obtains the best average FPR overall, and consistently ranking among the top 3 across all evaluated models. Furthermore, we highlight the benefits of contrastive representations by showing strong performance with ResNet SCL and CLIP architectures. Finally, we demonstrate that the scale-invariant nature of our score enables an ensemble strategy via simple score summation.",
+  "title": "Out-of-Distribution Detection with Relative Angles"
+ }
+}

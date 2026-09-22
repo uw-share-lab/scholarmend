@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:M9DDNGIM7Z",
+ "payload": {
+  "abstract": "Large language models (LLMs) are highly sensitive to even small amounts of unsafe training data, making effective detection and filtering essential for trustworthy model development. Current state-of-the-art (SOTA) detection approaches primarily rely on moderation classifiers, which require significant computation overhead for training and are limited to predefined taxonomies. In this work, we explore data attribution approaches that measure the similarity between individual training samples and a small set of unsafe target examples, based on data representations such as hidden states or gradients. We identify a key limitation in existing methods: unsafe target texts contain both critical tokens that make them unsafe and neutral tokens (e.g., stop words or benign facts) that are necessary to form fluent language, and the latter of which makes the overall representations noisy for the purpose of detecting unsafe training data. To address this challenge, we propose Denoised Representation Attribution (DRA), a novel representation-based data attribution approach that denoises training and target representations for unsafe data detection. Across tasks of filtering jailbreaks and detecting gender bias, the proposed approach leads to significant improvement for data attribution methods, outperforming SOTA methods that are mostly based on moderation classifiers.",
+  "title": "Detecting and Filtering Unsafe Training Data via Data Attribution with Denoised Representation"
+ }
+}

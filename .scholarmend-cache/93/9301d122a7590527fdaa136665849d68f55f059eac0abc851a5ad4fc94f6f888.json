@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/e70caa88a65dd6cbc227f66e58211f18-Abstract-Conference.html",
+ "payload": {
+  "abstract": "We introduce a new graph diffusion model for small drug molecule generation which simultaneously offers a 10-fold reduction in the number of diffusion steps when compared to existing methods, preservation of small molecule graph motifs via motif compression, and an average 3\\% improvement in SMILES validity over the DiGress model across all real-world molecule benchmarking datasets. Furthermore, our approach outperforms the state-of-the-art DeFoG method with respect to motif-conservation by roughly 4\\%, as evidenced by high ChEMBL-likeness, QED and newly introduced shingles distance scores. The key ideas behind the approach are to use a combination of deterministic and random subgraph perturbations, so that the node and edge noise schedules are codependent; to modify the loss function of the training process in order to exploit the deterministic component of the schedule; and, to ''compress'' a collection of highly relevant carbon ring and other motif structures into supernodes in a way that allows for simple subsequent integration into the molecular scaffold.",
+  "title": "DMol: A Highly Efficient and Chemical Motif-Preserving Molecule Generation Platform"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:Q0rAQZg9t5",
+ "payload": {
+  "abstract": "Existing VLA models frequently fail in robotic manipulation tasks, with poorly structured fault types that often require expert diagnosis. While VLMs offer strong explanatory capabilities, their effectiveness in assisting VLAs is limited by their unclear role in diagnostics and inadequate collaboration mechanisms. To address this, we introduce VLA-FixBench, a fault evaluation dataset that spans perception, planning, and control failures, and provides annotations for task stages, fault types, and spatiotemporal repair strategies. We further propose FaultEval, a static-to-dynamic-to-real evaluation framework that benchmarks 20 VLMs across multiple fault-related dimensions. Building on these insights, we design a VLM–VLA collaboration mechanism that localizes spatiotemporal deviations and rolls back task execution to enable targeted recovery. Experiments show that FaultEval reliably characterizes VLM-based closed-loop diagnosis and repair. The upper-bound analysis using human expert intervention shows that an idealized feedback loop can improve task success rates by 13\\% on LIBERO and 35\\% on real-world robots. Our code, benchmark, and project page will be publicly released at:\n https://kakigo.github.io/VLA-FixBench/",
+  "title": "Can VLMs Diagnose and Recover from VLA Manipulation Faults?"
+ }
+}

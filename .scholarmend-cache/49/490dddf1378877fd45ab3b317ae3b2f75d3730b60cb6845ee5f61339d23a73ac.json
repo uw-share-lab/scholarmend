@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/abdc8c031aa6c6917c3b593166e5e340-Abstract-Conference.html",
+ "payload": {
+  "abstract": "We present BrainODE, a neural ordinary differential equation (ODE)-based framework for modeling continuous longitudinal deformations of brain shapes. BrainODE learns a deformation space over anatomically meaningful brain regions to facilitate early prediction of neurodegenerative disease progression. Addressing inherent challenges of longitudinal neuroimaging data-such as limited sample sizes, irregular temporal sampling, and substantial inter-subject variability-we propose a conditional neural ODE architecture that models shape dynamics with subject-specific age and cognitive status. To enable autoregressive forecasting of brain morphology from a single observation, we propose a pseudo-cognitive status embedding that allows progressive shape prediction across intermediate time points with predicted cognitive decline. Experiments show that BrainODE outperforms time-aware baselines in predicting future brain shapes, demonstrating strong generalization across longitudinal datasets with both regular and irregular time intervals.",
+  "title": "BrainODE: Neural Shape Dynamics for Age- and Disease-aware Brain Trajectories"
+ }
+}

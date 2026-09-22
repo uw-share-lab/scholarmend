@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2026/hash/7e105e4ae3016974e2d518e9d281f5e5-Abstract-Conference.html",
+ "payload": {
+  "abstract": "We stress test monitoring systems for detecting covert misbehavior in LLM agents (e.g., secretly exfiltrating data). We propose a monitor red teaming (MRT) workflow that varies agent and monitor awareness, adversarial evasion strategies, and evaluation across tool-calling (SHADE-Arena) and computer-use (CUA-SHADE-Arena) environments. We benchmark standard monitor scaffoldings and introduce a hybrid hierarchical--sequential design. Our experiments yield three findings. First, agent awareness dominates monitor awareness: agents that know they are monitored substantially degrade detection, while increasing monitor awareness helps less than expected. Second, monitor scaffolding matters: our hybrid design consistently outperforms baselines and enables weaker monitors to oversee stronger agents (a weak-to-strong effect). Third, targeted human oversight is key: escalating only pre-flagged cases improves TPR by 15% at FPR=0.01. Our work positions MRT as a standard workflow for stress-testing oversight, revealing robustness gaps in both LLM- and human-based monitoring. We release code, data, and logs to support further research.",
+  "title": "Reliable Weak-to-Strong Monitoring of LLM Agents"
+ }
+}

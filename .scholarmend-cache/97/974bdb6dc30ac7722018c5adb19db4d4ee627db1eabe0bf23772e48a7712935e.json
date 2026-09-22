@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:d8WMoi571f",
+ "payload": {
+  "abstract": "Confidence calibration has been widely studied to improve the trustworthiness of predictions in vision-language models (VLMs). However, we theoretically reveal that standard confidence calibration inherently _impairs_ the ability to distinguish between correct and incorrect predictions (i.e., Misclassification Detection, MisD), which is crucial for reliable deployment of VLMs in high-risk applications. In this paper, we investigate MisD in VLMs and propose confidence recalibration to enhance MisD. Specifically, we design a new confidence calibration objective to replace the standard one. This modification theoretically achieves higher precision in the MisD task and reduces the mixing of correct and incorrect predictions at every confidence level, thereby overcoming the limitations of standard calibration for MisD. As the calibration objective is not differentiable, we introduce a differentiable surrogate loss to enable better optimization. Moreover, to preserve the predictions and zero-shot ability of the original VLM, we develop a post-hoc framework, which employs a lightweight meta network to predict sample-specific temperature factors, trained with the surrogate loss. Extensive experiments across multiple metrics validate the effectiveness of our approach on MisD.",
+  "title": "Revisiting Confidence Calibration for Misclassification Detection in VLMs"
+ }
+}

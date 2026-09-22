@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/08f6f963e993ee81625adb5aaac9403c-Abstract-Conference.html",
+ "payload": {
+  "abstract": "This paper presents a pioneering exploration of reinforcement learning (RL) via group relative policy optimization for unified multimodal large language models (ULMs), aimed at simultaneously reinforcing generation and understanding capabilities. Through systematic pilot studies, we uncover the significant potential of ULMs to enable the synergistic co-evolution of dual capabilities within a shared policy optimization framework. Building on this insight, we introduce \\textbf{CoRL}, a \\textbf{Co}-\\textbf{R}einforcement \\textbf{L}earning framework comprising a unified RL stage for joint optimization and a refined RL stage for task-specific enhancement. With the proposed CoRL, our resulting model, \\textbf{ULM-R1}, achieves average improvements of 7\\% on three text-to-image generation datasets and 23\\% on nine multimodal understanding benchmarks. These results demonstrate the effectiveness of CoRL and highlight the substantial benefits of reinforcement learning in facilitating cross-task synergy and optimization for ULMs. Code is available at \\url{https://github.com/mm-vl/ULM-R1}.",
+  "title": "Co-Reinforcement Learning for Unified Multimodal Understanding and Generation"
+ }
+}

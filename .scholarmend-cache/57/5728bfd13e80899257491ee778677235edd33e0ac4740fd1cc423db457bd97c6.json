@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:4sYfnI9HLV",
+ "payload": {
+  "abstract": "Conformal Prediction (CP) provides rigorous finite-sample coverage guarantees, yet its statistical efficiency hinges critically on the size of the calibration set. In data-scarce regimes, CP often suffers from volatile quantile estimation, leading to overly conservative and wide prediction intervals. To address this, we propose Random Score Alignment-Conformal Prediction (RSA-CP), a simple framework designed to improve sample efficiency in small-sample CP. Instead of requiring the computationally intensive generation of full synthetic datasets, RSA-CP enhances calibration by directly aligning real scores with a high-resolution reference score distribution. By employing an optimal transport mapping, our framework refines \"step-like\" quantile increments through a globally optimal use of reference information. We provide theoretical guarantees establishing that RSA-CP maintains robust coverage without any distributional assumptions on the reference scores. Empirical evaluations demonstrate that RSA-CP consistently produces shorter and more precise prediction intervals while maintaining finite-sample coverage guarantees. Overall, RSA-CP offers a computationally efficient and theoretically grounded solution for robust uncertainty quantification under limited data.",
+  "title": "RSA-CP: Efficient Conformal Prediction in Small-Sample Regimes via Random Score Alignment"
+ }
+}

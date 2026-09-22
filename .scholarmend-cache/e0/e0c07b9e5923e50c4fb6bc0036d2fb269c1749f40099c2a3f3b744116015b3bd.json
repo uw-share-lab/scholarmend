@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:GsImVarwZi",
+ "payload": {
+  "abstract": "Adopting pre-trained Vision-Language Models (VLMs) in Federated Learning (FL) presents a promising avenue for mitigating data scarcity and heterogeneity. However, existing solutions suffer from high computational complexity or ineffective knowledge aggregation. To address these problems, we propose FedSPA (Federated Adaptation via Semantic-Visual Prototype Alignment). On the client side, FedSPA restricts local optimization to visual prototypes, enabling lightweight personalization. On the server side, we introduce a semantic alignment module that leverages client-uploaded prototypes to minimize a contrastive objective, aligning global semantic prototypes with heterogeneous visual distributions and thereby shifting the paradigm from traditional \"learning-to-describe\" (optimizing static prompts) to \"learning-to-align\". Extensive experiments demonstrate that FedSPA significantly outperforms state-of-the-art methods in both personalized and global benchmarks, while substantially reducing computational overhead. The code is available at https://github.com/eejiarong/FedSPA-main.",
+  "title": "Beyond Description: Federated Adaptation via Semantic-Visual Prototype Alignment"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/cd0d0a873cc3e601c76f46dccc3d4c5f-Abstract-Datasets_and_Benchmarks_Track.html",
+ "payload": {
+  "abstract": "Large language models (LLMs) have shown promise in transforming machine learning research, yet their capability to faithfully implement genuinely novel ideas from recent research papers—ideas unseen during pretraining—remains unclear. We introduce ResearchCodeBench, a benchmark that evaluates LLMs’ ability to translate cutting-edge ML contributions from top 2024-2025 research papers into executable code. We assessed 30+ proprietary and open-source LLMs, finding that even the best models correctly implement less than 40% of the code. We present empirical findings on performance comparison, contamination, and error patterns. By providing a rigorous evaluation platform, ResearchCodeBench enables continuous understanding and advancement of LLM-driven innovation in research code generation.",
+  "title": "ResearchCodeBench: Benchmarking LLMs on Implementing Novel Machine Learning Research Code"
+ }
+}

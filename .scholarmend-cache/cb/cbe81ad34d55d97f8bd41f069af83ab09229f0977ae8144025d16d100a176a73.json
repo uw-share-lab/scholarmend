@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:4KVeb0Vv13",
+ "payload": {
+  "abstract": "Machine learning models are known to leak sensitive information, as they inevitably memorize (parts of) their training data. This risk is amplified for large language models (LLMs), which are trained on massive corpora and therefore create a more urgent need for privacy assessment prior to release. The standard method to quantify privacy is via membership inference attacks, where the state-of-the-art approach is the Robust Membership Inference Attack (RMIA). In this paper, we introduce \\textbf{InfoRMIA}, a principled information-theoretic formulation of membership inference that consistently outperforms RMIA across benchmarks while improving computational efficiency. Moving beyond attack performance alone, we show that treating sequence-level membership inference as the gold standard obscures how memorization manifests in LLMs. To address this limitation, we propose a fine-grained memorization assessment framework based on token-level signals, with InfoRMIA serving as its algorithmic backbone. Our approach identifies which tokens within generated outputs are memorized, localizing privacy leakage from sequences to individual tokens. This framework enables more precise analysis of LLM memorization and potentially targeted mitigation strategies such as exact unlearning.",
+  "title": "Information-Theoretic Membership Inference for Granular Quantification of Memorization"
+ }
+}

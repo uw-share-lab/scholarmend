@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/d8bb4be0e26f0d819043d33a945e8c0d-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Diffusion models have yielded remarkable success in virtual try-on (VTON) task, yet they often fall short of fully meeting user expectations regarding visual quality and detail preservation. To alleviate this issue, we curate a dataset of synthesized VTON images annotated with human judgments across multiple perceptual criteria. A vision large language model (VLLM), namely VTON-VLLM, is then learnt on these annotations. VTON-VLLM functions as a unified ``fashion expert'' and is capable of both evaluating and steering VTON synthesis towards human preferences. Technically, beyond serving as an automatic VTON evaluator, VTON-VLLM upgrades VTON model through two pivotal ways: (1) providing fine-grained supervisory signals during the training of a plug-and-play VTON refinement model, and (2) enabling adaptive and preference-aware test-time scaling at inference. To benchmark VTON models more holistically, we introduce VITON-Bench, a challenging test suite of complex try-on scenarios, and human-preference–aware metrics. Extensive experiments demonstrate that powering VTON models with our VTON-VLLM markedly enhances alignment with human preferences. Code is publicly available at: https://github.com/HiDream-ai/VTON-VLLM/.",
+  "title": "VTON-VLLM: Aligning Virtual Try-On Models with Human Preferences"
+ }
+}

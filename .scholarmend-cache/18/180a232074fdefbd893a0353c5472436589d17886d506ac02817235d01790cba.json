@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/5fcacc84d87c97bee5baecb3fb8f6e88-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Many emerging applications—such as adversarial training, AI alignment, and robust optimization—can be framed as zero-sum games between neural nets, with von Neumann–Nash equilibria (NE) capturing the desirable system behavior. While such games often involve non-convex non-concave objectives, empirical evidence shows that simple gradient methods frequently converge, suggesting a hidden geometric structure. In this paper, we provide a theoretical framework that explains this phenomenon through the lens of \\emph{hidden convexity} and \\emph{overparameterization}. We identify sufficient conditions spanning initialization, training dynamics, and network width—that guarantee global convergence to a NE in a broad class of non-convex min-max games. To our knowledge, this is the first such result for games that involve two-layer neural networks. Technically, our approach is twofold: (a) we derive a novel path-length bound for alternating gradient-descent-ascent scheme in min-max games; and (b) we show that games with hidden convex–concave geometry reduce to settings satisfying two-sided Polyak–Łojasiewicz (PL) and smoothness conditions, which hold with high probability under overparameterization, using tools from random matrix theory.",
+  "title": "Solving Neural Min-Max Games: The Role of Architecture, Initialization & Dynamics"
+ }
+}

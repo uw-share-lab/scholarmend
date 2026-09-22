@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:IYSBJvVRTx",
+ "payload": {
+  "abstract": "Modeling complex dynamics from observational data is fundamental to scientific discovery and artificial intelligence. However, existing approaches are often plagued by the entanglement of static state representations and instantaneous motion, leading to accumulated errors and off-manifold hallucinations where predicted trajectories violate intrinsic geometric constraints. To address this, we propose Geometric Flow Grounding, a unified framework that enforces dynamic evolution strictly along the tangent bundle of the learned data manifold via a differentiable Neural Tangent Projection Layer. By geometrically decoupling state representation from tangential dynamics, our method generalizes across diverse data regimes. In scientific discovery, GFG reduces numerical aliasing and improves long-horizon stability in sparse dynamical systems, while recovering interpretable gene regulatory motifs from single-cell data. For trustworthy AI, the projection residual provides a zero-shot metric for deepfake video detection by revealing inconsistencies with the implicit flow of pre-trained world models. Our results establish manifold-constrained projection as a universal operator for both discovering natural laws and verifying synthetic content. Code will be available at \\url{https://github.com/yuchang97/GFG-public}",
+  "title": "Geometric Flow Grounding: A Unified Manifold Decoupling Framework for Dynamics Discovery and Verification"
+ }
+}

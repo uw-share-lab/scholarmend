@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/81b7f67e6eeb562233f77483780f8f3a-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Many jailbreak attacks on large language models (LLMs) rely on a common objective: making the model respond with the prefix ``Sure, here is (harmful request)''. While straightforward, this objective has two limitations: limited control over model behaviors, yielding incomplete or unrealistic jailbroken responses, and a rigid format that hinders optimization. We introduce AdvPrefix, a plug-and-play prefix-forcing objective that selects one or more model-dependent prefixes by combining two criteria: high prefilling attack success rates and low negative log-likelihood. AdvPrefix integrates seamlessly into existing jailbreak attacks to mitigate the previous limitations for free. For example, replacing GCG's default prefixes on Llama-3 improves nuanced attack success rates from 14\\% to 80\\%, revealing that current safety alignment fails to generalize to new prefixes. Code and selected prefixes are released.",
+  "title": "AdvPrefix: An Objective for Nuanced LLM Jailbreaks"
+ }
+}

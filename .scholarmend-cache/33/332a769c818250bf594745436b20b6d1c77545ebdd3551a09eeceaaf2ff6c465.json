@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/90134bfef0230e6ec7afa0391396490b-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Machine learning models have achieved widespread success but often inherit and amplify historical biases, resulting in unfair outcomes. Traditional fairness methods typically impose constraints at the prediction level, without addressing underlying biases in data representations. In this work, we propose a principled framework that adjusts data representations to balance predictive utility and fairness. Using sufficient dimension reduction, we decompose the feature space into target-relevant, sensitive, and shared components, and control the fairness–utility trade-off by selectively removing sensitive information. We provide a theoretical analysis of how prediction error and fairness gaps evolve as shared subspaces are added, and employ influence functions to quantify their effects on the asymptotic behavior of parameter estimates. Experiments on both synthetic and real-world datasets validate our theoretical insights and show that the proposed method effectively improves fairness while preserving predictive performance.",
+  "title": "Understanding Fairness and Prediction Error through Subspace Decomposition and Influence Analysis"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:HZhlRnJOHq",
+ "payload": {
+  "abstract": "Decoding fMRI into natural language is challenging because strong, pre-trained language priors can dominate autoregressive generation, obscuring whether a model truly utilizes neural evidence. We introduce BIT-LLM, which exposes fMRI-derived tokens as a persistent key–value memory through interleaved cross-attention adapters, enabling repeated neural access throughout decoding. BIT-LLM is trained with a three-stage pipeline: (i) multimodal contrastive learning to obtain semantically aligned fMRI representations, (ii) supervised fine-tuning to learn the brain-LLM interface while freezing the encoder and backbone LLM, and (iii) reward-based finetuning to optimize sequence-level caption quality directly. On the NSD subject-heldout benchmark (S1-7 train, S8 test), BIT-LLM yields substantially improved captioning quality over prior baselines under greedy decoding. In addition to standard captioning metrics, we perform several complementary evaluations to assess the robustness of brain–language grounding. Specifically, we conduct perturbation-based sanity checks by zeroing fMRI inputs or shuffling voxel values, and examine whether internal representations and generated outputs change accordingly. BIT-LLM exhibits clear sensitivity to these perturbations, indicating effective utilization of voxel values and their spatial correspondence.",
+  "title": "BIT-LLM: Brain Instruction Tuned LLM with persistent Cross-Attention for fMRI-to-Text Decoding"
+ }
+}

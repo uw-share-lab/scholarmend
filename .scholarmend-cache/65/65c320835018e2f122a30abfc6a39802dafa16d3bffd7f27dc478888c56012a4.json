@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/e8e30fda5ab87ea93360a36288ac0145-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Medical time-series analysis differs fundamentally from general ones by requiring specialized domain knowledge to interpret complex signals and clinical context. Large language models (LLMs) hold great promise for augmenting medical time-series analysis by complementing raw series with rich contextual knowledge drawn from biomedical literature and clinical guidelines. However, realizing this potential depends on precise and meaningful prompts that guide the LLM to key information. Yet, determining what constitutes effective prompt content remains non-trivial—especially in medical settings where signal interpretation often hinges on subtle, expert-defined decision-making indicators. To this end, we propose InDiGO, a knowledge-aware evolutionary learning framework that integrates clinical signals and decision-making indicators through iterative optimization. Across four medical benchmarks, InDiGO consistently outperforms prior methods. The code is available at: https://github.com/jinxyBJTU/InDiGO.",
+  "title": "From Indicators to Insights: Diversity-Optimized for Medical Series-Text Decoding via LLMs"
+ }
+}

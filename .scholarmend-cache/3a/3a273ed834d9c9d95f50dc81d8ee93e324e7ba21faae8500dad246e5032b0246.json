@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:ACycnhWzRX",
+ "payload": {
+  "abstract": "Continual learning for visual question answering (VQA) is typically implemented by training one expert per task and routing each query using task-ID supervision. Yet continual VQA tasks overlap substantially: on the VQA-v2 task stream, a non-native expert outperforms the task’s own expert on $49.9\\%$ of queries, so hard routing both wastes transferable knowledge and can be confidently wrong when mismatched. We propose a calibrated Bayesian mixture-of-experts that trains parameter-efficient per-task adapters, learns routing by directly maximizing expected VQA utility, and marginalizes expert identity at inference via Bayesian aggregation in a unified answer space; an entropy penalty prevents the utility objective from collapsing to one-hot routing, enabling evidence pooling across plausible experts. We reach $64.16$ accuracy with $0.63$ forgetting on VQA-v2 CL-LS ($+5.74\\%$ accuracy, $-2.99$ forgetting vs. the strongest prior method), $78.81$ with $0.40$ forgetting on TDIUC CL-LS ($+3.10$, $-1.74$), and $83.41$ with $3.21$ forgetting on TDIUC CL-VS ($+1.58$, $-0.82$). Calibration also improves on VQA-v2, reducing ECE from $0.15$ to $0.07$.",
+  "title": "Calibrated Knowledge Aggregation in Bayesian Mixture-of-Experts for Continual VQA"
+ }
+}

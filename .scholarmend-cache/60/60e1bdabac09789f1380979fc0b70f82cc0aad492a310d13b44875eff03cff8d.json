@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:ifJ9MSQ0Jx",
+ "payload": {
+  "abstract": "Aligning Multimodal Large Language Models (MLLMs) with human preferences remains a fundamental challenge. While Generative Reward Models (GRMs) offer a promising reasoning-based alternative to scalar models, they are often hindered by severe position bias and prohibitively high computational overhead. To address these limitations, we propose GenAlign, a unified framework that synergizes robust generative reward modeling with efficient MLLM alignment. First, we introduce a rubric-based GRM that explicitly models the preference judgment process. By employing reinforcement learning with verifiable rewards and an online position debiasing mechanism, our model produces interpretable reasoning critiques and robust preference predictions. Second, we propose a policy optimization strategy utilizing advantage-smoothed dynamic reference anchoring. This approach reduces computational complexity  while mitigating gradient instability caused by variance collapse. Extensive experiments demonstrate that GenAlign achieves state-of-the-art preference prediction accuracy on multimodal reward modeling benchmarks. Moreover, it consistently improves the performance of three MLLMs across seven diverse evaluation benchmarks, particularly making significant progress in safety and hallucination.",
+  "title": "GenAlign: Towards Unified Alignment Framework of MLLMs via Generative Reward Model"
+ }
+}

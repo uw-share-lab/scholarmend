@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2026/hash/f0ebc318e2df08360b2df559e81602e5-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Transferability estimation metrics are used to find a high-performing pre-trained model for a given target task without fine-tuning models and without access to the source dataset. Despite the growing interest in developing such metrics, the benchmarks used to measure their progress have gone largely unexamined. In this work, we empirically show the shortcomings of widely used benchmark setups to evaluate transferability estimation metrics. We argue that the benchmarks on which these metrics are evaluated are fundamentally flawed. We empirically demonstrate that their unrealistic model spaces and static performance hierarchies artificially inflate the perceived performance of existing metrics, to the point where simple, dataset-agnostic heuristics can outperform sophisticated methods. Our analysis reveals a critical disconnect between current evaluation protocols and the complexities of real-world model selection. To address this, we provide concrete recommendations for constructing more robust and realistic benchmarks to guide future research in a more meaningful direction.",
+  "title": "How NOT to benchmark your SITE metric: Beyond Static Leaderboards and Towards Realistic Evaluation."
+ }
+}

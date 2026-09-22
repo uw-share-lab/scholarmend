@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2026/hash/42ec51d1031d25eca238ccc67559fe84-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Even when instructed to adhere to source material, language models often generate unsubstantiated content – a phenomenon known as “closed-domain hallucination.” This risk is amplified in processes with multiple generative steps (MGS), compared to processes with a single generative step (SGS). However, due to the greater complexity of MGS processes, we argue that detecting hallucinations in their final outputs is necessary but not sufficient: it is equally important to trace where hallucinated content was likely introduced and how faithful content may have been derived from the source material through intermediate outputs. To address this need, we present VeriTrail, the first closed-domain hallucination detection method designed to provide traceability for both MGS and SGS processes. We also introduce the first datasets to include all intermediate outputs as well as human annotations of final outputs’ faithfulness for their respective MGS processes. We demonstrate that VeriTrail outperforms baseline methods on both datasets.",
+  "title": "VeriTrail: Closed-Domain Hallucination Detection with Traceability"
+ }
+}

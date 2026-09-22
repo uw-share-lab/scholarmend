@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2026/hash/746d2254f6892f3badadb07cc9c0f0da-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Large Language Models (LLMs) often hallucinate, generating content inconsistent with the input. Retrieval-Augmented Generation (RAG) and Reinforcement Learning with Human Feedback (RLHF) can mitigate hallucinations but require resource-intensive retrieval or large-scale fine-tuning. Decoding-based methods are lighter yet lack explicit hallucination control. To address this, we present \\textbf{Token-Guard}, a token-level hallucination control method based on self-checking decoding. Token-Guard performs internal verification at each reasoning step to detect hallucinated tokens before they propagate. Candidate fragments are further evaluated in a latent space with explicit hallucination risk scoring, while iterative pruning and regeneration dynamically correct detected errors. Experiments on HALU datasets show Token-Guard substantially reduces hallucinations and improves generation accuracy, offering a scalable, lightweight solution for reliable LLM outputs. Our code is publicly available\\footnote{\\url{https://github.com/rhq945/Token-Guard}}.",
+  "title": "Token-Guard: Towards Token-Level Hallucination Control via Self-Checking Decoding"
+ }
+}

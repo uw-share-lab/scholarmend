@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/e6b5bcc872666d37c469e5c5ba723669-Abstract-Datasets_and_Benchmarks_Track.html",
+ "payload": {
+  "abstract": "We introduce FreshStack, a holistic framework for automatically building information retrieval (IR) evaluation benchmarks by incorporating challenging questions and answers. FreshStack conducts the following steps:(1) automatic corpus collection from code and technical documentation,(2) nugget generation from community-asked questions and answers, and(3) nugget-level support, retrieving documents using a fusion of retrieval techniques and hybrid architectures.We use FreshStack to build five datasets on fast-growing, recent, and niche domains to ensure the tasks are sufficiently challenging. On FreshStack, existing retrieval models, when applied out-of-the-box, significantly underperform oracle approaches on all five domains, denoting plenty of headroom to improve IR quality. In addition, we identify cases where rerankers do not improve first-stage retrieval accuracy (two out of five domains) and oracle context helps an LLM generator generate a high-quality RAG answer.We hope FreshStack will facilitate future work toward constructing realistic, scalable, and uncontaminated IR and RAG evaluation benchmarks.",
+  "title": "FreshStack: Building Realistic Benchmarks for Evaluating Retrieval on Technical Documents"
+ }
+}

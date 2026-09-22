@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/9a648e8e1014c2427156dcb5465cd488-Abstract-Datasets_and_Benchmarks_Track.html",
+ "payload": {
+  "abstract": "Despite progress in language model (LM) capabilities, evaluations have thus far focused on models' performance on tasks that humans have previously solved, including in programming (SWE-Bench) and mathematics (FrontierMath). We therefore propose testing models' ability to design and implement algorithms in an open-ended benchmark: We task LMs with writing code that efficiently solves computationally challenging problems in computer science, physics, and mathematics. Our AlgoTune benchmark consists of 120 tasks collected from domain experts and a framework for validating and timing LM-synthesized solution code, which is compared to reference implementations from popular open-source packages.In addition, we develop a baseline LM agent, AlgoTuner, and evaluate its performance across a suite of frontier models.AlgoTuner achieves an average 1.58x speedup against reference solvers, including methods from packages such as SciPy, scikit-learn and CVXPY.However, we find that current models fail to discover algorithmic innovations, instead preferring surface-level optimizations. We hope that AlgoTune catalyzes the development of LM agents exhibiting creative problem solving beyond state-of-the-art human performance.",
+  "title": "AlgoTune: Can Language Models Speed Up General-Purpose Numerical Programs?"
+ }
+}

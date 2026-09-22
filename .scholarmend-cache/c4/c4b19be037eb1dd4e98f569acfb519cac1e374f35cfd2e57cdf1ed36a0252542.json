@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/172946488c60421563ecad4ee2d4235d-Abstract-Conference.html",
+ "payload": {
+  "abstract": "With the rapid development of the big data era, Vertical Federated Learning (VFL) has been widely applied to enable data collaboration while ensuring privacy protection. However, the ultrahigh dimensionality of features and the sparse data structures inherent in large-scale datasets introduce significant computational complexity. In this paper, we propose the Vertical Federated Feature Screening (VFS) algorithm, which effectively reduces computational, communication, and encryption costs. VFS is a two-stage feature screening procedure that proceeds from coarse to fine: the first stage quickly filters out irrelevant feature groups, followed by a more refined screening of individual features. It significantly reduces the resource demands of downstream tasks such as secure joint modeling or federated feature selection. This efficiency is particularly beneficial in scenarios with ultrahigh feature dimensionality or severe class imbalance in the response variable. The statistical and computational properties of VFS are rigorously established. Numerical simulations and real-world applications demonstrate its superior performance.",
+  "title": "Vertical Federated Feature Screening"
+ }
+}

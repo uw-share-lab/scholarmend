@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/98d2006bf15f00e2ff293dfba4acb8b2-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Uncertainty quantification for Large Language Models (LLMs) encompasses a diverse range of approaches, with two major families being particularly prominent: (i) information-based, which estimate model confidence from token-level probabilities, and (ii) consistency-based, which assess the semantic agreement among multiple outputs generated using repeated sampling. While several recent methods have sought to combine these two paradigms to improve uncertainty quantification performance, they often fail to consistently outperform simpler baselines. In this work, we revisit the foundations of uncertainty estimation through the lens of Minimum Bayes Risk decoding, establishing a direct link between uncertainty and the optimal decision-making process of LLMs. Building on these findings, we propose CoCoA, a unified framework that integrates model confidence with output consistency, yielding a family of efficient and robust uncertainty quantification methods. We evaluate CoCoA across diverse tasks, including question answering, abstractive text summarization, and machine translation, and demonstrate sizable improvements over state-of-the-art uncertainty quantification approaches.",
+  "title": "CoCoA: A Minimum Bayes Risk Framework Bridging Confidence and Consistency for Uncertainty Quantification in LLMs"
+ }
+}

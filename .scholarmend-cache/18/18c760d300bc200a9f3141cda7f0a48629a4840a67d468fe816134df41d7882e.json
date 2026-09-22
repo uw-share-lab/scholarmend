@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:WQyrwQwzmK",
+ "payload": {
+  "abstract": "Large Reasoning Models (LRMs) enhance performance by generating explicit Chain-of-Thought (CoT) trajectories, yet enabling them to self-evaluate correctness without external supervision remains a critical challenge. Existing methods often rely on ground-truth labels or shallow output probabilities, neglecting the layerwise evolution of the reasoning trajectory. In this work, we introduce GeoR (Geometry of Reasoning), a white-box self-evaluation framework based on layerwise trajectory evolution. GeoR decomposes reasoning fidelity into two complementary dimensions: (1) Geometric Evolution, which synthesizes the first- and second-order evolution of layerwise hidden-state trajectories to quantify geometric progress in reasoning; and (2) Difficulty-Aware Calibration, which utilizes cross-entropy of reasoning progress to normalize the Geometric Evolution against intrinsic query uncertainty. By jointly modeling these factors, GeoR effectively distinguishes the coherent evolution of correct reasoning from the chaotic trajectories of errors. Extensive experiments across eight LRMs and seven benchmarks demonstrate that GeoR consistently outperforms state-of-the-art baselines in AUROC, AUPR, and FPR@95.",
+  "title": "The Geometry of Reasoning: Self-Evaluation via Layerwise Trajectory Evolution"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/73368bc7644c054b5bcc6490a8f2fb1c-Abstract-Datasets_and_Benchmarks_Track.html",
+ "payload": {
+  "abstract": "AI agents are rapidly being deployed across diverse industries, but can they adhere to deployment policies under attacks? We organized a one-month red teaming challenge---the largest of its kind to date---involving expert red teamers attempting to elicit policy violations from AI agents powered by $22$ frontier LLMs. Our challenge collected $1.8$ million prompt injection attacks, resulting in over $60,000$ documented successful policy violations, revealing critical vulnerabilities. Utilizing this extensive data, we construct a challenging AI agent red teaming benchmark, currently achieving near $100\\%$ attack success rates across all tested agents and associated policies. Our further analysis reveals high transferability and universality of successful attacks, underscoring the scale and criticality of existing AI agent vulnerabilities. We also observe minimal correlation between agent robustness and factors such as model capability, size, or inference compute budget, highlighting the necessity of substantial improvements in defense. We hope our benchmark and insights drive further research toward more secure and reliable AI agents.",
+  "title": "Security Challenges in AI Agent Deployment: Insights from a Large Scale Public Competition"
+ }
+}

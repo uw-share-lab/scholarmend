@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:oKizUOP7E4",
+ "payload": {
+  "abstract": "Securing Contextual Integrity (CI) is critical for privacy-preserving Large Language Model (LLM) agent execution. However, existing agents struggle to balance the agility of direct generation against the prohibitive latency of CI-constrained thinking. To address this, we propose PrivGate, a framework that selectively invokes explicit reasoning based on internal privacy signals. Our approach is grounded in the discovery of a privacy manifold, where models linearly encode privacy sensitivity within their residual streams, even during non-compliant generation. Leveraging this structure, PrivGate employs Latent Gating, a training-free mechanism that requires no fine-tuning of the base LLM and triggers explicit reasoning only when high latent risk is detected, thereby optimizing the efficiency-privacy trade-off by minimizing unnecessary compute. On the contextual PrivacyLens benchmark, PrivGate maintains consistently high performance in out-of-distribution risk identification, validating the generalizability of the discovered manifold. End-to-end evaluations show that PrivGate achieves a 62.6% average relative reduction in privacy leakage with 15.9% token overhead, offering a practical pathway to reconcile rigorous CI requirements with the performance demands of LLM agents.",
+  "title": "PrivGate: Steering Contextual Integrity in LLMs via Latent Space Geometry"
+ }
+}

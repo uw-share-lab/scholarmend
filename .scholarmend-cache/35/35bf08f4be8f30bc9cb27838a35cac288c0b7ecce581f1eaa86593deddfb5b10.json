@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2026/hash/a99c41c85cd1ce4dbddfeba8908a531a-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Semivalue–based data valuation uses cooperative‐game theory intuitions to assign each data point a value reflecting its contribution to a downstream task. Still, those values depend on the practitioner’s choice of utility, raising the question: How robust is semivalue-based data valuation to changes in the utility? This issue is critical when the utility is set as a trade‐off between several criteria and when practitioners must select among multiple equally valid utilities. We address this by introducing the notion of a dataset’s spatial signature: given a semivalue, we embed each data point into a lower-dimensional space in which any utility becomes a linear functional, making the data valuation framework amenable to a simpler geometric picture. Building on this, we propose a practical methodology centered on an explicit robustness metric that informs practitioners whether and by how much their data valuation results will shift as the utility changes. We validate this approach across diverse datasets and semivalues, demonstrating strong agreement with rank‐correlation analyses and offering analytical insight into how choosing a semivalue can amplify or diminish robustness.",
+  "title": "On the Impact of the Utility in Semivalue-based Data Valuation"
+ }
+}

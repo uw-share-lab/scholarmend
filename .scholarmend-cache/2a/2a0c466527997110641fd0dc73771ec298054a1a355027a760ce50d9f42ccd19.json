@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/466a8a8ae45c488b2bd312699ba1e5ee-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Conditional independence (CI) testing is a fundamental yet challenging task in modern statistics and machine learning. One pivotal class of methods for assessing conditional independence encompasses kernel-based approaches, known for assessing CI by detecting general conditional dependence without imposing strict assumptions on relationships or data distributions. As with any method utilizing kernels, selecting appropriate kernels is crucial for precise identification. However, it remains underexplored in kernel-based CI methods, where the kernels are often determined manually or heuristically. In this paper, we analyze and propose a kernel parameter selection approach for the kernel-based conditional independence test (KCI). The kernel parameters are selected based on the ratio of the statistic to the asymptotic variance, which approximates the test power for the given parameters at large sample sizes. The search procedure is grid-based, allowing for parallelization with manageable additional computation time. We theoretically demonstrate the consistency of the proposed criterion and conduct extensive experiments on both synthetic and real data to show the effectiveness of our method.",
+  "title": "Practical Kernel Selection for Kernel-based Conditional Independence Test"
+ }
+}

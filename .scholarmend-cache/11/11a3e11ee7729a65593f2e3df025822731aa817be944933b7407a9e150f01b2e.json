@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2026/hash/5f03fc30db670b2764ef9e39e71c04c8-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Many black-box techniques for quantifying the uncertainty of large language models (LLMs) rely on repeated LLM sampling, which can be computationally expensive. Therefore, practical applicability demands reliable estimation from few samples. Semantic entropy (SE) is a popular sample-based uncertainty estimator with a discrete formulation attractive for the black-box setting. Recent extensions of SE exhibit improved LLM hallucination detection, but do so with less interpretable methods that admit additional hyperparameters. For this reason, we revisit the canonical discrete semantic entropy (DSE) estimator, finding that it underestimates the ``true'' semantic entropy, as expected from theory. We propose a modified semantic alphabet size estimator, and illustrate that using it to adjust DSE for sample coverage results in more accurate SE estimation in our setting of interest. Furthermore, we find that two semantic alphabet size estimators, including our proposed, flag incorrect LLM responses as well or better than many top-performing alternatives, with the added benefit of remaining highly interpretable.",
+  "title": "Estimating Semantic Alphabet Size for LLM Uncertainty Quantification"
+ }
+}

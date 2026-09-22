@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/120c9ab5c58ba0fa9dd3a22ace1de245-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Effective modelling of uncertain information is crucial for quantifying uncertainty. Dempster–Shafer evidence (DSE) theory is a widely recognized approach for handling uncertain information. However, current methods often neglect the inherent a priori information within data during modelling, and imbalanced data lead to insufficient attention to key information in the model. To address these limitations, this paper presents a dynamic learning strategy based on nonuniform splitting mechanism and Hilbert space mapping. First, the framework uses a nonuniform splitting mechanism to dynamically adjust the weights of data subsets and combines the diffusion factor to effectively incorporate the data a priori information, thereby flexibly addressing uncertainty and conflict. Second, the conflict in the information fusion process is reduced by Hilbert space mapping. Experimental results on multiple tasks show that the proposed method significantly outperforms state-of-the-art methods and effectively improves the performance of classification and low-light image enhancement (LLIE) tasks. The code is available at https://anonymous.4open.science/r/Third-ED16.",
+  "title": "A Dynamic Learning Strategy for Dempster-Shafer Theory with Applications in Classification and Enhancement"
+ }
+}

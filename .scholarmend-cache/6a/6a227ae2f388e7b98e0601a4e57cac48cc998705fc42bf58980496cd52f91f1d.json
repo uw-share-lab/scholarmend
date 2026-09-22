@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2026/hash/8790ba7a741c9389383575bc3e907768-Abstract-Conference.html",
+ "payload": {
+  "abstract": "While black-box large language models are widely deployed, they produce generic outputs that overlook individual user preferences. Current personalization methods are fundamentally limited to response-level personalization; they only match final outputs, failing to model the underlying reasoning that connects user behavior to responses. To address this, this work introduces reasoning-level personalization as a new paradigm and proposes RPM, the first systematic framework that automatically discovers user-specific reasoning structures from raw behavioral data to guide the model's personalized inference. RPM constructs a structured model of user behavior—built from response-influential features and statistical factors—to create personalized reasoning paths and retrieve beneficial examples for guiding inference through a feature-based retrieval mechanism. Extensive experiments across four diverse tasks demonstrate that RPM consistently outperforms existing response-level methods while simultaneously enhancing both personalization performance and interpretability, providing a promising direction for black-box LLM personalization.",
+  "title": "RPM: Reasoning-Level Personalization for Black-Box Large Language Models"
+ }
+}

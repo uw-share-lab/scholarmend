@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/a5e146ca55a2b18be41942cfa677123d-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Effective explanations of video action recognition models should disentangle how movements unfold over time from the surrounding spatial context. However, existing methods—based on saliency—produce entangled explanations, making it unclear whether predictions rely on motion or spatial context. Language-based approaches offer structure but often fail to explain motions due to their tacit nature—intuitively understood but difficult to verbalize. To address these challenges, we propose Disentangled Action aNd Context concept-based Explainable (DANCE) video action recognition, a framework that predicts actions through disentangled concept types: motion dynamics, objects, and scenes. We define motion dynamics concepts as human pose sequences. We employ a large language model to automatically extract object and scene concepts. Built on an ante-hoc concept bottleneck design, DANCE enforces prediction through these concepts. Experiments on four datasets—KTH, Penn Action, HAA500, and UCF101—demonstrate that DANCE significantly improves explanation clarity with competitive performance. Through a user study, we validate the superior interpretability of DANCE. Experimental results also show that DANCE is beneficial for model debugging, editing, and failure analysis.",
+  "title": "Disentangled Concepts Speak Louder Than Words: Explainable Video Action Recognition"
+ }
+}

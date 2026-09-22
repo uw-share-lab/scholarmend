@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/cd5c450b7b3a004380cba0ff704a0cc9-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Deployment of neural networks on resource-constrained devices demands models that are both compact and robust to adversarial inputs. However, compression and adversarial robustness often conflict. In this work, we introduce a dynamical low-rank training scheme enhanced with a novel spectral regularizer that controls the condition number of the low-rank core in each layer. This approach mitigates the sensitivity of compressed models to adversarial perturbations without sacrificing clean accuracy. The method is model- and data-agnostic, computationally efficient, and supports rank adaptivity to automatically compress the network at hand. Extensive experiments across standard architectures, datasets, and adversarial attacks show the regularized networks can achieve over 94 compression while recovering or improving adversarial accuracy relative to uncompressed baselines.",
+  "title": "Dynamical Low-Rank Compression of Neural Networks with Robustness under Adversarial Attacks"
+ }
+}

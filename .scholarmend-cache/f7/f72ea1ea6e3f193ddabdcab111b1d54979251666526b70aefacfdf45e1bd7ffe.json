@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:MMLAvR1juf",
+ "payload": {
+  "abstract": "A significant portion of disease-relevant proteins remain undruggable due to shallow, flexible, or otherwise ill-defined binding pockets that hinder conventional molecule screening. Fragment-based drug discovery (FBDD) offers a promising alternative, as small, low-complexity fragments can flexibly engage shallow, transient, or cryptic binding pockets that are often inaccessible to conventional drug-like molecules. However, fragment screening remains difficult due to weak binding signals, limited experimental throughput, and a lack of computational tools tailored for this setting. In this work, we introduce FragBench, the first benchmark for fragment-level virtual screening on undruggable targets. We construct a high-quality dataset through multi-agent LLM–human collaboration and interaction-based fragment labeling. To address the core modeling challenge, we propose a novel tri-modal contrastive learning framework FragCLIP that jointly encodes fragments, full molecules, and protein pockets. Our method significantly outperforms baselines like docking software and other ML based methods. Moreover, we demonstrate that retrieved fragments can be effectively expanded or linked into larger compounds with improved predicted binding affinity, supporting their utility as viable starting points for drug design.",
+  "title": "Drugging the Undruggable: Benchmarking and Modeling Fragment-Based Screening"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2025/hash/a52b0d191b619477cc798d544f4f0e4b-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Incorporating user preferences into large language models (LLMs) can enhance the personalization and reliability of model outputs and facilitate the application of LLMs to real-world scenarios. However, leveraging user preferences can be a double-edged sword. Recent studies have found that improper utilization can incur sycophancy, where LLMs prioritize alignment with user preferences over the correctness of their outputs. To address sycophancy in LLMs, we analyze and model the problem through the lens of structured causal models (SCMs). We attribute sycophancy to LLMs' reliance on spurious correlations between user preferences and model outputs in this paper. Based on the proposed SCMs, we develop a novel framework, termed CAUSM, to mitigate sycophancy in LLMs by exploiting a significant causal signature. Specifically, we eliminate the spurious correlations embedded in the intermediate layers of LLMs through causally motivated head reweighting, and then calibrate the intra-head knowledge along the causal representation direction. Extensive experiments are conducted across diverse language tasks to demonstrate the superiority of our method over state-of-the-art competitors in mitigating sycophancy in LLMs.",
+  "title": "Causally Motivated Sycophancy Mitigation for Large Language Models"
+ }
+}

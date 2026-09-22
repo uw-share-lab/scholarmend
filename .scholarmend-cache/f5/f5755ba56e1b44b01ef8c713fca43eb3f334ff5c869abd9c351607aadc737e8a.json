@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:GxSB5ZYfM4",
+ "payload": {
+  "abstract": "Large Language Models (LLMs) often struggle with complex logical reasoning. Existing approaches typically rely on either purely neural reasoning in natural language or offloading to formal solvers via symbolic representations. However, both paradigms face significant limitations: while LLMs exhibit strong semantic intuition they are prone to hallucinations, whereas symbolic solvers offer rigorous derivation but remain highly sensitive to minor syntactic errors. To combine the strengths of these two paradigms while mitigating their respective limitations, we introduce **LogicSAGE** (**L**ogic-informed **S**ocratic  **A**gent for **G**uided **E**nhancement), a dual-process framework that integrates a robust neural reasoner (System 1) with a rigorous symbolic validator (System 2). Specifically, our framework employs a Socratic Error Correction mechanism that treats solver feedback not as terminal failures but as pedagogical signals, engaging in a dialectic loop to iteratively refine logic programs and resolve semantic ambiguities. Extensive experiments on five benchmarks show that LogicSAGE (8B) achieves a state-of-the-art 92.36% average accuracy, significantly outperforming GPT-4 baselines, which establishes that architectural innovation can supersede model scale in faithful reasoning.",
+  "title": "LogicSAGE: Neuro-Symbolic Reasoning with Socratic-Guided Enhancement"
+ }
+}

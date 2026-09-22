@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2026/hash/725ce5f2b1a8e2e0ac66994e7fefe375-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Large language models (LLMs) show the promise in supporting scientific research implementation, yet their ability to generate correct and executable code remains limited. Existing works largely adopt one-shot settings, ignoring the iterative and feedback-driven nature of realistic workflows of scientific research development. To address this gap, we present RECODE-H, a benchmark of 102 tasks from research papers and repositories that evaluates LLMs through multi-turn interactions with human feedback. It includes structured instructions, unit tests, and a five-level feedback hierarchy to reflect realistic researcher–agent collaboration. We further present ReCodeAgent, a framework that integrates feedback into iterative code generation. Experimentswith leading LLMs, including GPT-5, Claude-Sonnet-4, DeepSeek-V3.1, and Gemini 2.5, show substantial performance gains with richer feedback, while also highlighting ongoing challenges in the generation of complex research code. RECODE-H establishes a foundation for developing adaptive, feedback-driven LLM agents in scientific research implementation.",
+  "title": "RECODE-H: A Benchmark for Research Code Development with Interactive Human Feedback"
+ }
+}

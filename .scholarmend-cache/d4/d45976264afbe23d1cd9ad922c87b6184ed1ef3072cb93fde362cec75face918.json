@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/6c92839f0f9cddc96c694712a7143b09-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Mathematicians have long employed decomposition techniques to prove inequalities, yet automating this process remains a significant challenge in computational mathematics. We introduce IneqSearch, a hybrid reasoning system that integrates symbolic computation with large language models (LLMs) to address this challenge. IneqSearch reformulates inequality proving as a structured search problem: identifying appropriate combinations of theorems that decompose expressions into non-negative components. The system combines a symbolic solver for deductive reasoning with an LLM-based agent for constructive proof exploration, effectively implementing methodologies observed in formal mathematical practice. A key contribution of IneqSearch is its iterative learning mechanism that systematically incorporates newly proven results into its theorem database, enabling knowledge acquisition during practice that enhances its capabilities without requiring human intervention. In empirical evaluation on 437 Olympiad-level inequalities, IneqSearch successfully proves 342 problems, significantly outperforming existing methods and demonstrating the effectiveness of integrating symbolic and neural approaches for mathematical reasoning.",
+  "title": "IneqSearch: Hybrid Reasoning for Olympiad Inequality Proofs"
+ }
+}

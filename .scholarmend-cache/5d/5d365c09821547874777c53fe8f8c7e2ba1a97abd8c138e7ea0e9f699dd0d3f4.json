@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/a9ca37927d6716925b487a7002b762fe-Abstract-Conference.html",
+ "payload": {
+  "abstract": "While large transformer models excel in predictive performance, their lack of interpretability restricts their usefulness in high-stakes domains. To remedy this, we propose the Generalized Induction-Head Model (GIM), an interpretable model for next-token prediction inspired by the observation of “induction heads” in LLMs. GIM is a retrieval-based module that identifies similar sequences in the input context by combining exact n-gram matching and fuzzy matching based on a neural similarity metric. We evaluate GIM in two settings: language modeling and fMRI response prediction. In language modeling, GIM improves next-token prediction by up to 25%p over interpretable baselines, significantly narrowing the gap with black-box LLMs. In an fMRI setting, GIM improves neural response prediction by 20% and offers insights into the language selectivity of the brain. GIM represents a significant step toward uniting interpretability and performance across domains. The code is available at https://github.com/ejkim47/generalized-induction-head.",
+  "title": "Interpretable Next-token Prediction via the Generalized Induction Head"
+ }
+}

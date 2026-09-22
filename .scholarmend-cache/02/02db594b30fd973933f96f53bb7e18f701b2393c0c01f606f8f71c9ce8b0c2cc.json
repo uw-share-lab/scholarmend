@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/75db8baa33fc4c22e905b769b8e81685-Abstract-Position_Paper_Track.html",
+ "payload": {
+  "abstract": "The increasing societal integration of Large Language Models (LLMs) and agent-based AI demands a new civic competency: adversarial reasoning. This position paper argues that K-12 AI education must move beyond passive literacy to actively equip students with skills in responsible adversarial prompting and ethical system \"hacking.\" Such capabilities are essential for citizens to critically probe AI systems, understand their inherent limitations, identify manipulative patterns, and hold them accountable. We posit that cultivating a generation skilled in \"red-teaming\" AI is vital for maintaining transparency, preventing undue influence, and fostering a democratic engagement with these transformative technologies.",
+  "title": "The Right to Red-Team: Adversarial AI Literacy as a Civic Imperative in K-12 Education"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/a7f67788f7b4d77fa7cd6887de3dcbe7-Abstract-Datasets_and_Benchmarks_Track.html",
+ "payload": {
+  "abstract": "We introduce ${\\rm C{\\small LEVER}}$, a high-quality, manually curated benchmark of 161 problems for end-to-end verified code generation in Lean. Each problem consists of (1) the task of generating a specification that matches a held-out ground-truth specification, and (2) the task of generating a Lean implementation that provably satisfies this specification. Unlike prior benchmarks,${\\rm C{\\small LEVER}}$ avoids test-case supervision, LLM-generated annotations, and specifications that leak implementation logic or allow vacuous solutions. All outputs are verified post-hoc using Lean's type checker to ensure machine-checkable correctness. We use ${\\rm C{\\small LEVER}}$ to evaluate several few-shot and agentic approaches based on state-of-the-art language models. These methods all struggle to achieve full verification, establishing it as a challenging frontier benchmark for program synthesis and formal reasoning. Our benchmark can be found on [GitHub](https://github.com/trishullab/clever) as well as [HuggingFace](https://huggingface.co/datasets/amitayusht/clever). All our evaluation code is also available [online](https://github.com/trishullab/clever-prover).",
+  "title": "CLEVER: A Curated Benchmark for Formally Verified Code Generation"
+ }
+}

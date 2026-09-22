@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2025/hash/79081c95482707d2db390542614e29cd-Abstract-Conference.html",
+ "payload": {
+  "abstract": "We propose a generative agent that augments training datasets with synthetic data for model fine-tuning. Unlike prior work, which uniformly samples synthetic data, our agent iteratively generates relevant samples on-the-fly, aligning with the target distribution. It prioritizes synthetic data that complements difficult training samples, focusing on those with high variance in gradient updates. Experiments across several image classification tasks demonstrate the effectiveness of our approach.",
+  "title": "GenDataAgent: On-the-fly Dataset Augmentation with Synthetic Data"
+ }
+}

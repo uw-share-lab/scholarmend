@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:1knvdLwxQq",
+ "payload": {
+  "abstract": "Multi-modal Diffusion Language Models (MDLMs) have emerged as a powerful alternative to autoregressive models in vision understanding, offering advantages in bidirectional context modeling and parallel decoding. However, existing MDLMs suffer from visual hallucinations due to the static nature of visual perception. Unlike autoregressive models, MDLMs lack the sequential dependency to dynamically interact with visual content. Therefore, MDLMs rely on fixed visual features encoded at initialization, causing the denoising process to drift toward language priors and lose its anchor to visual evidence. In this paper, we propose VGR (Visual-Guided Refinement), a framework that enables MDLMs to revisit visual details by exploiting diffusion dynamics. Our key insight is that the temporal trajectory of confidence during denoising reveals intrinsic uncertainty: while grounded tokens converge smoothly, hallucinated ones exhibit pronounced confidence fluctuation. VGR utilizes this fluctuation signal to detect uncertain spans and corrects them through targeted visual evidence extraction and in-place remasking. Extensive experiments on image captioning and hallucination evaluation benchmarks demonstrate that our method reduces hallucinations and recalls more details. We release our code at https://github.com/SongWZ3214/VGR.",
+  "title": "When Diffusion Language Models Hesitate: Detecting and Correcting Visual Hallucinations via Confidence Fluctuation"
+ }
+}

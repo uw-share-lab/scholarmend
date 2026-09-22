@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:nbuJuzxigz",
+ "payload": {
+  "abstract": "As role-playing Large Language Models (LLMs) become central to personalized AI, they face a fundamental challenge: balancing character authenticity with user satisfaction. Prior dual-process and dual-perspective approaches address this through prompt-level conditioning, auxiliary modules, or inference-time reflection---realizing duality externally rather than within the core attention mechanism. We introduce the KnowSelf-KnowOther Transformer (KSKT), which embeds dual-perspective reasoning directly into the generation process via dual-stream factorized attention that processes self-understanding and other-understanding through separate streams. This intrinsic integration enables token-level dynamic balance rather than post-hoc reconciliation. On CharacterBench, KSKT achieves 6.2% overall improvement over Qwen3-4B-Thinking. On SOTOPIA, KSKT improves Relationship by 19.3% over the base model---the dimension requiring explicit self-other coordination. These results establish intrinsic dual-perspective reasoning as an effective architectural principle for role-playing systems.",
+  "title": "Know Thyself, Know Thy User: Intrinsic Dual-Perspective Reasoning for Role-Playing LLMs"
+ }
+}

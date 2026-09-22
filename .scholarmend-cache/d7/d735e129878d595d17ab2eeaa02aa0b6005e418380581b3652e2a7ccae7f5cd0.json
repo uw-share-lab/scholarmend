@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2025/hash/871a06b60cf087bbdb854ebfcdf5349a-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Current large language models (LLMs) are far from reliable: they are prone to generate non-factual information and, more crucially, to contradict themselves when prompted to reason about relations between real entities of the world. These problems are currently addressed with large scale fine-tuning or by delegating consistent reasoning to external tools. In this work, we strive for a middle ground and leverage a training objective based on a principled neuro-symbolic loss that teaches a LLM to be consistent with external knowledge in the form of a set of facts and rules. Fine-tuning with such a loss on a limited set of facts enables our LLMs to be more logically consistent than previous baselines for a given constraint. Our approach also allows to easily combine multiple logical constraints at once in a principled way, delivering LLMs that are more consistent w.r.t. all the selected rules. Moreover, our method allows LLMs to extrapolate to unseen but semantically similar factual knowledge, represented in unseen datasets, more systematically.",
+  "title": "Logically Consistent Language Models via Neuro-Symbolic Integration"
+ }
+}

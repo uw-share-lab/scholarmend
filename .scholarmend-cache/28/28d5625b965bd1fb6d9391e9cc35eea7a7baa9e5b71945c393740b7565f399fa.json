@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2026/hash/916ee60e315531d6b3954af8a8dc3437-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Influence estimation methods promise to explain and debug machine learning by estimating the impact of individual samples on the final model. Yet, existing methods collapse under training randomness: the same example may appear critical in one run and irrelevant in the next. Such instability undermines their use in data curation or cleanup since it is unclear if we indeed deleted/kept the correct datapoints. To overcome this, we introduce f-influence -- a new influence estimation framework grounded in hypothesis testing that explicitly accounts for training randomness, and establish desirable properties that make it suitable for reliable influence estimation. We also design a highly efficient algorithm f-INfluence Estimation (f-INE) that computes f-influence in a in a single training run. Finally, we scale up f-INE to estimate influence of instruction tuning data on Llama 3.1 8B and show it can reliably detect poisoned samples that steer model opinions, demonstrating its utility for data cleanup and attributing model behavior.",
+  "title": "f-INE: A Hypothesis Testing Framework for Estimating Influence under Training Randomness"
+ }
+}

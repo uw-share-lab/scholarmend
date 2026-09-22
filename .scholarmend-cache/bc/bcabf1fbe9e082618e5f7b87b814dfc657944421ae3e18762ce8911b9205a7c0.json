@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:nBDuY2PjTY",
+ "payload": {
+  "abstract": "Partial Differential Equations (PDEs) play a fundamental role in scientific computing, and recent efforts have sought to extend the success of foundation models to PDE solving. However, multi-physics PDE pre-training faces the unique challenge of disentangling dynamic heterogeneity to learn universal, elementary patterns that generalize to new PDEs. Additionally, cross-physics transfer lacks a theoretical framework for interpretability—specifically, understanding which pre-trained operator knowledge is effectively transferred to target PDEs. To bridge these gaps, we introduce the theory of neural operator splitting, which decomposes PDE evolution into a modulated global spectral operator and sparse local constitutive mechanisms. A key innovation is Origo, which provides a neural operator bank that enables the identification of operator-level generalization patterns. Extensive experiments demonstrate strong zero-shot generalization and mechanism-level interpretability on unseen PDEs.",
+  "title": "Origo: Interpretable Multi-physics PDE Foundation Model through Neural Operator Splitting"
+ }
+}

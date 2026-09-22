@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/a28af221f2f70be183afc16797a56b91-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Differentially private (DP) mechanisms are difficult to interpret and calibrate because existing methods for mapping standard privacy parameters to concrete privacy risks—re-identification, attribute inference, and data reconstruction—are both overly pessimistic and inconsistent. In this work, we use the hypothesis-testing interpretation of DP ($f$-DP), and determine that bounds on attack success can take the same unified form across re-identification, attribute inference, and data reconstruction risks. Our unified bounds are (1) consistent across a multitude of attack settings, and (2) tunable, enabling practitioners to evaluate risk with respect to arbitrary, including worst-case, levels of baseline risk. Empirically, our results are tighter than prior methods using $\\varepsilon$-DP, R\\'enyi DP, and concentrated DP. As a result, calibrating noise using our bounds can reduce the required noise by 20% at the same risk level, which yields, e.g., an accuracy increase from 52% to 70% in a text classification task. Overall, this unifying perspective provides a principled framework for interpreting and calibrating the degree of protection in DP against specific levels of re-identification, attribute inference, or data reconstruction risk.",
+  "title": "Unifying Re-Identification, Attribute Inference, and Data Reconstruction Risks in Differential Privacy"
+ }
+}

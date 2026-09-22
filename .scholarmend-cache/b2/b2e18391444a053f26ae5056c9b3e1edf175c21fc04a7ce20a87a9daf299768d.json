@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:5Tph6wFMOm",
+ "payload": {
+  "abstract": "Recent advances in 3D Large Language Models (3D-LLMs) show strong potential in understanding and interacting with 3D environments, yet their training data typically lack explicit reasoning processes, limiting complex spatial reasoning and task planning.\nTo address this, we annotate SCoT, a million-scale Chain-of-Thought dataset spanning three levels: a) Spatial Perception (what is there), recognizing object properties, relations, and scene attributes; b) Spatial Analysis (what does it mean), inferring rationality, functionalities, and physical implications; c) Spatial Planning (what should I do), integrating perception and reasoning for actionable strategies. Unlike prior datasets supervising only answers, SCoT annotates intermediate reasoning grounded in scene cues, specifically for analysis and planning tasks. Results show that CoT supervision greatly benefits complex analysis and planning but induces hallucinations and accuracy drops in simple perception. These findings highlight both the necessity and the nuanced challenges of scene-grounded reasoning for advancing 3D intelligence.",
+  "title": "SCoT: Teaching 3D-LLMs to Think Spatially with Million-scale CoT Annotations"
+ }
+}

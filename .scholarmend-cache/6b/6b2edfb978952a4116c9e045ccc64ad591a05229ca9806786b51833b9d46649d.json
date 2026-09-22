@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/82eb7f4f7377fc5dc81ca85fc90fa735-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Deploying reinforcement learning (RL) safely in the real world is challenging, as policies trained in simulators must face the inevitable sim-to-real gap. Robust safe RL techniques are provably safe, however difficult to scale, while domain randomization is more practical yet prone to unsafe behaviors. We address this gap by proposing SPiDR, short for Sim-to-real via Pessimistic Domain Randomization—a scalable algorithm with provable guarantees for safe sim-to-real transfer. SPiDR uses domain randomization to incorporate the uncertainty about the sim-to-real gap into the safety constraints, making it versatile and highly compatible with existing training pipelines. Through extensive experiments on sim-to-sim benchmarks and two distinct real-world robotic platforms, we demonstrate that SPiDR effectively ensures safety despite the sim-to-real gap while maintaining strong performance.",
+  "title": "SPiDR: A Simple Approach for Zero-Shot Safety in Sim-to-Real Transfer"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:trSx4NouPD",
+ "payload": {
+  "abstract": "We introduce SeisMark, a large-scale open benchmark designed to bridge the gap between verifiable ground truth and realistic texture in 3D seismic fault detection. Using a novel pipeline merging procedural geology with diffusion-based synthesis, we produce domain-realistic (survey-specific) textured volumes that expose significant brittleness in existing models masked by simplified physics data. Experiments demonstrate that SeisMark acts as a rigorous discriminator, distinguishing robust modern architecture from legacy model that suffers performance collapse under realistic domain shifts. We release this benchmark to the community to serve as a verifiable standard for developing trustworthy, deployment-ready AI for safety-critical subsurface applications.",
+  "title": "SeisMark: A Large-Scale Open Benchmark for Robust 3D Seismic Fault Detection"
+ }
+}

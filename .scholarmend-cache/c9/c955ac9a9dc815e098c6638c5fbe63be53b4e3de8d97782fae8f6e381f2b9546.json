@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/b28ae1166e1035c26b89d20f0286c9eb-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Sequential deep learning models excel in domains with temporal or sequential dependencies, but their complexity necessitates post-hoc feature attribution methods for understanding their predictions. While existing techniques quantify feature importance, they inherently assume fixed feature ordering — conflating the effects of (1) feature values and (2) their positions within input sequences. To address this gap, we introduce OrdShap, a novel attribution method that disentangles these effects by quantifying how a model's predictions change in response to permuting feature position. We establish a game-theoretic connection between OrdShap and Sanchez-Bergantiños values, providing a theoretically grounded approach to position-sensitive attribution. Empirical results from health, natural language, and synthetic datasets highlight OrdShap's effectiveness in capturing feature value and feature position attributions, and provide deeper insight into model behavior.",
+  "title": "OrdShap: Feature Position Importance for Sequential Black-Box Models"
+ }
+}

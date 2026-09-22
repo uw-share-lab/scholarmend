@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2025/hash/1c60ed2b01120d383eebf12dc7a0e138-Abstract-Conference.html",
+ "payload": {
+  "abstract": "While large language models (LLMs) show impressive decision-making abilities, current methods lack a mechanism for automatic self-improvement from errors during task execution. We propose LEAP, an iterative fine-tuning framework that continually improves LLM agents using feedback from AI expert teachers. Our key insight is to equip the expert teachers with a privileged state -- information available during training but hidden at test time. This allows even weak experts to provide precise guidance, significantly improving the student agent's performance without access to privileged information at test time.We evaluate LEAP on multiple decision-making benchmarks, including text-based games (ALFWorld), web navigation (WebShop), and interactive coding (Intercode Bash). Our experiments show that LEAP (1) outperforms behavior cloning and ReAct baselines (2) enables weak student models (e.g., Llama3-8B) to exceed performance of strong teacher models (GPT-4o), and (3) allows weak models to self-improve using privileged versions of themselves. We provide a theoretical analysis showing that LEAP's success hinges on balancing privileged information with student’s realizability, which we empirically validate. Our code is available at \\url{https://leap-llm.github.io}.",
+  "title": "Better than Your Teacher: LLM Agents that learn from Privileged AI Feedback"
+ }
+}

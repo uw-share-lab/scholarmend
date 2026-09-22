@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/1cba8502063fab9df252a63968691768-Abstract-Datasets_and_Benchmarks_Track.html",
+ "payload": {
+  "abstract": "Chip placement is a critical step in the Electronic Design Automation (EDA) workflow, which aims to arrange chip modules on the canvas to optimize the performance, power, and area (PPA) metrics of final designs.Recent advances show great potential of AI-based algorithms in chip placement.However, due to the lengthy EDA workflow, evaluations of these algorithms often focus on intermediate surrogate metrics, which are computationally efficient but often misalign with the final end-to-end performance (i.e., the final design PPA).To address this challenge, we propose to build ChiPBench, a comprehensive benchmark specifically designed to evaluate the effectiveness of AI-based algorithms in final design PPA metrics.Specifically, we generate a diverse evaluation dataset from $20$ circuits across various domains, such as CPUs, GPUs, and NPUs.We then evaluate six state-of-the-art AI-based chip placement algorithms on the dataset and conduct a thorough analysis of their placement behavior.Extensive experiments show that AI-based chip placement algorithms produce unsatisfactory final PPA results, highlighting the significant influence of often-overlooked factors like regularity and dataflow.We believe ChiPBench will effectively bridge the gap between academia and industry.",
+  "title": "Benchmarking End-To-End Performance of AI-Based Chip Placement Algorithms"
+ }
+}

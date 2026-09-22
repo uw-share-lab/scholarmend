@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/5a29c3d172b80bab1238ddc227246c52-Abstract-Conference.html",
+ "payload": {
+  "abstract": "We present a novel approach to formalise and solve search-based problems using large language models, which significantly improves upon previous state-of-the-art results. We demonstrate the efficacy of this approach on benchmarks like the logic puzzles tasks in ZebraLogicBench. Instead of letting the LLM attempt to directly solve the puzzles, our method prompts the model to formalise the problem in a logic-focused, human-readable domain-specific language (DSL) called Logic.py. This formalised representation is then solved using a constraint solver, leveraging the strengths of both the language model and the solver. Our approach achieves a remarkable 65% absolute improvement over the baseline performance of Llama 3.1 70B on ZebraLogicBench, setting a new state-of-the-art with an accuracy of over 90%. This significant advancement demonstrates the potential of combining language models with domain-specific languages and auxiliary tools on traditionally challenging tasks for LLMs.",
+  "title": "Logic.py: Bridging the Gap between LLMs and Constraint Solvers"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:cEA9yswzZf",
+ "payload": {
+  "abstract": "In correctness-sensitive scenarios, it is crucial for Large Language Models (LLMs) to strictly follow the provided evidence. However, even with reference texts, models often suffer from hallucinations, especially when processing long contexts. Existing work attempts to reinforce the use of citations through Retrieval-Augmented Generation (RAG) or post-hoc methods, while citations remain a probabilistic output rather than a foundation for the generated content. To address this, we propose Guidance, which aims to correct outputs and naturally incorporate citations during the LLM decoding phase. Specifically, we first build a structured fact pool (Prefix-Tail pairs) from the documents. \nThen, during inference, Guidance predicts the model's intent using a lookahead strategy. When it detects a match with a context prefix, it automatically replaces the output with the verified fact and its citation. This approach is training-free and can be plugged into general-purpose or citation-fine-tuned LLMs. Experiments on LongBench-Cite demonstrate that Guidance improves the citation F1 score by 11.2\\% over state-of-the-art baselines. The source code is available at: https://github.com/marlcplhra/Guidance.",
+  "title": "Guidance: Sentence-Level Citation Enforcement via Prefix-Tail Guidance during LLM Decoding"
+ }
+}

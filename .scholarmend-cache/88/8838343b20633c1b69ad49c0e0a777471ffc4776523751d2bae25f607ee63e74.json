@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/76175f4355e2f67cf91be468c8860070-Abstract-Datasets_and_Benchmarks_Track.html",
+ "payload": {
+  "abstract": "Large language models (LLMs) are powerful tools capable of handling diverse tasks. Comparing and selecting appropriate LLMs for specific tasks requires systematic evaluation methods, as models exhibit varying capabilities across different domains. However, finding suitable benchmarks is difficult given the many available options. This complexity not only increases the risk of benchmark misuse and misinterpretation but also demands substantial effort from LLM users, seeking the most suitable benchmarks for their specific needs. To address these issues, we introduce BenchmarkCards, an intuitive and validated documentation framework that standardizes critical benchmark attributes such as objectives, methodologies, data sources, and limitations. Through user studies involving benchmark creators and users, we show that BenchmarkCards can simplify benchmark selection and enhance transparency, facilitating informed decision-making in evaluating LLMs.Data & Code:github.com/SokolAnn/BenchmarkCards huggingface.co/datasets/ASokol/BenchmarkCards",
+  "title": "BenchmarkCards: Standardized Documentation for Large Language Model Benchmarks"
+ }
+}

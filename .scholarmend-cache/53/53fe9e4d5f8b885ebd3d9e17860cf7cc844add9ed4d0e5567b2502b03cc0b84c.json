@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/281743161c91ddaa3d9c4dca2eb795c4-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Text-to-image diffusion models are typically trained on large-scale web data, often resulting in outputs that misalign with human preferences. Inspired by preference learning in large language models, we propose ABC (Alignment by Classification), a simple yet effective framework for aligning diffusion models with human preferences. In contrast to prior DPO-based methods that depend on suboptimal supervised fine-tuned (SFT) reference models, ABC assumes access to an ideal reference model perfectly aligned with human intent and reformulates alignment as a classification problem. Under this view, we recognize that preference data naturally forms a semi-supervised classification setting. To address this, we propose a data augmentation strategy that transforms preference comparisons into fully supervised training signals. We then introduce a classification-based ABC loss to guide alignment. Our alignment by classification approach could effectively steer the diffusion model toward the behavior of the ideal reference. Experiments on various diffusion models show that our ABC consistently outperforms existing baselines, offering a scalable and robust solution for preference-based text-to-image fine-tuning.",
+  "title": "Aligning Text-to-Image Diffusion Models to Human Preference by Classification"
+ }
+}

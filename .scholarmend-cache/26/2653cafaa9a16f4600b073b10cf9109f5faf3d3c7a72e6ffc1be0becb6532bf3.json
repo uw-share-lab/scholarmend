@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:4BwA2qDAPy",
+ "payload": {
+  "abstract": "Retrieval-augmented generation (RAG) systems suffer from a fundamental functional misalignment where retrievers optimize for semantic relevance, often recalling documents with high background utility but factually erroneous answer spans that generators blindly adopt as cognitive shortcuts. To resolve this, we propose the collaborative Critic-Reasoner framework that shifts robustness control from coarse-grained filtering to fine-grained cognitive decoupling. We disentangle the generation process into two serialized roles by deploying a Critic to perform surgical evidence purification through identifying and masking misleading entities while preserving supportive background context, followed by a Reasoner that switches from rote extraction to deductive reasoning based on the residual evidence. We operationalize this framework via a two-stage alignment strategy combining supervised fine-tuning (SFT) with path-aware direct preference optimization (DPO) to enforce strict behavioral synergy. Experimental results on adversarial benchmarks such as ConFiQA demonstrate that our method significantly outperforms baselines, achieving a 25.99\\% accuracy gain in conflicting scenarios and effectively resolving the trust bias dilemma in real-world RAG.",
+  "title": "From Extraction to Deduction: Resolving Functional Misalignment in RAG via a Collaborative Critic-Reasoner Framework"
+ }
+}

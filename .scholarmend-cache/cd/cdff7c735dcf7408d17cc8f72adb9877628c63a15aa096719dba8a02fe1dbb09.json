@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/a5059a9a389ccc76da85760ea79490d8-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Times series foundation models (TSFMs) have emerged as a promising paradigm for time series analyses and forecasting, showing remarkable generalization performance across different domains. Despite the efforts made on hallucinations of foundation models, hallucinations of TSFMs have been underexplored in existing literature. In this paper, we formally define TSFM hallucinations in the zero-shot forecasting setting by examining whether a generated forecast exhibits different dynamics from those of the context. Our study reveals that TSFM hallucinations are associated with the loss of context information in hidden states during forward propagation. As such, we propose a methodology to identify signal subspaces of TSFMs and magnify the information through intervention. Experiments demonstrate that our proposed intervention approach effectively mitigates hallucinations and improves forecasting performance. The signal strength measure computed from signal subspaces shows strong predictive power of hallucinations and forecasting performance of the model. Our work contributes to deeper understanding of TSFM trustworthiness that could foster future research in this direction.",
+  "title": "Investigating Hallucinations of Time Series Foundation Models through Signal Subspace Analysis"
+ }
+}

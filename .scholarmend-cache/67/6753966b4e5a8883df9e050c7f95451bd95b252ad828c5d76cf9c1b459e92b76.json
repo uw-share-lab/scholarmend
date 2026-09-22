@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/33870b3e099880cd8e705cd07173ac27-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Heterophilous graphs, where dissimilar nodes tend to connect, pose a challenge for graph neural networks (GNNs). Increasing the GNN depth can expand the scope (i.e., receptive field), potentially finding homophily from the higher-order neighborhoods. However, GNNs suffer from performance degradation as depth increases. Despite having better expressivity, state-of-the-art deeper GNNs achieve only marginal improvements compared to their shallow variants. Through theoretical and empirical analysis, we systematically demonstrate a shift in GNN generalization preferences across nodes with different homophily levels as depth increases. This creates a disparity in generalization patterns between GNN models with varying depth. Based on these findings, we propose to improve deeper GNN generalization while maintaining high expressivity by Mixture of scope experts at test (Moscat). Experimental results show that Moscat works flexibly with various GNN architectures across a wide range of datasets while significantly improving accuracy.",
+  "title": "Mixture of Scope Experts at Test: Generalizing Deeper Graph Neural Networks with Shallow Variants"
+ }
+}

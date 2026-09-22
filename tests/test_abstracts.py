@@ -172,3 +172,12 @@ def test_a_title_opening_with_tex_still_matches_scholars_stripped_title(tmp_path
     claims = ProceedingsPageResolver(cache).resolve(
         "-Guard: Human-Level Safety & Security Evaluation", [HASH])
     assert [c.source for c in claims] == ["proceedings_page"]
+
+
+def test_a_double_escaped_page_yields_plain_ampersands(tmp_path):
+    page = PAGE.replace("Second paragraph.", "Caption &amp;amp; tuning, R&amp;D.")
+    cache = Cache(tmp_path)
+    cache.put(page_key(HASH), extract(page))
+    [claim] = ProceedingsPageResolver(cache).resolve(
+        "AgentAuditor: Human-Level Safety & Security Evaluation", [HASH])
+    assert claim.value.endswith("Caption & tuning, R&D.")

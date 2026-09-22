@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/01dde7941bce255c2a061eef4fbb7fad-Abstract-Conference.html",
+ "payload": {
+  "abstract": "We present scPilot, the first systematic framework to practice \\textit{omics-native reasoning}: a large language model (LLM) converses in natural language while directly inspecting single-cell RNA-seq data and on-demand bioinformatics tools. scPilot converts core single-cell analyses, i.e., cell-type annotation, developmental-trajectory reconstruction, and transcription-factor targeting, into step-by-step reasoning problems that the model must solve, justify, and, when needed, revise with new evidence. To measure progress, we release \\scbench, a suite of 9 expertly curated datasets and graders that faithfully evaluate the omics-native reasoning capability of scPilot w.r.t various LLMs. Experiments with o1 show that \\textit{iterative} omics-native reasoning lifts average accuracy by 11\\% for cell-type annotation and Gemini 2.5 Pro cuts trajectory graph-edit distance by 30\\% versus one-shot prompting, while generating transparent reasoning traces that explain marker gene ambiguity and regulatory logic. By grounding LLMs in raw omics data, scPilot enables auditable, interpretable, and diagnostically informative single-cell analyses.",
+  "title": "scPilot: Large Language Model Reasoning Toward Automated Single-Cell Analysis and Discovery"
+ }
+}

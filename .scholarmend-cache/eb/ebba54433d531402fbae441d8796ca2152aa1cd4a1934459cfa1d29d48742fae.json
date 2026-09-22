@@ -1,0 +1,22 @@
+{
+ "key": "s2:search:provablyexplainingneuraladditivemodels",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "ArXiv": "2602.17530",
+     "CorpusId": 285787836,
+     "DBLP": "journals/corr/abs-2602-17530",
+     "DOI": "10.48550/arXiv.2602.17530"
+    },
+    "paperId": "d9725710e030e51d5ee23c31b9fc7a1694b58264",
+    "title": "Provably Explaining Neural Additive Models",
+    "venue": "arXiv.org",
+    "year": 2026
+   }
+  ],
+  "next": 1,
+  "offset": 0,
+  "total": 1905
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:xJV9klbfuR",
+ "payload": {
+  "abstract": "Image forgery is rapidly evolving, rendering forensic traces increasingly subtle and readily attenuated by post-processing. Although vision-language prompting can inject priors, open-ended LLM-generated prompts are difficult to constrain, and naive language descriptions can introduce semantic perturbations. To address these challenges, we propose *Forensic Prompting with Dual-Action policy optimization* (FPDA) for vision-language forgery detection and localization, where the *Forensic Prompting Module* (FPM) constructs a structured and reproducible forensic prompt bank and supports optional text input as a reliability-aware cue for stable conditioning. Moreover, *Dual-Action Policy Optimization* (DAPO) is applied to learn sample-adaptive evidence usage by routing forensic prompts and scheduling localization refinement on a per-image basis, stabilizing discriminative cues and improving mask spatial consistency. Extensive experiments are conducted on multiple public datasets covering manual manipulations, diffusion content, face forgeries, and text-enabled settings, demonstrating favorable detection and localization performance over representative state-of-the-art methods under comparable evaluation protocols.",
+  "title": "Forensic Prompting with Dual-Action Policy Optimization for Vision-Language Forgery Detection and Localization"
+ }
+}

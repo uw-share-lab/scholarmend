@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/36ad3d922ec61116f2503f5851e07951-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Data Shapley values provide a principled approach for quantifying the contribution of individual training examples to machine learning models. However, computing these values often requires computational complexity that is exponential in the data size, and this has led researchers to pursue efficient algorithms tailored to specific machine learning models. Building on the prior success of the Shapley valuation for $K$-nearest neighbor (KNN) models, in this paper, we introduce a localized data Shapley framework that significantly accelerates the valuation of data points. Our approach leverages the distance-based local structure in the data space to decompose the global valuation problem into smaller, localized computations. Our primary contribution is an efficient valuation algorithm for a threshold-based KNN variant and shows that it provides provable speedups over the baseline under mild assumptions. Extensive experiments on real-life datasets demonstrate that our methods achieve a substantial speedup compared to previous approaches.",
+  "title": "Localized Data Shapley: Accelerating Valuation for Nearest Neighbor Algorithms"
+ }
+}

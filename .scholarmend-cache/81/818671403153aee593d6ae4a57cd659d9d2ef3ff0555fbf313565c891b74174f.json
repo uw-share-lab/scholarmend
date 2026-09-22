@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2026/hash/28bfea825dc61f7adc9f1e2eaf5bdd2b-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Knowledge editing methods (KEs) are a cost-effective way to update the factual content of large language models (LLMs), but they pose a dual-use risk. While KEs are beneficial for updating outdated or incorrect information, they can be exploited maliciously to implant misinformation or bias. In order to defend against these types of malicious manipulation, we need robust techniques that can reliably detect, interpret, and mitigate malicious edits. To that end, we introduce the tasks of tracing and reversing edits. We propose a novel method to infer the edited object entity, solely based on the modified weights, without access to the editing prompt or any other semantically similar prompts, with up to 99\\% accuracy. Further, we propose an effective and training-free method for reversing edits. Our method reverses up to 94\\% of the edits, and helps regain the original model's output distribution without access to any information about the edit. This method can further be repurposed to distinguish between edited and unedited weights. Our findings highlight the feasibility of tracing and reversing edits based on the edited weights, opening a new research direction for safeguarding LLMs against adversarial manipulations.",
+  "title": "Tracing and Reversing Edits in LLMs"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:vGk4D0fUzv",
+ "payload": {
+  "abstract": "Large language models (LLMs) are increasingly deployed in real-world applications but remain highly vulnerable to jailbreak prompts that bypass safety guardrails and elicit harmful outputs. We propose GraphShield, a graph-theoretic jailbreak detector that models information routing inside the LLM as token--layer graphs. Unlike prior defenses that rely on surface cues or costly gradient signals, GraphShield captures network-level dynamics in a lightweight and model-agnostic way by extracting multi-scale structural and semantic features that reveal jailbreak signatures. Extensive experiments on LLaMA-2-7B-Chat and Vicuna-7B-v1.5 show that GraphShield reduces attack success rates to 1.9% and 7.8%, respectively, while keeping refusal rates on benign prompts at 7.1% and 6.8%, significantly improving the robustness–utility trade-off compared to strong baselines. These results demonstrate that graph-theoretic modeling of network-level dynamics provides a principled and effective framework for robust jailbreak detection in LLMs.",
+  "title": "GraphShield: Graph-Theoretic Modeling of Network-Level Dynamics for Robust Jailbreak Detection"
+ }
+}

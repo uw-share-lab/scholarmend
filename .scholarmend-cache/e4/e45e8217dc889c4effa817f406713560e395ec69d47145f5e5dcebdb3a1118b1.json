@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:WpvC0zpcw3",
+ "payload": {
+  "abstract": "Existing decoding-time safety interventions are often reactive, relying on local signals to correct unsafe outputs after they emerge.\nUnder adversarial prompts that drive generation into recurring unsafe response, such local signals provide weak guidance for stable repair. As a result, rollback and post-hoc rewriting often trade-off response quality with recurrent violations. To address these limitations, we propose RBCBF, a rollback-based decoding-time framework that jointly selects intervention steps and performs distribution-level corrective control. Our key innovation is a risk-aggregation formulation that views terminal violations as the accumulated build-up of risk along the prefix. By selecting rollback steps from these decisive prefixes, RBCBF moves rollback targeting beyond heuristic cues and turns it into a trajectory-level decision. RBCBF then applies invasive corrective control to the next-token distribution under multiple rule constraints. Across jailbreak-style evaluations, RBCBF outperforms prior rollback methods and decoding-time baselines, reducing harmful responses and substantially lowering violation recurrence.",
+  "title": "RBCBF: Decoding Time Safety Alignment via Risk Guided Rollback and Barrier Control"
+ }
+}

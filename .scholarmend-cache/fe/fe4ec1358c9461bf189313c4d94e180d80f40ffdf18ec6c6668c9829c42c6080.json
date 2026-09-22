@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:hcJywRYc3n",
+ "payload": {
+  "abstract": "Large Language Models (LLMs) have been extensively studied for their memory ability, yet the capacity to selectively forget during inference remains underexplored. We introduce ICF-Bench, a comprehensive benchmark for evaluating In-Context Forgetting (ICF). We define ICF as the ability of LLMs to selectively forget interference information while retaining useful knowledge in context without parameter updates. Built on high-quality datasets, ICF-Bench comprises 2k multi-turn dialogues with annotations that reflect realistic scenarios.  Extensive experiments of advanced LLMs on ICF-Bench reveal that: (1) models perform well without forgetting interference but struggle significantly when interference is present; (2) stronger memory capacity without forgetting interference does not transfer into stronger ICF capacity, highlighting an asymmetry between memory and ICF; and (3) context length has different effects on ICF capacity across scenarios. These findings expose critical vulnerabilities of current LLMs in terms of privacy protection, adaptability, and user autonomy. Our code and data will be available at https://anonymous.4open.science/r/ICF-Bench-B1C7.",
+  "title": "Do LLMs Forget What They Should? Evaluating In-Context Forgetting in Large Language Models"
+ }
+}

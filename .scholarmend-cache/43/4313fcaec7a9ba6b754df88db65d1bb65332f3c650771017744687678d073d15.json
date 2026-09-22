@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/be7bc8aa38696723cebe296b6122d7e3-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Predicting human eye movements during goal-directed visual search is critical for enhancing interactive AI systems. In medical imaging, such prediction can support radiologists in interpreting complex data, such as chest X-rays. Many existing methods rely on generic vision--language models and saliency-based features, which can limit their ability to capture fine-grained clinical semantics and integrate domain knowledge effectively. We present \\textbf{LogitGaze-Med}, a state-of-the-art multimodal transformer framework that unifies (1) domain-specific visual encoders (e.g., CheXNet), (2) textual embeddings of diagnostic labels, and (3) semantic priors extracted via the logit-lens from an instruction-tuned medical vision--language model (LLaVA-Med). By directly predicting continuous fixation coordinates and dwell durations, our model generates clinically meaningful scanpaths. Experiments on the GazeSearch dataset and synthetic scanpaths generated from MIMIC-CXR and validated by experts demonstrate that LogitGaze-Med improves scanpath similarity metrics by 20--30\\% over competitive baselines and yields over 5\\% gains in downstream pathology classification when incorporating predicted fixations as additional training data.",
+  "title": "From Human Attention to Diagnosis: Semantic Patch-Level Integration of Vision-Language Models in Medical Imaging"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2026/hash/cf8353a0efc3644454a5591a7cb55c17-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Solving high-dimensional partial differential equations (PDEs) is a critical challenge where modern data-driven solvers often lack reliability and rigorous error guarantees. We introduce Simulation-Calibrated Scientific Machine Learning (SCaSML), a framework that systematically improves pre-trained PDE solvers at inference time without any retraining. Our core idea is to derive a new PDE, which we term the Law of Defect, that precisely governs the error of a given surrogate model. Because this defect PDE retains the structure of the original problem, we can solve it efficiently with traditional stochastic simulators, yielding a targeted correction to the initial machine-learned solution. We prove that SCaSML achieves a faster convergence rate, with a final error bounded by the product of the surrogate and simulation errors. On challenging PDEs up to 160 dimensions, SCaSML reduces the error of various surrogate models, including PINNs and Gaussian Processes, by 20-80%. SCaSML provides a principled method to fuse the speed of machine learning with the rigor of numerical simulation, enhancing the trustworthiness of Al for scientific discovery.",
+  "title": "Physics-Informed Inference Time Scaling for Solving High-Dimensional Partial Differential Equations"
+ }
+}

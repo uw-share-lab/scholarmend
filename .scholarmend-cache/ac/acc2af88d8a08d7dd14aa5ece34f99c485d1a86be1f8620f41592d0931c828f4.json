@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/fa9259a773e85c49624aea9de2ff9146-Abstract-Conference.html",
+ "payload": {
+  "abstract": "When applying reinforcement learning—typically through GRPO—to large vision-language model reasoning struggles to effectively scale reasoning length or generates verbose outputs across all tasks with only marginal gains in accuracy. To address this issue, we present FAST-GRPO, a variant of GRPO that dynamically adapts reasoning depth based on question characteristics. Through empirical analysis, we establish the feasibility of fast-slow thinking in LVLMs by investigating how response length and data distribution affect performance. Inspired by these observations, we introduce two complementary metrics to estimate the difficulty of the questions, guiding the model to determine when fast or slow thinking is more appropriate. Next, we incorporate adaptive length-based rewards and difficulty-aware KL divergence into the GRPO algorithm. Experiments across seven reasoning benchmarks demonstrate that FAST achieves state-of-the-art accuracy with over 10% relative improvement compared to the base model, while reducing token usage by 32.7-67.3% compared to previous slow-thinking approaches, effectively balancing reasoning length and accuracy.",
+  "title": "Fast-Slow Thinking GRPO for Large Vision-Language Model Reasoning"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:c2BygWVqag",
+ "payload": {
+  "abstract": "Jailbreaking refers to techniques that bypass the safety alignment of large language models (LLMs) to elicit harmful outputs, and automated red-teaming has become a key approach for detecting such vulnerabilities before deployment. However, most existing red-teaming methods operate directly in text space, where they tend to generate semantically similar prompts and thus fail to probe the broader spectrum of latent vulnerabilities within a model. To address this limitation, we shift the exploration of jailbreak strategies from conventional text space to the model’s latent activation space and propose STAR (**ST**rategy-driven **A**utomatic Jailbreak **R**ed-teaming), a black-box framework for systematically generating jailbreak prompts. STAR is composed of two modules: (i) strategy generation module, which extracts the principal components of existing strategies and recombines them to generate novel ones; and (ii) prompt generation module, which translates abstract strategies into concrete jailbreak prompts with high success rates. Experimental results show that STAR substantially outperforms state-of-the-art baselines in terms of both attack success rate and strategy diversity. These findings highlight critical vulnerabilities in current alignment techniques and establish STAR as a more powerful paradigm for comprehensive LLM security evaluation.",
+  "title": "STAR: Strategy-driven Automatic Jailbreak Red-teaming For Large Language Model"
+ }
+}

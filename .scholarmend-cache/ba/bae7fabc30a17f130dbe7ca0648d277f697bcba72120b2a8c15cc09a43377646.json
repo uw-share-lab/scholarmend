@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2026/hash/b9501301a7a0f99e57406cc901f4e3ce-Abstract-Conference.html",
+ "payload": {
+  "abstract": "This paper introduces a novel watermarking method for diffusion models. It is based on guiding the diffusion process using the gradient computed from any off-the-shelf watermark decoder. The gradient is guided further using different image augmentations, increasing robustness to attacks against which the decoder was not originally robust, without retraining or fine-tuning. The methodology effectively allows to convert any post-hoc watermarking scheme into a scheme embedding the signal during the diffusion process. We show that this approach is complementary to watermarking techniques modifying the variational autoencoder at the end of the diffusion process. We validate the methods on different diffusion models and detectors. The watermarking guidance does not significantly alter the generated image for a given seed and prompt, preserving both the diversity and quality of generation.",
+  "title": "Guidance Watermarking for Diffusion Models"
+ }
+}

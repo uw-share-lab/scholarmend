@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/db0870f8817c88dbdc779464fe388fe9-Abstract-Conference.html",
+ "payload": {
+  "abstract": "While neural networks have demonstrated impressive performance across various tasks, accurately quantifying uncertainty in their predictions is essential to ensure their trustworthiness and enable widespread adoption in critical systems. Several Bayesian uncertainty quantification (UQ) methods exist that are either cheap or reliable, but not both. We propose a post-hoc, sampling-based UQ method for overparameterized networks at the end of training. Our approach constructs efficient and meaningful deep ensembles by employing a (stochastic) gradient-descent sampling process on appropriately linearized networks. We demonstrate that our method effectively approximates the posterior of a Gaussian Process using the empirical Neural Tangent Kernel. Through a series of numerical experiments, we show that our method not only outperforms competing approaches in computational efficiency--often reducing costs by multiple factors--but also maintains state-of-the-art performance across a variety of UQ metrics for both regression and classification tasks.",
+  "title": "Uncertainty Quantification with the Empirical Neural Tangent Kernel"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/69c49f75ca31620f1f0d38093d9f3d9b-Abstract-Conference.html",
+ "payload": {
+  "abstract": "With the increasing need to safeguard data privacy in machine learning models, differential privacy (DP) is one of the major frameworks to build privacy-preserving models. Support Vector Machines (SVMs) are widely used traditional machine learning models due to their robust margin guarantees and strong empirical performance in binary classification. However, applying DP to multi-class SVMs is inadequate, as the standard one-versus-rest (OvR) and one-versus-one (OvO) approaches repeatedly query each data sample when building multiple binary classifiers, thus consuming the privacy budget proportionally to the number of classes. To overcome this limitation, we explore all-in-one SVM approaches for DP, which access each data sample only once to construct multi-class SVM boundaries with margin maximization properties. We propose a novel differentially Private Multi-class SVM (PMSVM) with weight and gradient perturbation methods, providing rigorous sensitivity and convergence analyses to ensure DP in all-in-one SVMs. Empirical results demonstrate that our approach surpasses existing DP-SVM methods in multi-class scenarios.",
+  "title": "Multi-Class Support Vector Machine with Differential Privacy"
+ }
+}

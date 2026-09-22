@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:QyG0ilz5ju",
+ "payload": {
+  "abstract": "Feature attribution explains machine decisions by quantifying each feature's contribution.\nWhile numerous approaches rely on exact gradient measurements, recent work has adopted gradient estimation to derive explanatory information under query-level access, a restrictive yet more practical accessibility assumption known as the black-box setting.\nFollowing this direction, this paper introduces GEFA (Gradient-estimation-based Explanation For All), a general feature attribution framework leveraging proxy gradient estimation.\nUnlike the previous attempt that focused on explaining image classifiers, the proposed explainer derives feature attributions in a proxy space, making it generally applicable to arbitrary black-box models, regardless of input type.\nIn addition to its close relationship with Integrated Gradients, our approach, a path method built upon estimated gradients, surprisingly produces unbiased estimates of Shapley Values.\nCompared to traditional sampling-based Shapley Value estimators, GEFA avoids potential information waste sourced from computing marginal contributions, thereby improving explanation quality, as demonstrated in quantitative evaluations across various settings.",
+  "title": "GEFA: A General Feature Attribution Framework Using Proxy Gradient Estimation"
+ }
+}

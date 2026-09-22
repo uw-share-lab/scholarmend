@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/f3a5652cd6b0b36be1c554cd6fc2896d-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Feature Visualization (FV) is a widely used technique for interpreting concepts learned by Deep Neural Networks (DNNs), which synthesizes input patterns that maximally activate a given feature. Despite its popularity, the trustworthiness of FV explanations has received limited attention. We introduce Gradient Slingshots, a novel method that enables FV manipulation without modifying model architecture or significantly degrading performance. By shaping new trajectories in off-distribution regions of a feature's activation landscape, we coerce the optimization process to converge to a predefined visualization. We evaluate our approach on several DNN architectures, demonstrating its ability to replace faithful FVs with arbitrary targets. These results expose a critical vulnerability: auditors relying solely on FV may accept entirely fabricated explanations. To mitigate this risk, we propose a straightforward defense and quantitatively demonstrate its effectiveness.",
+  "title": "Manipulating Feature Visualizations with Gradient Slingshots"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/901b713c3d1ecfce0d4556752eed4e02-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Diffusion models have transformed image synthesis through iterative denoising, by defining trajectories from noise to coherent data. While their capabilities are widely celebrated, a critical challenge remains unaddressed: ensuring responsible use by verifying whether an image originates from a model's training set, its novel generations or external sources. We introduce a framework that analyzes diffusion trajectories for this purpose. Specifically, we demonstrate that temporal dynamics across the entire trajectory allow for more robust classification and challenge the widely-adopted \"Goldilocks zone\" conjecture, which posits that membership inference is effective only within narrow denoising stages. More fundamentally, we expose critical flaws in current membership inference practices by showing that representative methods fail under distribution shifts or when model-generated data is present. For model attribution, we demonstrate a first white-box approach directly applicable to diffusion. Ultimately, we propose the unification of data provenance into a single, cohesive framework tailored to modern generative systems.",
+  "title": "Tracing the Roots: Leveraging Temporal Dynamics in Diffusion Trajectories for Origin Attribution"
+ }
+}

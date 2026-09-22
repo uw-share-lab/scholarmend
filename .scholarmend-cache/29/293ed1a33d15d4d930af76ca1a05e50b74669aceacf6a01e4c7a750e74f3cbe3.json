@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/d78ca21959823cf8aa8e26d359cf1105-Abstract-Conference.html",
+ "payload": {
+  "abstract": "LLMs have demonstrated impressive capabilities across various natural language processing tasks yet remain vulnerable to prompts, known as jailbreak attacks, carefully designed to bypass safety guardrails and elicit harmful responses. Traditional methods rely on manual heuristics that suffer from limited generalizability. Despite being automatic, optimization-based attacks often produce unnatural jailbreak prompts that can be easily detected by safety filters or require high computational costs due to discrete token optimization. This paper introduces Generative Adversarial Suffix Prompter (GASP), a novel automated framework that can efficiently generate human-readable jailbreak prompts in a fully black-box setting. In particular, GASP leverages latent Bayesian optimization to craft adversarial suffixes by efficiently exploring continuous latent spaces, gradually optimizing the suffix generator to improve attack efficacy while balancing prompt coherence via a targeted iterative refinement procedure. Through comprehensive experiments, we show that GASP can produce natural adversarial prompts, significantly improving jailbreak success, reducing training times, and accelerating inference speed, thus making it an efficient and scalable solution for red-teaming LLMs.",
+  "title": "GASP: Efficient Black-Box Generation of Adversarial Suffixes for Jailbreaking LLMs"
+ }
+}

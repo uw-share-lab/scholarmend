@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2026/hash/3a07c3a67cfe50d3236b71fb674c7f30-Abstract-Conference.html",
+ "payload": {
+  "abstract": "It is important for Large Language Models (LLMs) to be aware of the boundary of their knowledge, i.e., the mechanism of identifying known and unknown queries. This type of awareness enables models to perform adaptive inference, such as invoking retrieval-augmented generation (RAG), engaging in slow and deep thinking, or abstaining from answering when appropriate. These mechanisms are beneficial to the development of efficient and trustworthy AI. In this work, we propose a method to detect knowledge boundaries via \\textbf{\\emph{Query-Level Uncertainty }}, which estimates if a model is capable of to answering a given query before generating any tokens. To this end, we propose a novel, training-free method called \\textbf{\\emph{Internal Confidence}}, which leverages self-evaluations across layers and tokens to provide a reliable signal of uncertainty. Empirical studies on both factual question answering and mathematical reasoning tasks demonstrate that our internal confidence can outperform several baselines. Furthermore, we showcase that our proposed method can be used for adaptive inference, such as efficient RAG and model cascading, thereby reducing inference costs while preserving overall performance.",
+  "title": "Query-Level Uncertainty in Large Language Models"
+ }
+}

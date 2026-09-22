@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:ZXm8JjfhW8",
+ "payload": {
+  "abstract": "While Large Vision-Language Models (LVLMs) achieves remarkable success, hallucinations remain a significant barrier to their reliable deployment. Recent studies primarily attribute these defects to cross-modal attention imbalances, with most solutions focusing on re-weighting visual tokens or suppressing language priors. Such approaches often overlook the spectral characteristics of the visual information flow and frequently rely on Contrastive Decoding (CD), which doubles the inference time. Instead of following conventional approaches, we identify two distinct hallucination patterns—Perceptual-Semantic Dissociation and Localized Fixation—and accordingly develop FLASH (Frequency-Localized Attention SHaping), a training-free and CD-free framework. FLASH utilizes a Spectral Vortex Score to detect visual heads within multi-head attention layers, applying adaptive spectral modulation to rectify the visual information flow during the decoding phase. Empirical results demonstrate that FLASH offers a superior balance between performance and efficiency compared to SOTA methods.",
+  "title": "Beyond Attention Imbalance: Mitigating Hallucinations via Spectral Surgery"
+ }
+}

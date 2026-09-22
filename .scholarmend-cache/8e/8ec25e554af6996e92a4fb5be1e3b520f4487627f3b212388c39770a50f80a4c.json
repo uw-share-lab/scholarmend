@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2026/hash/0edf41ad3841ac41a7c1374f569cd549-Abstract-Conference.html",
+ "payload": {
+  "abstract": "With the rise of deep neural networks, especially in safety-critical applications, robustness and interpretability are crucial to ensure their trustworthiness. Recent advances in 3D-aware classifiers that map image features to volumetric representation of objects, rather than relying solely on 2D appearance, have greatly improved robustness on out-of-distribution (OOD) data. Such classifiers have not yet been studied from the perspective of interpretability. Meanwhile, current concept-based XAI methods often neglect OOD robustness. We aim to address both aspects with CAVE - Concept Aware Volumes for Explanations - a new direction that unifies interpretability and robustness in image classification. We design CAVE as a robust and inherently interpretable classifier that learns sparse concepts from 3D object representation. We further propose 3D Consistency (3D-C), a metric to measure spatial consistency of concepts. Unlike existing metrics that rely on human-annotated parts on images, 3D-C leverages ground-truth object meshes as a common surface to project and compare explanations across concept-based methods. CAVE achieves competitive classification performance while discovering consistent and meaningful concepts across images in various OOD settings.",
+  "title": "Interpretable 3D Neural Object Volumes for Robust Conceptual Reasoning"
+ }
+}

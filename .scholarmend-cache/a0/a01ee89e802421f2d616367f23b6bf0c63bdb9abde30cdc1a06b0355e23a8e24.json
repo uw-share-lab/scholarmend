@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/b9501301a7a0f99e57406cc901f4e3ce-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Monitoring is an important aspect of safely deploying Large Language Models (LLMs). This paper examines activation probes for detecting ``high-stakes'' interactions---where the text indicates that the interaction might lead to significant harm---as a critical, yet underexplored, target for such monitoring. We evaluate several probe architectures trained on synthetic data, and find them to exhibit robust generalization to diverse, out-of-distribution, real-world data. Probes' performance is comparable to that of prompted or finetuned medium-sized LLM monitors, while offering computational savings of six orders-of-magnitude. These savings are enabled by reusing activations of the model that is being monitored. Our experiments also highlight the potential of building resource-aware hierarchical monitoring systems, where probes serve as an efficient initial filter and flag cases for more expensive downstream analysis. We release our novel synthetic dataset and the codebase at \\url{https://github.com/arrrlex/models-under-pressure}.",
+  "title": "Detecting High-Stakes Interactions with Activation Probes"
+ }
+}

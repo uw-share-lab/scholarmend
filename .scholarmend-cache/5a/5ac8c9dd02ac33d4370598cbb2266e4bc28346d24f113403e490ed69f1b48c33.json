@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/6ecd51685e2d765bc0ad32a2e73faf62-Abstract-Conference.html",
+ "payload": {
+  "abstract": "This paper proposes a new algorithm for learning gradient boosted decision trees while ensuring the existence of recourse actions. Algorithmic recourse aims to provide a recourse action for altering the undesired prediction result given by a model. While existing studies often focus on extracting valid and executable actions from a given learned model, such reasonable actions do not always exist for models optimized solely for predictive accuracy. To address this issue, recent studies proposed a framework for learning a model while guaranteeing the existence of reasonable actions with high probability. However, these methods can not be applied to gradient boosted decision trees, which are renowned as one of the most popular models for tabular datasets. We propose an efficient gradient boosting algorithm that takes recourse guarantee into account, while maintaining the same time complexity as the standard ones. We also propose a post-processing method for refining a learned model under the constraint of a recourse guarantee and provide a PAC-style analysis of the refined model. Experimental results demonstrated that our method successfully provided reasonable actions to more instances than the baselines without significantly degrading accuracy and computational efficiency.",
+  "title": "Learning Gradient Boosted Decision Trees with Algorithmic Recourse"
+ }
+}

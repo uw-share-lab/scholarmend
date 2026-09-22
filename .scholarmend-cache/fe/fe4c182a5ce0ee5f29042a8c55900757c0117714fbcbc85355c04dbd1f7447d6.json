@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2025/hash/571082ea18d30060177dfcaf662ff0e5-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Effective evaluation of Multimodal Large Language Models (MLLMs) is essential for understanding their capabilities and limitations. In this paper, we introduce MIA-Bench, a benchmark designed to assess MLLMs’ ability to strictly adhere to complex instructions. Our benchmark comprises a diverse set of 400 image-prompt pairs, each crafted to challenge the models’ compliance with layered instructions in generating accurate and contextually appropriate responses. Evaluation results from a wide array of state-of-the-art MLLMs reveal significant variations in performance, highlighting areas for improvement in instruction fidelity. Additionally, we create extra training data and explore supervised fine-tuning and direct preference optimization to enhance the models’ ability to strictly follow instructions without compromising performance on other tasks. We hope this benchmark not only serves as a tool for measuring MLLM adherence to instructions, but also guides future developments in MLLM training methods.",
+  "title": "MIA-Bench: Towards Better Instruction Following Evaluation of Multimodal LLMs"
+ }
+}

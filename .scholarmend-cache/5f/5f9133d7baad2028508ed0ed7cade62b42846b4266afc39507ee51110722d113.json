@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:goUAT3UcR4",
+ "payload": {
+  "abstract": "Large Language Model (LLM)-based agents employ external and internal memory systems to handle complex, goal-oriented tasks, yet this exposes them to severe extraction attacks, and corresponding defenses are currently lacking.\nIn this paper, we propose *MemPot*, the first theoretically verified defense framework against memory extraction attacks by injecting optimized honeypots into the memory. \nThrough a two-stage optimization process, *MemPot* generates trap documents that maximize the retrieval probability for attackers while remaining inconspicuous to benign users. \nWe model the detection process as Wald’s Sequential Probability Ratio Test (SPRT) and theoretically prove that *MemPot* achieves a lower average number of sampling rounds compared to optimal static detectors. \nEmpirically, *MemPot* significantly outperforms state-of-the-art baselines, achieving a 50% improvement in detection AUROC and an 80% increase in True Positive Rate under low False Positive Rate constraints. \nFurthermore, our experiments confirm that *MemPot* incurs zero online inference latency and preserves the agent's utility on standard tasks, verifying its superiority in safety, harmlessness and efficiency.",
+  "title": "MemPot: Defending Against Memory Extraction Attack with Optimized Honeypots"
+ }
+}

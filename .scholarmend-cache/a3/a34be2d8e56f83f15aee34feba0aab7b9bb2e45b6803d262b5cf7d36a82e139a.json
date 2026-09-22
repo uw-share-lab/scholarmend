@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:krRRnq3E1w",
+ "payload": {
+  "abstract": "Grounding Large Language Models (LLMs) in Knowledge Graphs (KGs) has shown significant promise for complex Question Answering (QA) tasks. \nSince LLMs' limited context window cannot accommodate the sheer volume of large-scale KGs, existing work usually utilizes agents to reason on real-world KGs, which follows reasoning paths derived from the queries step by step.\nHowever, the mismatch between query-derived paths and the KG's structure, stemming from users' lack of schema knowledge, usually leads the agents into dead ends.\nTo address this problem, in this paper, we propose Backjump-on-Graph (BoG), a novel framework that empowers LLMs to retrospectively explore alternative reasoning paths at dead ends.\nWe first propose to formalize each reasoning step with four atomic operations to create a structural scaffold that allows LLMs to revert to historical status.\nNext, we fine-tune the LLM with synthetic data containing the above atomic operations to instill basic backjump abilities. \nFinally, we leverage reinforcement learning and propose a hybrid reward function, which penalizes redundant transitions and promotes correct answers, to optimize the timing and landing nodes of backjumping.\nExtensive experiments on several KGQA benchmark datasets demonstrate the effectiveness of our BoG method.",
+  "title": "Backjump-on-Graph: Empowering Large Language Models with Reinforced Retrospective Exploration for Agentic Knowledge Graph Reasoning"
+ }
+}

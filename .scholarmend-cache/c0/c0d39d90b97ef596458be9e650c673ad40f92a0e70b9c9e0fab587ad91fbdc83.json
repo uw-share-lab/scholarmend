@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/379b14f0a57615d4df4bb808a5a73fdd-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Federated Generalized Category Discovery (Fed-GCD) aims to train a global model that classifies seen classes while discovering novel ones from data distributed across heterogeneous clients. Existing GCD methods often rely on unrealistic assumptions, such as prior knowledge of the number of novel classes or balanced class distributions across clients. We propose Federated Local Prior Alignment (FedLPA), which eliminates these assumptions by grounding learning in client-specific structures and aligning predictions with locally derived priors. Specifically, each client constructs a similarity graph refined with high-confidence signals from seen classes, and then identifies local concepts and prototypes via Infomap clustering. Building on these discovered structures, we introduce Local Prior Alignment (LPA), a self-distillation mechanism that aligns batch-level predictions with empirical class prior derived from concept assignments. Through iterative local structure discovery and adaptive prior refinement, FedLPA achieves robust generalized category discovery under severe data heterogeneity. Extensive experiments demonstrate that FedLPA significantly outperforms existing federated GCD methods across both fine-grained and standard benchmarks.",
+  "title": "FedLPA: Local Prior Alignment for Heterogeneous Federated Generalized Category Discovery"
+ }
+}

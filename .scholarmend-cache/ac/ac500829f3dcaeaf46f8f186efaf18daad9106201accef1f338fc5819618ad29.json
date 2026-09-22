@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2026/hash/83a4ea71b13bc86308a2bd0b5e07fb61-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Playing video games requires perception, reasoning, memory, and long-horizon planning—exactly the faculties expected of modern large language and vision–language models (LLMs/VLMs). We introduce LMGame-Bench, a benchmark built on six popular games spanning platformer, puzzle, and narrative games through a unified Gym‑style API. Unlike prior game benchmarks that entangle multiple skills, LMGame-Bench employs a modular harness—including perception, memory, and reasoning modules—that can be toggled to selectively probe distinct capabilities. The benchmark further improves robustness through prompt standardization and contamination mitigation. Evaluation of 13 state-of-the-art models demonstrates that LMGame-Bench remains challenging yet effectively discriminates among models. Correlation analysis reveals that individual games align with core LLM capabilities, providing a quantitative framework for interpreting performance. Finally, LMGame-Bench exposes models’ limitations in visual state extraction, reflection, spatiotemporal reasoning, and long-context reasoning, pointing to concrete directions for model improvement.",
+  "title": "lmgame-Bench: How Good are LLMs at Playing Games?"
+ }
+}

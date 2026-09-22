@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:Q3Dukl2zWg",
+ "payload": {
+  "abstract": "While Large Reasoning Models (LRMs) have demonstrated impressive capabilities in solving complex tasks through the generation of long reasoning chains, this reliance on verbose generation results in significant latency and computational overhead.\nTo address these challenges, we propose \\textbf{CoSMo} (\\textbf{Co}nsistency-Guided \\textbf{S}plit-\\textbf{M}erge \\textbf{O}ptimization), a framework designed to eliminate structural redundancy rather than indiscriminately restricting token volume.\nSpecifically, CoSMo utilizes a split-merge algorithm that dynamically refines reasoning chains by merging redundant segments and splitting logical gaps to ensure coherence.\nWe then employ structure-aligned reinforcement learning with a novel segment-level budget to supervise the model in maintaining efficient reasoning structures throughout training.\nExtensive experiments across multiple benchmarks and backbones demonstrate that CoSMo achieves superior performance, improving accuracy by \\textbf{3.3} points while reducing segment usage by \\textbf{28.7\\%} on average compared to reasoning efficiency baselines.",
+  "title": "Short Chains, Deep Thoughts: Balancing Reasoning Efficiency and Intra-Segment Capability via Split-Merge Optimization"
+ }
+}

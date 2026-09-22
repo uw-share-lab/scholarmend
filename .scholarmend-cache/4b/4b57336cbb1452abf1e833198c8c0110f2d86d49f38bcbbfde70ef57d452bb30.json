@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/5ee643ae2693644795e9668bd2773c06-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Robust Federated Graph Learning (FGL) provides an effective decentralized framework for training Graph Neural Networks (GNNs) in noisy-label environments. However, the subtlety of noise during training presents formidable obstacles for developing robust FGL systems. Previous robust FL approaches neither adequately constrain edge-mediated error propagation nor account for intra-class topological differences. At the client level, we innovatively demonstrate that hyperspherical embedding can effectively capture graph structures in a fine-grained manner. Correspondingly, our method effectively addresses the aforementioned issues through fine-grained hypersphere alignment. Moreover, we uncover undetected noise arising from localized perspective constraints and propose the geometric-aware hyperspherical purification module at the server level. Combining both level strategies, we present our robust FGL framework,**HYPERION**, which operates all components within a unified hyperspherical space. **HYPERION** demonstrates remarkable robustness across multiple datasets, for instance, achieving a 29.7\\% $\\uparrow$ F1-macro score with 50\\%-pair noise on Cora. The code is available for anonymous access at \\url{https://anonymous.4open.science/r/Hyperion-NeurIPS/}.",
+  "title": "HYPERION: Fine-Grained Hypersphere Alignment for Robust Federated Graph Learning"
+ }
+}

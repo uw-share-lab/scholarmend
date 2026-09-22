@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/ba92705991cfbbcedc26e27e833ebbae-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Existing video steganography methods primarily embed secret information by modifying video content in the spatial or compressed domains. However, such methods are prone to distortion drift and are easily detected by steganalysis. Generative steganography, which avoids direct modification of the cover data, offers a promising alternative. Despite recent advances, most generative steganography studies focus on images and are difficult to extend to videos because of compression-induced distortions and the unique architecture of video generation models. To address these challenges, we propose LD-RoViS, a training-free and robust video steganography framework for the deterministic latent diffusion model. By modulating implicit conditional parameters during the diffusion process, LD-RoViS constructs a dedicated steganographic channel. Additionally, we introduce a novel multi-mask mechanism to mitigate errors caused by video compression and post-processing. The experimental results demonstrate that LD-RoViS can embed approximately 12,000 bits of data into a 5-second video with an extraction accuracy exceeding 99\\%. Our implementation is available at https://github.com/xiangkun1999/LD-RoViS.",
+  "title": "LD-RoViS: Training-free Robust Video Steganography for Deterministic Latent Diffusion Model"
+ }
+}

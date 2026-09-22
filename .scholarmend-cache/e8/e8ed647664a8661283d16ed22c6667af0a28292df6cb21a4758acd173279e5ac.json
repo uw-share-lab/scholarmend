@@ -1,0 +1,52 @@
+{
+ "key": "pmc:esummary:PMC12981550",
+ "payload": {
+  "header": {
+   "type": "esummary",
+   "version": "0.3"
+  },
+  "result": {
+   "12981550": {
+    "articleids": [
+     {
+      "idtype": "pmid",
+      "value": "41836881"
+     },
+     {
+      "idtype": "MID",
+      "value": "NIHMS2088934"
+     },
+     {
+      "idtype": "pmcid",
+      "value": "PMC12981550"
+     }
+    ],
+    "authors": [
+     {
+      "authtype": "Author",
+      "name": "Liu N"
+     },
+     {
+      "authtype": "Author",
+      "name": "Yu Y"
+     }
+    ],
+    "epubdate": "",
+    "fulljournalname": "Proceedings of machine learning research",
+    "issue": "",
+    "pages": "40085-40099",
+    "pmclivedate": "2026/03/13",
+    "printpubdate": "2025 Jul",
+    "pubdate": "2025 Jul",
+    "sortdate": "2025/07/01 00:00",
+    "source": "Proc Mach Learn Res",
+    "title": "Neural Interpretable PDEs: Harmonizing Fourier Insights with Attention for Scalable and Interpretable Physics Discovery.",
+    "uid": "12981550",
+    "volume": "267"
+   },
+   "uids": [
+    "12981550"
+   ]
+  }
+ }
+}

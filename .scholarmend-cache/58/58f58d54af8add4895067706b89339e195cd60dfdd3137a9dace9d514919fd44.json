@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2026/hash/7e9ce8dc03e403c1198ac896fcfdcee0-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Honesty alignment—the ability of large language models (LLMs) to recognize their knowledge boundaries and express calibrated confidence—is essential for trustworthy deployment. Existing methods either rely on training-free confidence estimation (e.g., token probabilities, self-consistency) or training-based calibration with correctness annotations. While effective, the latter demands costly, large-scale labeling. We introduce Elicitation-Then-Calibration (EliCal), a two-stage framework that first elicits internal confidence using inexpensive self-consistency supervision, then calibrates this confidence with a small set of correctness annotations. This design substantially reduces annotation requirements while improving generalization across tasks. To support a large-scale study, we release HonestyBench, a benchmark covering ten free-form QA datasets with 560k training and 70k evaluation instances annotated with correctness and self-consistency signals. Experiments show that EliCal achieves near-optimal alignment with only 1k correctness annotations ($\\sim$0.18\\% of full supervision) and better alignment performance on unseen MMLU tasks than the calibration-only baseline, offering a scalable solution toward universal honesty alignment in LLMs.",
+  "title": "Annotation-Efficient Honesty Alignment via Confidence Elicitation and Calibration"
+ }
+}

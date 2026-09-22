@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2026/hash/a24cd16bc361afa78e57d31d34f3d936-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Advances in Large Language Models (LLMs) have enabled a new class of \\textbf{\\textit{self-evolving agents}} that autonomously improve through environmental interaction, demonstrating strong capabilities. However, self-evolution also introduces novel risks overlooked by current safety research. In this work, we study case where an agent's self-evolution deviates in unintended ways, leading to undesirable or even harmful outcomes. We refer to this as \\textit{\\textbf{Misevolution}}. We evaluate misevolution along four key evolutionary pathways: model, memory, tool, and workflow. Our empirical findings reveal that misevolution is a widespread risk, affecting agents built even on top-tier LLMs (\\textit{e.g.}, Gemini-2.5-Pro). Different emergent risks are observed, such as degradation of safety alignment after memory accumulation, or unintended introduction of vulnerabilities in tool creation and reuse. To our knowledge, this is the first study to systematically conceptualize misevolution and provide empirical evidence of its occurrence, highlighting an urgent need for new safety paradigms for self-evolving agents. Finally, we discuss potential mitigation strategies to inspire further research on building safer and more trustworthy self-evolving agents.",
+  "title": "Your Agent May Misevolve: Emergent Risks in Self-evolving LLM Agents"
+ }
+}

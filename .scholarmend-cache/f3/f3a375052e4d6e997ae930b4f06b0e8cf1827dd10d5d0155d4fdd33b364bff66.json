@@ -1,0 +1,19 @@
+{
+ "key": "s2:search:artificialintelligencetechniquesforresilientandtrustworthyv2xcommunications",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "CorpusId": 286246029,
+     "DOI": "10.1109/MLCIPR68329.2025.11407323"
+    },
+    "paperId": "f598b7713ac68b04acbd62fa36daee5512a06c6a",
+    "title": "Artificial Intelligence Techniques for Resilient and Trustworthy V2X Communications",
+    "venue": "2025 International Conference on Machine Learning, Computational Intelligence and Pattern Recognition (MLCIPR)",
+    "year": 2025
+   }
+  ],
+  "offset": 0,
+  "total": 1
+ }
+}

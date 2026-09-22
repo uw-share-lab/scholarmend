@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:WVm7jMnA9t",
+ "payload": {
+  "abstract": "Code Large Language Models (CodeLLMs) have been widely adopted for Natural Language to Programming Language code generation, powering applications with large user bases. Their performance, however, varies sharply across programming languages (PLs) and is particularly suboptimal for low-resource PLs due to data scarcity, limiting their overall usability. In this work, we introduce CodeChemist, a simple yet effective, training-free test-time scaling framework that transfers the model's functional knowledge from high-resource to low-resource PLs via synthesized test cases, without relying on external models. Specifically, CodeChemist first applies multi-temperature hedged sampling to generate a pool of candidate solutions in the low-resource PL and synthesizes a set of test inputs. \nIt then estimates uncertainty: when uncertainty is low, it selects the output via in-language majority voting; otherwise, it constructs cross-lingual I/O test oracles by executing high-resource reference programs and selects the candidate with the highest pass rate. \nExtensive experiments demonstrate that CodeChemist significantly outperforms existing test-time scaling methods, improving code generation for both low-resource PLs (e.g., Lua) and complex-syntax PLs (e.g., C++, Java) without retraining.",
+  "title": "CodeChemist: Test-Time Scaling for Low-Resource Code Generation via Functional Knowledge Transfer"
+ }
+}

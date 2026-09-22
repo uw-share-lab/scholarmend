@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:yMYRr00HFS",
+ "payload": {
+  "abstract": "Vision-Language Pre-trained (VLP) models are vulnerable to real-world query noise. Current cross-modal Test-Time Adaptation (TTA) methods often rely on high-confidence predictions, which induces confirmation bias and neglects the informative signals in ambiguous Low-Confidence Queries. To address this, we propose Generative Semantic Refinement and Exclusion-Guided Adaptation (ReEx), a robust retrieval framework that extends adaptation to the entire query stream. Specifically, textual structural noise is rectified by a Generative Semantic Refinement (GSR) module, which employs Confidence-Guided Dynamic Fusion to anchor LLM-based repairs and prevent semantic drift. To exploit ambiguous data, adaptation is driven by Exclusion-Guided Proxy Contrastive Learning (EPCL), which imposes negative constraints via Exclusion Sets of unlikely candidates. Experimental results on COCO-C and Flickr-C demonstrate that ReEx consistently outperforms existing TTA methods, achieving significant robustness gains with a justifiable computational trade-off.",
+  "title": "Robust Cross-Modal Retrieval via Generative Semantic Refinement and Exclusion-Guided Adaptation"
+ }
+}

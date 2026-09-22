@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:ZsIQUjQtdW",
+ "payload": {
+  "abstract": "The utilization of large language models (LLMs) has become increasingly widespread, and has attracted considerable attention. Although the emergence of discrete diffusion large language models (dLLMs) mitigates the inference latency inherent in autoregressive LLM decoding, its computational overhead remains substantial. To address this challenge, we propose Hierarchy-dLLM, a hierarchical decoding framework inspired by the divide-and-conquer principle. Our method recursively partitions masked spans into smaller sub-decoding areas and decodes tokens according to their confidence, which substantially increases the number of tokens generated per forward pass and improves information utilization. Extensive experiments conducted on multiple benchmarks demonstrate that Hierarchy-dLLM achieves accuracy comparable to or even surpassing existing baselines. Meanwhile, it is up to 17× faster than vanilla decoding and about 1.5× faster than the Fast-dLLM. These results establish hierarchical decoding as a practical solution for efficient dLLMs inference.",
+  "title": "Hierarchy Decoding: A Training-free Parallel Decoding Strategy  for Diffusion Large Language Models"
+ }
+}

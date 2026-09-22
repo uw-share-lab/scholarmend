@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2025/hash/994a53df880f1ec64fd5cbf1bba4a8af-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Large language models (LLMs) can output sensitive information, which has emerged as a novel safety concern. Previous works focus on structured sensitive information (e.g. personal identifiable information). However, we notice that sensitive information can also be at semantic level, i.e. semantic sensitive information (SemSI). Particularly, simple natural questions can let state-of-the-art (SOTA) LLMs output SemSI. %which is hard to be detected compared with structured ones. Compared to previous work of structured sensitive information in LLM's outputs, SemSI are hard to define and are rarely studied. Therefore, we propose a novel and large-scale investigation on the existence of SemSI in SOTA LLMs induced by simple natural questions. First, we construct a comprehensive and labeled dataset of semantic sensitive information, SemSI-Set, by including three typical categories of SemSI. Then, we propose a large-scale benchmark, SemSI-Bench, to systematically evaluate semantic sensitive information in 25 SOTA LLMs. Our finding reveals that SemSI widely exists in SOTA LLMs' outputs by querying with simple natural questions.We open-source our project at https://semsi-project.github.io/.",
+  "title": "A Benchmark for Semantic Sensitive Information in LLMs Outputs"
+ }
+}

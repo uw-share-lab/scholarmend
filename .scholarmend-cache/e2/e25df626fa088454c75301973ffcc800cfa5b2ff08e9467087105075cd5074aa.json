@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:rEzGzILnVC",
+ "payload": {
+  "abstract": "Diagnosing rare diseases remains a persistent challenge, often hindered by cognitive anchoring: once clinicians settle on a common diagnosis, they often discount alternative explanations, including rare conditions. To address this, we propose a cognitive-aware counterfactual reasoning framework using a Denoising Masked AutoEncoder (DMAE) to simulate what-if diagnostic scenarios that probe clinicians’ initial assumptions. Our model jointly learns (1) the true distribution of diseases and symptoms, and (2) human diagnostic behavior, revealing critical gaps between medically possible and clinically considered diagnoses. By strategically perturbing latent patient representations, it generates contrastive counterfactuals that highlight rare yet plausible diseases that cognitive bias often obscures. Unlike traditional decision-support tools, our system suggests rare diseases not because they are statistically dominant, but because they are systematically under-considered relative to the observed evidence and learned diagnostic behavior. Across four public and three private rare-disease datasets, our approach outperforms standard machine learning classifiers in detecting rare conditions while maintaining strong performance on common diagnoses. Beyond boosting accuracy, the counterfactual evidence encourages hypothesis-driven reasoning and supports clinical learning.",
+  "title": "Beyond Accuracy: Latent Perturbations for Cognitive-Aware Diagnosis"
+ }
+}

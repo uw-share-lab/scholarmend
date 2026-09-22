@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:FYkXNAqq2D",
+ "payload": {
+  "abstract": "Probabilistic forecasting with exogenous variables is vital for decision-making but remains underexplored compared to deterministic methods. We propose KITE, a knowledge-guided probabilistic modeling framework designed to bridge this gap by addressing two key bottlenecks: (1) topological disparity in sampling initialization and (2) spurious covariate correlations during the iterative conditional generation process. KITE introduces a *History-Conditional Manifold* to construct an informative source distribution from historical dynamics, effectively anchoring the starting point closer to the target space. Additionally, a *Knowledge-Guided Conditioning* module is developed to regularize variable interactions using statistical priors, suppressing spurious correlations and enhancing the robustness of covariate conditioning. Extensive experiments demonstrate that KITE outperforms state-of-the-art methods in both deterministic and probabilistic forecasting.",
+  "title": "KITE: Knowledge-Guided Probabilistic Modeling for Time Series Forecasting with Exogenous Variables"
+ }
+}

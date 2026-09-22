@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/ee1a1ecc92f35702b5c29dad3dc909ea-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Deep learning models are vulnerable to privacy attacks due to their tendency to memorize individual training examples. Theoretically-sound defenses such as differential privacy can defend against this threat, but model performance often suffers. Empirical defenses may thwart existing attacks while maintaining model performance but do not offer any robust theoretical guarantees. In this paper, we explore a new strategy based on the concept of plausible deniability. We introduce a training algorithm called Plausibly Deniable Stochastic Gradient Descent (PD-SGD). The core of this approach is a rejection sampling technique, which probabilistically prevents updating model parameters whenever a mini-batch cannot be plausibly denied. We provide theoretical results showing that PD-SGD effectively mitigates privacy leakage from individual data points. Experiments demonstrate the scalability of PD-SGD and the favorable privacy-utility trade-off it offers compared to existing defense methods.",
+  "title": "Deep Learning with Plausible Deniability"
+ }
+}

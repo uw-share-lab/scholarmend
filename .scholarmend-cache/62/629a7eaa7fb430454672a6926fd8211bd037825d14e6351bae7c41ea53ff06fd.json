@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:ww6mao1xgl",
+ "payload": {
+  "abstract": "Large Language Model (LLM)-based multi-agent systems often suffer from high communication cost due to redundant interactions, as existing methods optimize communication structures without explicitly measuring whether exchanged messages contribute to the final decision. To better utilize the semantic information in the execution stage to further optimize the structure of multi-agent systems and reduce token costs, we propose **AgentTailor**, a cost-aware framework that evaluates the semantic contribution of communication edges via an edge judgment mechanism, and employs an **Edge Prediction Network (EPN)** to estimate edge utilities through virtual execution without invoking LLMs. Experiments show that AgentTailor achieves the best average accuracy (91.36\\%) on six datasets of diverse fields, while reducing total tokens by 21.2\\%--61.6\\%. Our work demonstrates that explicitly modeling semantic edge contribution is crucial for scalable and efficient multi-agent systems, providing a principled approach to communication optimization that goes beyond structural heuristics. The code is available at https://github.com/Pt3Y/AgentTailor.",
+  "title": "AgentTailor: A Semantic-Aware LLM-Based Multi-Agent System with Actor-Critic Structure"
+ }
+}

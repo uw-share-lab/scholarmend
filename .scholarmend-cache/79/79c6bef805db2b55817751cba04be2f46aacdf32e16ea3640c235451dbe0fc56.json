@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2025/hash/25458943db16e0f78f748ca5bc34fff6-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Agents, as user-centric tools, are increasingly deployed for human task delegation, assisting with a broad spectrum of requests by generating thoughts, engaging with user proxies, and producing action plans. However, agents based on large language models often face substantial planning latency due to two primary factors: the efficiency limitations of the underlying LLMs due to their large size and high demand, and the structural complexity of the agents due to the extensive generation of intermediate steps to produce the final output. Given that inefficiency in service provision can undermine the value of automation for users, this paper presents a human-centered efficient agent planning method – Interactive Speculative Planning – aiming at enhancing the efficiency of agent planning through both system design and user interaction. Our approach advocates for the co-design of the agent system and user interface, underscoring the importance of an agent system that can fluidly manage user interactions and interruptions. By integrating human interruptions as a fundamental component of the system, we not only make it more user-centric but also expedite the entire process by leveraging human-in-the-loop interactions to provide accurate intermediate steps.",
+  "title": "Interactive Speculative Planning: Enhance Agent Efficiency through Co-design of System and User Interface"
+ }
+}

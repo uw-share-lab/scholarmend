@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/00e49fcb98ab1bbf0cdf6cb1cdb84712-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Accurate prediction of continuous properties is essential to many scientific and engineering tasks. Although deep-learning regressors excel with abundant labels, their accuracy deteriorates in data-scarce regimes. We introduce RankRefine, a model-agnostic, plug-and-play post-hoc refinement technique that injects expert knowledge through pairwise rankings. Given a query item and a small reference set with known properties, RankRefine combines the base regressor’s output with a rank-based estimate via inverse-variance weighting, requiring no retraining. In molecular property prediction task, RankRefine achieves up to 10\\% relative reduction in mean absolute error using only 20 pairwise comparisons obtained through a general-purpose large language model (LLM) with no finetuning. As rankings provided by human experts or general-purpose LLMs are sufficient for improving regression across diverse domains, RankRefine offers practicality and broad applicability, especially in low-data settings.",
+  "title": "Post Hoc Regression Refinement via Pairwise Rankings"
+ }
+}

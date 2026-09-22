@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:nVKKypiE52",
+ "payload": {
+  "abstract": "Artificial intelligence has achieved remarkable breakthroughs in fields such as text, image, and video analysis, with deep learning serving as the mainstream paradigm. Trained deep learning models can be integrated into various applications either through fine-tuning or without any modification. While this practice promotes the advancement of artificial intelligence, it also raises concerns regarding intellectual property protection and information security risks. Therefore, it is necessary to propose relevant methods to measure the similarity between models. Existing code clone detection techniques are insufficient to address this issue. In this paper, we provide the first definition of model cloning and design a method for model similarity detection. The framework characterizes model topology at the structural level based on normalized computational graphs, and at the weight level, it employs a method that does not require explicit parameter alignment to measure the statistical similarity of weight parameters. Experiments on a synthetic model clone benchmark dataset and real-world open-source models demonstrate that the proposed method can accurately detect similar models. This method provides a unified and extensible quantitative foundation for model lineage analysis, model retrieval, and intellectual property protection of models.",
+  "title": "An In-Depth Study on Deep Learning Model Cloning"
+ }
+}

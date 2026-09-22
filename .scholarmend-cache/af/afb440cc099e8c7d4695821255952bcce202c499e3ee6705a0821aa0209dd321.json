@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2025/hash/1b126cc38b8638e07bef37e7b2bb72bf-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Existing benchmarks for language agents do not set them up to interact with human users or follow domain-specific rules, both of which are vital to safe and realistic deployment. We propose $\\tau$-bench, a benchmark with two domains (retail and airline) emulating dynamic conversations between a user (simulated by language models) and a customer service agent provided with domain-specific API tools and policy guidelines. We employ a efficient and faithful evaluation process that compares the database state at the end of a conversation with the annotated goal state, and propose a new metric (pass^k) to evaluate the reliability of agent behavior over multiple trials. Our experiments show that even state-of-the-art function calling agents (gpt-4o) succeed on $<50\\%$ of the tasks, and are terribly inconsistent (pass^8 < 25\\% in retail). Our findings point to the need for methods that can improve the ability of agents to act consistently and reliably follow rules.",
+  "title": "{$\\tau$}-bench: A Benchmark for \\underline{T}ool-\\underline{A}gent-\\underline{U}ser Interaction in Real-World Domains"
+ }
+}

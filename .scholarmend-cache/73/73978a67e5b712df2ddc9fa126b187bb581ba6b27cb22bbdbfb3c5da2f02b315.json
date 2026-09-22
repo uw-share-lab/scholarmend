@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/3e826f682178d9830a3b704141b4989e-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Sample selection is a prevalent approach in learning with noisy labels, aiming to identify confident samples for training. Although existing sample selection methods have achieved decent results by reducing the noise rate of the selected subset, they often overlook that not all mislabeled examples harm the model's performance equally. In this paper, we demonstrate that mislabeled examples correctly predicted by the model early in the training process are particularly harmful to model performance. We refer to these examples as Mislabeled Easy Examples (MEEs). To address this, we propose Early Cutting, which introduces a recalibration step that employs the model's later training state to re-select the confident subset identified early in training, thereby avoiding misleading confidence from early learning and effectively filtering out MEEs. Experiments on the CIFAR, WebVision, and full ImageNet-1k datasets demonstrate that our method effectively improves sample selection and model performance by reducing MEEs.",
+  "title": "Enhancing Sample Selection Against Label Noise by Cutting Mislabeled Easy Examples"
+ }
+}

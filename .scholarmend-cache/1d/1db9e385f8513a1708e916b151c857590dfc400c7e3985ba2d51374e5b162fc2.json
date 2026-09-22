@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:sWW6lvti8X",
+ "payload": {
+  "abstract": "Multi-modal large language models (MLLMs) have achieved remarkable success on complex multi-modal tasks. \nHowever, it remains insufficiently explored whether they exhibit modality preference, a tendency to favor one modality over another when processing multi-modal contexts.\nTo study this question, we introduce $MC^2$ benchmark, which constructs controlled evidence-conflict scenarios to systematically evaluate modality preference in decision-making.\nExtensive experiments reveal that all 20 tested MLLMs generally demonstrate clear modality preferences, and such preferences are\nstatistically associated with performances of downstream taks for MLLMs.\nFurther analysis shows that modality preference can be controlled by instruction guidance and captured within the latent representations of MLLMs.\nBuilt on these insights, we propose a probing and steering method based on representation engineering to explicitly control modality preference without requiring additional fine-tuning. \nThis method effectively amplifies modality preference toward a desired direction and demonstrates promising improvements across \nmultiple multi-modal understanding and reasoning tasks.",
+  "title": "Evaluating and Steering Modality Preferences in Multi-modal LLMs"
+ }
+}

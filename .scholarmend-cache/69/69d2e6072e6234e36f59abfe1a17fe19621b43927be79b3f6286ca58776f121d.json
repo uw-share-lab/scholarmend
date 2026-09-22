@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/10b7e27c8eb9571fbbd2ae6a9f8c3855-Abstract-Conference.html",
+ "payload": {
+  "abstract": "While methods exist for aligning flow matching models––a popular and effective class of generative models––with human preferences, existing approaches fail to achieve both adaptation efficiency and probabilistically sound prior preservation. In this work, we leverage the theory of optimal control and propose VGG-Flow, a gradient matching–based method for finetuning pretrained flow matching models. The key idea in this algorithm is that the optimal difference between the finetuned velocity field and the pretrained one should be matched with the gradient field of a value function. This method not only incorporates first-order information from the reward model but also benefits from heuristic initialization of the value function to enable fast adaptation. Empirically, we show on a popular text-to-image flow matching model, Stable Diffusion 3, that our method can finetune flow matching models under limited computational budgets while achieving effective and prior-preserving alignment.",
+  "title": "Value Gradient Guidance for Flow Matching Alignment"
+ }
+}

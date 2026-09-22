@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:MC5rKHKnzX",
+ "payload": {
+  "abstract": "Large language models (LLMs) are increasingly deployed in high-stakes settings, yet they remain vulnerable to sequential jailbreaks that exploit multi-turn interaction to circumvent safety mechanisms. Current safety evaluations are largely outcome-based, offering little insight into the latent decision processes that lead to unsafe compliance. We propose an interpretable cognitive modeling framework that couples a controlled elicitation paradigm, the Contextual Iowa Gambling Task (C-IGT), with a Generalized Rescorla--Wagner (GRW) architecture to decompose behavior into measurable mechanisms. Across a diverse set of mainstream LLMs, we find that sequential vulnerability is not explained by scale alone but emerges from interactions among cognitive factors, including optimism-biased learning, perceptual reward amplification, and choice inertia. Moreover, counterfactual feedback and psychologically framed rewards (e.g., regret, authority, threat) substantially accelerate the transition from refusal to compliance. These results yield principled cognitive profiles of LLM \"irrationality\" and provide insights for interdisciplinary research on LLM agents at the intersection of machine learning and human behavioral science.",
+  "title": "Profiling the Irrational Agent: Cognitive Modeling of LLM Behaviors in Sequential Jailbreaks"
+ }
+}

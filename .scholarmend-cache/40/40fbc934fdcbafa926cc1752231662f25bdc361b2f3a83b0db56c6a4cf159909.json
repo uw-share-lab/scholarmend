@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2026/hash/9aa7c1c0e510f2a1986108fce49c3e60-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Recent advances in Vision–Language Models (VLMs) have achieved state-of-the-art performance on numerous benchmark tasks. However, the use of internet-scale, often proprietary, pretraining corpora raises a critical concern for both practitioners and users: inflated performance due to \\emph{test-set leakage}. While prior works have proposed mitigation strategies such as decontamination of pretraining data and benchmark redesign for LLMs, the complementary direction of developing detection methods for \\emph{contaminated VLMs} remains underexplored. To address this gap, we deliberately contaminate open-source VLMs on popular benchmarks and show that existing detection approaches either fail outright or exhibit inconsistent behavior. We then propose a novel simple yet effective detection method based on \\textit{multi-modal semantic perturbation}, demonstrating that contaminated models fail to generalize under controlled perturbations. Finally, we validate our approach across multiple realistic contamination strategies, confirming its robustness and effectiveness. The code and perturbed dataset are released here: \\href{https://github.com/jadenpark0/mm-perturb}{https://github.com/jadenpark0/mm-perturb}.",
+  "title": "Contamination Detection for VLMs Using Multi‑Modal Semantic Perturbations"
+ }
+}

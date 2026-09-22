@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/746960ad49ddb47248970a0e1404230c-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Encountering shifted data at test time is a ubiquitous challenge when deploying predictive machine learning models. Test-time adaptation (TTA) methods aim to address this issue by continuously adapting a deployed model using only unlabeled test data. While TTA can help extend the model's deployment lifespan, there are scenarios where, despite adaptation, the drop in the model's performance remains significant enough to warrant taking the model offline and retraining. To detect such failure cases, we propose pairing TTA with risk monitoring frameworks that track predictive performance and raise alerts when predefined performance criteria are violated. Specifically, we extend existing monitoring tools based on sequential testing with confidence sequences to accommodate scenarios where the model is updated at test time and no test labels are available to estimate the performance metrics of interest. Our extensions unlock the application of rigorous statistical risk monitoring in TTA and we demonstrate applicability of our proposed TTA monitoring framework across a representative set of TTA methods, datasets and distribution shift types.",
+  "title": "Monitoring Risks in Test-Time Adaptation"
+ }
+}

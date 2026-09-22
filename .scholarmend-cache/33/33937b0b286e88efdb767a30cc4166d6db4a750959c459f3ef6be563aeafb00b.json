@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:fy2IXBBThK",
+ "payload": {
+  "abstract": "Physics obeys strict symmetries like rotational equivariance. However, the standard Transformer architectures widely used in physics foundation models do not enforce these constraints by construction. We introduce ReViT, a rotationally equivariant Vision Transformer framework for neural PDE solvers operating on grid-based physical fields that achieves exact equivariance for the discrete groups $C_4$ (2D) and the chiral octahedral group $O$ (3D), with bounded approximate $\\mathrm{SO}(d)$ equivariance for continuous rotations. ReViT maps scalar and vector inputs into locally invariant representations derived from physics-based canonical bases, enabling the use of standard self-attention without symmetry violations. Built on a hierarchical Swin-style backbone with a precomputed reference basis pyramid, ReViT preserves equivariance across multi-scale operations. \nWe evaluate ReViT on a wide range of 2D and 3D PDE benchmarks, such as Magnetohydrodynamics and Turbulent Channel Flows, demonstrating significant gains over state-of-the-art baselines. ReViT exhibits strong generalization, and reduces MSE by up to 65\\% compared with the best-performing alternatives.",
+  "title": "ReViT: Rotational-equivariant Vision Transformers for Neural PDE Solvers"
+ }
+}

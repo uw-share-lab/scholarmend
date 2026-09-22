@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2026/hash/9d80ec75f819bc1899399e261f47f829-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Multimodal fusion (MMF) is crucial for autonomous driving perception, combining camera and LiDAR streams for reliable scene understanding. However, its reliance on precise temporal synchronization introduces a vulnerability: adversaries can exploit network-induced delays to subtly misalign sensor streams, degrading MMF performance. To address this, we propose AION, a lightweight, plug-in defense tailored for the autonomous driving scenario. AION integrates continuity-aware contrastive learning to learn smooth multimodal representations and a DTW-based detection mechanism to trace temporal alignment paths and generate misalignment scores. AION demonstrates strong and consistent robustness against a wide range of temporal misalignment attacks on KITTI and nuScenes, achieving high average AUROC for camera-only (0.9493) and LiDAR-only (0.9495) attacks, while sustaining robust performance under joint cross-modal attacks (0.9195 on most attacks) with low false-positive rates across fusion backbones. Code is available at: https://github.com/shahriar0651/AION.",
+  "title": "Detecting Temporal Misalignment Attacks in Multimodal Fusion for Autonomous Driving"
+ }
+}

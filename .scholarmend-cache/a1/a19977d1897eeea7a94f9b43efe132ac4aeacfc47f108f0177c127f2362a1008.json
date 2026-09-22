@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/da813258fb4db548b0a6c34d79da8594-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Interpretable machine learning is essential in high-stakes domains like healthcare. Rule lists are a popular choice due to their transparency and accuracy, but learning them effectively remains a challenge. Existing methods require feature pre-discretization, constrain rule complexity or ordering, or struggle to scale. We present NeuRules, a novel end-to-end framework that overcomes these limitations. At its core, NeuRules transforms the inherently combinatorial task of rule list learning into a differentiable optimization problem, enabling gradient-based learning. It simultaneously discovers feature conditions, assembles them into conjunctive rules, and determines their order—without pre-processing or manual constraints. A key contribution here is a gradient shaping technique that steers learning toward sparse rules with strong predictive performance. To produce ordered lists, we introduce a differentiable relaxation that, through simulated annealing, converges to a strict rule list. Extensive experiments show that NeuRules consistently outperforms combinatorial and neural baselines on binary as well as multi-class classification tasks across a wide range of datasets.",
+  "title": "Neural Rule Lists: Learning Discretizations, Rules, and Order in One Go"
+ }
+}

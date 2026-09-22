@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/623f3d87442bd220ecab3e8a5e4dcda6-Abstract-Conference.html",
+ "payload": {
+  "abstract": "The recent success of generative AI highlights the crucial role of high-quality human feedback in building trustworthy AI systems. However, the increasing use of large language models (LLMs) by crowdsourcing workers poses a significant challenge: datasets intended to reflect human input may be compromised by LLM-generated responses. Existing LLM detection approaches often rely on high-dimensional training data such as text, making them unsuitable for structured annotation tasks like multiple-choice labeling. In this work, we investigate the potential of peer prediction --- a mechanism that evaluates the information within workers' responses --- to mitigate LLM-assisted cheating in crowdsourcing with a focus on annotation tasks. Our method quantifies the correlations between worker answers while conditioning on (a subset of) LLM-generated labels available to the requester. Building on prior research, we propose a training-free scoring mechanism with theoretical guarantees under a novel model that accounts for LLM collusion. We establish conditions under which our method is effective and empirically demonstrate its robustness in detecting low-effort cheating on real-world crowdsourcing datasets.",
+  "title": "Evaluating LLM-contaminated Crowdsourcing Data Without Ground Truth"
+ }
+}

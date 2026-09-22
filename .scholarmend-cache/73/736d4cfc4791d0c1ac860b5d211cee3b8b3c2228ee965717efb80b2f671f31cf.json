@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2026/hash/15dfa2fb919d048781a784eb80babe1a-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Memory-efficient training of deep neural networks has become increasingly important as models grow larger while deployment environments impose strict resource constraints. We propose TraDy, a novel transfer learning scheme leveraging two key insights: layer importance for updates is architecture-dependent and determinable a priori, while dynamic stochastic channel selection provides superior gradient approximation compared to static approaches. We introduce a dynamic channel selection approach that stochastically resamples channels between epochs within preselected layers. Extensive experiments demonstrate TraDy achieves state-of-the-art performance across various downstream tasks and architectures while maintaining strict memory constraints, achieving up to 99\\% activation sparsity, 95\\% weight derivative sparsity, and 97\\% reduction in FLOPs for weight derivative computation.",
+  "title": "Study of Training Dynamics for Memory-Constrained Fine-Tuning"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/e9f5279bb8c2e194503630623f81c9d4-Abstract-Position_Paper_Track.html",
+ "payload": {
+  "abstract": "The field of embodied AI (EAI) is rapidly advancing. Unlike virtual AI, EAI systems can exist in, learn from, reason about, and act in the physical world. With recent advances in AI and hardware research and design, EAI systems are becoming increasingly capable across an expanding set of operational domains. While EAI systems can offer many benefits, they also pose significant short- and long-term risks, including physical harm, surveillance, and societal disruption. These risks require urgent attention from policymakers, as existing policies for industrial robots and autonomous vehicles are insufficient to manage the full range of concerns EAI systems present. To address this issue, this paper makes three contributions. First, we provide a taxonomy of the physical, informational, economic, and social risks EAI systems pose. Second, we analyze policies in the US, UK, and EU to assess how existing frameworks address these risks and to identify critical gaps. We conclude by offering policy recommendations for the safe and beneficial deployment of EAI systems, such as mandatory testing and certification schemes, clarified liability frameworks, and strategies to manage EAI’s potentially transformative economic and societal impacts.",
+  "title": "Emerging Risks from Embodied AI Require Urgent Policy Action"
+ }
+}

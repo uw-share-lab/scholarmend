@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/c132c02176577c4319a878f6417a331a-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Graph Neural Networks (GNNs) achieve strong performance in node classification tasks but exhibit substantial performance degradation under label noise. Despite recent advances in noise-robust learning, a principled approach that exploits the node-neighbor interdependencies inherent in graph data for label noise detection remains underexplored. To address this gap, we propose GD$^2$, a noise-aware \\underline{G}raph learning framework that detects label noise by leveraging \\underline{D}ual-view prediction \\underline{D}iscrepancies. The framework contrasts the \\textit{ego-view}, constructed from node-specific features, with the \\textit{structure-view}, derived through the aggregation of neighboring representations. The resulting discrepancy captures disruptions in semantic coherence between individual node representations and the structural context, enabling effective identification of mislabeled nodes. Building upon this insight, we further introduce a view-specific training strategy that enhances noise detection by amplifying prediction divergence through differentiated view-specific supervision. Extensive experiments on multiple datasets and noise settings demonstrate that \\name~achieves superior performance over state-of-the-art baselines.",
+  "title": "GD$^2$: Robust Graph Learning under Label Noise via Dual-View Prediction Discrepancy"
+ }
+}

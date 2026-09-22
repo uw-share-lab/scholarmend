@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2026/hash/61f425da6e0a201b8fe1454601abfba5-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Few-shot text classification is a critical real-world task for which Large Language Models (LLMs) have shown great promise. However, their high inference costs and lack of interpretability limit their practical use. While Concept Bottleneck Models (CBMs) offer an efficient and interpretable alternative, their reliance on training surrogate models makes them incompatible with few-shot scenarios. To bridge this gap, we introduce a novel CBM paradigm that relies solely on sample-concept similarity to make predictions. We ensure the effectiveness of our concepts through a prototypical-discriminative dual-level architecture and a dynamic concept refinement mechanism. Extensive experiments show that with as few as 10 training samples, our method surpasses prior CBMs and even achieves performance comparable to LLMs. The code is available at \\url{https://github.com/alexiszlf/StructCBM}.",
+  "title": "Adaptive Concept Discovery for Interpretable Few-Shot Text Classification"
+ }
+}

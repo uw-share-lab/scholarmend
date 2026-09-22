@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/ec52962a55a83c3d860b5c9b7338422b-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Correlation Clustering (CC) is a foundational problem in unsupervised learning that models binary similarity relations using labeled graphs. While classical CC has been well studied, many real-world applications involve more nuanced relationships—either multi-class categorical interactions or varying confidence levels in edge labels. To address these, two natural generalizations have been proposed: Chromatic Correlation Clustering (CCC), which assigns semantic colors to edge labels, and pseudometric-weighted CC, which allows edge weights satisfying the triangle inequality. In this paper, we develop improved approximation algorithms for both settings. Our approach leverages LP-based pivoting techniques combined with problem-specific rounding functions. For the pseudometric-weighted correlation clustering problem, we present a tight $\\frac{10}{3}$-approximation algorithm, matching the best possible bound achievable within the framework of standard LP relaxation combined with specialized rounding. For the Chromatic Correlation Clustering (CCC) problem, we improve the approximation ratio from the previous best of $2.5$ to $2.15$, and we establish a lower bound of $2.11$ within the same analytical framework, highlighting the near-optimality of our result.",
+  "title": "Improved Approximation Algorithms for Chromatic and Pseudometric-Weighted Correlation Clustering"
+ }
+}

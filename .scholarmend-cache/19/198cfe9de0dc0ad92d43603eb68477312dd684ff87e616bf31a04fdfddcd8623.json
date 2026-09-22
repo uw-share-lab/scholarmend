@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2025/hash/47eb71e8e778dc9def7780baa7b35687-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Collaborative learning of large language models (LLMs) has emerged as anew paradigm for utilizing private data from different parties to guaranteeefﬁciency and privacy. Meanwhile, Knowledge Editing (KE) for LLMs has alsogarnered increased attention due to its ability to manipulate the behaviors ofLLMs explicitly, yet leaves the collaborative KE case—in which knowledgeedits of multiple parties are aggregated in a privacy-preserving and continualmanner—unexamined. To this end, this manuscript dives into the ﬁrst investigation of collaborative KE, in which we start by carefully identifying the uniquethree challenges therein, including knowledge overlap, knowledge conﬂict, andknowledge forgetting. We then propose a non-destructive collaborative KEframework, COLLABEDIT, which employs a novel model merging mechanismto mimic the global KE behavior while preventing the severe performance drop.Extensive experiments on two canonical datasets demonstrate the superiority ofCOLLABEDIT compared to other destructive baselines, and results shed light onaddressing three collaborative KE challenges and future applications. Our code isavailable at https://github.com/LINs-lab/CollabEdit.",
+  "title": "CollabEdit: Towards Non-destructive Collaborative Knowledge Editing"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:tDWaPO0Cim",
+ "payload": {
+  "abstract": "Existing 3D Visual Question Answering (3D-VQA) methods rely on generative outputs that can be ambiguous in decision-making settings. We introduce 3D Scene Assertion Verification, a task that verifies natural language assertions in 3D scenes with strict binary judgments. We present 3DSAV, a large-scale diagnostic benchmark with 22.5k samples across six semantic types. To address this task, we propose DualLPSS, which uses dual-stage subspace routing for type-aware cross-modal fusion and scene-guided assertion focusing. Experiments show that DualLPSS achieves state-of-the-art performance on 3DSAV and handles complex logical assertions better than existing 3D-VQA baselines.",
+  "title": "3D Scene Assertion Verification"
+ }
+}

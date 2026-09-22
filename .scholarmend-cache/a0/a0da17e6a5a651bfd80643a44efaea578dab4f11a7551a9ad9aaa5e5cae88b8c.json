@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:TEcKvsdzA3",
+ "payload": {
+  "abstract": "Implicit neural representations (INRs) encode data as continuous coordinate-based functions parameterized by neural networks, shifting downstream tasks such as image recognition to operate on functional rather than discrete representations. Despite their increasing adoption, the adversarial robustness of INR-based classification pipelines remain largely underexplored. In this work, we present the first systematic study of adversarial robustness in INR-based classifiers. A key challenge is that generating an INR requires $\\text{\\emph{training}}$ a neural network for each input sample, resulting in an optimization-in-the-loop forward pass that renders standard gradient-based attacks computationally prohibitive. To address this, we design surrogate models that amortizes the INR-generation process, serving as a practical proxy for attacking INR-based classifiers. We also develop speed-up techniques that substantially reduce the training cost of the surrogate. We show that in contrast to recent work, INR-based classifiers are vulnerable: under adversarial input perturbations, classification accuracy collapses to near zero. Moreover, existing countermeasures designed to operate on discrete representations offer limited protection.",
+  "title": "Adversarial Robustness of Implicit Neural Representation-Based Classifiers"
+ }
+}

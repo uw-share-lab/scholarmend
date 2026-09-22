@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:ldgh8zhujD",
+ "payload": {
+  "abstract": "As language models grow more capable, accurate capability evaluation becomes essential for safety decisions. If models can deliberately underperform on dangerous capability evaluations—a behavior known as **sandbagging**—they may evade safety measures designed for their true capability level. We introduce Cross-Context Consistency ($C^3$), a general framework for unsupervised black-box sandbagging detection that exploits a fundamental asymmetry: when a model truly lacks capability, its confusion manifests consistently across paraphrased questions, but when a capable model feigns incompetence, its strategic choices about *how* to appear weak create detectable inconsistencies. The framework is agnostic to the specific consistency metric and aggregation method; we present a simple instantiation using embedding cosine distance and mean aggregation that requires no training data or model-specific adaptation. We evaluate $C^3$ across prompted and fine-tuned sandbagging scenarios, across instructed and more naturalistic setups, maintaining a classification signal where other black-box methods fail. Our findings show the limitations of existing sandbagging detection methods, and reveal the efficacy of consistency-checking as a detection mechanism for sandbagging.",
+  "title": "Same Question, Different Lies: Cross-Context Consistency (C³) for Black-Box Sandbagging Detection"
+ }
+}

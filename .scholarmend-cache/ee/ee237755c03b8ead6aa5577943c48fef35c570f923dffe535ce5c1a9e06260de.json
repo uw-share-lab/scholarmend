@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2025/hash/1bff3663270ba47f801e917f782d7935-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Jailbreak attacks serve as essential red-teaming tools, proactively assessing whether LLMs can behave responsibly and safely in adversarial environments. Despite diverse strategies (e.g., cipher, low-resource language, persuasions, and so on) that have been proposed and shown success, these strategies are still manually designed, limiting their scope and effectiveness as a red-teaming tool. In this paper, we propose AutoDAN-Turbo, a black-box jailbreak method that can automatically discover as many jailbreak strategies as possible from scratch, without any human intervention or predefined scopes (e.g., specified candidate strategies), and use them for red-teaming. As a result, AutoDAN-Turbo can significantly outperform baseline methods, achieving a 74.3% higher average attack success rate on public benchmarks. Notably, AutoDAN-Turbo achieves an 88.5 attack success rate on GPT-4-1106-turbo. In addition, AutoDAN-Turbo is a unified framework that can incorporate existing human-designed jailbreak strategies in a plug-and-play manner. By integrating human-designed strategies, AutoDAN-Turbo can even achieve a higher attack success rate of 93.4 on GPT-4-1106-turbo.",
+  "title": "AutoDAN-Turbo: A Lifelong Agent for Strategy Self-Exploration to Jailbreak LLMs"
+ }
+}

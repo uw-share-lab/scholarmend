@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2026/hash/8dc9b0192713f44f035b8c0bd3f4153a-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Reinforcement learning from human or AI feedback (RLHF/RLAIF) has become the standard paradigm for aligning large language models (LLMs). However, most pipelines rely on a single reward model (RM), limiting alignment quality and risking overfitting. Recent work explores RM routing—dynamically selecting an RM from a candidate pool to exploit complementary strengths while maintaining (O(1)) RM calls—but existing methods suffer from cold-start and insufficient exploration. We propose {\\name}, a hybrid routing framework that combines offline RM strengths learning with online Bayesian selection. In the offline stage, a multi-task router is trained on preference data to estimate per-RM reliability. In the online stage, a Bayesian Thompson sampling router performs per-query RM selection, initializing RM-specific weight vectors with offline embeddings as Gaussian priors and adaptively updating their posteriors with online rewards to adapt to the evolving policy distribution. Extensive experiments on instruction-following (AlpacaEval-2, Arena-Hard, MT-Bench) and reasoning (GSM8K, MMLU) benchmarks show that {\\name} consistently outperforms individual RMs, RM ensembling, and existing routing methods.",
+  "title": "Reward Model Routing in Alignment"
+ }
+}

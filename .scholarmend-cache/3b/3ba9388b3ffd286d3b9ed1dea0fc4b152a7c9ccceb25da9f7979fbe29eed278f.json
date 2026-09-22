@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2025/hash/4ddab70bf41ffe5d423840644d3357f4-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Direct Preference Optimization (DPO) has recently emerged as a popular approach to improve reinforcement learning from human feedback (RLHF), leading to better techniques to fine-tune large language models (LLM). A weakness of DPO, however, lies in its lack of capability to characterize the diversity of human preferences. Inspired by Mallows' theory of preference ranking, we develop in this paper a new approach, the MallowsPO. A distinct feature of this approach is a dispersion index, which reflects the dispersion of human preference to prompts. We show that existing DPO models can be reduced to special cases of this dispersion index, thus unified with MallowsPO. More importantly, we demonstrate empirically how to use this dispersion index to enhance the performance of DPO in a broad array of benchmark tasks, from synthetic bandit selection to controllable generation and dialogues, while maintaining great generalization capabilities. MallowsPO is also compatible with other SOTA offline preference optimization methods, boosting nearly 2\\% extra LC win rate when used as a plugin for fine-tuning Llama3-Instruct.",
+  "title": "MallowsPO: Fine-Tune Your LLM with Preference Dispersions"
+ }
+}

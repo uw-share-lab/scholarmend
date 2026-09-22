@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/79b90b4c2ee23cc35fdd8de2969dc4e8-Abstract-Conference.html",
+ "payload": {
+  "abstract": "If you tell a learning model that you prefer an alternative $a$ over another alternative $b$, then you probably expect the model to be *monotone*, that is, the valuation of $a$ increases, and that of $b$ decreases. Yet, perhaps surprisingly, many widely deployed comparison-based preference learning models, including large language models, fail to have this guarantee. Until now, the only comparison-based preference learning algorithms that were proved to be monotone are the Generalized Bradley-Terry models. Yet, these models are unable to generalize to uncompared data. In this paper, we advance the understanding of the set of models with generalization ability that are *monotone*. Namely, we propose a new class of Linear Generalized Bradley-Terry models with Diffusion Priors, and identify sufficient conditions on alternatives' embeddings that guarantee monotonicity. Our experiments show that this monotonicity is far from being a general guarantee, and that our new class of generalizing models improves accuracy, especially when the dataset is limited.",
+  "title": "Generalizing while preserving monotonicity in comparison-based preference learning models"
+ }
+}

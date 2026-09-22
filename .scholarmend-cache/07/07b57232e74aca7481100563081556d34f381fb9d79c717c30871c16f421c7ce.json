@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/67eee231405df68062cf9256a054118d-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Stability guarantees have emerged as a principled way to evaluate feature attributions, but existing certification methods rely on heavily smoothed classifiers and often produce conservative guarantees. To address these limitations, we introduce soft stability and propose a simple, model-agnostic, sample-efficient stability certification algorithm (SCA) that yields non-trivial and interpretable guarantees for any attribution method. Moreover, we show that mild smoothing achieves a more favorable trade-off between accuracy and stability, avoiding the aggressive compromises made in prior certification methods. To explain this behavior, we use Boolean function analysis to derive a novel characterization of stability under smoothing. We evaluate SCA on vision and language tasks and demonstrate the effectiveness of soft stability in measuring the robustness of explanation methods.",
+  "title": "Probabilistic Stability Guarantees for Feature Attributions"
+ }
+}

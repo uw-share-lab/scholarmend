@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2026/hash/95591b7557edea46ae1d90b0e9e825c5-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Recent research has generated hope that inference scaling, such as resampling solutions until they pass verifiers like unit tests, could allow weaker models to match stronger ones. Beyond inference, this approach also enables training reasoning models, where data is curated using rejection sampling against a verifier. However, we show that this approach is fundamentally limited when verifiers are imperfect and have a non-zero probability of producing false positives. Resampling cannot decrease this probability, so it imposes an upper bound to the accuracy of resampling-based inference scaling, regardless of compute budget. Our analysis shows that there is a strong correlation between the model’s single-sample accuracy and its false positive rate on HumanEval and MBPP, whose unit tests have limited coverage. Therefore, no amount of inference scaling of weaker models can enable them to match the single-sample accuracy of a sufficiently strong model. Empirical results show that optimal sampling attempts are often fewer than 10, as the negative utility of false positives outweighs benefits, bending inference scaling curves downward. Finally, false positives may have other undesirable qualities, like poor adherence to coding style conventions.",
+  "title": "The Limits of Inference Scaling Through Resampling"
+ }
+}

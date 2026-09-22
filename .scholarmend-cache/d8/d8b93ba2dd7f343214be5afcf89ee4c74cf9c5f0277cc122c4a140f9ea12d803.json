@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/41b1f9cb89181adb6efa5031766234c0-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Knowledge graphs (KGs) are vital for enabling knowledge reasoning across various domains. Recent KG reasoning methods that integrate both global and local information have achieved promising results. However, existing methods often suffer from score over-smoothing, which blurs the distinction between correct and incorrect answers and hinders reasoning effectiveness. To address this, we propose DuetGraph, a **coarse-to-fine** KG reasoning mechanism with **dual-pathway** global-local fusion. DuetGraph tackles over-smoothing by segregating—rather than stacking—the processing of local (via message passing) and global (via attention) information into two distinct pathways, preventing mutual interference and preserving representational discrimination. In addition, DuetGraph introduces a **coarse-to-fine** optimization, which partitions entities into high- and low-score subsets. This strategy narrows the candidate space and sharpens the score gap between the two subsets, which alleviates over-smoothing and enhances inference quality. Extensive experiments on various datasets demonstrate that DuetGraph achieves state-of-the-art (SOTA) performance, with up to an **8.7\\%** improvement in reasoning quality and a **1.8$\\times$** acceleration in training efficiency.",
+  "title": "DuetGraph: Coarse-to-Fine Knowledge Graph Reasoning with Dual-Pathway Global-Local Fusion"
+ }
+}

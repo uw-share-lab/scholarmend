@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:QE2GA6OIC8",
+ "payload": {
+  "abstract": "Lifelong multimodal knowledge editing allows vision language models to continuously adapt to dynamic updates to avoid catastrophic forgetting. To mitigate interference between sequential updates, recent paradigms have shifted towards modular parameter isolation. However, this strategy faces a critical scalability bottleneck: accumulating dense parameter blocks can lead to excessive memory growth, and managing these independent modules often uses decoupled routing mechanisms, resulting in architectural redundancy. To address this issue, we propose **TIME** (**T**ensor-Factorized **I**ntrinsic **M**ixture-of-**E**xperts), a unified framework harmonizing parameter efficiency with structural self-routing. TIME parameterizes each knowledge edit as a compact CP-decomposed tensor, significantly reducing complexity compared to low-rank matrices. Furthermore, departing from auxiliary semantic retrievers, we introduce an intrinsic routing mechanism that utilizes the tensor's input factors to directly define the active subspace, effectively enabling expert parameters to serve simultaneously as the routing logic. Extensive experiments demonstrate that TIME achieves state-of-the-art performance on lifelong editing benchmarks while successfully reducing memory usage and inference latency.",
+  "title": "TIME: Tensor-Factorized Mixture-of-Experts with Intrinsic Routing for Lifelong Multimodal Knowledge Editing"
+ }
+}

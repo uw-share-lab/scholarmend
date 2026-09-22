@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2026/hash/e7ec6ce69710b31a1545a4791ed7770e-Abstract-Conference.html",
+ "payload": {
+  "abstract": "We present modal aphasia, a systematic dissociation in which current unified multimodal models accurately memorize concepts visually but fail to articulate them in writing, despite being trained on images and text simultaneously. For one, we show that leading frontier models can generate near-perfect reproductions of iconic movie artwork, but confuse crucial details when asked for textual descriptions. We corroborate those findings through controlled experiments on synthetic datasets in multiple architectures. Our experiments confirm that modal aphasia reliably emerges as a fundamental property of current unified multimodal models, not just as a training artifact. In practice, modal aphasia can introduce vulnerabilities in AI safety frameworks, as safeguards applied to one modality may leave harmful concepts accessible in other modalities. We demonstrate this risk by showing how a model aligned solely on text remains capable of generating unsafe images.",
+  "title": "Modal Aphasia: Can Unified Multimodal Models Describe Images From Memory?"
+ }
+}

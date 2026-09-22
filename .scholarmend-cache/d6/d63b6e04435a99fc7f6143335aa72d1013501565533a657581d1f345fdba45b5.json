@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2025/hash/cce0e917b050208170151f77b497fc71-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Large language models are prone to memorizing some of their training data. Memorized (and possibly sensitive) samples can then be extracted at generation time by adversarial or benign users. There is hope that model alignment---a standard training process that tunes a model to harmlessly follow user instructions---would mitigate the risk of extraction. However, we develop two novel attacks that undo a language model's alignment and recover thousands of training examples from popular proprietary aligned models such as OpenAI's ChatGPT. Our work highlights the limitations of existing safeguards to prevent training data leakage in production language models.",
+  "title": "Scalable Extraction of Training Data from Aligned, Production Language Models"
+ }
+}

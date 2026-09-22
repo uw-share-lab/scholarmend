@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:jXhXr53hdG",
+ "payload": {
+  "abstract": "Despite the advancing reasoning capabilities of large language models (LLMs), many reasoning evaluations are increasingly compromised by data contamination, which induces unreliable **contaminated reasoning** on leaked inputs. \nWhile this phenomenon is widely observed, its underlying mechanism remains poorly understood, hindering the ability to distinguish generalization from memorization and to develop effective solutions. \nIn this work, we first identify a distinctive signal of contaminated reasoning, namely the mutual information decay between representations and gradients.\nOur mechanistic analysis reveals that contaminated models exhibit pronounced eigenspectrum concentration in their representations, leading to a low-dimensional computation regime. \nUnder leaked inputs, this mechanism weakens the linear coupling between representations and gradients, manifested as a structural decay of the singular values in the whitened space. \nWe show that this narrowing geometry mathematically implies a reduction in mutual information, and further demonstrate the practical utility of our analysis by successfully restoring the reasoning behavior of contaminated models, achieving up to an 11.03% absolute improvement in average consistency with the base model over the strongest baseline. Our code is available at https://github.com/jiakuan929/ContamReasoning.",
+  "title": "A Narrowing Geometry in Contaminated Reasoning"
+ }
+}

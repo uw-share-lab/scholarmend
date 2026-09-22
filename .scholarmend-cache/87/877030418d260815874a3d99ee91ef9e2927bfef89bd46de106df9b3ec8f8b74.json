@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2026/hash/dd2094ecf134f7c9740fb29640bfb620-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Graph anomaly detection (GAD) has garnered increasing attention in recent years, yet remains challenging due to two key factors: (1) label scarcity stemming from the high cost of annotations and (2) homophily disparity at node and class levels. In this paper, we introduce Anomaly-Aware Pre-Training and Fine-Tuning (APF), a targeted and effective framework to mitigate the above challenges in GAD. In the pre-training stage, APF incorporates node-specific subgraphs selected via the Rayleigh Quotient, a label-free anomaly metric, into the learning objective to enhance anomaly awareness. It further introduces two learnable spectral polynomial filters to jointly learn dual representations that capture both general semantics and subtle anomaly cues. During fine-tuning, a gated fusion mechanism adaptively integrates pre-trained representations across nodes and dimensions, while an anomaly-aware regularization loss encourages abnormal nodes to preserve more anomaly-relevant information. Furthermore, we theoretically show that APF tends to achieve linear separability under mild conditions. Comprehensive experiments on 10 benchmark datasets validate the superior performance of APF in comparison to state-of-the-art baselines.",
+  "title": "Towards Anomaly-Aware Pre-Training and Fine-Tuning for Graph Anomaly Detection"
+ }
+}

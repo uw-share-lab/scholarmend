@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/16e71d1a24b98a02c17b1be1f634f979-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Although Federated Learning (FL) is promising in privacy-preserving collaborative model training, it faces low inference performance due to heterogeneous data among clients. Due to heterogeneous data in each client, FL training easily learns the specific overfitting features. Existing FL methods adopt the coarse-grained average aggregation strategy, which causes the global model to easily get stuck in local optima, resulting in low generalization of the global model. Specifically, this paper presents a novel FL framework named FedPhoenix to address this issue, which stochastically resets partial parameters to destroy some features of the global model in each round to guide the FL training to learn multiple generalized features for inference rather than specific overfitting features. Experimental results on various well-known datasets demonstrate that compared to SOTA FL methods, FedPhoenix can achieve up to 20.73\\% accuracy improvement.",
+  "title": "Rising from Ashes: Generalized Federated Learning via Dynamic Parameter Reset"
+ }
+}

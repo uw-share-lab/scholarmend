@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:JLF6XDnscF",
+ "payload": {
+  "abstract": "Accurate weather forecasting is crucial for climate research, disaster mitigation, and societal planning. Despite recent progress with deep learning, global atmospheric data remain uniquely challenging since weather dynamics evolve across heterogeneous spatial and temporal scales ranging from planetary circulations to localized phenomena. Capturing such cross-scale interactions within a unified framework remains an open problem.  To address this gap, we propose \\textbf{STORM},  a spatio-temporal model that disentangles atmospheric variations into multiple scales to uncover scale-specific dependencies. In addition, it enables coherent forecasting across multiple resolutions, maintaining consistent temporal evolution. Experiments on benchmark datasets demonstrate that STORM consistently delivers superior performance across both global and regional settings, as well as for short- and long-term forecasts.",
+  "title": "STORM: Synergistic Cross-Scale Spatio-Temporal Modeling for Weather Forecasting"
+ }
+}

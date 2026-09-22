@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2025/hash/06f9fe2915857be2b1e369419a531ad3-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Vision Language Models (VLMs) have become essential backbones for multi-modal intelligence, yet significant safety challenges limit their real-world application. While textual inputs can often be effectively safeguarded, adversarial visual inputs can often easily bypass VLM defense mechanisms. Existing defense methods are either resource-intensive, requiring substantial data and compute, or fail to simultaneously ensure safety and usefulness in responses. To address these limitations, we propose a novel two-phase inference-time alignment framework, **E**valuating **T**hen **A**ligning (ETA): i) Evaluating input visual contents and output responses to establish a robust safety awareness in multimodal settings, and ii) Aligning unsafe behaviors at both shallow and deep levels by conditioning the VLMs' generative distribution with an interference prefix and performing sentence-level best-of-$N$ to search the most harmless and helpful generation paths. Extensive experiments show that ETA outperforms baseline methods in terms of harmlessness, helpfulness, and efficiency, reducing the unsafe rate by 87.5\\% in cross-modality attacks and achieving 96.6\\% win-ties in GPT-4 helpfulness evaluation.",
+  "title": "ETA: Evaluating Then Aligning Safety of Vision Language Models at Inference Time"
+ }
+}

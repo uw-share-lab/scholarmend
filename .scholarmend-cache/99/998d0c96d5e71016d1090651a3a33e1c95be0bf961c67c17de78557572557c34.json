@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/8110ef9878e4642ad848ca583d37d7ca-Abstract-Position_Paper_Track.html",
+ "payload": {
+  "abstract": "\"Machine unlearning\" is a popular proposed solution for mitigating the existence of content in an AI model that is problematic for legal or moral reasons, including privacy, copyright, safety, and more. For example, unlearning is often invoked as a solution for removing the effects of specific information from a generative-AI model's parameters, e.g., a particular individual's personal data or the inclusion of copyrighted content in the model's training data. Unlearning is also proposed as a way to prevent a model from generating targeted types of information in its outputs, e.g., generations that closely resemble a particular individual's data or reflect the concept of \"Spiderman.\" Both of these goals--the targeted removal of information from a model and the targeted suppression of information from a model's outputs--present various technical and substantive challenges. We provide a framework for ML researchers and policymakers to think rigorously about these challenges, identifying several mismatches between the goals of unlearning and feasible implementations. These mismatches explain why unlearning is not a general-purpose solution for circumscribing generative-AI model behavior in service of broader positive impact.",
+  "title": "Machine Unlearning Doesn't Do What You Think:  Lessons for Generative AI Policy and Research"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/3936a645d450d0704e9fc3da10b3b426-Abstract-Conference.html",
+ "payload": {
+  "abstract": "The \"black-box service model\" enables ML service providers to serve clients while keeping their intellectual property and client data confidential. Confidentiality is critical for delivering ML services legally and responsibly, but makes it difficult for outside parties to verify important model properties such as fairness. Existing methods that assess model fairness confidentially lack either (i) reliability because they certify fairness with respect to a static set of data, and therefore fail to guarantee fairness in the presence of distribution shift or service provider malfeasance; and/or (ii) scalability due to the computational overhead of confidentiality-preserving cryptographic primitives. We address these problems by introducing online fairness certificates, which verify that a model is fair with respect to data received by the service provider online during deployment. We then present OATH, a deployably efficient and scalable zero-knowledge proof protocol for confidential online group fairness certification. OATH exploits statistical properties of group fairness via a \"cut-and-choose\" style protocol, enabling scalability improvements over baselines.",
+  "title": "Secure and Confidential Certificates of Online Fairness"
+ }
+}

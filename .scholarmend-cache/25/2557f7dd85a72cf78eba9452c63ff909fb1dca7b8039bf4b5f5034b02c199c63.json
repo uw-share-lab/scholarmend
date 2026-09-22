@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/43ae0b566b802b2d00e525b672794b82-Abstract-Conference.html",
+ "payload": {
+  "abstract": "To tackle long-horizon tasks, recent hierarchical vision-language-action (VLAs) frameworks employ vision-language model (VLM)-based planners to decompose complex manipulation tasks into simpler sub-tasks that low-level visuomotor policies can handle. Typically, the VLM planner needs finetuning to learn to decompose a new task, which requires target task demonstrations segmented into sub-tasks by either human annotation or heuristic rules. However, without prior knowledge, the heuristic sub-tasks can deviate significantly from the visuomotor policy's training data, thereby degrading task performance. To address these issues, we propose a Retrieval-based Demonstration Decomposer (RDD) that automatically decomposes video demonstrations into sub-tasks with prior by aligning the visual features of the decomposed sub-task intervals with those from the training data of the low-level visuomotor policies. RDD outperforms the state-of-the-art sub-task decomposer on both simulation and real-world tasks, demonstrating robustness across diverse settings. Code and more results are available at https://rdd-neurips.github.io",
+  "title": "RDD: Retrieval-Based Demonstration Decomposer for Planner Alignment in Long-Horizon Tasks"
+ }
+}

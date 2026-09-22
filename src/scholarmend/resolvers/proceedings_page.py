@@ -40,6 +40,10 @@ _ABSTRACT = re.compile(r'<p class="paper-abstract">(.*?)</section>', re.IGNORECA
 _BLOCK = re.compile(r"</?(?:p|br|div|li|ul|ol)\b[^>]*>", re.IGNORECASE)
 _TAG = re.compile(r"<[^>]+>")
 _MATH = re.compile(r"\$[^$]*\$")
+# Some pages escape twice ("caption &amp;amp; instruction"), so one unescape
+# leaves "&amp;" behind: 6 of 1,220 pages. Only a complete, named-or-numeric
+# entity is decoded again; a bare "&" in "R&D" is not an entity and survives.
+_LEFTOVER_ENTITY = re.compile(r"&(?:amp|lt|gt|quot|apos|#\d+|#x[0-9a-fA-F]+);")
 
 
 def abstract_page(url: str) -> str | None:
@@ -97,7 +101,8 @@ class ProceedingsPageResolver:
                 return extract(get_text(page))
 
             payload = self.cache.fetch(page_key(page), loader)
-            abstract = payload.get("abstract") or ""
+            abstract = _LEFTOVER_ENTITY.sub(lambda m: html.unescape(m.group(0)),
+                                            payload.get("abstract") or "")
             if abstract and _same_paper(title, payload.get("title") or ""):
                 return [Claim(field="abstract", value=abstract, source="proceedings_page",
                               tier=2, confidence=0.99, evidence=page)]

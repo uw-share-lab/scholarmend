@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/d033407a1a4b7a75cd5f9e4575ad9fb5-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Recognizing out-of-distribution (OOD) samples is essential for deploying robust machine learning systems in open-world environments. While conventional OOD detection approaches rely on feature representations from the penultimate layer of neural networks, they often overlook informative signals embedded in intermediate layers. In this paper, we present a straightforward feature mixing approach for pre-trained Transformers, which combines multi-layer representations via calculated importance weights, and identifies OOD samples using Mahalanobis distance in the blended feature space. When in-distribution samples are accessible, we show that parameter-efficient fine-tuning strategies effectively balance classification accuracy and OOD detection performance. We conduct extensive empirical analyses to validate the superiority of our proposed method under zero-shot, and fine-tuning settings using both class-balanced and long-tailed datasets. The source code is available at https://github.com/SEUML/X-Maha.",
+  "title": "X-Mahalanobis: Transformer Feature Mixing for Reliable OOD Detection"
+ }
+}

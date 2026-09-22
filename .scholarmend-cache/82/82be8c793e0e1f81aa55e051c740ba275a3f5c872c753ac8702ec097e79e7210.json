@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:5Qpy3uTD05",
+ "payload": {
+  "abstract": "The general-purpose nature of Large Language Models (LLMs) presents a significant challenge for domain-specific applications, often leading to out-of-domain (OOD) interactions that undermine the provider's intent. Existing methods for detecting such scenarios treat the LLM as an uninterpretable black box and overlook the internal processing of inputs. In this work we show that layer transitions provide a promising avenue for extracting domain-specific signature. Specifically, we present several lightweight ways of learning on internal dynamics encoded using a sparse autoencoder (SAE) that exhibit great capability in distinguishing OOD texts. Building on top of SAEs representation transitions enables us to better interpret the LLM internal evolution of input processing and shed light on its decisions. We provide a comprehensive analysis of the method and benchmark it with the gemma-2 2B and 9B models. Our results emphasize the efficacy of the internal process in capturing fine-grained input-related details.",
+  "title": "Domain Restriction via Multi SAE Layer Transitions"
+ }
+}

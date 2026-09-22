@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:PgcMxkhzoG",
+ "payload": {
+  "abstract": "3D Scene Graph Generation (3DSGG) aims to create a structured representation of 3D environment by identifying objects as nodes and\ntheir relations as edges.  Existing 3DSGG methods based on RGB-D sequences typically put much focus on the adaption of neural networks to robust node and edge feature extraction in complex 3D scenes, yet ignoring the inherent intra-class diversity within each class and inter-class similarity between different categories associated with nodes and edges. In this work, we develop GMPSSG, a novel Gaussian Mixture-distributed Prototype mining framework for 3DSGG. Specifically, we model different categories with independent Gaussian Mixture-distributed Prototype to effectively mitigate inter-class similarity, while employing multiple Gaussian components within each prototype to capture intra-class diversity. Moreover, Prototype-anchored Representation Learning is introduced to construct a well-structured and mutually independent category space; Topology-aware Prototype Interaction is devised to capture implicit co-occurrence priors within the scene, and leverage them to calibrate prototype distributions, thereby ensuring the plausibility of node-edge matching. Experiments on 3DSSG dataset demonstrate GMPSSG outperforms  various top-leading methods. Our code is available at GMPSSG.",
+  "title": "Learning Gaussian Mixture-distributed Prototypes for 3D Scene Graph Generation from RGB-D Sequences"
+ }
+}

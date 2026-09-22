@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:Y54eyjHFqJ",
+ "payload": {
+  "abstract": "Retrieval-Augmented Generation (RAG) augments large language models with external knowledge, which in turn exposes their retrieval corpora to data poisoning risks.\nHowever, existing poisoning attacks exhibit limited effectiveness against RAG equipped with a reranker to enhance retrieval quality.\nRemarkably, this defensive capability requires no adversarial training: a reranker fine-tuned solely on benign, in-domain corpora can effectively filter malicious content. \nTowards realistic RAG red-teaming, we conclude practical prompt design principles that reveal reranker blind spots.\nBuilding on these insights, we introduce the Prompt-Perturbation Poisoning Attack ($\\mathbf{P}^3 \\mathbf{A}$). \n$\\mathbf{P}^3 \\mathbf{A}$ first employs rule-based prompt engineering to craft initial poisoned texts.\nIt then injects subtle character-level perturbations into these texts, which promotes their ranking by the reranker while maintaining their adversarial effectiveness. \nThese perturbations introduce only about 1\\% textual change, ensuring the poisoned texts remain natural and readable.\nExtensive experiments show that $\\mathbf{P}^3 \\mathbf{A}$ achieves strong attack effectiveness and transferability, even when constrained to poisoning a single document.\nCode is available at https://github.com/YyyxKun/P3A.",
+  "title": "Reranker Helps, but Not Enough: Towards Strong Poisoning Attacks Against Retrieval-Augmented Generation"
+ }
+}

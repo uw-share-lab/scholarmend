@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/bdcefa38404c6b6d2076a3699f9bc12a-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Graphical models have been widely used as parsimonious encoders of assumptions of the underlying causal system and provide a basis for causal inferences. Models encoding stronger constraints tend to require higher expressive power, which are also harder, and sometimes impossible to empirically falsify. In this paper, we introduce two new collections of distributions that include counterfactual quan- tities which are experimentally accessible under counterfactual randomizations. Correspondingly, we define two new classes of graphical models for encoding empirically testable constraints in these distributions. We further present a sound and complete calculus, based on counterfactual calculus, which licenses inferences in these two new models with rules that are within the empirically falsifiable bound- ary. Finally, we formulate a hierarchy over several graphical models based on the constraints they encode and study the fundamental trade-off between the expressive power and empirical falsifiability of different models across the hierarchy.",
+  "title": "A Hierarchy of Graphical Models for Counterfactual Inferences"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/fd917c0ddb92616baa7dbf163f2432e5-Abstract-Conference.html",
+ "payload": {
+  "abstract": "We propose a framework grounded in gradient flow theory and informed by geometric structure that provides multiple diverse solutions for a given task, ensuring collaborative results that enhance performance and adaptability across different tasks. This framework enables flexibility, allowing for efficient task-specific fine-tuning while preserving the knowledge of the pre-trained foundation models. Extensive experiments across transfer learning, few-shot learning, and domain generalization show that our proposed approach consistently outperforms existing Bayesian methods, delivering strong performance with affordable computational overhead and offering a practical solution by updating only a small subset of parameters.",
+  "title": "Geometry-Aware Collaborative Multi-Solutions Optimizer for Model Fine-Tuning with Parameter Efficiency"
+ }
+}

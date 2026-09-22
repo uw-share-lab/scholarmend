@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/2847043899e1171183ceadf86bdbb280-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Watermarking is widely regarded as a promising defense against the misuse of large language models (LLMs); however, existing methods are fundamentally constrained by their vulnerability to scrubbing and spoofing attacks. This vulnerability stems from an inherent trade-off governed by watermark window size: smaller windows resist scrubbing better but are easier to reverse-engineer, enabling low-cost statistics-based spoofing attacks. This work expands the trade-off boundary by introducing a novel mechanism, equivalent texture keys, where multiple tokens within a watermark window can independently support the detection. Based on the redundancy, we propose a watermark scheme with Sub-vocabulary decomposed Equivalent tExture Key (SEEK). SEEK achieves a Pareto improvement, enhancing robustness to scrubbing attacks without sacrificing resistance to spoofing.",
+  "title": "Enhancing LLM Watermark Resilience Against Both Scrubbing and  Spoofing Attacks"
+ }
+}

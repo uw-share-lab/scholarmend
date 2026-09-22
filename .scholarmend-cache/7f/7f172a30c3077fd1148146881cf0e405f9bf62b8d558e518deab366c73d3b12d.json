@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:IeJRsIoR2t",
+ "payload": {
+  "abstract": "Prompt learning for vision-language models (VLMs) often suffers from performance degradation when adapting to downstream tasks with noisy labels. Existing methods that rely on filtering or reconstructing supervision can propagate errors, leading to sharp performance drops. We observe that pre-trained embeddings are resilient to label noise, offering stable references despite limited adaptation. Based on this insight, we propose Evidence-Prompt, a framework built on the evidence prior that enhances prompt learning by integrating stable pre-trained knowledge. We treat prompt learning as a Bayesian reasoning task, where credibility is derived from both supervision-agnostic and supervision-conditioned evidence. This framework effectively combines these sources to infer robust training targets under noisy conditions, enabling stable learning even with high noise levels. Extensive experiments on eight benchmarks with both synthetic and real-world noisy labels demonstrate that our method flattens the accuracy–noise curve and consistently outperforms SOTA methods, with notable gains on OxfordPets dataset at a 75\\% noise rate (+36.6\\% under Asym and +14.4\\% under Sym). Additionally, transferability experiments reveal that incorporating our evidence prior into other SOTA methods results in accuracy improvements ranging from 2.6\\% to 15.66\\%.",
+  "title": "Leveraging Evidence Priors for Robust Prompt Learning under Noisy Supervision in Vision-Language Models"
+ }
+}

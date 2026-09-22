@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/86cca1b77a808b7f9ef5a987bcae6803-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Machine unlearning aims to remove the influence of specific training samples (i.e., forget data) from a trained model while preserving its performance on the remaining samples (i.e., retain data). Existing approximate unlearning approaches, such as fine-tuning or negative gradient, often suffer from either insufficient forgetting or significant degradation on retain data. In this paper, we introduce Unlearning-Aware Minimization (UAM), a novel min–max optimization framework for machine unlearning. UAM perturbs model parameters to maximize the forget loss and then leverages the corresponding gradients to minimize the retain loss. We derive an efficient optimization method for this min-max problem, which enables effective removal of forget data and uncovers better optima that conventional methods fail to reach. Extensive experiments demonstrate that UAM outperforms existing methods across diverse benchmarks, including image classification datasets (CIFAR-10, CIFAR-100, TinyImageNet) and multiple-choice question-answering benchmarks for large language models (WMDP-Bio, WMDP-Cyber).",
+  "title": "Unlearning-Aware Minimization"
+ }
+}

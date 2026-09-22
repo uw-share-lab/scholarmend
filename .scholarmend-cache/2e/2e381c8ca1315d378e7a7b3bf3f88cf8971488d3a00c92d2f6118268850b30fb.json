@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/c828f33af3c3f669690c2e28ae7af5e2-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Large language models (LLMs) excel at zero-shot inference but continue to struggle with complex, multi-step reasoning. Recent methods that augment LLMs with intermediate reasoning steps such as Chain of Thought (CoT) and Program of Thought (PoT) improve performance but often produce undesirable solutions, especially in algorithmic domains. We introduce Per-Instance Program Synthesis (PIPS), a method that generates and refines programs at the instance level using structural feedback without relying on task-specific guidance or explicit test cases. To further improve performance, PIPS incorporates a confidence metric that dynamically chooses between direct inference and program synthesis on a per-instance basis. Experiments across three frontier LLMs and 30 benchmarks including all tasks of Big Bench Extra Hard (BBEH), visual question answering tasks, relational reasoning tasks, and mathematical reasoning tasks show that PIPS improves the absolute harmonic mean accuracy by up to 8.6\\% and 9.4\\% compared to PoT and CoT respectively, and reduces undesirable program generations by 65.1\\% on the algorithmic tasks compared to PoT with Gemini-2.0-Flash.",
+  "title": "Once Upon an Input: Reasoning via Per-Instance Program Synthesis"
+ }
+}

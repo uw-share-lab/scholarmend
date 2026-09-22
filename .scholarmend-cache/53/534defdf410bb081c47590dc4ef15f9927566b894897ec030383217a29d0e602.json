@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:vk3tfOPtiX",
+ "payload": {
+  "abstract": "Despite strong performance, large language models (LLMs) still suffer from hallucinations. Most existing mitigation methods operate at inference time, without addressing the alignment limitation: LLMs are not trained to recognize their own lack of knowledge, and therefore tend to generate plausible responses even when the required knowledge is missing. Preference alignment approaches encourage uncertainty expression or refusal to improve truthfulness, but often consequently degrade helpfulness. To address this trade-off, existing preference alignment methods typically treat truthfulness and helpfulness as either universally collaborative or universally conflicting objectives across all samples. In contrast, we show that these objectives are consistent for most samples and conflict only in a small subset—where adaptive trade-off is truly needed. Based on this insight, we propose Conflict-Aware Adaptive Margin Preference Alignment (CAMP), which explicitly models when conflicts arise and adaptively regulates optimization strength. Experiments on UltraFeedback and representative hallucination benchmarks demonstrate that CAMP consistently improves truthfulness while maintaining a favorable helpfulness trade-off compared to strong hallucination mitigation and multi-objective alignment baselines.",
+  "title": "Conflict-Aware Adaptive Alignment for LLM Hallucination Mitigation"
+ }
+}

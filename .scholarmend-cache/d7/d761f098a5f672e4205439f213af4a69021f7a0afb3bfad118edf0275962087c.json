@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2025/hash/38e491559eb9e4cf31b8cd3a4e222436-Abstract-Conference.html",
+ "payload": {
+  "abstract": "As Large Language Models (LLMs) are increasingly deployed to handle various natural language processing (NLP) tasks, concerns regarding the potential negative societal impacts of LLM-generated content have also arisen. To evaluate the biases exhibited by LLMs, researchers have recently proposed a variety of datasets. However, existing bias evaluation efforts often focus on only a particular type of bias and employ inconsistent evaluation metrics, leading to difficulties in comparison across different datasets and LLMs. To address these limitations, we collect a variety of datasets designed for the bias evaluation of LLMs, and further propose CEB, a Compositional Evaluation Bechmark that covers different types of bias across different social groups and tasks. The curation of CEB is based on our newly proposed compositional taxonomy, which characterizes each dataset from three dimensions: bias types, social groups, and tasks. By combining the three dimensions, we develop a comprehensive evaluation strategy for the bias in LLMs. Our experiments demonstrate that the levels of bias vary across these dimensions, thereby providing guidance for the development of specific bias mitigation methods.",
+  "title": "CEB: Compositional Evaluation Benchmark for Fairness in Large Language Models"
+ }
+}

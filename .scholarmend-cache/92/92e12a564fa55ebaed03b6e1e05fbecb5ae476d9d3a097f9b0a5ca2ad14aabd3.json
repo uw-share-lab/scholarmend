@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/829e8f32d76a6248815bf5b01633811d-Abstract-Position_Paper_Track.html",
+ "payload": {
+  "abstract": "Evaluating natural language generation (NLG) systems remains a core challenge, further complicated by the rise of general-purpose large language models (LLMs). Recently, large language models as judges (LLJs) have emerged as a scalable, cost-effective alternative to traditional metrics, but their validity remains underexplored. This position paper argues that the current enthusiasm around LLJs may be premature, as their adoption has outpaced rigorous scrutiny of their reliability and validity as evaluators. Drawing on measurement theory from the social sciences, we identify and critically assess four core assumptions underlying the use of LLJs: their ability to act as proxies for human judgment, their capabilities as evaluators, their scalability, and their cost-effectiveness. We examine how each of these assumptions may be challenged by the inherent limitations of LLMs, LLJs, or current practices in NLG evaluation. To ground our analysis, we explore three applications of LLJs at various stages of the machine learning pipeline: text summarization, data annotation and safety alignment. Finally, we highlight the need for more responsible evaluation practices in LLJs evaluation, to ensure that their growing role in the field supports, rather than undermines, progress in NLG.",
+  "title": "Neither Valid nor Reliable? Investigating the Use of LLMs as Judges"
+ }
+}

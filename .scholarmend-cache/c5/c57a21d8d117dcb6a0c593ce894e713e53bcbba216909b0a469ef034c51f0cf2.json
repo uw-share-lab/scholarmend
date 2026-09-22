@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:Smm2KRLqx5",
+ "payload": {
+  "abstract": "Hallucinations in large vision-language models (LVLMs) remain a critical challenge, where models often generate tokens that fail to align with visual evidence. To address this issue, we propose AFS: Anchor-Final Self-Supervision, a novel framework for hallucination-aware optimization in LVLMs. By leveraging discrepancies between intermediate and final layer predictions, AFS selectively applies self-supervision to visually descriptive tokens, incorporates hallucination-aware token classification, and encourages consistency between intermediate and final layer distributions. Unlike traditional methods that rely on explicit supervision or post-hoc interventions, AFS optimizes the model via Group Relative Policy Optimization (GRPO), using token-specific rewards derived from internal model signals. Experiments demonstrate that AFS significantly reduces hallucinations without compromising recall in caption generation. Beyond captioning, AFS excels in discriminative tasks, improving the reliability of object existence predictions and multimodal reasoning. Furthermore, AFS demonstrates strong cross-dataset generalization, transferring effectively across diverse visual domains. Code is available at \\url{https://github.com/guavayew/AFS}.",
+  "title": "Anchor-Final Self-Supervision Drives Hallucination-Aware Optimization in Large Vision-Language Models"
+ }
+}

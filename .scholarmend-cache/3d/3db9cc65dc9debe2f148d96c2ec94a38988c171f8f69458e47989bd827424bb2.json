@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/c37b07a300a2b7acb1e6d59363617a41-Abstract-Conference.html",
+ "payload": {
+  "abstract": "The increasing use of generative ML foundation models for image restoration tasks such as super-resolution calls for robust and interpretable uncertainty quantification methods. We address this need by presenting a novel approach based on conformal prediction techniques to create a `confidence mask' capable of reliably and intuitively communicating where the generated image can be trusted. Our method is adaptable to any black-box generative model, including those locked behind an opaque API, requires only easily attainable data for calibration, and is highly customizable via the choice of a local image similarity metric. We prove strong theoretical guarantees for our method that span fidelity error control (according to our local image similarity metric), reconstruction quality, and robustness in the face of data leakage. Finally, we empirically evaluate these results and establish our method's solid performance.",
+  "title": "Image Super-Resolution with Guarantees via Conformalized Generative Models"
+ }
+}

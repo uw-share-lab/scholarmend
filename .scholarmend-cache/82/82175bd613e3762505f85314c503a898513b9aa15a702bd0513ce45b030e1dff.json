@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/2b368455e832d2b1a60bcad8c4c6481f-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Recent interest in building foundation models for knowledge graphs has highlighted a fundamental challenge: knowledge graph data is scarce. The best-known knowl- edge graphs are primarily human-labeled, created by pattern-matching, or extracted using early NLP techniques. While human-generated knowledge graphs are in short supply, automatically extracted ones are of questionable quality. We present KGGen, a novel text-to-knowledge-graph generator that uses language models to extract high-quality graphs from plain text with a novel entity resolution approach that clusters related entities, significantly reducing the sparsity problem that plagues existing extractors. Unlike other KG generators, KGGen clusters and de-duplicates related entities to reduce sparsity in extracted KGs. Along with KGGen, we release Measure of Information in Nodes and Edges (MINE), the first benchmark to test an extractor’s ability to produce a useful KG from plain text. We benchmark our new tool against leading existing generators such as Microsoft’s GraphRAG; we achieve comparable retrieval accuracy on the generated graphs and better information re- tention. Moreover, our graphs exhibit more concise and generalizable entities and relations. Our code is open-sourced at https://github.com/stair-lab/kg-gen/.",
+  "title": "KGGen: Extracting Knowledge Graphs from Plain Text with Language Models"
+ }
+}

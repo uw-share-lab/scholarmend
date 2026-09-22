@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/0c17a1fe0924238ebf7db6164759d503-Abstract-Conference.html",
+ "payload": {
+  "abstract": "LLM unlearning aims to remove sensitive or harmful information within the model, thus reducing the potential risk of generating unexpected information. However, existing Preference Optimization (PO)-based unlearning methods suffer two limitations. First, their rigid reward setting limits the effect of unlearning. Second, the lack of robustness causes unlearned information to reappear. To remedy these two weaknesses, we present a novel LLM unlearning optimization framework, namely Elastic Robust Unlearning (ERU), to efficiently and robustly remove specific knowledge from LLMs. We design the elastic reward setting instead of the rigid reward setting to enhance the unlearning performance. Meanwhile, we incorporate the refusal feature ablation into the unlearning process to trigger specific failure patterns for efficiently enhancing the robustness of the PO-based unlearning methods in multiple scenarios. Experimental results show that ERU can improve the unlearning effectiveness significantly while maintaining a high utility performance. Especially, on the WMDP-Bio benchmark, ERU shows a 9\\% improvement over the second-best method, and maintains 83\\% performance even under 1,000 sample fine-tuned retraining attacks, significantly better than the baseline method.",
+  "title": "Elastic Robust Unlearning of Specific Knowledge in Large Language Models"
+ }
+}

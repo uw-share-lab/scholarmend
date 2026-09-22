@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/d41ddb5e702f647f6e92db1f8dbf86ec-Abstract-Conference.html",
+ "payload": {
+  "abstract": "We propose a practical sequential test for auditing differential privacy guarantees of black-box mechanisms. The test processes streams of mechanisms' outputs providing anytime-valid inference while controlling Type I error, overcoming the fixed sample size limitation of previous batch auditing methods. Experiments show this test detects violations with sample sizes that are orders of magnitude smaller than existing methods, reducing this number from 50K to a few hundred examples, across diverse realistic mechanisms. Notably, it identifies DP-SGD privacy violations in \\textit{under} one training run, unlike prior methods needing full model training.",
+  "title": "Sequentially Auditing Differential Privacy"
+ }
+}

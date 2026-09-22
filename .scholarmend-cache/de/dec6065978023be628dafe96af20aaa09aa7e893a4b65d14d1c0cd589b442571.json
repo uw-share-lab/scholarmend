@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:713ywmTZHv",
+ "payload": {
+  "abstract": "Differentially Private Stochastic Gradient Descent (DP-SGD) and its variants like DP-Adam ensure data privacy by injecting noise into per-sample gradients. Although effective with large private datasets, their performance degrades significantly when private training data is limited. Recent works leverage public data to learn a gradient subspace and project noisy private sample gradients on to this subspace, achieving improved performance. However, they have overlooked two crucial aspects: the limitation of using a fixed projection subspace throughout training and the importance of choosing where to inject noise. Therefore, we propose Private Evolution aided Stochastic Gradient Descent (***PE-SGD***), a differentially private training framework effective for scenarios with limited private data. ***PE-SGD*** uses an evolutionary strategy to update the gradient projection subspace during training process. We also identify a more effective noise injection point for better alignment between approximate DP-protected gradient and real private gradient. This enables ***PE-SGD*** to outperform DP-SGD and other baselines, particularly in the regime of limited private data and small privacy budget.",
+  "title": "PE-SGD: Differentially Private Deep Learning via Evolution of Gradient Subspace for Text"
+ }
+}

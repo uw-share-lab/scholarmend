@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:vF2Xhg2s31",
+ "payload": {
+  "abstract": "Large language models (LLMs) are increasingly adapted to downstream tasks in resource-constrained scenarios, making quantization-aware fine-tuning (QAF) a common practice for practical deployment. However, we find that quantized LLMs are substantially more vulnerable to safety alignment degradation during fine-tuning than full-precision models by interpretability analyses. In this paper, we first theoretically reveal that this vulnerability is driven by quantization errors, manifesting as an initial safety shift followed by a distorted optimization path. Based on this insight, we propose Explicit-Safety Quantization-Aware Fine-tuning (ExSQF), which effectively restores model safety while preserving downstream performance. It initializes adapters by combining quantization error with a safety matrix projection to mitigate early safety shifts, followed by post-training refinement that corrects deviations in the optimization path. Extensive experimental results show that ExSQF achieves state-of-the-art safety alignment recovery, even surpassing existing full-precision safety-aware fine-tuning baseline, while effectively preserving model performance.",
+  "title": "Toward Safe Quantization-Aware Fine-tuning: Understanding and Mitigating Safety Alignment Degradation"
+ }
+}

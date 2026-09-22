@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/d3e0aaa57c0d639f32a520cda39aec6d-Abstract-Conference.html",
+ "payload": {
+  "abstract": "In autonomous driving, transparency in the decision-making of perception models is critical, as even a single misperception can be catastrophic. Yet with multi-sensor inputs, it is difficult to determine how each modality contributes to a prediction because sensor information becomes entangled within the fusion network. We introduce Layer-Wise Modality Decomposition (LMD), a post-hoc, model-agnostic interpretability method that disentangles modality-specific information across all layers of a pretrained fusion model. To our knowledge, LMD is the first approach to attribute the predictions of a perception model to individual input modalities in a sensor-fusion system for autonomous driving. We evaluate LMD on pretrained fusion models under camera–radar, camera–LiDAR, and camera–radar–LiDAR settings for autonomous driving. Its effectiveness is validated using structured perturbation-based metrics and modality-wise visual decompositions, demonstrating practical applicability to interpreting high-capacity multimodal architectures. Code is available at https://github.com/detxter-jvb/Layer-Wise-Modality-Decomposition.",
+  "title": "Layer-Wise Modality Decomposition for Interpretable Multimodal Sensor Fusion"
+ }
+}

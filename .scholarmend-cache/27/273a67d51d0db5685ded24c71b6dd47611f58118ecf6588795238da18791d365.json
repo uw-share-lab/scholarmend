@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/331ce18a6412fa4b1f8215ad5c60db58-Abstract-Position_Paper_Track.html",
+ "payload": {
+  "abstract": "Designing wise AI policy is a grand challenge for society. To design such policy, policymakers should place a premium on rigorous evidence and scientific consensus. While several mechanisms exist for evidence generation, and nascent mechanisms tackle evidence synthesis, we identify a complete void on consensus formation. In this position paper, we argue NeurIPS should actively catalyze scientific consensus on AI policy. Beyond identifying the current deficit in consensus formation mechanisms, we argue that NeurIPS is the best option due its strengths and the paucity of compelling alternatives. To make progress, we recommend initial pilots for NeurIPS by distilling lessons from the IPCC's leadership to build scientific consensus on climate policy. We dispel predictable counters that AI researchers disagree too much to achieve consensus and that policy engagement is not the business of NeurIPS. NeurIPS leads AI on many fronts, and it should champion scientific consensus to create policy that better realizes the benefits of AI.",
+  "title": "NeurIPS should lead scientific consensus on AI policy"
+ }
+}

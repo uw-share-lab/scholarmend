@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/bce2501dd4edbc5d5757a1453757e883-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Language model outputs are not always reliable, thus prompting research into how to adapt model responses based on uncertainty. Common approaches include: abstention, where models refrain from generating responses when uncertain; and linguistic calibration, where models hedge their statements using uncertainty quantifiers. However, abstention can withhold valuable information, while linguistically calibrated responses are often challenging to leverage in downstream tasks. We propose a unified view, Conformal Linguistic Calibration (CLC), which reinterprets linguistic calibration as answer set prediction. First we present a framework connecting abstention and linguistic calibration through the lens of linguistic pragmatics. We then describe an implementation of CLC that allows for controlling the level of imprecision in model responses. Results demonstrate our method produces calibrated outputs with conformal guarantees on factual accuracy. Further, our approach enables fine-tuning models to perform uncertainty-aware adaptive claim rewriting, offering a controllable balance between factuality and specificity.",
+  "title": "Conformal Linguistic Calibration: Trading-off between Factuality and Specificity"
+ }
+}

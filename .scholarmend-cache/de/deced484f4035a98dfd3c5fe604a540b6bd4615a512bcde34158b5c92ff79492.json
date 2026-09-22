@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:lCTZsWotjL",
+ "payload": {
+  "abstract": "Multimodal large language models (MLLMs) extend large language models (LLMs) with visual perception for open-world understanding, but exacerbate LLMs' hallucinations, in which generated text contradicts visual evidence or common sense. To mitigate hallucinations, a dominant strategy is Direct Preference Optimization (DPO) using hallucination-labeled responses. Existing pipelines, however, face two key limitations: they either (i) rely on human inspection or proprietary models to correct hallucinated outputs, producing off-policy preference data that violate the assumptions of DPO, or (ii) depend on stronger models to evaluate responses, leading to an unfavorable trade-off between performance and scalability. Departing from these paradigms, we propose a reference-policy \\emph{self-feedback} framework that constructs preference data for hallucination mitigation without any external supervision (\\textit{e.g.}, large models or humans). Specifically, we present a novel \\emph{local fuzzy semantic} evaluation paradigm that derives a hallucination-sensitive confidence signal directly from the internal logits, which is then used to automatically rank diverse generated responses to build preference pairs for fine-tuning. Trained on a 10k-scale dataset, our method achieves competitive performance on both generative and discriminative benchmarks compared to existing RLHF and RLAIF baselines.",
+  "title": "RLSF-V: Mitigating Hallucinations in MLLMs via Fuzzy Semantic Self-Feedback"
+ }
+}

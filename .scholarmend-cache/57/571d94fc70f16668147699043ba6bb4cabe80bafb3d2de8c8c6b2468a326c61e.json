@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/f0c83294c80607fd95050efc2c636348-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Fine-tuning foundation models has emerged as a powerful approach for generating objects with specific desired properties. Reinforcement learning (RL) provides an effective framework for this purpose, enabling models to generate outputs that maximize a given reward function. However, in many applications such as text generation and drug discovery, it can be suboptimal to optimize using a single reward signal, as multiple evaluation criteria are often necessary. This paper proposes a novel reinforcement learning-based method for fine-tuning foundation models using multiple reward signals. By employing an iterative fine-tuning strategy across these rewards, our approach generalizes state-of-the-art RL-based methods. We further provide a theoretical analysis that offers insights into the performance of multi-reward RL fine-tuning. Experimental results across diverse domains including text, biological sequence, and small molecule generation, demonstrate the effectiveness of the proposed algorithm compared to state-of-the-art baselines.",
+  "title": "Iterative Foundation Model Fine-Tuning on Multiple Rewards"
+ }
+}

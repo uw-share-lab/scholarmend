@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:qVQVVZMRVT",
+ "payload": {
+  "abstract": "With the rapid scaling of large language models, achieving efficient compression while maintaining model performance has become a critical challenge. To address the limitations of existing non-uniform quantization methods, which typically rely on fixed codebooks and require costly optimization, we propose a novel arbitrary bit-width non-uniform Quantization (NuBitQ). The framework enables flexible, layer-specific quantization strategies, significantly enhancing adaptability and efficiency. Notably, traditional outlier compensation methods used in uniform quantization are ill-suited for the anomalous distribution characteristics encountered in our context. To address this, we design a novel outlier evaluation metric that integrates weight perturbation, activation distribution, and perturbation propagation. Based on this metric, we further develop an Outlier Compensation Plugin (OCP) that implements multi-level, fine-grained outlier compensation strategies, effectively mitigating performance degradation caused by outliers. Our approach avoids direct complex Hessian computation and fine-tuning, offering strong applicability and scalability. Extensive experiments on multiple tasks and across various model series demonstrate the effectiveness of the proposed approach.",
+  "title": "No outlier channels but with outlier blocks"
+ }
+}

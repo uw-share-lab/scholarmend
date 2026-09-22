@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:JiXnhlVhly",
+ "payload": {
+  "abstract": "In-Context Learning has shown great potential for aligning Large Language Models (LLMs) with human values, helping reduce harmful outputs and accommodate diverse preferences without costly post-training, known as *In-Context Alignment* (ICA). \nHowever, LLMs' comprehension of input prompts remains agnostic, limiting ICA's ability to address value tensions—human values are inherently *pluralistic*, often imposing conflicting demands, *e.g.*, stimulation vs. tradition. Current ICA methods therefore face the *Instruction Bottleneck* challenge, where LLMs struggle to reconcile multiple intended values within a single prompt, leading to incomplete or biased alignment.\nTo address this, we propose **PICACO**, a novel pluralistic ICA method. Without fine-tuning, PICACO optimizes a meta-instruction that incorporates multiple values to better elicit LLMs' understanding of them and improve alignment. This is achieved by maximizing the total correlation between specified values and LLM responses, which theoretically reinforces value conformity and reduces distractive noise, resulting in more effective instructions. Extensive experiments on five value sets show that PICACO works well with both black-box and open-source LLMs, outperforms several recent strong baselines, and achieves a better balance across up to 8 distinct values.",
+  "title": "PICACO: Pluralistic In-Context Value Alignment via Total Correlation Optimization"
+ }
+}

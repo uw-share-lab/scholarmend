@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2026/hash/b63416bfd534662dca16a149477b1190-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Safety preferences are inherently subjective, yet current LLM safety alignment methods often impose universal standards that fail to account for individual sensitivities. In this work, we propose an efficient, training-free method for personalized safety control via inference-time activation intervention. Our approach steers internal representations to suppress user-specific undesired content while preserving model utility. We systematically evaluate three strategies for estimating intervention directions: Instance-Level Contrast Shift (ILCS), Unpaired Mean Shift (UMS), and our primary method, Paired Contrast Mean Shift (PCMS). We provide theoretical insights into each approach and highlight the advantages of PCMS. Empirical results across diverse open-weight models demonstrate that our method effectively reduces undesired content in line with individual preferences, with minimal impact on helpfulness—enabling more adaptive and user-aligned LLM behavior.",
+  "title": "Inference-Time Personalized Safety Control via Paired Difference-in-Means Intervention"
+ }
+}

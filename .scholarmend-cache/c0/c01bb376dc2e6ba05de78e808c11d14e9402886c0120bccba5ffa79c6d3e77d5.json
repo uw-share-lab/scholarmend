@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2026/hash/ec1ba7d8051b740b3ea54eb0c98efdbc-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Existing interpretability methods for Large Language Models (LLMs) predominantly capture linear directions or isolated features. This overlooks the high-dimensional, relational, and nonlinear geometry of model representations. We apply persistent homology (PH) to characterize how adversarial inputs reshape the geometry and topology of internal representation spaces of LLMs. This phenomenon, especially when considered across operationally different attack modes, remains poorly understood. We analyze six models (3.8B to 70B parameters) under two distinct attacks, indirect prompt injection and backdoor fine-tuning, and show that a consistent topological signature persists throughout. Adversarial inputs induce topological compression, where the latent space becomes structurally simpler, collapsing the latent space from varied, compact, small-scale features into fewer, dominant, large-scale ones. This signature is architecture-agnostic, emerges early in the network, and is highly discriminative across layers. By quantifying the shape of activation point clouds and neuron-level information flow, our framework reveals geometric invariants of representational change that complement existing linear interpretability methods.",
+  "title": "The Shape of Adversarial Influence: Characterizing LLM Latent Spaces with Persistent Homology"
+ }
+}

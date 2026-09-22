@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:LD9mlgF5WU",
+ "payload": {
+  "abstract": "Recent advancements in multimodal reward models (RMs) have substantially improved post-training for visual generative models. However, current RMs face inherent limitations: **(1)** visual inputs consume large context budgets, forcing fewer frames and causing a loss of details; and **(2)** all visual information is packed into the initial prompt, exacerbating forgetting during chain-of-thought reasoning. To overcome these issues, we introduce **VR-Thinker**, a thinking-with-image RM equipped with visual reasoning operation and a configurable visual memory window. This allows the RM to actively acquire visual evidence, improving reasoning fidelity and reliability. We activate visual reasoning via a reinforcement fine-tuning pipeline: **(i)** **Cold Start** with curated visual chain-of-thought data to distill basic operation formatting; **(ii)** select samples with correct judgments, then conduct **Rejection sampling Fine-Tuning** on these high-quality traces to further enhance reasoning; and **(iii)** apply **Group Relative Policy Optimization** (GRPO) to strengthen reasoning. Our approach delivers state-of-the-art accuracy among open-source models on video preference benchmarks: a 7B **VR-Thinker** achieves 80.5\\% on VideoGen Reward, 82.3\\% on GenAI-Bench, and 75.6\\% on MJ-Bench-Video.",
+  "title": "VR-Thinker: Boosting Video Reward Models through Think-with-Image Reasoning"
+ }
+}

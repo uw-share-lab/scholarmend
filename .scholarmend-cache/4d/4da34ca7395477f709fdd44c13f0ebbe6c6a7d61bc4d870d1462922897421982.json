@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/21762ab272732d366a9e1bcc9835e5fb-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Suppressor variables can influence model predictions without being dependent on the target outcome, and they pose a significant challenge for Explainable AI (XAI) methods. These variables may cause false-positive feature attributions, undermining the utility of explanations. Although effective remedies exist for linear models, their extension to non-linear models and instance-based explanations has remained limited. We introduce PatternLocal, a novel XAI technique that addresses this gap. PatternLocal begins with a locally linear surrogate, e.g., LIME, KernelSHAP, or gradient-based methods, and transforms the resulting discriminative model weights into a generative representation, thereby suppressing the influence of suppressor variables while preserving local fidelity. In extensive hyperparameter optimization on the XAI-TRIS benchmark, PatternLocal consistently outperformed other XAI methods and reduced false-positive attributions when explaining non-linear tasks, thereby enabling more reliable and actionable insights. We further evaluate PatternLocal on an EEG motor imagery dataset, demonstrating physiologically plausible explanations.",
+  "title": "Minimizing False-Positive Attributions in Explanations of Non-Linear Models"
+ }
+}

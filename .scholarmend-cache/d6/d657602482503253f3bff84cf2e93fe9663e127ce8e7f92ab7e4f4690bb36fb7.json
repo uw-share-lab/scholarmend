@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/0743b22dad0ac0ffe0d194153568f641-Abstract-Datasets_and_Benchmarks_Track.html",
+ "payload": {
+  "abstract": "Human motion is inherently intentional, yet most motion modeling paradigms focus on low-level kinematics, overlooking the semantic and causal factors that drive behavior. Existing datasets further limit progress: they capture short, decontextualized actions in static scenes, providing little grounding for embodied reasoning. To address these limitations, we introduce $\\textit{Intend to Move (I2M)}$, a large-scale, multimodal dataset for intention-grounded motion modeling. I2M contains 10.1 hours of two-person 3D motion sequences recorded in dynamic realistic home environments, accompanied by multi-view RGB-D video, 3D scene geometry, and language annotations of each participant’s evolving intentions. Benchmark experiments reveal a fundamental gap in current motion models: they fail to translate high-level goals into physically and socially coherent motion. I2M thus serves not only as a dataset but as a benchmark for embodied intelligence, enabling research on models that can reason about, predict, and act upon the ``why'' behind human motion.",
+  "title": "Intend to Move: A Multimodal Dataset for Intention-Aware Human Motion Understanding"
+ }
+}

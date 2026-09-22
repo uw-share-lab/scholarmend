@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:ThlRUXqFZ0",
+ "payload": {
+  "abstract": "The advancements of Large Language Models (LLMs) are primarily attributed to massive pretraining data, which also introduces risks like privacy leakage and data contamination. Therefore, it is crucial to determine whether an LLM has been trained on a given target text. Existing detection methods primarily rely on local statistics of isolated tokens (e.g., those with the lowest probabilities), neglecting the probability dynamics during the token generation process. In this paper, we shift the detection paradigm from a local token to a global sequence perspective, grounded in the core intuition that memorized sequences exhibit volatility patterns distinct from those generated via inference. We propose Adaptive Entropic Convolutional Analysis (AECA), a framework that conceptualizes the probability sequence as a dynamic signal, integrating calibration with convolutional filtering to effectively capture memorization signals. Extensive experiments demonstrate that AECA surpasses previous methods by up to 1.5\\% in average AUC on the WikiMIA benchmark, with its advantage being particularly pronounced in long-text scenarios.",
+  "title": "Rethinking Pretraining Data Detection for LLMs: From Local to Global"
+ }
+}

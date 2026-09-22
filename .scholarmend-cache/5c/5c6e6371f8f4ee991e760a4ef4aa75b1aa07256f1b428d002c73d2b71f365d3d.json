@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2025/hash/8bd9f3ae50e9e1230e483dda4873e710-Abstract-Conference.html",
+ "payload": {
+  "abstract": "GNNs have achieved remarkable performance across a range of tasks, but their reliability under distribution shifts remains a significant challenge. In particular, energy-based OOD detection methods—which compute energy scores from GNN logits—suffer from unstable performance due to a fundamental coupling between the norm and direction of node embeddings. Our analysis reveals that this coupling leads to systematic misclassification of high-norm OOD samples and hinders reliable ID–OOD separation. Interestingly, GNNs also exhibit a desirable inductive bias known as angular clustering, where embeddings of the same class align in direction. Motivated by these observations, we propose GeoEnergy (Geometric Logit Decoupling for Energy-Based OOD Detection), a plug-and-play framework that enforces hyperspherical logit geometry by normalizing class weights while preserving embedding norms. This decoupling yields more structured energy distributions, sharper intra-class alignment, and improved calibration. GeoEnergy can be integrated into existing energy-based GNNs without retraining or architectural modification. Extensive experiments demonstrate that GeoEnergy consistently improves OOD detection performance and confidence reliability across various benchmarks and distribution shifts.",
+  "title": "Geometric Logit Decoupling for Energy-Based Graph Out-of-distribution Detection"
+ }
+}
