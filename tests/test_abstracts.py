@@ -163,3 +163,12 @@ def test_the_cli_accepts_a_single_file_and_leaves_its_siblings_out(tmp_path):
           "--cache", str(tmp_path / "cache"), "--offline"])
     expected = len(parse_file(FIXTURE))
     assert (out / "report.txt").read_text().startswith(f"records: {expected}\n")
+
+
+def test_a_title_opening_with_tex_still_matches_scholars_stripped_title(tmp_path):
+    page = PAGE.replace("AgentAuditor: Human-Level", "$R^2$-Guard: Human-Level")
+    cache = Cache(tmp_path)
+    cache.put(page_key(HASH), extract(page))
+    claims = ProceedingsPageResolver(cache).resolve(
+        "-Guard: Human-Level Safety & Security Evaluation", [HASH])
+    assert [c.source for c in claims] == ["proceedings_page"]

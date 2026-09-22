@@ -39,6 +39,7 @@ _ABSTRACT = re.compile(r'<p class="paper-abstract">(.*?)</section>', re.IGNORECA
 # "<i>k</i>-means" stays "k-means" rather than becoming "k -means".
 _BLOCK = re.compile(r"</?(?:p|br|div|li|ul|ol)\b[^>]*>", re.IGNORECASE)
 _TAG = re.compile(r"<[^>]+>")
+_MATH = re.compile(r"\$[^$]*\$")
 
 
 def abstract_page(url: str) -> str | None:
@@ -97,7 +98,18 @@ class ProceedingsPageResolver:
 
             payload = self.cache.fetch(page_key(page), loader)
             abstract = payload.get("abstract") or ""
-            if abstract and titles_match(title, payload.get("title") or ""):
+            if abstract and _same_paper(title, payload.get("title") or ""):
                 return [Claim(field="abstract", value=abstract, source="proceedings_page",
                               tier=2, confidence=0.99, evidence=page)]
         return []
+
+
+def _same_paper(record_title: str, page_title: str) -> bool:
+    """``titles_match``, tolerating the TeX that Scholar drops from titles.
+
+    The page says "$R^2$-Guard: ..."; Scholar's record says "-Guard: ...".
+    The comparison is a prefix, so a formula at the start shifts every
+    character after it -- measured on the first 125 pages, the only mismatch.
+    """
+    return titles_match(record_title, page_title) or titles_match(
+        record_title, _MATH.sub("", page_title))
