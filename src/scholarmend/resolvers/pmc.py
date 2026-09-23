@@ -32,7 +32,10 @@ class PmcResolver:
         if not result:
             result = (payload.get("result") or {}).get(pmc_id.removeprefix("PMC")) or {}
         volume = result.get("volume")
-        if not volume:
+        # PMC numbers volumes for every journal it indexes: NeurIPS 2024 is
+        # volume 37 of its own proceedings, not PMLR v37 (ICML 2015).
+        journal = str(result.get("fulljournalname", "")).lower()
+        if not volume or journal != "proceedings of machine learning research":
             return []
         return [
             Claim(field="pmlr_volume", value=str(volume), source="pmc_api", tier=2,

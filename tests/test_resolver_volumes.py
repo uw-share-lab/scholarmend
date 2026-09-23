@@ -118,10 +118,13 @@ def test_an_out_of_scope_volume_emits_no_venue_claim(tmp_path):
     assert value(claims, "venue_id") == "PMLR v318"  # but evidence is still carried forward
 
 
+PMLR_JOURNAL = "Proceedings of machine learning research"
+
+
 def test_pmc_resolver_returns_the_pmlr_volume(tmp_path):
     cache = Cache(tmp_path)
     cache.put("pmc:esummary:PMC13004626",
-              {"result": {"PMC13004626": {"volume": "267"}}})
+              {"result": {"PMC13004626": {"volume": "267", "fulljournalname": PMLR_JOURNAL}}})
     assert value(PmcResolver(cache).resolve("PMC13004626"), "pmlr_volume") == "267"
 
 
@@ -129,7 +132,8 @@ def test_pmc_resolver_handles_a_result_keyed_by_the_bare_numeric_id(tmp_path):
     # esummary keys its result by either "PMC13004626" or "13004626"; the
     # fallback branch is the only thing that reads the second form.
     cache = Cache(tmp_path)
-    cache.put("pmc:esummary:PMC13004626", {"result": {"13004626": {"volume": "267"}}})
+    cache.put("pmc:esummary:PMC13004626",
+              {"result": {"13004626": {"volume": "267", "fulljournalname": PMLR_JOURNAL}}})
     assert value(PmcResolver(cache).resolve("PMC13004626"), "pmlr_volume") == "267"
 
 
@@ -137,6 +141,17 @@ def test_pmc_resolver_with_no_volume_yields_nothing(tmp_path):
     cache = Cache(tmp_path)
     cache.put("pmc:esummary:PMC1", {"result": {"PMC1": {}}})
     assert PmcResolver(cache).resolve("PMC1") == []
+
+
+def test_pmc_resolver_ignores_the_volume_of_a_journal_that_is_not_pmlr(tmp_path):
+    # PMC12021422 is NeurIPS 2024, which PMC files as volume 37 of Advances in
+    # Neural Information Processing Systems. Read as PMLR v37 it became ICML 2015.
+    cache = Cache(tmp_path)
+    cache.put("pmc:esummary:PMC12021422", {"result": {"PMC12021422": {
+        "volume": "37",
+        "fulljournalname": "Advances in neural information processing systems",
+    }}})
+    assert PmcResolver(cache).resolve("PMC12021422") == []
 
 
 def test_volume_claims_are_tier_two(tmp_path):
