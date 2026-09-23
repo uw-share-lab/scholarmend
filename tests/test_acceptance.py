@@ -8,7 +8,6 @@ evidence for each recorded in ../Trust-Evals-LitReview/verification/.
 from __future__ import annotations
 
 import csv
-import glob
 import json
 from pathlib import Path
 
@@ -23,9 +22,25 @@ GOLD = Path(__file__).parents[2] / "Trust-Evals-LitReview"
 pytestmark = pytest.mark.skipif(not GOLD.exists(), reason="validation corpus not alongside")
 
 
+# The nine 2025-2026 exports the spec measured, named rather than globbed: the
+# corpus directory has since grown (a 2020-2024 batch on 2026-09-23), and every
+# number asserted below describes these nine files alone.
+SPEC_CORPUS = (
+    "ICLR.ris",
+    "ICML.ris",
+    "International Conference on Learning Representations.ris",
+    "NeurIPS.ris",
+    "PMLR.ris",
+    "advances in neural information processing systems.ris",
+    "international conference on machine learning.ris",
+    "neural information processing systems.ris",
+    "proceedings of machine learning research.ris",
+)
+
+
 def corpus_records():
-    for path in sorted(glob.glob(str(GOLD / "corpus" / "*.ris"))):
-        yield from parse_file(Path(path))
+    for name in SPEC_CORPUS:
+        yield from parse_file(GOLD / "corpus" / name)
 
 
 def test_the_corpus_is_the_one_the_spec_measured():
@@ -212,7 +227,7 @@ def test_no_record_is_ever_dropped():
 # lacks is itself a finding: the cache exists to back these claims.
 
 OVERRIDES = GOLD / "verification" / "overrides-2026-09-20.csv"
-DECISIONS = GOLD / "out" / "decisions.csv"
+DECISIONS = GOLD / "verification" / "decisions-2026-09-20.csv"
 RESOLUTIONS = GOLD / "verification" / "review-bucket-resolutions.json"
 
 
