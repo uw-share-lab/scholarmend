@@ -35,6 +35,10 @@ TRACKS = frozenset(
     }
 )
 
+# Older spellings of a track in TRACKS, reported under the current name so one
+# track never counts as two. NeurIPS 2023 and earlier omit the "_Track" suffix.
+ALIASES = {"Datasets_and_Benchmarks": "Datasets_and_Benchmarks_Track"}
+
 _PATH = re.compile(
     r"/paper_files/paper/(?P<year>\d{4})/(?:hash|file)/"
     r"[0-9a-f]+-(?:Abstract|Paper)-(?P<track>[A-Za-z_]+)\.(?:html|pdf)$"
@@ -64,7 +68,7 @@ def mine(url: str) -> list[Claim]:
     if match is None:
         return []
 
-    track = match.group("track")
+    track = ALIASES.get(match.group("track"), match.group("track"))
     if track not in TRACKS:
         raise UnknownTrack(f"{track!r} is not a known track, in {url!r}")
 

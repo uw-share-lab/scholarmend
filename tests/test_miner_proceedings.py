@@ -36,6 +36,16 @@ def test_extracts_the_track():
     assert value(mine(ICLR), "track") == "Conference"
 
 
+def test_the_pre_2024_benchmarks_spelling_is_the_same_track():
+    # NeurIPS 2023 and earlier drop the "_Track" suffix from the path.
+    url = (
+        "https://proceedings.neurips.cc/paper_files/paper/2023/hash/"
+        "f64e55d03e2fe61aa4114e49cb654acb-Abstract-Datasets_and_Benchmarks.html"
+    )
+    assert value(mine(url), "track") == "Datasets_and_Benchmarks_Track"
+    assert value(mine(url), "year") == "2023"
+
+
 def test_marks_the_record_as_proceedings_not_preprint():
     assert value(mine(ICLR), "version") == "proceedings"
 
