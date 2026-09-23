@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2024/hash/a9a3f0e4a95cb273867931369c8fc3b1-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Learning modular object-centric representations is said to be crucial for systematic generalization. Existing methods show promising object-binding capabilities empirically, but theoretical identifiability guarantees remain relatively underdeveloped. Understanding when object-centric representations can theoretically be identified is important for scaling slot-based methods to high-dimensional images with correctness guarantees. To that end, we propose a probabilistic slot-attention algorithm that imposes an aggregate mixture prior over object-centric slot representations, thereby providing slot identifiability guarantees without supervision, up to an equivalence relation. We provide empirical verification of our theoretical identifiability result using both simple 2-dimensional data and high-resolution imaging datasets.",
+  "title": "Identifiable Object-Centric Representation Learning via Probabilistic Slot Attention"
+ }
+}

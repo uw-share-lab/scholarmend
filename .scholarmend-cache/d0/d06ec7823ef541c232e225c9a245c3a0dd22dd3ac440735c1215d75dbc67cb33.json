@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:jeCMRoIn15",
+ "payload": {
+  "abstract": "The Edge-Device Large Language Model Competition seeks to explore the capabilities and potential of large language models (LLMs) deployed directly on edge devices. The incredible capacity of LLMs makes it extremely tantalizing to be applied to practical edge devices to enable wide applications of LLMs in various disciplines. However, the massive size of LLMs poses significant challenges for edge devices where the computing resources and memory are strictly limited. For instance, deploying a small-scale 10B LLM could require up to 20GB of main memory (DRAM) even after adopting INT8 quantization, which unfortunately has exceeded the memory of most commodity smartphones. Besides, the high energy consumption of LLMs will drain smartphones' battery quickly. To facilitate applications of LLMs in a wide range of practical scenarios, we propose this timely competition to encourage practitioners in both academia and industry to come up with effective solutions for this pressing need. By challenging participants to develop efficient and optimized models that can run on resource-constrained edge devices, the competition aims to address critical economic and environmental issues related to LLMs, foster interdisciplinary research collaborations, and enhance the privacy and security of AI systems.",
+  "title": "Edge-LLMs: Edge-Device Large Language Model Competition"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:eBu11K7THc",
+ "payload": {
+  "abstract": "This study investigates the effectiveness of the Zero-shot Chain-of-Thought (CoT) approach, specifically the \"Let's think step by step.'',  in boosting the empathetic reasoning capabilities of Large Language Models (LLMs). Our experiments, however, reveal that Zero-shot CoT does not sufficiently enhance the empathetic reasoning of LLMs as compared to Zero-shot In-Context Learning (ICL), according to a variety of performance metrics. Importantly, we discovered that the perspective-taking prompting method, or ``\\textit{Let's put {speaker} into {interlocutor}'s shoes.}'', surpasses the performance of Zero-shot CoT, especially in terms of emotion and intent accuracy, with an improvement of 21\\% and 7\\% respectively. The source code will be released after publication.",
+  "title": "Investigating the Effects of Zero-Shot Chain-of-Thought on Empathetic Dialogue Generation"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:VhGmeUBDbs",
+ "payload": {
+  "abstract": "The restructuring of scientific data is crucial for scientific applications such as literature review automation, hypothesis generation, and experimental data integration. As pre-trained Large Language Models (LLMs) have been improved and become more accessible, they have the potential to enhance these processes by efficiently interpreting and combining large amounts of data. In this work, we present a comprehensive overview of this restructuring framework, exploring approaches designed to gather, augment, and restructure unstructured scientific data. We explore how LLMs can better integrate diverse unstructured sources of data into a comprehensive document or improve existing knowledge graphs. As a way of exploring these approaches, we study the specific case of synthesizing documents for chemical reactions, where organized data is lacking. We observed that improvements in web page parsers significantly reduce the cost of using LLMs. By developing a parser for chemical reactions, we construct a framework for document augmentation and knowledge graph completion, and significantly reduce the usage costs (in terms of input/output tokens) of LLMs.",
+  "title": "Filling in the Gaps: LLM-Based Structured Data Generation from Semi-Structured Scientific Data"
+ }
+}

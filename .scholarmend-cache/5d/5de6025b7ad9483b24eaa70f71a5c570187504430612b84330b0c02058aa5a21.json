@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2024/hash/96ddbf813f042e8ff891b4d6f7149bb6-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Modern machine learning models are becoming increasingly expensive to train for real-world image and text classification tasks, where massive web-scale data is collected in a streaming fashion. To reduce the training cost, online batch selection techniques have been developed to choose the most informative datapoints. However, many existing techniques are not robust to class imbalance and distributional shifts, and can suffer from poor worst-class generalization performance. This work introduces REDUCR, a robust and efficient data downsampling method that uses class priority reweighting. REDUCR reduces the training data while preserving worst-class generalization performance. REDUCR assigns priority weights to datapoints in a class-aware manner using an online learning algorithm. We demonstrate the data efficiency and robust performance of REDUCR on vision and text classification tasks. On web-scraped datasets with imbalanced class distributions, REDUCR significantly improves worst-class test accuracy (and average accuracy), surpassing state-of-the-art methods by around 15\\%.",
+  "title": "REDUCR: Robust Data Downsampling using Class Priority Reweighting"
+ }
+}

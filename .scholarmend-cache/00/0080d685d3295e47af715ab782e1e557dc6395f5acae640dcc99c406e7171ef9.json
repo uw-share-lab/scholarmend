@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:m0AERL1osQ",
+ "payload": {
+  "abstract": "Generating natural language explanations (NLEs) for models' predictions have gained increasing interest, but it typically demands large datasets of human-written NLEs for ground-truth labels at training time, which can be costly and impractical. Recent works have shown promise in fine-tuning pre-trained language models (PLMs) in conjunction with prompt-based learning for few-shot scenarios. However, PLMs typically have billions of parameters, making full fine-tuning expensive. We introduce SparseFit, a sparse few-shot fine-tuning strategy that leverages discrete prompts to jointly generate predictions and NLEs. Our experiments with T5 and Llama 2 across four datasets reveal that SparseFit configurations that fine-tune only 6.8% of the model parameters achieve competitive performance for both task performance and NLE quality compared to full fine-tuning. Moreover, SparseFit produces better results on average than other state-of-the-art Parameter-Efficient Fine-Tuning (PEFT) techniques.",
+  "title": "Enhancing the Generation of Predictions and Natural Language Explanations via Sparse Few-shot Fine-tuning and Prompting"
+ }
+}

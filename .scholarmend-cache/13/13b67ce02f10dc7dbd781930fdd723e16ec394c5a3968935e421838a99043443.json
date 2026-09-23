@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2024/hash/b364c8cbb3f229f40d5873e877391bd2-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Natural Language Explanation (NLE) in vision and language tasks aims to provide human-understandable explanations for the associated decision-making process. In practice, one might encounter explanations which lack informativeness or contradict visual-grounded facts, known as implausibility and hallucination problems, respectively. To tackle these challenging issues, we consider the task of visual question answering (VQA) and introduce Rapper, a two-stage Reinforced Rationale-Prompted Paradigm. By knowledge distillation, the former stage of Rapper infuses rationale-prompting via large language models (LLMs), encouraging the rationales supported by language-based facts. As for the latter stage, a unique Reinforcement Learning from NLE Feedback (RLNF) is introduced for injecting visual facts into NLE generation. Finally, quantitative and qualitative experiments on two VL-NLE benchmarks show that Rapper surpasses state-of-the-art VQA-NLE methods while providing plausible and faithful NLE.",
+  "title": "RAPPER: Reinforced Rationale-Prompted Paradigm for Natural Language Explanation in Visual Question Answering"
+ }
+}

@@ -1,0 +1,19 @@
+{
+ "key": "s2:search:catalogueoftoolsmetricsfortrustworthyai",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "CorpusId": 278741247,
+     "DOI": "10.1101/2025.05.19.25327868"
+    },
+    "paperId": "62b485eddff7ecb33cf6993f9a7fada9005f1319",
+    "title": "Resampling Methods for Class Imbalance in Clinical Prediction Models: A Systematic Review and Meta-Regression Protocol",
+    "venue": "medRxiv",
+    "year": 2025
+   }
+  ],
+  "offset": 0,
+  "total": 1
+ }
+}

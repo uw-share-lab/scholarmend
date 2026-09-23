@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:hC35JPiczF",
+ "payload": {
+  "abstract": "Large language models are deployed as either closed-source, providing superior performance with limited customization, or open-source, ensuring full transparency at the risk of asset loss. Grey-box approaches, which privatize parts of the model while exposing others, strike a balance between asset protection and customization but are vulnerable to grey-box extraction attacks that aim to replicate model functionality. In this paper, we explore privatization schemes that ensure the resilience of grey-box models against extraction attacks. First, we theoretically prove that an infinitely deep transformer contains a transition layer where earlier layers offer substantial resilience. We introduce EX-Priv, a simple baseline that identifies a small amount of earlier layers for privatization. We validate the effectiveness of EX-Priv across 3 architectures on 16 benchmarks and observe that privatizing \\textit{a single decoder layer} identified by EX-Priv yields comparable resilience to privatizing the entire model with \\textit{32 decoder layers} on Llama2-7B.  We also provide some insights on the effectiveness.",
+  "title": "Enhancing the Resilience of LLMs Against Grey-box Extractions"
+ }
+}

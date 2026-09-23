@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2024/hash/10f34ee79b62627b7ebf6279d35ea480-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Current research in adversarial robustness of LLMs focuses on \\textit{discrete} input manipulations in the natural language space, which can be directly transferred to \\textit{closed-source} models. However, this approach neglects the steady progression of \\textit{open-source} models. As open-source models advance in capability, ensuring their safety becomes increasingly imperative. Yet, attacks tailored to open-source LLMs that exploit full model access remain largely unexplored. We address this research gap and propose the \\textit{embedding space attack}, which directly attacks the \\textit{continuous} embedding representation of input tokens.We find that embedding space attacks circumvent model alignments and trigger harmful behaviors more efficiently than discrete attacks or model fine-tuning. Additionally, we demonstrate that models compromised by embedding attacks can be used to create discrete jailbreaks in natural language. Lastly, we present a novel threat model in the context of unlearning and show that embedding space attacks can extract supposedly deleted information from unlearned LLMs across multiple datasets and models. Our findings highlight embedding space attacks as an important threat model in open-source LLMs.",
+  "title": "Soft Prompt Threats: Attacking Safety Alignment and Unlearning in Open-Source LLMs through the Embedding Space"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:9Rtm2gAVjo",
+ "payload": {
+  "abstract": "Rationality is characterized by logical thinking and decision-making that align with evidence and logical rules. This quality is essential for effective problem-solving, as it ensures that solutions are well-founded and systematically derived. Despite the advancements of large language models (LLMs) in generating human-like text with remarkable accuracy, they present  biases inherited from the training data, inconsistency across different contexts, and difficulty understanding complex scenarios. Therefore, recent research attempts to leverage the strength of multiple agents working collaboratively with various types of data and tools for enhanced consistency and reliability. To that end, this survey aims to define some axioms of rationality, understand whether multi-modal and multi-agent systems are advancing toward rationality, identify their advancements over single-agent, language-only baselines, and discuss open problems and future directions.",
+  "title": "Multi-Modal and Multi-Agent Systems Meet Rationality: A Survey"
+ }
+}

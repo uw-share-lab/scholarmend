@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2024/hash/f6b35e248a21c71ff1cd47b8919fca83-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Diffusion models have revolutionized customized text-to-image generation, allowing for efficient synthesis of photos from personal data with textual descriptions. However, these advancements bring forth risks including privacy breaches and unauthorized replication of artworks. Previous researches primarily center around using “prompt-specific methods” to generate adversarial examples to protect personal images, yet the effectiveness of existing methods is hindered by constrained adaptability to different prompts.In this paper, we introduce a Prompt-Agnostic Adversarial Perturbation (PAP) method for customized diffusion models. PAP first models the prompt distribution using a Laplace Approximation, and then produces prompt-agnostic perturbations by maximizing a disturbance expectation based on the modeled distribution.This approach effectively tackles the prompt-agnostic attacks, leading to improved defense stability.Extensive experiments in face privacy and artistic style protection, demonstrate the superior generalization of our method in comparison to existing techniques.",
+  "title": "Prompt-Agnostic Adversarial Perturbation for Customized Diffusion Models"
+ }
+}

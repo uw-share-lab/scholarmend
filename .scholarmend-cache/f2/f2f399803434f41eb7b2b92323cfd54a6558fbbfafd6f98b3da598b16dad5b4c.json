@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:5afU5ULQ05",
+ "payload": {
+  "abstract": "Models and methods based on large-scale foundation models (FMs) are dominating a large variety of applications in natural language processing, computer vision and other domains. These models, with their immense capabilities, offer a plethora of benefits but also introduce challenges related to reliability, transparency, and ethics. The workshop on reliable and responsible FMs addresses the urgent need to ensure that such models are trustworthy, robust and aligned with human values. The significance of this topic cannot be overstated, as the real-world implications of foundation models impact everything from daily information access to critical decision-making in fields ranging from medicine to finance. The responsible design, deployment, and oversight of these models dictate not only the success of AI solutions but also the preservation of societal norms, equity, and fairness. Moreover, these issues will become increasingly more important in the future, as the capabilities and adoption of FMs increase.",
+  "title": "ICLR 2024 Workshop on Reliable and Responsible Foundation Models"
+ }
+}

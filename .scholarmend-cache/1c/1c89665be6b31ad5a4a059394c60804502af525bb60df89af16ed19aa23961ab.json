@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:mltxfuga55",
+ "payload": {
+  "abstract": "Machine unlearning is a promising approach to mitigate undesirable memorization of training data in ML models. However, in this work we show that existing approaches for unlearning in LLMs are surprisingly susceptible to a simple set of targeted relearning attacks. With access to only a small and potentially loosely related set of data, we find that we can ‘jog’ the memory of unlearned models to reverse the effects of unlearning. We formalize this unlearning-relearning pipeline, explore the attack across three popular unlearning benchmarks, and discuss future directions and guidelines that result from our study.",
+  "title": "Jogging the Memory of Unlearned Models Through Targeted Relearning Attacks"
+ }
+}

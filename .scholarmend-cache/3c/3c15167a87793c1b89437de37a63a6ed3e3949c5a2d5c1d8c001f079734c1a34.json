@@ -1,0 +1,20 @@
+{
+ "key": "s2:search:whatdollmsvalueanevaluationframeworkforrevealingsubjectivetradeoffsinassessmento",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "CorpusId": 289746914,
+     "PubMed": "42389650",
+     "PubMedCentral": "13322355"
+    },
+    "paperId": "ae746a0b866df6666e0df6a2f5d5d97e86f88f49",
+    "title": "What do LLMs value? An evaluation framework for revealing subjective trade-offs in assessment of glycemic control",
+    "venue": "Proceedings of machine learning research",
+    "year": 2025
+   }
+  ],
+  "offset": 0,
+  "total": 1
+ }
+}

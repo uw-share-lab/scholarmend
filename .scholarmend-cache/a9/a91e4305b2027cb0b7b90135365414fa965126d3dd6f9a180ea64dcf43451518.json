@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:5y6fLlZhcO",
+ "payload": {
+  "abstract": "This workshop focuses on the increasing role of data in machine learning, particularly in the context of science research and application. It builds on existing momentum in the field and explores important topics including data quality, governance, ethics, infrastructure & tools, and community development. The main objective of the workshop is to shape the agenda for data-centric machine learning research (DMLR). Towards that end, the workshop will  foster collaboration among researchers, practitioners, data producers, data consumers, and experts in DMLR. The workshop will feature keynote talks, panel discussions, poster sessions, and networking opportunities.",
+  "title": "Data-centric Machine Learning Research (DMLR): Harnessing Momentum for Science"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:quK3DN5kUO",
+ "payload": {
+  "abstract": "Test-time interventions for language models aim to enhance factual accuracy, reduce harmful outputs, and improve model efficiency while avoiding excessive training costs. But existing interventions are developing independently. In practice, multiple interventions must be applied to the same model sequentially. We introduce composable interventions, a framework for studying the impacts of repeatedly intervening on the same language model. To showcase our framework, we compose interventions for two burgeoning interventions: knowledge editing and model compression. We find that compression undoes knowledge edits faster than it decays general model performance. We also find that compressing models makes them harder to edit and show that composing interventions impacts predicted logits.",
+  "title": "Composing Knowledge and Compression Interventions for Language Models"
+ }
+}

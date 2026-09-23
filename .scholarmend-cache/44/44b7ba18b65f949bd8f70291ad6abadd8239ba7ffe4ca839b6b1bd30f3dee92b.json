@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2024/hash/21b5883bc8fec922fdbbb06675388164-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Watermarking is a technical means to dissuade malfeasant usage of Large Language Models.This paper proposes a novel watermarking scheme, so-called WaterMax, that enjoys high detectability while sustaining the quality of the generated text of the original LLM.Its new design leaves the LLM untouched (no modification of the weights, logits or temperature).WaterMax balances robustness and computational complexity contrary to the watermarking techniques of the literature inherently provoking a trade-off between quality and robustness.Its performance is both theoretically proven and experimentally validated.It outperforms all the SotA techniques under the most complete benchmark suite.",
+  "title": "WaterMax: breaking the LLM watermark detectability-robustness-quality trade-off"
+ }
+}

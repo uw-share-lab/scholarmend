@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2024/hash/8402cf3031d649066ada24514739f0dd-Abstract-Conference.html",
+ "payload": {
+  "abstract": "The challenge in object-based visual reasoning lies in generating concept representations that are both descriptive and distinct. Achieving this in an unsupervised manner requires human users to understand the model's learned concepts and, if necessary, revise incorrect ones. To address this challenge, we introduce the Neural Concept Binder (NCB), a novel framework for deriving both discrete and continuous concept representations, which we refer to as \"concept-slot encodings\". NCB employs two types of binding: \"soft binding\", which leverages the recent SysBinder mechanism to obtain object-factor encodings, and subsequent \"hard binding\", achieved through hierarchical clustering and retrieval-based inference. This enables obtaining expressive, discrete representations from unlabeled images. Moreover, the structured nature of NCB's concept representations allows for intuitive inspection and the straightforward integration of external knowledge, such as human input or insights from other AI models like GPT-4. Additionally, we demonstrate that incorporating the hard binding mechanism preserves model performance while enabling seamless integration into both neural and symbolic modules for complex reasoning tasks. We validate the effectiveness of NCB through evaluations on our newly introduced CLEVR-Sudoku dataset.",
+  "title": "Neural Concept Binder"
+ }
+}

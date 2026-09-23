@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2024/hash/88c2fb9ae705e143c99156ba37926837-Abstract-Conference.html",
+ "payload": {
+  "abstract": "The implicit bias of gradient descent has long been considered the primary mechanism explaining the superior generalization of over-parameterized neural networks without overfitting, even when the training error is zero. However, the implicit bias toward adversarial robustness has rarely been considered in the research community, although it is crucial for the trustworthiness of machine learning models. To fill this gap, in this paper, we explore whether consecutive layers collaborate to strengthen adversarial robustness during gradient descent. By quantifying this collaboration between layers using our proposed concept, co-correlation, we demonstrate a monotonically increasing trend in co-correlation, which implies a decreasing trend in adversarial robustness during gradient descent. Additionally, we observe different behaviours between narrow and wide neural networks during gradient descent. We conducted extensive experiments that verified our proposed theorems.",
+  "title": "The Implicit Bias of Gradient Descent toward Collaboration between Layers: A Dynamic Analysis of Multilayer Perceptions"
+ }
+}

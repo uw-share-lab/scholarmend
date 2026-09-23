@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2024/hash/678cffc05549fdabda971127602084c6-Abstract-Conference.html",
+ "payload": {
+  "abstract": "The demand for transparency in healthcare and finance has led to interpretable machine learning (IML) models, notably the concept bottleneck models (CBMs), valued for their potential in performance and insights into deep neural networks. However, CBM's reliance on manually annotated data poses challenges. Label-free CBMs have emerged to address this, but they remain unstable, affecting their faithfulness as explanatory tools. To address this issue of inherent instability, we introduce a formal definition for an alternative concept called the Faithful Vision-Language Concept (FVLC) model. We present a methodology for constructing an FVLC that satisfies four critical properties. Our extensive experiments on four benchmark datasets using Label-free CBM model architectures demonstrate that our FVLC outperforms other baselines regarding stability against input and concept set perturbations. Our approach incurs minimal accuracy degradation compared to the vanilla CBM, making it a promising solution for reliable and faithful model interpretation.",
+  "title": "Faithful Vision-Language Interpretation via Concept Bottleneck Models"
+ }
+}

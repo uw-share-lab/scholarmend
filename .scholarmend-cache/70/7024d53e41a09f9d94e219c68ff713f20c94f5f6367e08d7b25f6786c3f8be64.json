@@ -1,0 +1,51 @@
+{
+ "key": "s2:abstract:microbenchavisionlanguagebenchmarkformicroscopyunderstanding",
+ "payload": {
+  "data": [
+   {
+    "abstract": null,
+    "authors": [
+     {
+      "authorId": "2273567253",
+      "name": "Alejandro Lozano"
+     },
+     {
+      "authorId": "2243427503",
+      "name": "Jeffrey J. Nirschl"
+     },
+     {
+      "authorId": "2195445745",
+      "name": "James Burgess"
+     },
+     {
+      "authorId": "24627399",
+      "name": "S. Gupte"
+     },
+     {
+      "authorId": "49889860",
+      "name": "Yuhui Zhang"
+     },
+     {
+      "authorId": "2303470666",
+      "name": "Alyssa Unell"
+     },
+     {
+      "authorId": "2239200049",
+      "name": "Serena Yeung"
+     }
+    ],
+    "openAccessPdf": {
+     "disclaimer": "Notice: The following paper fields have been elided by the publisher: {'abstract'}. Paper or abstract available at http://papers.nips.cc/paper_files/paper/2024/hash/36b31e1bb8ecd4f4081686448e9eff2d-Abstract-Datasets_and_Benchmarks_Track.html, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use.",
+     "license": null,
+     "status": null,
+     "url": ""
+    },
+    "paperId": "c58060b5b341d50468e41259a23e38e4c7156ea4",
+    "title": "Micro-Bench: A Microscopy Benchmark for Vision-Language Understanding"
+   }
+  ],
+  "next": 1,
+  "offset": 0,
+  "total": 3
+ }
+}

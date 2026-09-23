@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2023/hash/bdd5522a32b3a959a6d81fb6ddc1cb38-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Data valuation, a growing field that aims at quantifying the usefulness of individual data sources for training machine learning (ML) models, faces notable yet often overlooked privacy challenges. This paper studies these challenges with a focus on KNN-Shapley, one of the most practical data valuation methods nowadays. We first emphasize the inherent privacy risks of KNN-Shapley, and demonstrate the significant technical challenges in adapting KNN-Shapley to accommodate differential privacy (DP). To overcome these challenges, we introduce TKNN-Shapley, a refined variant of KNN-Shapley that is privacy-friendly, allowing for straightforward modifications to incorporate DP guarantee (DP-TKNN-Shapley). We show that DP-TKNN-Shapley has several advantages and offers a superior privacy-utility tradeoff compared to naively privatized KNN-Shapley. Moreover, even non-private TKNN-Shapley matches KNN-Shapley's performance in discerning data quality. Overall, our findings suggest that TKNN-Shapley is a promising alternative to KNN-Shapley, particularly for real-world applications involving sensitive data.",
+  "title": "A Privacy-Friendly Approach to Data Valuation"
+ }
+}

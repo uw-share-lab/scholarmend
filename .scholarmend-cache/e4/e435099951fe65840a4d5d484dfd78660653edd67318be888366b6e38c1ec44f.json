@@ -1,0 +1,20 @@
+{
+ "key": "s2:search:microbenchavisionlanguagebenchmarkformicroscopyunderstanding",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "CorpusId": 276184941,
+     "DBLP": "conf/nips/LozanoNBGZUY24"
+    },
+    "paperId": "c58060b5b341d50468e41259a23e38e4c7156ea4",
+    "title": "Micro-Bench: A Microscopy Benchmark for Vision-Language Understanding",
+    "venue": "Neural Information Processing Systems",
+    "year": 2024
+   }
+  ],
+  "next": 1,
+  "offset": 0,
+  "total": 3
+ }
+}

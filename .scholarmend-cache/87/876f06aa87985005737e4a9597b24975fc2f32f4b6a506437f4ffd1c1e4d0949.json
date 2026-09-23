@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:zT8Jcz7bMB",
+ "payload": {
+  "abstract": "Large Language Models (LLMs) are powerful but vulnerable to Jailbreaking attacks aimed at eliciting harmful information through query modifications. As LLMs strengthen their defenses, directly triggering these attacks grows more difficult. Our approach, inspired by human practices of indirect context to elicit harmful information, Contextual Interaction Attack, draws from indirect methods to bypass these safeguards. It utilizes the autoregressive generation process of LLMs, emphasizing the critical role of prior context. By employing a series of non-harmful question-answer interactions, we subtly steer LLMs to produce harmful information. Tested across multiple LLMs, our black-box method proves effective and transferable, highlighting the importance of understanding and manipulating context vectors in LLM security research.",
+  "title": "Leveraging Context in Jailbreaking Attacks"
+ }
+}

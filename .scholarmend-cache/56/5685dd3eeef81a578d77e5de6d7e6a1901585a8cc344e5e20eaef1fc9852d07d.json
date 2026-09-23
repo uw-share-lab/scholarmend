@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:Ma3epu3osb",
+ "payload": {
+  "abstract": "The advent of large language models (LLMs) has had a profound impact on our society, providing unparalleled capabilities in a wide range of fields. However, the high expenses of developing and dealing with LLMs limit their widespread implementation. In today's fast-paced tech industry, managing complex projects efficiently remains a constant challenge. Organizations are increasingly seeking innovative technologies to optimize project management methodologies, particularly within agile frameworks. This conceptual study presents a methodology that leverages multi-agent LLMs to address these challenges, allowing organizations to effectively capitalize on the benefits of LLMs in project management. The implementation of a multi-agent LLM system can integrate diverse user perspectives by assigning distinct personalities to the agents, enhancing the system's ability to simulate context-aware interactions. The LLM-Swarm system, when utilized in the context of agile project management, offers a comprehensive understanding of projects by integrating various viewpoints through interconnected agent clusters that represent different roles, including managers, lead engineers, UI/UX designers, and quality assurance personnel. Our findings indicate that LLM-Swarm can significantly improve resource allocation, task prioritization, and overall project outcomes in agile environments.",
+  "title": "Collective Wisdom in Language Models: Harnessing LLM-Swarm for Agile Project Management"
+ }
+}

@@ -1,0 +1,21 @@
+{
+ "key": "s2:search:grescoregenerativeriskevaluationforlargelanguagemodels",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "CorpusId": 289800332,
+     "DBLP": "conf/acl/LiCH26",
+     "DOI": "10.18653/v1/2026.findings-acl.1202"
+    },
+    "paperId": "64a85606d786ef43563ea154d5fe9ccc49b2ac4e",
+    "title": "GRE Score: Generative Risk Evaluation for Large Language Models",
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2026
+   }
+  ],
+  "next": 1,
+  "offset": 0,
+  "total": 203
+ }
+}

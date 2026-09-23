@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2024/hash/d79792543133425ff79513c147dc8881-Abstract-Conference.html",
+ "payload": {
+  "abstract": "We investigate algorithmic collective action in transformer-based recommender systems. Our use case is a collective of fans aiming to promote the visibility of an underrepresented artist by strategically placing one of their songs in the existing playlists they control. We introduce two easily implementable strategies to select the position at which to insert the song and boost recommendations at test time. The strategies exploit statistical properties of the learner to leverage discontinuities in the recommendations, and the long-tail nature of song distributions. We evaluate the efficacy of our strategies using a publicly available recommender system model released by a major music streaming platform. Our findings reveal that even small collectives (controlling less than 0.01\\% of the training data) can achieve up to $40\\times$ more test time recommendations than songs with similar training set occurrences, on average. Focusing on the externalities of the strategy, we find that the recommendations of other songs are largely preserved, and the newly gained recommendations are distributed across various artists. Together, our findings demonstrate how carefully designed collective action strategies can be effective while not necessarily being adversarial.",
+  "title": "Algorithmic Collective Action in Recommender Systems: Promoting Songs by Reordering Playlists"
+ }
+}

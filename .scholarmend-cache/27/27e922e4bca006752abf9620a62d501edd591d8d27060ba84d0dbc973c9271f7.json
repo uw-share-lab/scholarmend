@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:QRhQAnPqP0",
+ "payload": {
+  "abstract": "The EU AI Act is the world's first comprehensive legal regime for governing artificial intelligence. The Act reflects several years of legislative process in the European Union and, in particular, laws that grapple with the emerging technology of foundation models. We analyze how the Act addresses foundation models by coding the Act's 31 requirements for foundation model developers into a multi-level taxonomy: 87% are disclosures, yet only one requirement requires information be disclosed publicly. Using our coding as a lens, we juxtapose the AI Act with prior legislative proposals. While the proposals and the Act emphasize transparency, the Act lacks the public-facing transparency sought in previous proposals. While time will tell how the EU AI Act shapes global AI development and policymaking, our work helps to set expectations for its handling of foundation models.",
+  "title": "Foundation Models and the EU AI Act"
+ }
+}

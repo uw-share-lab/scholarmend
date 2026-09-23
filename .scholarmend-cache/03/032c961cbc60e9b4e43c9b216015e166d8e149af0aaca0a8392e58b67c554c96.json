@@ -1,0 +1,43 @@
+{
+ "key": "s2:abstract:selfevaluationimprovesselectivegenerationinlargelanguagemodels",
+ "payload": {
+  "data": [
+   {
+    "abstract": "Safe deployment of large language models (LLMs) may benefit from a reliable method for assessing their generated content to determine when to abstain or to selectively generate. While likelihood-based metrics such as perplexity are widely employed, recent research has demonstrated the limitations of using sequence-level probability estimates given by LLMs as reliable indicators of generation quality. Conversely, LLMs have demonstrated strong calibration at the token level, particularly when it comes to choosing correct answers in multiple-choice questions or evaluating true/false statements. In this work, we reformulate open-ended generation tasks into token-level prediction tasks, and leverage LLMs' superior calibration at the token level. We instruct an LLM to self-evaluate its answers, employing either a multi-way comparison or a point-wise evaluation approach, with the option to include a ``None of the above'' option to express the model's uncertainty explicitly. We benchmark a range of scoring methods based on self-evaluation and evaluate their performance in selective generation using TruthfulQA and TL;DR. Through experiments with PaLM-2 and GPT-3, we demonstrate that self-evaluation based scores not only improve accuracy, but also correlate better with the overall quality of generated content.",
+    "authors": [
+     {
+      "authorId": "2274932077",
+      "name": "Jie Ren"
+     },
+     {
+      "authorId": "2275028400",
+      "name": "Yao Zhao"
+     },
+     {
+      "authorId": "2274937078",
+      "name": "Tu Vu"
+     },
+     {
+      "authorId": "2283185014",
+      "name": "Peter J. Liu"
+     },
+     {
+      "authorId": "40627523",
+      "name": "Balaji Lakshminarayanan"
+     }
+    ],
+    "openAccessPdf": {
+     "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/2312.09300, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use.",
+     "license": null,
+     "status": null,
+     "url": ""
+    },
+    "paperId": "04365f0f1db4c659c3297cb8e70c39b38ed3b487",
+    "title": "Self-Evaluation Improves Selective Generation in Large Language Models"
+   }
+  ],
+  "next": 1,
+  "offset": 0,
+  "total": 968
+ }
+}

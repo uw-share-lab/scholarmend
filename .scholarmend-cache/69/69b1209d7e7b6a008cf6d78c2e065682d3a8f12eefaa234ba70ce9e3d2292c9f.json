@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:khL3G4iwd0",
+ "payload": {
+  "abstract": "The same question can often be presented in different ways, depending on the audience and the intent with which it is being posed. To determine whether large language models (LLMs) demonstrate preferences for one phrasing over another regardless of semantic content, we introduce _Self-Select_, a method for selection of a preferred instruction template, and generation of high-quality synthetic data samples. This algorithm makes use of a _meta-prompt_ to decide on an instruction template, given a task and candidate templates then generates $n$ new samples using the chosen template. We evaluate _Self-Select_ on numerical reasoning and sentiment classification tasks, using a variety of instruction-tuned and base models, providing insights into their abilities and biases in performing instruction selection. We find that permuting the instruction template ordering in the prompt leads to vastly different choice distributions, suggesting that decisions may be influenced more by inductive biases than by semantic understanding, even after instruction tuning.",
+  "title": "Self-Select: Optimizing Instruction Selection for Large Language Models"
+ }
+}

@@ -1,0 +1,22 @@
+{
+ "key": "s2:search:quantifyinguncertaintyinnaturallanguageexplanationsoflargelanguagemodels",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "ArXiv": "2311.03533",
+     "CorpusId": 265043487,
+     "DBLP": "conf/aistats/TanneruAL24",
+     "DOI": "10.48550/arXiv.2311.03533"
+    },
+    "paperId": "ad402080a4aa66ef3c57a46ce4685a47a3cc0a61",
+    "title": "Quantifying Uncertainty in Natural Language Explanations of Large Language Models",
+    "venue": "International Conference on Artificial Intelligence and Statistics",
+    "year": 2023
+   }
+  ],
+  "next": 1,
+  "offset": 0,
+  "total": 5
+ }
+}

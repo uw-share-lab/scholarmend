@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:KEggQCeDUA",
+ "payload": {
+  "abstract": "AI Red teaming--i.e., simulating attacks on computer systems to identify vulnerabilities and improve defenses--can yield both qualitative and quantitative information about generative AI (GenAI) system behaviors to inform system evaluations. This is a very broad mandate, which has led to critiques that red teaming is both everything and nothing. We believe there is a more fundamental problem:various forms of red teaming are more commonly being used to produce quantitative information that is used to compare GenAI systems.  This raises the question: (When) can the types of quantitative information that red-teaming activities produce actually be used to make meaningful comparisons of systems? To answer this question, we draw on ideas from measurement theory as developed in the quantitative social sciences, which offers a conceptual framework for understanding the conditions under which the numerical values resulting from a quantification of the properties of a system can be meaningfully compared.  Through this lens, we explain why red-teaming attack success rate (ASR) metrics generally should not be compared across time, settings, or systems.",
+  "title": "AI Red Teaming through the Lens of Measurement Theory"
+ }
+}

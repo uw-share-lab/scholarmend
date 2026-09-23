@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:jGtL0JFdeD",
+ "payload": {
+  "abstract": "Knowing when a language model is uncertain about its generations is a key challenge for enhancing LLMs’ safety and reliability. An increasing issue in the field of Uncertainty Quantification (UQ) for Large Language Models (LLMs) is that the performance values reported across papers are often incomparable, and sometimes even conflicting, due to different evaluation protocols. In this paper, we highlight that some UQ methods and answer evaluation metrics are spuriously correlated via the response length, which leads to falsely elevated performances of uncertainty scores that are sensitive to response length, such as sequence probability. We perform empirical evaluations according to two different protocols in the related literature, one using a substring-overlap-based evaluation metric, and one using an LLM-as-a-judge approach, and show that the conflicting conclusions between these two works can be attributed to this interaction.",
+  "title": "On a Spurious Interaction between Uncertainty Scores and Answer Evaluation Metrics in Generative QA Tasks"
+ }
+}

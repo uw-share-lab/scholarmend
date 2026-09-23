@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.iclr.cc/paper_files/paper/2024/hash/1e58b1bf9f218fcd19e4539e982752a5-Abstract-Conference.html",
+ "payload": {
+  "abstract": "AI systems based on deep learning have reached or surpassed human performance in a range of narrow domains. In coming years or decades, artificial general intelligence (AGI) may surpass human capabilities at many critical tasks. In this position paper, we examine the technical difficulty of fine-tuning hypothetical AGI systems based on pretrained deep models to pursue goals that are aligned with human interests. We argue that, if trained like today's most capable models, AGI systems could learn to act deceptively to receive higher reward, learn internally-represented goals which generalize beyond their fine-tuning distributions, and pursue those goals using power-seeking strategies. We review emerging evidence for these properties. AGIs with these properties would be difficult to align and may appear aligned even when they are not.",
+  "title": "The Alignment Problem from a Deep Learning Perspective"
+ }
+}

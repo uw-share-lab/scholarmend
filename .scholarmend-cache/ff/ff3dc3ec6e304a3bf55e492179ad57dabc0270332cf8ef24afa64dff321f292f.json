@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:QJDCdwLDlG",
+ "payload": {
+  "abstract": "Preference tuning has been effective in aligning language models with human values, often relying on reward models to annotate preferences for generated responses. However, extending this stage to long context language models requires reward models capable of accurately evaluating responses of long context tasks — a challenge that current models struggle to address despite their expanded context windows. We introduce S2L-RM, an approach that leverages short context reward models to assess the responses of long context tasks. Our method employs a factual verifier to select responses within a trust region relative to a reference response. These responses are then evaluated using any short context reward model, with input limited to a short query, the reference response, and the model-generated response. Our preliminary experiments demonstrate that our approach can accurately provide preference annotations in long-context scenarios.",
+  "title": "S2L-RM: Short-to-Long Reward Modeling"
+ }
+}

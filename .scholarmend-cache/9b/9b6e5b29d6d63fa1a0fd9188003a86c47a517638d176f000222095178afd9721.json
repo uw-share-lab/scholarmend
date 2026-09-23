@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:69cchEUgef",
+ "payload": {
+  "abstract": "Large Language Models (LLMs) have demonstrated impressive performance on several benchmarks. However, traditional studies do not provide formal guarantees on the performance of LLMs. In this work, we propose a novel certification framework for LLMs, wherein we formally certify the knowledge-comprehension capabilities of popular LLMs. Our certificates are quantitative — they consist of high-confidence, tight bounds on the probability that the target LLM gives the correct answer on any relevant knowledge comprehension prompt. Our certificates for the Llama, Vicuna, and Mistral LLMs indicate that the knowledge comprehension capability improves with an increase in the number of parameters and that the Mistral model is less performant than the rest on this axis of evaluation.",
+  "title": "Quantitative Certification of Knowledge Comprehension in LLMs"
+ }
+}

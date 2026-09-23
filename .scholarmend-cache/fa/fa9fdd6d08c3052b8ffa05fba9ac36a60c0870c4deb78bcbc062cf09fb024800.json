@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2024/hash/dfc24bd3ec5d74960e104268bbb52849-Abstract-Conference.html",
+ "payload": {
+  "abstract": "The magnitude of a metric space is a novelinvariant that provides a measure of the 'effective size' of a space acrossmultiple scales, while also capturing numerous geometrical properties, such as curvature, density, or entropy.We develop a family of magnitude-based measures of the intrinsicdiversity of latent representations, formalising a novel notion ofdissimilarity between magnitude functions of finite metric spaces.Our measures are provably stable under perturbations of the data, can beefficiently calculated, and enable a rigorous multi-scale characterisation and comparison oflatent representations. We show their utility and superior performance across different domains and tasks, includingthe automated estimation of diversity,the detection of mode collapse, andthe evaluation of generative models for text, image, and graph data.",
+  "title": "Metric Space Magnitude for Evaluating the Diversity of Latent Representations"
+ }
+}

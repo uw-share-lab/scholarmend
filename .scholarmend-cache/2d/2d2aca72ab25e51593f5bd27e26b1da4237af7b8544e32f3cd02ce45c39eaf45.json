@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:GTqflMHFUD",
+ "payload": {
+  "abstract": "The capability of clearly identifying the origin of a ML model is an \nimportant element of trustworthy AI. First standardisation reports \nhighlight the necessity of providing ML traceability, while pointing \nout that existing tools for Digital Right Management are not sufficient \nin the context of ML. Watermarking has been explored as a possible \nanswer for this need, and has been implemented for image classification \nmodels, but there remains a substantial research gap in its application \nto other tasks such as object detection or semantic segmentation, \nwhich remains largely unexplored. In this paper, we propose a \nnovel black-box watermarking technique specifically designed for \nsemantic segmentation. Our contributions include a novel watermarking method links visual data \nto text semantics and provide comparative analysis of the effect of \nfine-tuning techniques on watermark detectability. Finally, we highlight several\nregulatory recommendations on how to design watermarking techniques for \nsegmentation purposes.",
+  "title": "A Black-Box Watermarking Modulation for Semantic Segmentation Models"
+ }
+}

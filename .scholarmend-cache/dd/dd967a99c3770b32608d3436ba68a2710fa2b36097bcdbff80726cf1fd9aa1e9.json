@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:Fg6qZ28Jym",
+ "payload": {
+  "abstract": "Recent advances in generative AI are poised to reduce the burden of important and arduous tasks, including drafting job application materials. In this paper, we examine whether GPT-4 produces job cover letters that systematically advantage some users and disadvantage others. To test this, we introduce a novel method designed to probe LLMs for gender-occupation biases. Using our method, we show that GPT-4, like humans, possesses strong gender-occupation associations (e.g., surgeon = male, nurse = female). \nHowever, surprisingly, we find that biased associations do not necessarily translate into biased results. That is, we find that GPT-4 can (a) produce reasonable evaluations of cover letters, (b) evaluate information written by men and women equally, unlike humans, and (c) generate equally strong cover letters for male and female applicants. Our work calls for more systematic studies of the connection between association bias and outcome bias in generative AI models.",
+  "title": "Bias Transmission in Large Language Models: Evidence from Gender-Occupation Bias in GPT-4"
+ }
+}

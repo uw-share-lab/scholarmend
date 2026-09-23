@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:0RnJzt8v84",
+ "payload": {
+  "abstract": "Although LLMs excel at data-rich coding tasks, e.g., writing general Python scripts, they often struggle at writing low-resource languages for High-Performance Computing (HPC). Recently, test-time program search driven by LLMs has emerged as a promising approach to enhance LLMs' capabilities. However, there is a lack of systematic studies investigating test-time search for low-resource HPC coding tasks. In this work, we conduct the first such study to our knowledge, providing empirical data about how different test-time search methods perform when moving from a high-resource to a low-resource language for HPC. Under a simple test-time search framework, we evaluate different choices of proposers and verifiers. Our experiments on the ParEval benchmark (i) show on average a 23–26% boost in pass@1 using test-time search with a small search budget, and (ii) reveal gaps in LLMs as proposers, verifiers, and feedback providers.",
+  "title": "Can Test-Time Compute Help LLMs Write Low-Resource Parallel Code Better?"
+ }
+}

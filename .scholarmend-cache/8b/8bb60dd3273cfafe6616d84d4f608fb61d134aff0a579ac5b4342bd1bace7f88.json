@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:xw06d8NQAd",
+ "payload": {
+  "abstract": "Despite recent advancements in Large Language Models (LLMs), challenges persist in their ability to process complex logical rules. Previous work of Logic-LM integrates LLMs with separate symbolic solvers for various reasoning tasks. While it is effective, it is hard to scale across different tasks. This paper introduces an innovative framework that unifies the integration of LLMs with a Z3 symbolic solver to solve various reasoning tasks. The integration is complemented by an additional Self-Refinement Module to enhance the reliability of code generation of LLM. We evaluated the LLM's performance on four diverse datasets - ProntoQA, ProofWriter, FOLIO, and Logical Deduction - covering a range of deductive, analytical and first-order-logic(FOL) reasoning tasks. Our framework demonstrates significant improvements, outperforming Logic-LM by 4.86% and 7.82% on GPT-3.5-Turbo and GPT-4 models, respectively. Through an analysis of failure cases, we identify several limitations in LLM translation, such as misinterpretation of relationships, literal translation lacking contextual understanding, and misapplication of logical structures.",
+  "title": "Enhancing and Evaluating Logical Reasoning Abilities of Large Language Models"
+ }
+}

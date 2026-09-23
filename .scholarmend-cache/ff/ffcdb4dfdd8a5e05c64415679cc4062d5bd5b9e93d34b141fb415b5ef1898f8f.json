@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:arYXgfHAIh",
+ "payload": {
+  "abstract": "To successfully interact with the world, both humans and machines need to construct models of the world and form beliefs about these models. These beliefs need to be updated as new information comes in. We formalize this problem using a simple flight recommendation task, where in order to provide useful recommendations the assistant needs to infer the user's preferences as it interacts with the user. We evaluate the Gemma 2 family of instruction-tuned language models in this setting, and find that they perform poorly compared to an optimal Bayesian model. Most importantly, Gemma 2's performance remains constant even as more information becomes available. Overall, we identify probabilistic belief updating as a central challenge for interactive language models.",
+  "title": "Can Language Models Perform Implicit Bayesian Inference Over User Preference States?"
+ }
+}

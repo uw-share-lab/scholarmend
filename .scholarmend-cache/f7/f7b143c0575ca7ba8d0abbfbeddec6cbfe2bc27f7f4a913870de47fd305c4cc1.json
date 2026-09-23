@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:yTPbrLyOgd",
+ "payload": {
+  "abstract": "Large language models (LLMs) have demonstrated remarkable capabilities in generating human-like text and exhibiting personality traits similar to those in humans. However, the mechanisms by which LLMs encode and express traits such as agreeableness and impulsiveness remain poorly understood. Drawing on the theory of social determinism, we investigate how long-term background factors, such as family environment and cultural norms, interact with short-term pressures like external instructions, shaping and influencing LLMs' personality traits. By steering the output of LLMs through the utilization of interpretable features within the model, we explore how these background and pressure factors lead to changes in the model's traits without the need for further fine-tuning. Additionally, we suggest the potential impact of these factors on model safety from the perspective of personality.",
+  "title": "What Makes Your Model a Low-empathy or Warmth Person: Exploring the Oringins of Personality in LLMs"
+ }
+}

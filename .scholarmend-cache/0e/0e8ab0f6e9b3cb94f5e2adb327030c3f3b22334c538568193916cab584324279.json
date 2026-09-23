@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:RoUUV2wLdn",
+ "payload": {
+  "abstract": "Our work proposes an innovative framework for smart cities that integrates Foundation Models (FMs), Federated Learning (FL), and Blockchain to address key challenges in urban data management, such as privacy, scalability, and predictive accuracy. By combining the predictive power of FMs with the privacy-preserving capabilities of FL and the secure, transparent governance provided by Blockchain, we create a robust, decentralized solution for managing diverse urban data. Our approach enables real-time data analysis and decision-making while ensuring that sensitive information remains secure. To demonstrate the efficacy of this integrated platform, we present a use case in inventory management and sales forecasting for smart city businesses, showcasing its potential to enhance operational efficiency, data privacy, and economic resilience. This synergy of advanced technologies establishes a new standard for secure, adaptable, and collaborative management.",
+  "title": "The SynapticCity Phenomenon: When All Foundation Models Marry Federated Learning and Blockchain"
+ }
+}

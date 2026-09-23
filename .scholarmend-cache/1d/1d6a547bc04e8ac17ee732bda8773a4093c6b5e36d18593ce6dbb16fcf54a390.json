@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:o9BWfjgbGT",
+ "payload": {
+  "abstract": "Jailbreak approaches intentionally attack the aligned large language models (LLMs) to bypass their human preference safeguards and trick LLMs into generating harmful responses to malicious questions. Suffix-based attack methods automate the learning of adversarial suffixes to generate jailbreak prompts. In this work, we take a closer look at the optimization objective of adversarial suffix learning and propose ASLA: Adversarial Suffix Learning with Augmented objectives. ASLA improves the negative log-likelihood loss used by previous studies in two key ways: (1) to encourage the learned adversarial suffixes to target response format tokens, and (2) to augment the loss with an objective that suppresses evasive responses. ASLA learns an adversarial suffix from just one (Q, R) tuple, and the learned suffix demonstrates high transferability to both unseen harmful questions and new LLMs. We extend ASLA to ASLA-K, which learns an adversarial suffix from K-(Q, R) tuples to further boost the transferability. Our extensive experiments, covering over 3,000 trials, demonstrate that the ASLA  consistently outperforms current state-of-the-art techniques, achieving nearly 100% success in attacking while requiring 80% fewer queries.",
+  "title": "A closer look at adversarial suffix learning for Jailbreaking LLMs"
+ }
+}

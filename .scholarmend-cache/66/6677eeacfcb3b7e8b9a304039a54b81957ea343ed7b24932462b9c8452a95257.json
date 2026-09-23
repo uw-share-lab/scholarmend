@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:PjUoztugza",
+ "payload": {
+  "abstract": "Although large language models (LLMs) have demonstrated their effectiveness in a wide range of applications, they have also been observed to perpetuate unwanted biases present in the training data, potentially leading to harm for marginalized communities. In this paper, we mitigate bias by leveraging small biased and anti-biased expert models to obtain a debiasing signal that will be added to the LLM output at decoding-time. This approach combines resource efficiency with interpretability and can be optimized for mitigating specific types of bias, depending on the target use case. Experiments on mitigating gender, race, and religion biases show a reduction in bias on several local and global bias metrics while preserving language model performance.",
+  "title": "Towards Resource Efficient and Interpretable Bias Mitigation in Natural Language Generation"
+ }
+}

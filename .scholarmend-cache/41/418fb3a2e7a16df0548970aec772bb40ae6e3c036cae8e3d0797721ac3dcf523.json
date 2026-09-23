@@ -1,0 +1,22 @@
+{
+ "key": "s2:search:selfevaluationimprovesselectivegenerationinlargelanguagemodels",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "ArXiv": "2312.09300",
+     "CorpusId": 266335508,
+     "DBLP": "journals/corr/abs-2312-09300",
+     "DOI": "10.48550/arXiv.2312.09300"
+    },
+    "paperId": "04365f0f1db4c659c3297cb8e70c39b38ed3b487",
+    "title": "Self-Evaluation Improves Selective Generation in Large Language Models",
+    "venue": "ICBINB",
+    "year": 2023
+   }
+  ],
+  "next": 1,
+  "offset": 0,
+  "total": 968
+ }
+}

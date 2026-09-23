@@ -1,0 +1,72 @@
+{
+ "key": "pmc:esummary:PMC12021422",
+ "payload": {
+  "header": {
+   "type": "esummary",
+   "version": "0.3"
+  },
+  "result": {
+   "12021422": {
+    "articleids": [
+     {
+      "idtype": "pmid",
+      "value": "40276238"
+     },
+     {
+      "idtype": "MID",
+      "value": "NIHMS2074922"
+     },
+     {
+      "idtype": "pmcid",
+      "value": "PMC12021422"
+     }
+    ],
+    "authors": [
+     {
+      "authtype": "Author",
+      "name": "Benara V"
+     },
+     {
+      "authtype": "Author",
+      "name": "Singh C"
+     },
+     {
+      "authtype": "Author",
+      "name": "Morris JX"
+     },
+     {
+      "authtype": "Author",
+      "name": "Antonello RJ"
+     },
+     {
+      "authtype": "Author",
+      "name": "Stoica I"
+     },
+     {
+      "authtype": "Author",
+      "name": "Huth AG"
+     },
+     {
+      "authtype": "Author",
+      "name": "Gao J"
+     }
+    ],
+    "epubdate": "",
+    "fulljournalname": "Advances in neural information processing systems",
+    "issue": "",
+    "pages": "124137-124162",
+    "pmclivedate": "2025/04/24",
+    "printpubdate": "2024",
+    "pubdate": "2024",
+    "sortdate": "2024/01/01 00:00",
+    "source": "Adv Neural Inf Process Syst",
+    "title": "Crafting Interpretable Embeddings for Language Neuroscience by Asking LLMs Questions.",
+    "uid": "12021422",
+    "volume": "37"
+   },
+   "uids": [
+    "12021422"
+   ]
+  }
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:IwB45cjqC8",
+ "payload": {
+  "abstract": "In order to safely deploy Large Language Models (LLMs), they must be capable of dynamically adapting their behavior based on their level of knowledge and uncertainty associated with specific topics. This adaptive behavior, which we refer to as self-restraint, is non-trivial to teach since it depends on the internal knowledge of an LLM. By default, LLMs are trained to maximize the next token likelihood which does not teach the model to modulate its answer based on its level of uncertainty. In order to learn self-restraint, we devise a simple objective that can encourage the model to produce generation that the model is confident in. To optimize this objective, we introduce ReSearch, an iterative search algorithm based on self-evaluation and self-prompting. Our method results in fewer hallucinations overall, both for known and unknown topics, as the model learns to selectively restrain itself. In addition, our method elegantly incorporates the ability to decline, when the model assesses that it cannot provide a response without a high proportion of hallucination.",
+  "title": "Self-evaluation and self-prompting to improve the reliability of LLMs"
+ }
+}

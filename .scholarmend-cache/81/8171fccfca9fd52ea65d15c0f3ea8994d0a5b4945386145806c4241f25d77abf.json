@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:JtgxazN6TM",
+ "payload": {
+  "abstract": "Humankind has honed its language system over thousands of years to engage in statistical learning and form predictions about upcoming input, often based on properties of or prior conversational experience with a specific conversational partner. Large language models, however, do not adapt their language in a user-specific manner. We argue that AI and ML researchers and developers should not ignore this critical component of human language processing, but instead, incorporate it into LLM development, and that doing so will improve LLM conversational performance, as well as users’ perceptions of models on dimensions such as accuracy and task success.",
+  "title": "Humans Linguistically Align to their Conversational Partners, and Language Models Should Too"
+ }
+}

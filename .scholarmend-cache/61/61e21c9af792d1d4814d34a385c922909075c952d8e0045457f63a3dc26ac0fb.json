@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2024/hash/bfba8efb806a970455b83b852c9cf846-Abstract-Conference.html",
+ "payload": {
+  "abstract": "In Natural Language Processing (NLP), the Elo rating system, originally designed for ranking players in dynamic games such as chess, is increasingly being used to evaluate Large Language Models (LLMs) through \"A vs B\" paired comparisons.However, while popular, the system's suitability for assessing entities with constant skill levels, such as LLMs, remains relatively unexplored. We study two fundamental axioms that evaluation methods should adhere to: reliability and transitivity. We conduct an extensive evaluation of Elo behavior across simulated and real-world scenarios, demonstrating that individual Elo computations can exhibit significant volatility.We show that both axioms are not always satisfied, raising questions about the reliability of current comparative evaluations of LLMs.If the current use of Elo scores is intended to substitute the costly head-to-head comparison of LLMs, it is crucial to ensure the ranking is as robust as possible.Guided by the axioms, our findings offer concrete guidelines for enhancing the reliability of LLM evaluation methods, suggesting a need for reassessment of existing comparative approaches.",
+  "title": "Elo Uncovered: Robustness and Best Practices in Language Model Evaluation"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:lwW7d8LMsf",
+ "payload": {
+  "abstract": "In-context learning (ICL) enables Large Language Models (LLMs) to undertake challenging tasks through given examples. However, it is prone to instability: different orderings of input examples can significantly influence predictions. Current mitigation strategies, focused on post-processing, fail to enhance the model's inherent robustness. This paper extensively investigates this issue of LLMs and uncovers a natural, permutation-based attack that can nearly achieve 100\\% success rates on LLMs, while remaining imperceptible to humans. To address this vulnerability, we propose a distributionally robust optimization (DRO)-based tuning method as a defence, explicitly optimizing the model's performance against worst-case permutations to bolster robustness. Our framework comprises two modules: the Permutation Proposal network (P-Net) and LLM.  The P-Net formulates the identification of the most challenging permutation as an optimal transport problem, solved using the Sinkhorn algorithm. Through adversarial training, the P-Net progressively enhances the LLM's robustness against permutation instability. Experiments with a synthetic task and ICL tuning task demonstrate that our methodology effectively mitigates permutation attacks and enhances overall performance.",
+  "title": "Simple Permutations Can Fool LLaMA: Permutation Attack and Defense for Large Language Models"
+ }
+}

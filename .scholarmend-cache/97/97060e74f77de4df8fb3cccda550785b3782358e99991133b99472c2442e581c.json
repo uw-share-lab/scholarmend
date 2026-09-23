@@ -1,0 +1,22 @@
+{
+ "key": "s2:search:selectiveexplanations",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "ArXiv": "2301.09656",
+     "CorpusId": 256194393,
+     "DBLP": "journals/pacmhci/LaiZCLT23",
+     "DOI": "10.1145/3610206"
+    },
+    "paperId": "e2de545750c859b9f7f62919e2b94f9e92ad9147",
+    "title": "Selective Explanations: Leveraging Human Input to Align Explainable AI",
+    "venue": "Proc. ACM Hum. Comput. Interact.",
+    "year": 2023
+   }
+  ],
+  "next": 1,
+  "offset": 0,
+  "total": 3284077
+ }
+}

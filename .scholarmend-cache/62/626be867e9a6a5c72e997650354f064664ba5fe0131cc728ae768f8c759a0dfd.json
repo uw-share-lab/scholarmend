@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2024/hash/1d3591b6746204b332acb464b775d38d-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Anomaly detection is widely used for identifying critical errors and suspicious behaviors, but current methods lack interpretability.We leverage common properties of existing methods and recent advances in generative models to introduce counterfactual explanations for anomaly detection.Given an input, we generate its counterfactual as a diffusion-based repair that shows what a non-anomalous version $\\textit{should have looked like}$.A key advantage of this approach is that it enables a domain-independent formal specification of explainability desiderata, offering a unified framework for generating and evaluating explanations.We demonstrate the effectiveness of our anomaly explainability framework, AR-Pro, on vision (MVTec, VisA) and time-series (SWaT, WADI, HAI) anomaly datasets. The code used for the experiments is accessible at: https://github.com/xjiae/arpro.",
+  "title": "AR-Pro: Counterfactual Explanations for Anomaly Repair with Formal Properties"
+ }
+}

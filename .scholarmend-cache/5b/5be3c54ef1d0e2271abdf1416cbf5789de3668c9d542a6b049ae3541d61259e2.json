@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:fkOZjYwm2R",
+ "payload": {
+  "abstract": "The potential of large language models (LLMs) is substantial, yet they also carry the risk of generating harmful responses. An automatic \"red teaming\" process constructs test cases designed to elicit unfavorable responses from these models. A successful generator must provoke undesirable responses from the target LLMs with test cases that exemplify diversity. Current methods often struggle to balance quality (i.e., the harmfulness of responses) and diversity (i.e., the range of scenarios) in testing, typically sacrificing one to enhance the other and relying on non-optimal exhaustive comparison approaches. To address these challenges, we introduce an imitation-guided reinforcement learning approach to learn optimal red teaming strategies that generate both diverse and high-quality test cases without exhaustive searching. Our proposed method, Imitation-guided Automated Red Teaming (iART), is evaluated across various LLMs fine-tuned for different tasks. We demonstrate that iART achieves not only diverse test sets but also elicits undesirable responses from the target LLM in a computationally efficient manner.",
+  "title": "Imitation guided Automated Red Teaming"
+ }
+}

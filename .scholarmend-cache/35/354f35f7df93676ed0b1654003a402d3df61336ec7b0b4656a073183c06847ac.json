@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2024/hash/e40d5118ee8f837729fa877add71c38f-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Studies show that safety-tuned models may nevertheless divulge harmful information. In this work, we show that whether they do so depends significantly on who they are talking to, which we refer to as user persona. In fact, we find manipulating user persona to be more effective for eliciting harmful content than certain more direct attempts to control model refusal. We study both natural language prompting and activation steering as intervention methods and show that activation steering is significantly more effective at bypassing safety filters.We shed light on the mechanics of this phenomenon by showing that even when model generations are safe, harmful content can persist in hidden representations and can be extracted by decoding from earlier layers. We also show we can predict a persona’s effect on refusal given only the geometry of its steering vector. Finally, we show that certain user personas induce the model to form more charitable interpretations of otherwise dangerous queries.",
+  "title": "Who's asking? User personas and the mechanics of latent misalignment"
+ }
+}

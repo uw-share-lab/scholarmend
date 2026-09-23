@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:v2tgdAcuDI",
+ "payload": {
+  "abstract": "Instruction-following is crucial for building AI agents with large language models (LLMs), as these models must adhere strictly to user-provided guidelines. However, LLMs often fail to follow even simple instructions. To improve instruction-following behavior and prevent undesirable outputs, we need a deeper understanding of how LLMs' internal states relate to these outcomes.\nOur analysis of LLM internal states revealed a dimension in the input embedding space linked to successful instruction-following. We demonstrate that modifying representations along this dimension improves instruction-following success rates compared to random changes, without compromising response quality.\nThis work provides insights into the internal workings of LLMs' instruction-following, paving the way for reliable LLM agents.",
+  "title": "Do LLMs internally ``know'' when they follow instructions?"
+ }
+}

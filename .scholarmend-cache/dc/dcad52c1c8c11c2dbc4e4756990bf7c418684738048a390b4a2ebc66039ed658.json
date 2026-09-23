@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:1cq9pmwRgG",
+ "payload": {
+  "abstract": "As large language models (LLMs) develop ever-improving capabilities and are applied in real-world settings, it is important to understand their safety. While initial steps have been taken to evaluate the safety of general-knowledge LLMs, exposing some weaknesses, the safety of medical LLMs has not been sufficiently evaluated despite their high risks to personal health and safety, public health and safety, patient rights, and human rights. To address this gap, we conduct, to our knowledge, the first study of its kind to evaluate and improve the safety of medical LLMs. We find that 1) current medical LLMs do not meet standards of general or medical safety, as they readily comply with harmful requests and that 2) fine-tuning medical LLMs on safety demonstrations significantly improves their safety, reducing their tendency to comply with harmful requests. In addition, we present a definition of medical safety for LLMs and develop a benchmark dataset to evaluate and train for medical safety in LLMs. Poised at the intersection of research on machine learning safety and medical machine learning, this work casts light on the status quo of the safety of medical LLMs and motivates future work in this area, mitigating the risks of harm of LLMs in medicine.",
+  "title": "Towards Safe Large Language Models for Medicine"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2024/hash/5358d1e6138dff5718c5e9790f5fa593-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Strong student models can learn from weaker teachers: when trained on the predictions of a weaker model, a strong pretrained student can learn to correct the weak model’s errors and generalize to examples where the teacher is not confident, even when these examples are excluded from training. This enables learning from cheap, incomplete, and possibly incorrect label information, such as coarse logical rules or the generations of a language model. We show that existing weak supervision theory results fail to account for both of these effects, which we call pseudolabel correction and coverage expansion, respectively. We give a new bound based on expansion properties of the data distribution and student hypothesis class that directly accounts for pseudolabel correction and coverage expansion. Our bound generalizes results from the co-training and self-training literature and captures the intuition that weak-to-strong generalization occurs when the mistakes of the weak model are hard for the strong model to fit without incurring additional error. We show that these expansion properties can be checked from finite data and give empirical evidence that they hold in practice.",
+  "title": "Theoretical Analysis of Weak-to-Strong Generalization"
+ }
+}

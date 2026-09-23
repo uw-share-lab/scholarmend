@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2024/hash/f1e7c90552850afcc2558d78950c519d-Abstract-Conference.html",
+ "payload": {
+  "abstract": "We propose Adaptive Randomized Smoothing (ARS) to certify the predictions of our test-time adaptive models against adversarial examples.ARS extends the analysis of randomized smoothing using $f$-Differential Privacy to certify the adaptive composition of multiple steps.For the first time, our theory covers the sound adaptive composition of general and high-dimensional functions of noisy inputs.We instantiate ARS on deep image classification to certify predictions against adversarial examples of bounded $L_{\\infty}$ norm.In the $L_{\\infty}$ threat model, ARS enables flexible adaptation through high-dimensional input-dependent masking.We design adaptivity benchmarks, based on CIFAR-10 and CelebA, and show that ARS improves standard test accuracy by 1 to 15\\% points.On ImageNet, ARS improves certified test accuracy by up to 1.6% points over standard RS without adaptivity. Our code is available at [https://github.com/ubc-systopia/adaptive-randomized-smoothing](https://github.com/ubc-systopia/adaptive-randomized-smoothing).",
+  "title": "Adaptive Randomized Smoothing: Certified Adversarial Robustness for Multi-Step Defences"
+ }
+}

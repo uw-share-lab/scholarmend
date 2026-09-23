@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:eBcVsC4h6A",
+ "payload": {
+  "abstract": "Recent work has demonstrated that fine-tuning is a promising approach to `unlearn' concepts from large language models. However, fine-tuning can be expensive, as it requires both generating a set of examples and running iterations of fine-tuning to update the model. In this work, we show that simple prompting approaches can achieve unlearning results comparable to fine-tuning methods. We recommend that researchers investigate prompting  as a lightweight baseline when evaluating the performance of more computationally intensive fine-tuning approaches. While we do not claim that prompting is a universal solution to the problem of unlearning, our work suggests the need for evaluation metrics that can better separate the power of prompting and fine-tuning, and highlights scenarios where prompting itself may be useful for unlearning, such as in generating examples for fine-tuning or unlearning when only API access is available.",
+  "title": "I'm not familiar with the name Harry Potter: Prompting Baselines for Unlearning in LLMs"
+ }
+}

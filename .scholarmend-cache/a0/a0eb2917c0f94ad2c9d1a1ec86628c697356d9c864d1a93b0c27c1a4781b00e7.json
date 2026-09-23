@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:EGWrfirmIM",
+ "payload": {
+  "abstract": "With the widespread utilization of LLMs for a plethora of applications, challenges associated with trust, safety, and fairness need to be addressed. One of these challenges for LLMs relates to their capability for causal reasoning.  This can be critical for successfully utilizing LLMs in sensitive applications such as biomedical, healthcare, technology, law, and government. To address this, we investigate LLMs for whether they can identify cause and effect relations using a combination of benchmarked causal datasets (Tuebingen dataset), image datasets (Animals with Attributes 2), and LLM benchmark dataset (CRASS). For causal discovery, we present LLMs’ ability to identify causal relations and generate causal graphs given an observational dataset. For causal inference, we investigate whether they can generate counterfactual reasoning on natural language questions. Using multi-modal data, experimental results demonstrate the capability of LLMs to complement and contribute to the growing field of causal reasoning for AI systems by aiding in causal discovery and treatment effect estimation methods based on traditional techniques. However, we also highlight the limitations of LLMs to generate causal reasoning as the data complexity is increased.",
+  "title": "Investigating Causal Reasoning in Large Language Models"
+ }
+}

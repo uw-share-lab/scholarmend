@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:y1VLghM9Xa",
+ "payload": {
+  "abstract": "Aptamers are short, single-stranded DNA or RNA sequences that bind to specific targets such as proteins, small molecules, and cells, with high affinity and specificity. Aptamers can serve as molecular recognition elements, making them valuable for therapeutic applications, diagnostics, and targeted drug delivery alternatives to antibodies. Typically developed through in vitro selection, also known as the Systematic Evolution of Ligands by EXponential enrichment (SELEX), aptamer selection imposes multiple technical and resource constraints, such as the need to impose selective pressure intentionally and precisely, as well as the time (oftentimes months) and reagent costs to move from initial library to characterized aptamer. To overcome these limitations, we have developed AptaBLE (Aptamer Binding LanguagE): a large language model capable of predicting aptamer-protein interactions and generating novel aptamer sequences against diverse protein targets. Herein we demonstrate how AptaBLE leverages fused embeddings to score aptamer-protein binding in a structure-agnostic fashion. We report on performance gains that can be realized via AptaBLE when compared to other deep learning methods. Lastly, we highlight aptamer discovery and optimization workflows which are made possible by AptaBLE, including its capacity to produce novel aptamers with favorable binding profiles.",
+  "title": "AptaBLE: A Deep Learning Platform for SELEX Optimization"
+ }
+}

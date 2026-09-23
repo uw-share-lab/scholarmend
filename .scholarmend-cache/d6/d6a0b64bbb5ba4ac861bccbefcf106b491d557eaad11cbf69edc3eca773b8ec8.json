@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2024/hash/bc667ac84ef58f2b5022da97a465cbab-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Long-tailed visual recognition has received increasing attention recently. Despite fine-tuning techniques represented by visual prompt tuning (VPT) achieving substantial performance improvement by leveraging pre-trained knowledge, models still exhibit unsatisfactory generalization performance on tail classes. To address this issue, we propose a novel optimization strategy called Gaussian neighborhood minimization prompt tuning (GNM-PT), for VPT to address the long-tail learning problem. We introduce a novel Gaussian neighborhood loss, which provides a tight upper bound on the loss function of data distribution, facilitating a flattened loss landscape correlated to improved model generalization. Specifically, GNM-PT seeks the gradient descent direction within a random parameter neighborhood, independent of input samples, during each gradient update. Ultimately, GNM-PT enhances generalization across all classes while simultaneously reducing computational overhead. The proposed GNM-PT achieves state-of-the-art classification accuracies of 90.3%, 76.5%, and 50.1% on benchmark datasets CIFAR100-LT (IR 100), iNaturalist 2018, and Places-LT, respectively. The source code is available at https://github.com/Keke921/GNM-PT.",
+  "title": "Improving Visual Prompt Tuning by Gaussian Neighborhood Minimization for Long-Tailed Visual Recognition"
+ }
+}

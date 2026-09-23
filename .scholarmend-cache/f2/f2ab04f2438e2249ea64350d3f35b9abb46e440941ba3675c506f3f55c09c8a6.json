@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2024/hash/3c630d28df1cff44314d5798f82e02ec-Abstract-Datasets_and_Benchmarks_Track.html",
+ "payload": {
+  "abstract": "We introduce OpenDebateEvidence, a comprehensive dataset for argument miningand summarization sourced from the American Competitive Debate community.This dataset includes over 3.5 million documents with rich metadata, making itone of the most extensive collections of debate evidence. OpenDebateEvidencecaptures the complexity of arguments in high school and college debates, pro-viding valuable resources for training and evaluation. Our extensive experimentsdemonstrate the efficacy of fine-tuning state-of-the-art large language models forargumentative abstractive summarization across various methods, models, anddatasets. By providing this comprehensive resource, we aim to advance com-putational argumentation and support practical applications for debaters, edu-cators, and researchers. OpenDebateEvidence is publicly available to supportfurther research and innovation in computational argumentation. Access it here:https://huggingface.co/datasets/Yusuf5/OpenCaselist.",
+  "title": "OpenDebateEvidence: A Massive-Scale Argument Mining and Summarization Dataset"
+ }
+}

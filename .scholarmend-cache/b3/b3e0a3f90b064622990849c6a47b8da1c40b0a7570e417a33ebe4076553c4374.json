@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:GkWLl0J59d",
+ "payload": {
+  "abstract": "Large language models (LLMs) are increasingly used to examine tabular datasets and aid decision-making in critical sectors such as clinical medicine. Standard fairness metrics, which were largely designed to evaluate supervised learning models, are not well suited to this setting. \nThis paper proposes a novel dichotomy between \\textit{intrinsic} and \\textit{behavioral} fairness, and details a comprehensive framework for evaluating both in LLMs.\nThe former is encoded in a language model's embeddings through procedures like pre-training, preference fine-tuning, etc. \nThe latter reflects the application of LLMs in real-world scenarios. \nThough current works largely prioritize intrinsic over behavioral fairness, we argue that the latter is much more important in practice. We illustrate the gap between these two concepts in a series of experiments on a semi-synthetic dataset inspired by a large scale study of racial bias in health algorithms. Our results suggest a new direction for fairness research in LLMs, as well as some practical guidelines to mitigate harmful outcomes.",
+  "title": "Actions Speak Louder than Words: Superficial Fairness Alignment in LLMs"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:yY2edTb9VJ",
+ "payload": {
+  "abstract": "Compositionality, the notion that the meaning of an expression is constructed from the meaning of its parts and syntactic rules, permits the infinite productivity of human language. For the first time, artificial language models (LMs) are able to match human performance in a number of compositional generalization tasks. However, much remains to be understood about the computational mechanisms underlying these abilities. We take a high-level geometric approach to this problem, relating the degree of compositionality in a dataset to the intrinsic dimensionality of their representations under an LM, a measure of feature complexity. We find that the degree of dataset compositionality is reflected in the intrinsic dimensionality of data representations, where greater combinatorial complexity of the data results in higher representational dimensionality. Finally, we compare linear and nonlinear methods of computing dimensionality, showing that they capture different but complementary aspects of compositional complexity.",
+  "title": "Geometric Signatures of Compositionality in Language Models"
+ }
+}

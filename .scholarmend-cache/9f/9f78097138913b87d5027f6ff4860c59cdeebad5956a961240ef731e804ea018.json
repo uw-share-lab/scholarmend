@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:GIDw94AlZK",
+ "payload": {
+  "abstract": "Ensuring safety emerges as a pivotal objective in developing large language models\n(LLMs) and LLM-powered agents. The Competition for LLM and Agent Safety\n(CLAS) aims to advance the understanding of the vulnerabilities in LLMs and\nLLM-powered agents and to encourage methods for improving their safety. The\ncompetition features three main tracks linked through the methodology of prompt\ninjection, with tasks designed to amplify societal impact by involving practical\nadversarial objectives for different domains. In the Jailbreaking Attack track,\nparticipants are challenged to elicit harmful outputs in guardrail LLMs via prompt\ninjection. In the Backdoor Trigger Recovery for Models track, participants are\ngiven a CodeGen LLM embedded with hundreds of domain-specific backdoors.\nThey are asked to reverse-engineer the trigger for each given target. In the Back-\ndoor Trigger Recovery for Agents track, trigger reverse engineering will be\nfocused on eliciting specific backdoor targets based on malicious agent actions. As\nthe first competition addressing the safety of both LLMs and LLM agents, CLAS\n2024 aims to foster collaboration between various communities promoting research\nand tools for enhancing the safety of LLMs and real-world AI systems.",
+  "title": "CLAS 2024: The Competition for LLM and Agent Safety"
+ }
+}

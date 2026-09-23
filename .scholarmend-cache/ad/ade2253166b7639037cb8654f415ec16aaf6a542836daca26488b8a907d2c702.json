@@ -1,0 +1,7 @@
+{
+ "key": "proceedings:abstract:https://proceedings.neurips.cc/paper_files/paper/2024/hash/e4630f7c0660d944c132455c124e7d90-Abstract-Conference.html",
+ "payload": {
+  "abstract": "Since the rapid development of Large Language Models (LLMs) has achieved remarkable success, understanding and rectifying their internal complex mechanisms has become an urgent issue. Recent research has attempted to interpret their behaviors through the lens of inner representation. However, developing practical and efficient methods for applying these representations for general and flexible model editing remains challenging. In this work, we explore how to leverage insights from representation engineering to guide the editing of LLMs by deploying a representation discriminator as an editing oracle. We first identify the importance of a robust and reliable discriminator during editing, then propose an \\textbf{A}dversarial \\textbf{R}epresentation \\textbf{E}ngineering (\\textbf{ARE}) framework to provide a unified and interpretable approach for conceptual model editing without compromising baseline performance. Experiments on multiple tasks demonstrate the effectiveness of ARE in various model editing scenarios. Our code and data are available at \\url{https://github.com/Zhang-Yihao/Adversarial-Representation-Engineering}.",
+  "title": "Adversarial Representation Engineering: A General Model Editing Framework for Large Language Models"
+ }
+}

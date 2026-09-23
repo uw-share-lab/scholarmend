@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:HwDQH0r37I",
+ "payload": {
+  "abstract": "Brain function represents one of the most complex systems driving our world. Decoding its signals poses significant challenges, particularly due to the limited availability of data and the high cost of recordings. The existence of large hospital datasets and laboratory collections partially mitigates this issue. However, the lack of standardized recording protocols, varying numbers of channels, diverse setups, scenarios, and devices further complicate the task. This work addresses these challenges by introducing the $\\textbf{Brain Foundation Model (BFM)}$, a suite of open-source models trained on brain signals. These models serve as foundational tools for various types of time-series neuroimaging tasks. This work presents the first model of the BFM series, which is trained on electroencephalogram (EEG) and functional Magnetic Resonance Imaging (fMRI) signal data. Our results demonstrate that BFM can generate signals more accurately than baseline models. Model weights and pipelines are available at https://bit.ly/3CCI0HW.",
+  "title": "General-Purpose Brain Foundation Models for Time-Series Neuroimaging Data"
+ }
+}

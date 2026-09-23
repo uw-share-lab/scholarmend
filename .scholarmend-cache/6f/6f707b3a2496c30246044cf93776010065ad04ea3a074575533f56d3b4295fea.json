@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:ks5lAv8QDn",
+ "payload": {
+  "abstract": "The rapid advancement of large language models (LLMs) has also brought safety concerns about their generation. Recent work has revealed their vulnerability against jailbreaking attacks, \\textit{e.g.} an adversary can craft adversarial suffices attached to the input to induce them to generate harmful or undesired content, posing serious threats to the real-world applications of LLMs. However, existing defense mechanisms face practical limitations since they need to modify the generation logic or significantly increase the generation cost. In this work, inspired by the success of diffusion modules for defending against vision adversarial examples, we develop a \\textit{plug-and-play} diffusion purification defense, \\textit{DiffTextPure}, specialized for defending against textual jailbreaking attacks. Notably, our \\textit{DiffTextPure} module acts as a pre-processing tool to purify adversarial input text, avoiding joint training with downstream fine-tuning of LLMs, thus enjoying broad applicability and reducing training costs. Experimental results show that our defense significantly improves the robustness of a wide range of LLMs against jailbreaking attacks, with only negligible computational overhead. Our code will be available upon publication.",
+  "title": "DiffTextPure: Defending Large Language Models with Diffusion Purifiers"
+ }
+}

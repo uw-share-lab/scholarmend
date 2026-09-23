@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:uEOUvr2xVo",
+ "payload": {
+  "abstract": "In this paper, we evaluate and enhance causal reasoning in LLMs for a novel task — discovering real-world events that cause anomalies in time-varying indicators. Our evaluation on three diverse datasets show that while LLMs can retrieve meaningful events with a single prompt, they often struggle with establishing the causal validity of these events. To enhance causal validity, we design a set of carefully crafted cross-questions that check adherence to fundamental assumptions of causal inference in a temporal setting. The responses when combined through a simple classifier, improve the accuracy of causal event attributation from an average of 65% to 90%. Our approach generalizes across different datasets, serving as a meta-layer for temporal causal reasoning on event-anomaly pairs.",
+  "title": "Reasoning with a Few Good Cross-Questions Greatly Enhances Causal Event Attribution in LLMs"
+ }
+}

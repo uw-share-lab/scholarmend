@@ -1,0 +1,22 @@
+{
+ "key": "s2:search:abenchmarkdatasetformeteorologicaldownscaling",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "ArXiv": "2401.11960",
+     "CorpusId": 267069271,
+     "DBLP": "journals/corr/abs-2401-11960",
+     "DOI": "10.48550/arXiv.2401.11960"
+    },
+    "paperId": "af18d8538f406ad50cfda4f5823ecd0a506e4e7d",
+    "title": "Observation-Guided Meteorological Field Downscaling at Station Scale: A Benchmark and a New Method",
+    "venue": "arXiv.org",
+    "year": 2024
+   }
+  ],
+  "next": 1,
+  "offset": 0,
+  "total": 136
+ }
+}

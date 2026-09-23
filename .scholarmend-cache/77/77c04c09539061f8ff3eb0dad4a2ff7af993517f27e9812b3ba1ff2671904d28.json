@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:lYyWwIKZMe",
+ "payload": {
+  "abstract": "Foundation models are becoming increasingly deployed in high-stakes contexts in fields such as medicine, finance, and law. In these contexts, there is a trade-off between model explainability and data privacy: explainability promotes transparency, and privacy is a limit on transparency. In this work, we push the boundaries of this trade-off: we reveal that post-hoc feature attribution explanations beget unforeseen privacy risks upon the fine-tuning data of vision transformer models. We construct VAR-LRT and L1/L2-LRT, two new membership inference attacks leveraging feature attribution explanations that are significantly more successful than existing explanation-leveraging attacks, particularly in the low false-positive rate regime that allows an adversary to identify specific fine-tuning dataset members with high confidence. We carry out a systematic empirical investigation of our 2 new attacks with 5 vision transformer architectures, 5 benchmark datasets, and 4 state-of-the-art post-hoc explanation methods. Our work addresses the lack of trust in post-hoc explanation methods that has contributed to the slow adoption of foundation models in high-stakes domains.",
+  "title": "On the Privacy Risks of Post-Hoc Explanations of Foundation Models"
+ }
+}

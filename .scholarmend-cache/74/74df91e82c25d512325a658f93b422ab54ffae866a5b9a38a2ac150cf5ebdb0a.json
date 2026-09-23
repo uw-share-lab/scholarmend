@@ -1,0 +1,7 @@
+{
+ "key": "openreview:abstract:eGp7IFdrW8",
+ "payload": {
+  "abstract": "Laser absorption spectroscopy (LAS) quantification is a popular tool used in measuring temperature and concentration of gases. It has low error tolerance, whereas current ML-based solutions cannot guarantee their measure reliability. In this work, we propose a new framework, SPEC, to address this issue. \nIn addition to the conventional ML estimator, SPEC also includes a Physics-driven Anomaly Detection module (PAD) to assess estimate error, and then a correction mode is designed to correct the estimate through the guidance of error information. In correction mode, a hybrid surrogate error model is proposed to estimate the error distribution, which simulates reconstruction error via an ensemble of networks and calculates feasible error via explicit formulae. A greedy ensemble search is proposed to find the optimal correction via the error propagation of the differentiable hybrid error model. The proposed SPEC is validated on various scenarios whether satisfy I.I.D. or not. The results demonstrate the effectiveness of SPEC. Notably, SPEC is reconfigurable, which can be easily adapted to different quantification tasks via changing PAD without retraining the ML estimator.",
+  "title": "Surrogate-based Physical Error Correction for Spectroscopy Quantification"
+ }
+}
