@@ -136,6 +136,121 @@ def test_a_note_that_does_not_state_its_own_venueid_records_nothing(tmp_path, mo
     assert cache.get(openreview_key("F1")) == {}
 
 
+def routed_api(monkeypatch, routes):
+    """Stand in for scholarmend.http.get_json, answering by URL prefix.
+
+    A route's value is either a payload or an HttpError to raise. Returns the
+    URLs asked for, in order.
+    """
+    from scholarmend.http import HttpError
+
+    asked = []
+
+    def get_json(url, headers=None):
+        asked.append(url)
+        for prefix, answer in routes.items():
+            if url.startswith(prefix):
+                if isinstance(answer, HttpError):
+                    raise answer
+                return answer
+        raise AssertionError(f"unexpected request {url}")
+
+    monkeypatch.setattr("scholarmend.http.get_json", get_json)
+    return asked
+
+
+def not_found():
+    from scholarmend.http import HttpError
+
+    return HttpError("404", status=404, body='{"name":"NotFoundError"}')
+
+
+def forbidden():
+    from scholarmend.http import HttpError
+
+    return HttpError("403", status=403, body='{"name":"ForbiddenError","message":'
+                     '"User Some Reviewer does not have permission to see Note X"}')
+
+
+V2 = "https://api2.openreview.net/notes?id="
+V1 = "https://api.openreview.net/notes?id="
+
+
+def test_a_forum_only_on_api_v1_is_resolved_from_v1(tmp_path, monkeypatch):
+    """OpenReview never migrated some 2022-2023 workshops to API v2: api2
+    answers 404 and v1 has the note, venueid as a plain string. Verified live
+    2026-09-25 on LpBlkATV24M (NeurIPS.cc/2022/Workshop/RobustSeq)."""
+    asked = routed_api(monkeypatch, {
+        V2: not_found(),
+        V1: {"notes": [{"id": "LpBlkATV24M",
+                        "content": {"venueid": "NeurIPS.cc/2022/Workshop/RobustSeq"}}]},
+    })
+    cache = Cache(tmp_path)
+    claims = OpenReviewResolver(cache, token="t").resolve("LpBlkATV24M")
+    assert value(claims, "track") == "Workshop/RobustSeq"
+    assert asked == [V2 + "LpBlkATV24M", V1 + "LpBlkATV24M"]
+    assert cache.get(openreview_key("LpBlkATV24M")) == {
+        "venueid": "NeurIPS.cc/2022/Workshop/RobustSeq", "api": "v1"}
+
+
+def test_a_forum_on_neither_api_is_a_failure_not_an_answer(tmp_path, monkeypatch):
+    from scholarmend.http import HttpError
+
+    routed_api(monkeypatch, {V2: not_found(), V1: not_found()})
+    cache = Cache(tmp_path)
+    with pytest.raises(HttpError):
+        OpenReviewResolver(cache, token="t").resolve("GONE")
+    assert cache.get(openreview_key("GONE")) is None
+
+
+def test_a_hidden_forum_is_remembered_as_hidden(tmp_path, monkeypatch):
+    """A withdrawn or non-public submission answers 403 'does not have
+    permission to see' to every account. That is an answer, not an outage:
+    without recording it, every rerun asks again and --offline always misses."""
+    routed_api(monkeypatch, {V2: forbidden()})
+    cache = Cache(tmp_path)
+    assert OpenReviewResolver(cache, token="t").resolve("HIDDEN") == []
+    assert cache.get(openreview_key("HIDDEN")) == {"hidden": True}
+    # The rerun is served from the cache, offline, with nothing to resolve.
+    assert OpenReviewResolver(Cache(tmp_path, offline=True), token=None).resolve("HIDDEN") == []
+
+
+def test_a_hidden_forum_does_not_cache_the_account_name(tmp_path, monkeypatch):
+    """The 403 names the logged-in user, and the cache is committed publicly."""
+    routed_api(monkeypatch, {V2: forbidden()})
+    OpenReviewResolver(Cache(tmp_path), token="t").resolve("HIDDEN")
+    for path in tmp_path.rglob("*.json"):
+        assert "Some Reviewer" not in path.read_text()
+
+
+def test_any_other_refusal_is_still_a_failure(tmp_path, monkeypatch):
+    from scholarmend.http import HttpError
+
+    routed_api(monkeypatch, {V2: HttpError("403", status=403, body='{"name":"ForbiddenError"}')})
+    cache = Cache(tmp_path)
+    with pytest.raises(HttpError):
+        OpenReviewResolver(cache, token="t").resolve("F1")
+    assert cache.get(openreview_key("F1")) is None
+
+
+def test_an_abstract_is_read_from_v1_when_v2_lacks_the_forum(tmp_path, monkeypatch):
+    routed_api(monkeypatch, {
+        V2: not_found(),
+        V1: {"notes": [{"id": "OLD", "content": {"title": "A Title", "abstract": "Full text."}}]},
+    })
+    claims = OpenReviewResolver(Cache(tmp_path), token="t").abstract("OLD", "A Title")
+    assert [c.value for c in claims] == ["Full text."]
+
+
+def test_a_hidden_forum_has_no_abstract_and_is_remembered(tmp_path, monkeypatch):
+    from scholarmend.resolvers.openreview import abstract_key
+
+    routed_api(monkeypatch, {V2: forbidden()})
+    cache = Cache(tmp_path)
+    assert OpenReviewResolver(cache, token="t").abstract("HIDDEN", "A Title") == []
+    assert cache.get(abstract_key("HIDDEN")) == {"hidden": True}
+
+
 def test_the_cache_key_is_new_so_derived_entries_cannot_mix_with_direct_ones():
     """Entries under the old openreview:notes: prefix may hold a derived venueid
     and cannot be told apart; nothing reads that prefix any more."""
