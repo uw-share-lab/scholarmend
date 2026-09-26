@@ -1,0 +1,21 @@
+{
+ "key": "s2:search:selfaugmentedlearningofdifferentiableobjectmodelsforcompositionalinterpretationo",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "ArXiv": "2506.08191",
+     "CorpusId": 279260837,
+     "DBLP": "journals/corr/abs-2506-08191",
+     "DOI": "10.48550/arXiv.2506.08191"
+    },
+    "paperId": "712c9d84c594f2f0e61e032785404aab8b58d44e",
+    "title": "Generative Learning of Differentiable Object Models for Compositional Interpretation of Complex Scenes",
+    "venue": "arXiv.org",
+    "year": 2025
+   }
+  ],
+  "offset": 0,
+  "total": 1
+ }
+}

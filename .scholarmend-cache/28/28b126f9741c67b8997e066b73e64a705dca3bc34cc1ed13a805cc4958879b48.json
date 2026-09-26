@@ -1,0 +1,20 @@
+{
+ "key": "s2:search:researchonknowledgeenhancedlargelanguagemodelsforlegaldocumentsynthesis",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "CorpusId": 286241843,
+     "DOI": "10.1109/MLCIPR68329.2025.11407364"
+    },
+    "paperId": "41e06ddb73dc546217e48bed80a5656c6394ec7c",
+    "title": "Research on Knowledge-Enhanced Large Language Models for Legal Document Synthesis",
+    "venue": "2025 International Conference on Machine Learning, Computational Intelligence and Pattern Recognition (MLCIPR)",
+    "year": 2025
+   }
+  ],
+  "next": 1,
+  "offset": 0,
+  "total": 73
+ }
+}

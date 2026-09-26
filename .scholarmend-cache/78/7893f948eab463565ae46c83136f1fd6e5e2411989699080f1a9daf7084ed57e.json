@@ -1,0 +1,21 @@
+{
+ "key": "s2:search:surveyonhallucinationinreasoninglargelanguagemodelevaluation",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "CorpusId": 281499276,
+     "DBLP": "journals/dint/LiuLW26",
+     "DOI": "10.3724/2096-7004.di.2025.0131"
+    },
+    "paperId": "7b444ff85caba1fa1eb8d327cf40889be462cad8",
+    "title": "Survey on Hallucination in Reasoning Large Language Model: Evaluation, Taxonomy, Intervention, and Open Issues",
+    "venue": "Data Intelligence",
+    "year": 2025
+   }
+  ],
+  "next": 1,
+  "offset": 0,
+  "total": 78
+ }
+}

@@ -1,0 +1,19 @@
+{
+ "key": "s2:search:canllmsreliablyevaluatethemselvesaprobabilisticvcframework",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "CorpusId": 288773557,
+     "DOI": "10.1200/jco.2026.44.16_suppl.1592"
+    },
+    "paperId": "dc8125b5a957fc051a8a64e6a6e2a92d7dba9af7",
+    "title": "Representing people's experience of cancer and its treatment (ResPECT) pilot study: A global collaborative study to improve cancer care and outcomes as part of the Lancet Commission on Cancer and Health Systems.",
+    "venue": "Journal of Clinical Oncology",
+    "year": 2026
+   }
+  ],
+  "offset": 0,
+  "total": 1
+ }
+}
