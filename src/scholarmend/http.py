@@ -12,6 +12,12 @@ import time
 import urllib.error
 import urllib.request
 
+from ._version import __version__
+
+# Every service here can see who is calling and where to read about it. The
+# default "Python-urllib/3.x" says neither.
+USER_AGENT = f"scholarmend/{__version__} (+https://github.com/uw-share-lab/scholarmend)"
+
 
 class HttpError(RuntimeError):
     """A request that failed. ``status`` and ``body`` are set for an HTTP
@@ -111,7 +117,7 @@ def get_text(
     last: Exception | None = None
     for attempt in range(attempts):
         wait: float | None = None
-        request = urllib.request.Request(url, headers=headers or {})
+        request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT, **(headers or {})})
         try:
             with urllib.request.urlopen(request, timeout=timeout) as response:
                 body = response.read().decode("utf-8")

@@ -10,13 +10,20 @@ shape for a last resort, so its claims are admitted but marked down.
 from __future__ import annotations
 
 import re
+import time
 import urllib.parse
+from collections.abc import Callable
 
 from ..cache import Cache
 from ..models import Claim
 
 API = "https://api.semanticscholar.org/graph/v1/paper/search"
 FIELDS = "title,year,venue,externalIds"
+
+# An API key buys 1 request per second, and the anonymous pool is slower
+# still. Back-to-back searches drew 429s even with a key, so requests are
+# spaced a little wider than the limit.
+MIN_INTERVAL = 1.1
 
 
 def _normalise(title: str) -> str:
@@ -37,17 +44,37 @@ def titles_match(a: str, b: str) -> bool:
 
 
 class SemanticScholarResolver:
-    def __init__(self, cache: Cache, api_key: str | None = None) -> None:
+    def __init__(
+        self,
+        cache: Cache,
+        api_key: str | None = None,
+        clock: Callable[[], float] = time.monotonic,
+        sleep: Callable[[float], None] = time.sleep,
+    ) -> None:
         self.cache = cache
         self.api_key = api_key
+        self._clock = clock
+        self._sleep = sleep
+        self._last: float | None = None
+
+    def _search(self, query: str, fields: str) -> dict:
+        """One paced request. Only called on a cache miss, so a warm run never waits."""
+        from ..http import get_json
+
+        if self._last is not None:
+            wait = MIN_INTERVAL - (self._clock() - self._last)
+            if wait > 0:
+                self._sleep(wait)
+        headers = {"x-api-key": self.api_key} if self.api_key else {}
+        try:
+            return get_json(f"{API}?query={urllib.parse.quote(query[:200])}&limit=1&fields={fields}",
+                            headers=headers)
+        finally:
+            self._last = self._clock()
 
     def resolve(self, title: str) -> list[Claim]:
         def loader() -> dict:
-            from ..http import get_json
-
-            query = urllib.parse.quote(title[:200])
-            headers = {"x-api-key": self.api_key} if self.api_key else {}
-            return get_json(f"{API}?query={query}&limit=1&fields={FIELDS}", headers=headers)
+            return self._search(title, FIELDS)
 
         payload = self.cache.fetch(f"s2:search:{_normalise(title)[:80]}", loader)
         results = payload.get("data") or []
@@ -80,12 +107,7 @@ class SemanticScholarResolver:
         from .proceedings_page import one_line
 
         def loader() -> dict:
-            from ..http import get_json
-
-            query = urllib.parse.quote(title[:200])
-            headers = {"x-api-key": self.api_key} if self.api_key else {}
-            return get_json(f"{API}?query={query}&limit=1&fields=title,abstract",
-                            headers=headers)
+            return self._search(title, "title,abstract")
 
         payload = self.cache.fetch(abstract_key(title), loader)
         results = payload.get("data") or []

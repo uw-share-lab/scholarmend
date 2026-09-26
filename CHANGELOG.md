@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.1.1
+
+- Semantic Scholar searches are spaced 1.1 seconds apart. With an API key
+  (1 request per second), back-to-back searches were drawing 429s. Only real
+  requests wait, so a run served from the cache is as fast as before.
+- Every request now sends `scholarmend/<version>` and the repo URL as its
+  User-Agent, instead of the default `Python-urllib`.
+- New PyPI summary, matching the GitHub description.
+
+Output is unchanged: on the full 3,326-record corpus, `resolved.json`,
+`mended.ris` and `report.txt` are byte-identical to 0.1.0.
+
 ## 0.1.0
 
 First release on PyPI.

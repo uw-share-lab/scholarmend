@@ -8,7 +8,7 @@ path = "src/scholarmend/_version.py"
 [project]
 name = "scholarmend"
 dynamic = ["version"]
-description = "Recover true venue, year and track for Google Scholar exports, so screening reasons over facts rather than truncations."
+description = "Fills in the real venue, year, and track for Google Scholar RIS exports, which often come back truncated."
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
