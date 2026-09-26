@@ -1,0 +1,20 @@
+{
+ "key": "s2:search:anagenticframeworkforgeometryproblemsolvingwithmultimodallargelanguage",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "CorpusId": 289197781,
+     "DOI": "10.1117/12.3117347"
+    },
+    "paperId": "85bd293f259c9dbfeb8f57990f4f7ddd6f6d164a",
+    "title": "An agentic framework for geometry problem solving with multimodal large language",
+    "venue": "International Conference on Machine Learning and Large Models",
+    "year": 2026
+   }
+  ],
+  "next": 1,
+  "offset": 0,
+  "total": 6
+ }
+}

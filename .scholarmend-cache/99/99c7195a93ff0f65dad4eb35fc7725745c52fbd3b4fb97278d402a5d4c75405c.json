@@ -1,0 +1,19 @@
+{
+ "key": "s2:search:fusinglargelanguagemodelsandldaforattributemininginonlinereviews",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "CorpusId": 284723853,
+     "DOI": "10.1109/MLBDBI67855.2025.11331411"
+    },
+    "paperId": "0570550c0ca3d4e10d817e3f41ff6fa992861dfd",
+    "title": "Fusing Large Language Models and LDA for Attribute Mining in Online Reviews",
+    "venue": "2025 7th International Conference on Machine Learning, Big Data and Business Intelligence (MLBDBI)",
+    "year": 2025
+   }
+  ],
+  "offset": 0,
+  "total": 1
+ }
+}

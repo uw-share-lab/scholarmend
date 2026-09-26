@@ -1,0 +1,23 @@
+{
+ "key": "s2:search:craftinginterpretableembeddingsforlanguageneurosciencebyaskingllmsquestions",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "CorpusId": 276318279,
+     "DBLP": "conf/nips/BenaraSMASH024",
+     "DOI": "10.52202/079017-3944",
+     "PubMed": "40276238",
+     "PubMedCentral": "12021422"
+    },
+    "paperId": "4e6c907292f988cd3a349cf2b06ce4c635c6c245",
+    "title": "Crafting Interpretable Embeddings for Language Neuroscience by Asking LLMs Questions",
+    "venue": "Neural Information Processing Systems",
+    "year": 2024
+   }
+  ],
+  "next": 1,
+  "offset": 0,
+  "total": 2
+ }
+}
