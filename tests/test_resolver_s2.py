@@ -64,3 +64,33 @@ def test_claims_are_tier_three_and_lower_confidence(tmp_path):
     for claim in SemanticScholarResolver(cache).resolve("X"):
         assert claim.tier == 3
         assert claim.confidence < 0.9
+
+
+def test_network_searches_are_spaced_to_the_keyed_rate_limit(tmp_path, monkeypatch):
+    """A key buys 1 request per second, and back-to-back searches drew 429s
+    even with one. Only real requests are spaced; a cache hit costs nothing."""
+    monkeypatch.setattr("scholarmend.http.get_json", lambda url, headers=None: {"data": []})
+    now = [100.0]
+    slept: list[float] = []
+
+    def sleep(seconds):
+        slept.append(seconds)
+        now[0] += seconds
+
+    resolver = SemanticScholarResolver(Cache(tmp_path), clock=lambda: now[0], sleep=sleep)
+    resolver.resolve("First Paper")
+    resolver.resolve("Second Paper")
+    resolver.resolve("First Paper")  # cached: no request, no wait
+    assert len(slept) == 1
+    assert slept[0] >= 1.0
+
+
+def test_no_wait_when_enough_time_has_already_passed(tmp_path, monkeypatch):
+    monkeypatch.setattr("scholarmend.http.get_json", lambda url, headers=None: {"data": []})
+    now = [100.0]
+    slept: list[float] = []
+    resolver = SemanticScholarResolver(Cache(tmp_path), clock=lambda: now[0], sleep=slept.append)
+    resolver.resolve("First Paper")
+    now[0] += 5.0
+    resolver.resolve("Second Paper")
+    assert slept == []

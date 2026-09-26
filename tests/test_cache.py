@@ -246,3 +246,35 @@ def test_a_refusal_carries_its_status_and_body(monkeypatch):
         get_json("https://example.test/x", sleep=lambda s: None)
     assert raised.value.status == 403
     assert "ForbiddenError" in raised.value.body
+
+
+def test_every_request_names_scholarmend_and_its_version(monkeypatch):
+    """The services we query should be able to tell who is calling. The
+    default Python-urllib agent says nothing."""
+    import io
+    import urllib.request
+
+    from scholarmend import __version__
+    from scholarmend.http import get_json
+
+    sent = {}
+
+    class Response(io.BytesIO):
+        headers: ClassVar[dict[str, str]] = {}
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *exc):
+            return False
+
+    def urlopen(request, timeout=None):
+        sent.update(request.headers)
+        return Response(b"{}")
+
+    monkeypatch.setattr(urllib.request, "urlopen", urlopen)
+    get_json("https://example.test/x", headers={"x-api-key": "k"})
+    agent = sent.get("User-agent", "")
+    assert agent.startswith(f"scholarmend/{__version__} ")
+    assert "github.com/uw-share-lab/scholarmend" in agent
+    assert sent.get("X-api-key") == "k"  # a caller's own headers still go through
