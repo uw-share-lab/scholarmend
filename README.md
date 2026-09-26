@@ -37,7 +37,7 @@ the cache falls back to tier 1, and the run exits 1 to say it was partial.
 | File | Contents |
 |------|----------|
 | `resolved.json` | canonical records: winning value per field, plus every claim behind it |
-| `mended.ris` | the RIS projection, for Covidence and venuetriage |
+| `mended.ris` | the RIS projection, for Covidence or any other RIS reader |
 | `report.txt` | what stayed unresolved, and why |
 
 ## The problem
@@ -81,7 +81,7 @@ the proceedings page, the OpenReview submission note, or Semantic Scholar, in
 that order, admitting each only when the source names the record's own title.
 Run it on the deduplicated, triaged upload rather than the whole corpus:
 
-    scholarmend --input ../Trust-Evals-LitReview/out/clean.ris --out out-covidence --abstracts
+    scholarmend --input clean.ris --out out-covidence --abstracts
 
 `report.txt` lists every record whose abstract is still Scholar's snippet.
 
@@ -153,8 +153,6 @@ They skip cleanly when it is not.
 
 ## Relationship to other tools
 
-- [`venuetriage`](../Trust-Evals-LitReview) — consumes scholarmend's output to
-  separate workshop from main-track papers before Covidence.
 - [`refaudit`](https://github.com/uw-share-lab/refaudit) — verifies a finished
   bibliography against Crossref, OpenAlex and arXiv. Different job, different
   input; its DOI-centric resolvers reach only ~8% coverage on this corpus.
