@@ -20,10 +20,12 @@ description: Prepare a scholarmend release — version bump, gold verification, 
 
    ```bash
    set -a; . ./.env; set +a
-   git grep -I -l -F -- "$SCHOLARMEND_OPENREVIEW_PASSWORD" || echo clean
-   git rev-list --all | while read c; do
-     git grep -I -F -- "$SCHOLARMEND_OPENREVIEW_PASSWORD" "$c" 2>/dev/null
-   done | head
+   for s in "$SCHOLARMEND_OPENREVIEW_PASSWORD" "$SCHOLARMEND_S2_KEY"; do
+     git grep -I -l -F -- "$s" || echo clean
+     git rev-list --all | while read c; do
+       git grep -I -F -- "$s" "$c" 2>/dev/null
+     done | head
+   done
    git grep -I -E 'eyJ[A-Za-z0-9_-]{20,}\.' || echo "no JWTs"
    git ls-files --error-unmatch .env 2>/dev/null && echo "*** .env TRACKED ***"
    ```

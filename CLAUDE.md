@@ -95,6 +95,9 @@ scholarmend --input ../Trust-Evals-LitReview/corpus --out out --offline
 python scripts/repopulate.py   # re-fetch cache entries poisoned by a past bug
 ```
 
-Tier 2 needs an OpenReview account in `./.env` (gitignored):
+Credentials live in `./.env` (gitignored). Tier 2 needs an OpenReview account:
 `SCHOLARMEND_OPENREVIEW_USER`, `SCHOLARMEND_OPENREVIEW_PASSWORD`. OpenReview
 allows 500 requests/hour; `http._respect_rate_limit` paces against it.
+`SCHOLARMEND_S2_KEY` is the Semantic Scholar API key: 1 request/second, which
+`SemanticScholarResolver` paces against. Without it, searches share an
+anonymous pool that often answers 429.

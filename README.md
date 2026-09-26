@@ -17,6 +17,13 @@ Scholar corpus. Tier 2 needs an OpenReview account:
     export SCHOLARMEND_OPENREVIEW_USER='you@example.edu'
     export SCHOLARMEND_OPENREVIEW_PASSWORD='...'
 
+Semantic Scholar, the last resort for records nothing else resolves, works
+without a key but shares a slow anonymous pool that often answers 429. A free
+[API key](https://www.semanticscholar.org/product/api) gives you your own
+1 request per second:
+
+    export SCHOLARMEND_S2_KEY='...'
+
 Every response is written to `--cache` (default `.scholarmend-cache`). Commit
 it: a rerun then reproduces byte-identically and makes no API calls.
 

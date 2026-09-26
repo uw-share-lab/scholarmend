@@ -24,6 +24,12 @@ def _build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="scholarmend",
         description="Recover true venue, year and track for Google Scholar RIS exports.",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""environment variables:
+  SCHOLARMEND_OPENREVIEW_USER      OpenReview login, for tier 2 (optional)
+  SCHOLARMEND_OPENREVIEW_PASSWORD  OpenReview password, for tier 2 (optional)
+  SCHOLARMEND_S2_KEY               Semantic Scholar API key (optional; without
+                                   one, searches share a slower anonymous pool)""",
     )
     parser.add_argument("--input", required=True, type=Path,
                         help="a .ris file, or a directory of them")
@@ -31,7 +37,8 @@ def _build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--cache", default=Path(".scholarmend-cache"), type=Path,
                         help="response cache; commit it for reproducibility")
     parser.add_argument("--offline", action="store_true",
-                        help="never call the network; fail on a cache miss")
+                        help="never call the network; a record missing from the cache falls "
+                             "back to tier 1 and the run exits 1")
     parser.add_argument("--abstracts", action="store_true",
                         help="replace Scholar's AB snippet with the full abstract, from the "
                              "proceedings page, OpenReview or Semantic Scholar")
