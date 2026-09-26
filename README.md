@@ -5,8 +5,11 @@ screening tools reason over facts rather than over Scholar's truncations.
 
 ## Usage
 
-    pip install -e ".[dev]"
-    scholarmend --input ../Trust-Evals-LitReview/corpus --out out
+    pip install scholarmend
+    scholarmend --input path/to/scholar-exports --out out
+
+`--input` takes a directory of RIS files exported from Google Scholar, or a
+single `.ris`. For development, clone the repo and `pip install -e ".[dev]"`.
 
 Tier 1 needs no configuration and resolves venue, year and track for 77% of a
 Scholar corpus. Tier 2 needs an OpenReview account:
