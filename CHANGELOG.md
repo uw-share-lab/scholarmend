@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.2
+
+- `SCHOLARMEND_S2_KEY`, the Semantic Scholar API key, is now documented. The
+  CLI has read it since 0.1.0, but the README and `--help` never mentioned it.
+  `--help` now lists all three environment variables.
+- The `--offline` help text now says what actually happens on a cache miss:
+  the record falls back to tier 1 and the run exits 1.
+
 ## 0.1.1
 
 - Semantic Scholar searches are spaced 1.1 seconds apart. With an API key

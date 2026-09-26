@@ -40,7 +40,7 @@ volume any route can produce, not just the mined ones.
    **Report mismatches; never reconcile them.**
 2. Confirm no entry is empty (`{}` or `title == ""`).
 3. Scan before committing — the cache goes to a public repo. Check for the
-   account email, the password, JWT-shaped strings, and any `token`/`password`
+   account email, the password, the S2 key, JWT-shaped strings, and any `token`/`password`
    key. An entry should be exactly `{"key": ..., "payload": ...}`.
 4. Commit with a message saying what was fetched and why.
 

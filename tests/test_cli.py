@@ -203,3 +203,20 @@ def test_the_report_lists_missing_venues_and_years_before_anything_else():
     assert len(listing) == 2, listing
     assert "A year missing" in listing[0]
     assert "Only a track missing" in listing[1]
+
+
+def test_help_names_every_environment_variable_the_cli_reads():
+    """Someone who installed from PyPI reads --help, not the repo. The S2 key
+    was read since 0.1.0 and documented nowhere."""
+    import re
+    from pathlib import Path
+
+    from scholarmend.cli import _build_parser
+
+    source = (Path(__file__).parents[1] / "src" / "scholarmend" / "cli.py").read_text()
+    read = set(re.findall(r'environ\.get\("(SCHOLARMEND_\w+)"', source))
+    assert read >= {"SCHOLARMEND_OPENREVIEW_USER", "SCHOLARMEND_OPENREVIEW_PASSWORD",
+                    "SCHOLARMEND_S2_KEY"}
+    text = _build_parser().format_help()
+    for name in read:
+        assert name in text, name
