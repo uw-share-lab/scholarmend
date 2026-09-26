@@ -37,8 +37,10 @@ track. A confident wrong answer is harder to notice than a crash.
   *absent* from a field's tuple is excluded from answering it — that is how
   preprint sources supply `authors` but never `venue`. Do not scatter this logic
   into `if` branches.
-- **`--offline` hard-fails on a cache miss.** A flag that promises determinism
-  and quietly reaches the network invalidates the claim it exists to make.
+- **`--offline` never reaches the network.** A cache miss raises `CacheMiss`;
+  the CLI drops that record to tier 1 and exits 1 rather than aborting the other
+  records. A flag that promises determinism and quietly reaches the network
+  invalidates the claim it exists to make.
 - **The cache is committed.** `.scholarmend-cache/` is the artifact that backs
   the reproducibility claim: a rerun replays it and makes zero API calls. Each
   entry stores the original key beside the payload so the store is auditable by
@@ -53,9 +55,10 @@ track. A confident wrong answer is harder to notice than a crash.
 ## The validation corpus
 
 `../Trust-Evals-LitReview/` is a sibling repository and is **read-only**. It
-holds the 2,413-record corpus and the ground truth two researchers produced by
-hand on 2026-09-20 — 90 OpenReview venueids, 112 labelled records, 10 merge
-pairs, 7 overrides. Every acceptance test skips cleanly when it is absent, so
+holds the corpus and the ground truth two researchers produced by hand on
+2026-09-20 — 90 OpenReview venueids, 112 labelled records, 10 merge pairs, 10
+overrides. The claims are measured on the corpus's nine 2025-2026 files (2,413
+records); a 2020-2024 batch added on 2026-09-23 brings it to 3,326. Every acceptance test skips cleanly when it is absent, so
 someone who cloned only this repo can still run the suite.
 
 Those numbers are the project's claims. **If a test asserting one of them fails,
@@ -79,7 +82,7 @@ Covidence upload, not on the corpus:
 ```bash
 pip install -e ".[dev]"
 
-pytest                         # 206 tests, offline, ~0.6s
+pytest                         # 208 tests, offline, ~1s
 ruff check src tests
 mypy src
 

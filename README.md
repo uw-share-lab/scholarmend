@@ -20,7 +20,7 @@ Scholar corpus. Tier 2 needs an OpenReview account:
 Every response is written to `--cache` (default `.scholarmend-cache`). Commit
 it: a rerun then reproduces byte-identically and makes no API calls.
 
-    scholarmend --input ../Trust-Evals-LitReview/corpus --out out --offline
+    scholarmend --input path/to/scholar-exports --out out --offline
 
 `--offline` never reaches the network. A record whose lookup is missing from
 the cache falls back to tier 1, and the run exits 1 to say it was partial.

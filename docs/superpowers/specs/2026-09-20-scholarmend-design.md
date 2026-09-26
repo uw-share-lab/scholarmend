@@ -64,7 +64,7 @@ and year are known from their URL:
 | OpenAlex | 19/30 (63%) | **0/19 returned a conference venue.** 8 returned `arXiv (Cornell University)`, 11 returned none. Year disagreed with the proceedings year in 6/19. |
 | Semantic Scholar | 2/15 (13%, rate-limited floor) | correct venue and year on both hits |
 | DBLP | unmeasured — the API was unreachable during testing | unknown; retest before relying on it |
-| URL mining (tier 1) | **2,392/2,413 (99%)** | exact venue, year and track |
+| URL mining (tier 1) | **2,392/2,413 (99%)**; 2,396 after the PMC miner | exact venue, year and track |
 
 The mechanism is structural, not incidental. These are 2025–2026 papers. The
 arXiv preprint carries a DOI; the proceedings version does not. A DOI-anchored
@@ -85,7 +85,7 @@ per-domain property rather than querying every source uniformly.
 
 Semantic Scholar is the exception worth keeping: its hit rate here is low but
 its venue accuracy on hits was perfect, which makes it the appropriate tier-3
-resolver for the 21 records no miner covers. An API key should be obtained, as
+resolver for the 21 records no miner covers (17 after the PMC miner). An API key should be obtained, as
 the unauthenticated rate limit depresses its measured hit rate.
 
 ## Goals
@@ -270,7 +270,7 @@ Tier-1 breakdown, measured:
 | `proceedings.py` (NeurIPS 1,264 + ICLR 590) | 1,854 | venue, year, track — complete |
 | `openreview.py` | 527 | forum id — requires tier 2 |
 | `pmlr.py` | 11 | volume number — requires tier 2 |
-| none | 21 | manual floor |
+| none | 21 (17 after the PMC miner) | manual floor |
 
 ### The proceedings grammar
 
@@ -381,7 +381,7 @@ Four regression suites, all built from committed files:
    (1,391 MAIN / 368 WORKSHOP). End to end, no verdict may flip without an
    explicit recorded reason.
 4. `verification/merge-titles-2026-09-20.csv` and `overrides-2026-09-20.csv` —
-   10 merges and 7 per-record rulings that must survive unchanged.
+   10 merges and 10 per-record rulings that must survive unchanged.
 
 **Secondary acceptance test: the hand-maintained merge list becomes
 unnecessary.** All ten titles must be merged by resolved identity alone — four
