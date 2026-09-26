@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.3
+
+Documentation only; the code is unchanged from 0.1.2.
+
+- The README, which is also the PyPI project description, no longer mentions
+  venuetriage. It was never published, and its link was a relative path to a
+  private repository, so it was broken on PyPI and GitHub alike.
+- The `--abstracts` example no longer uses a path into that repository.
+
 ## 0.1.2
 
 - `SCHOLARMEND_S2_KEY`, the Semantic Scholar API key, is now documented. The
