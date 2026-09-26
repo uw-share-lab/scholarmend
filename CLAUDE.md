@@ -45,6 +45,11 @@ track. A confident wrong answer is harder to notice than a crash.
   the reproducibility claim: a rerun replays it and makes zero API calls. Each
   entry stores the original key beside the payload so the store is auditable by
   reading it, not only by replaying it.
+- **Failures are never cached, with one exception.** An OpenReview 403 saying
+  the account "does not have permission to see" a forum is an answer (the
+  forum is withdrawn or non-public), and is cached as `{"hidden": true}`. Never
+  store the 403 body: it names the logged-in user. Any other 403, a 404 on
+  both API v2 and v1, a 429 or a 5xx stays a failure.
 - **The RIS projection substitutes and inserts; it never restructures.**
   `emit.project_ris` may replace a line or insert a missing one before `ER  - `.
   It must never delete N lines and insert M — which is why `AU` is not in

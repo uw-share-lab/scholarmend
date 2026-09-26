@@ -7,6 +7,11 @@ First release on PyPI.
 - Reads Google Scholar RIS exports and recovers venue, year, and track, mostly
   from the proceedings URL Scholar already put in each record. OpenReview,
   PMLR, PMC, and Semantic Scholar fill in what the URL alone can't.
+- OpenReview forums that were never moved to API v2, such as some 2022-2023
+  workshops, are read from API v1 instead.
+- A withdrawn or non-public OpenReview forum is cached as hidden, so a rerun
+  doesn't ask again. Delete its cache entry to check whether it has since
+  been made public.
 - Writes `resolved.json` (every claim behind each field), `mended.ris` (the
   corrected RIS, ready for Covidence), and `report.txt` (what stayed
   unresolved, and why).

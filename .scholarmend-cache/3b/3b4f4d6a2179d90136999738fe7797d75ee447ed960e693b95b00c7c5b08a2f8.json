@@ -1,0 +1,19 @@
+{
+ "key": "s2:search:citationconstraintsandreferencehallucinationsinlargelanguagemodels",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "CorpusId": 287748058,
+     "DOI": "10.2139/ssrn.6518640"
+    },
+    "paperId": "bf148ef42abf72d5674c1c369d0eb902a3b451f8",
+    "title": "The Six Minds of a Thinking Machine: What Vedantic Epistemology Reveals About AI Hallucination",
+    "venue": "Social Science Research Network",
+    "year": 2026
+   }
+  ],
+  "offset": 0,
+  "total": 1
+ }
+}

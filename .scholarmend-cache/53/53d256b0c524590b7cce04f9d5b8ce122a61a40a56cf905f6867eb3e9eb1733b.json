@@ -1,0 +1,20 @@
+{
+ "key": "s2:search:beyondgreedydecodingmodelspecificstrategyselectionviamultifaceteduncertaintydeco",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "CorpusId": 282105331,
+     "DOI": "10.1109/UV63228.2024.11189150"
+    },
+    "paperId": "4f5df7a417e8f55779782d93fbd44dc11cf7662d",
+    "title": "LENS: Layers of Evaluation of Hallucination in GenAI Systems",
+    "venue": "International Conference on Universal Village",
+    "year": 2024
+   }
+  ],
+  "next": 1,
+  "offset": 0,
+  "total": 4
+ }
+}

@@ -1,0 +1,20 @@
+{
+ "key": "s2:search:workshoponlogicalreasoningoflargelanguagemodels",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "CorpusId": 286231229,
+     "DOI": "10.26615/978-954-452-100-4-013"
+    },
+    "paperId": "ed5310082cf5f47c5b80481d204983fa1a82242f",
+    "title": "GEOLOGICQA - A Benchmark for Evaluating Logical Reasoning in Georgian For Large Language Models",
+    "venue": "Proceedings of the First Workshop on Advancing NLP for Low-Resource Languages",
+    "year": 2025
+   }
+  ],
+  "next": 1,
+  "offset": 0,
+  "total": 37
+ }
+}

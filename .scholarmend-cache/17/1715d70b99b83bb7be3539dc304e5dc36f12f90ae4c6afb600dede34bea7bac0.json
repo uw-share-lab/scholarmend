@@ -1,0 +1,19 @@
+{
+ "key": "s2:search:explainablemetabayesianoptimizationwithhumanfeedbackforscientificapplicationslik",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "CorpusId": 282235844,
+     "MAG": "1511661167"
+    },
+    "paperId": "6c96aab1235f8d621368a7b09be4c9bf96f8e798",
+    "title": "Innovations in applied artificial intelligence : 17th International Conference on Industrial and Engineering Applications of Artificial Intelligence and Expert Systems, IEA/AIE 2004, Ottawa, Canada, May 17-20, 2004 : proceedings",
+    "venue": "",
+    "year": 2004
+   }
+  ],
+  "offset": 0,
+  "total": 1
+ }
+}

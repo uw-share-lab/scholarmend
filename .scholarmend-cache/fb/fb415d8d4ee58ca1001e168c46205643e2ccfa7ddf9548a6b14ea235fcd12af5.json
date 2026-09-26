@@ -1,0 +1,23 @@
+{
+ "key": "s2:search:casereportbenchanllmbenchmarkdatasetfordenseinformationextractioninclinicalcaser",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "ArXiv": "2505.17265",
+     "CorpusId": 278886089,
+     "DBLP": "journals/corr/abs-2505-17265",
+     "DOI": "10.48550/arXiv.2505.17265",
+     "PubMed": "41030861",
+     "PubMedCentral": "12477612"
+    },
+    "paperId": "e869415a5eb6fec7d34a7b1c1da80075c2b4ac8a",
+    "title": "CaseReportBench: An LLM Benchmark Dataset for Dense Information Extraction in Clinical Case Reports",
+    "venue": "ACM Conference on Health, Inference, and Learning",
+    "year": 2025
+   }
+  ],
+  "offset": 0,
+  "total": 1
+ }
+}

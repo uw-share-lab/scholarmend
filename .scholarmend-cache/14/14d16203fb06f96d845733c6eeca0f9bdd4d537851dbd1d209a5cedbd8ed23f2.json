@@ -1,0 +1,21 @@
+{
+ "key": "s2:search:arelargelanguagemodelsreadyforhealthcareacomparativestudyonclinicallanguageunder",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "ArXiv": "2304.05368",
+     "CorpusId": 258059977,
+     "DBLP": "journals/corr/abs-2304-05368",
+     "DOI": "10.48550/arXiv.2304.05368"
+    },
+    "paperId": "42780f9c7f73d73d7a887e2f787af0e079703d40",
+    "title": "Are Large Language Models Ready for Healthcare? A Comparative Study on Clinical Language Understanding",
+    "venue": "Machine Learning in Health Care",
+    "year": 2023
+   }
+  ],
+  "offset": 0,
+  "total": 1
+ }
+}

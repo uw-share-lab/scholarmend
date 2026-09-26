@@ -1,0 +1,19 @@
+{
+ "key": "s2:search:towardaclearercharacterizationofneurosymbolicframeworksabriefcomparativeanalysis",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "CorpusId": 289320870,
+     "DBLP": "conf/nesy/SinhaPK25"
+    },
+    "paperId": "9dc708d4c80785dc72002cdd6835a64a5815dd6d",
+    "title": "Toward a Clearer Characterization of Neuro-Symbolic Frameworks: A Brief Comparative Analysis",
+    "venue": "International Workshop on Neural-Symbolic Learning and Reasoning",
+    "year": 2025
+   }
+  ],
+  "offset": 0,
+  "total": 1
+ }
+}

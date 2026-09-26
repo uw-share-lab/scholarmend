@@ -1,0 +1,19 @@
+{
+ "key": "s2:search:atlasactorcritictaskcompletionwithlookaheadactionsimulation",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "ArXiv": "2510.22732",
+     "CorpusId": 282389238
+    },
+    "paperId": "304522cfdc8a0ad04374fa27d9d4272827926433",
+    "title": "WebATLAS: An LLM Agent with Experience-Driven Memory and Action Simulation",
+    "venue": "",
+    "year": 2025
+   }
+  ],
+  "offset": 0,
+  "total": 1
+ }
+}

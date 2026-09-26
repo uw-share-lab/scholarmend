@@ -1,0 +1,20 @@
+{
+ "key": "s2:search:rivcotretrievalbasedinterleavedvisualchainofthoughtformultimodalreasoning",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "ArXiv": "2501.04671",
+     "CorpusId": 275357786
+    },
+    "paperId": "2f695abbb969de2a8037fe0316ec126abb36aa3c",
+    "title": "Retrieval-Based Interleaved Visual Chain-of-Thought in Real-World Driving Scenarios",
+    "venue": "",
+    "year": 2025
+   }
+  ],
+  "next": 1,
+  "offset": 0,
+  "total": 2
+ }
+}

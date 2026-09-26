@@ -1,0 +1,21 @@
+{
+ "key": "s2:search:adaptionwithhierarchicallanguagetreeformultilingualmodeling",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "CorpusId": 269762443,
+     "DBLP": "conf/www/GuoZZXK24",
+     "DOI": "10.1145/3589335.3651933"
+    },
+    "paperId": "dfc1c719b82d20844012a6b3e04dda94b7aaef05",
+    "title": "FedHLT: Efficient Federated Low-Rank Adaption with Hierarchical Language Tree for Multilingual Modeling",
+    "venue": "The Web Conference",
+    "year": 2024
+   }
+  ],
+  "next": 1,
+  "offset": 0,
+  "total": 18
+ }
+}

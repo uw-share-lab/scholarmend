@@ -1,0 +1,21 @@
+{
+ "key": "s2:search:robusthallucinationdetectioninllmsviaadaptivetokenselection2025",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "ArXiv": "2504.07863",
+     "CorpusId": 277667793,
+     "DBLP": "conf/nips/NiuHP25",
+     "DOI": "10.48550/arXiv.2504.07863"
+    },
+    "paperId": "b513816372e7e09c2869200b863a5d2eddd9b105",
+    "title": "Robust Hallucination Detection in LLMs via Adaptive Token Selection",
+    "venue": "Neural Information Processing Systems",
+    "year": 2025
+   }
+  ],
+  "offset": 0,
+  "total": 1
+ }
+}
