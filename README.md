@@ -5,8 +5,11 @@ screening tools reason over facts rather than over Scholar's truncations.
 
 ## Usage
 
-    pip install -e ".[dev]"
-    scholarmend --input ../Trust-Evals-LitReview/corpus --out out
+    pip install scholarmend
+    scholarmend --input path/to/scholar-exports --out out
+
+`--input` takes a directory of RIS files exported from Google Scholar, or a
+single `.ris`. For development, clone the repo and `pip install -e ".[dev]"`.
 
 Tier 1 needs no configuration and resolves venue, year and track for 77% of a
 Scholar corpus. Tier 2 needs an OpenReview account:
@@ -17,9 +20,10 @@ Scholar corpus. Tier 2 needs an OpenReview account:
 Every response is written to `--cache` (default `.scholarmend-cache`). Commit
 it: a rerun then reproduces byte-identically and makes no API calls.
 
-    scholarmend --input ../Trust-Evals-LitReview/corpus --out out --offline
+    scholarmend --input path/to/scholar-exports --out out --offline
 
-`--offline` fails loudly on a cache miss rather than reaching the network.
+`--offline` never reaches the network. A record whose lookup is missing from
+the cache falls back to tier 1, and the run exits 1 to say it was partial.
 
 ### Outputs
 

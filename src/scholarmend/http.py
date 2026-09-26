@@ -14,7 +14,14 @@ import urllib.request
 
 
 class HttpError(RuntimeError):
-    pass
+    """A request that failed. ``status`` and ``body`` are set for an HTTP
+    refusal, so a resolver can tell "not on this API" from "not visible to
+    you" without parsing the message."""
+
+    def __init__(self, message: str, status: int | None = None, body: str = "") -> None:
+        super().__init__(message)
+        self.status = status
+        self.body = body
 
 
 # The largest window any server here advertises is one hour. Cap the wait so a
@@ -60,6 +67,13 @@ def _respect_rate_limit(response, sleep=time.sleep) -> None:
     reset = response.headers.get("ratelimit-reset", "")
     seconds = float(reset) if reset.strip().replace(".", "", 1).isdigit() else 60.0
     sleep(min(max(seconds, 0.0), MAX_RATELIMIT_WAIT) + 1.0)
+
+
+def _read_body(error: urllib.error.HTTPError) -> str:
+    try:
+        return error.read(2000).decode("utf-8", "replace")
+    except (OSError, AttributeError):  # a closed or absent response body
+        return ""
 
 
 def get_json(
@@ -108,7 +122,8 @@ def get_text(
         except urllib.error.HTTPError as error:
             last = error
             if error.code != 429 and error.code < 500:
-                raise HttpError(f"{error.code} from {url}") from error
+                raise HttpError(f"{error.code} from {url}", status=error.code,
+                                body=_read_body(error)) from error
             if error.code == 429:
                 wait = _advertised_wait(getattr(error, "headers", None))
         except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as error:

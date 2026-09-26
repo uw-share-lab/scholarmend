@@ -226,3 +226,23 @@ def test_an_interrupted_put_leaves_the_previous_value_intact(tmp_path, monkeypat
 
     assert cache.get("k") == {"v": 8}
     assert [p.name for p in tmp_path.rglob("*.tmp")] == []
+
+
+def test_a_refusal_carries_its_status_and_body(monkeypatch):
+    """A resolver has to tell 'not on this API' (404) from 'you may not see
+    this' (403); a message string alone made it parse its own error text."""
+    import io
+    import urllib.error
+    import urllib.request
+
+    from scholarmend.http import HttpError, get_json
+
+    def urlopen(*args, **kwargs):
+        raise urllib.error.HTTPError("https://example.test/x", 403, "Forbidden", None,
+                                     io.BytesIO(b'{"name":"ForbiddenError"}'))
+
+    monkeypatch.setattr(urllib.request, "urlopen", urlopen)
+    with pytest.raises(HttpError) as raised:
+        get_json("https://example.test/x", sleep=lambda s: None)
+    assert raised.value.status == 403
+    assert "ForbiddenError" in raised.value.body

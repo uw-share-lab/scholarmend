@@ -1,0 +1,21 @@
+{
+ "key": "s2:search:buildingastableclassifierwiththeinflatedargmax",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "ArXiv": "2405.14064",
+     "CorpusId": 269981943,
+     "DBLP": "conf/nips/SoloffBW24",
+     "DOI": "10.48550/arXiv.2405.14064"
+    },
+    "paperId": "bbcf802d27a33ffea901b10425d23cdacf0b9d32",
+    "title": "Building a stable classifier with the inflated argmax",
+    "venue": "Neural Information Processing Systems",
+    "year": 2024
+   }
+  ],
+  "offset": 0,
+  "total": 1
+ }
+}

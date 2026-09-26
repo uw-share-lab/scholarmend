@@ -1,0 +1,22 @@
+{
+ "key": "s2:search:decodingtrustacomprehensiveassessmentoftrustworthinessingptmodels",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "ArXiv": "2306.11698",
+     "CorpusId": 259202782,
+     "DBLP": "conf/nips/WangCPXKZXXDSTA23",
+     "DOI": "10.48550/arXiv.2306.11698"
+    },
+    "paperId": "a6d3794c23626060781da0f1ff2bcdf7457b6c43",
+    "title": "DecodingTrust: A Comprehensive Assessment of Trustworthiness in GPT Models",
+    "venue": "Neural Information Processing Systems",
+    "year": 2023
+   }
+  ],
+  "next": 1,
+  "offset": 0,
+  "total": 2
+ }
+}

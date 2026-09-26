@@ -42,6 +42,12 @@ scholarmend = "scholarmend.cli:main"
 Homepage = "https://github.com/uw-share-lab/scholarmend"
 Issues = "https://github.com/uw-share-lab/scholarmend/issues"
 
+# The committed cache backs the repo's reproducibility claim, but it is 8.8 MB
+# of API responses no installed user needs. Keep it, and the agent tooling, in
+# git only.
+[tool.hatch.build.targets.sdist]
+exclude = [".scholarmend-cache", ".claude", "docs/superpowers", "BACKLOG.md", "CLAUDE.md"]
+
 [tool.hatch.build.targets.wheel]
 packages = ["src/scholarmend"]
 artifacts = ["src/scholarmend/py.typed"]

@@ -1,0 +1,20 @@
+{
+ "key": "s2:search:catchadaptandoperatemonitoringmlmodelsunderdrift",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "CorpusId": 291016095,
+     "DOI": "10.71465/gmssrj212"
+    },
+    "paperId": "6d7acbcea525569a0a643d74fb1bbc197bab9941",
+    "title": "SAFE-OD: Drift-Aware Champion-Challenger Online Fraud Detection for Cloud-Native Payment Platforms",
+    "venue": "Global Media and Social Sciences Research Journal",
+    "year": 2026
+   }
+  ],
+  "next": 1,
+  "offset": 0,
+  "total": 3
+ }
+}

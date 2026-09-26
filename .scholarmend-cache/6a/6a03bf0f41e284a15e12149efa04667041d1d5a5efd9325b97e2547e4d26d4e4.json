@@ -1,0 +1,22 @@
+{
+ "key": "s2:search:nl4optcompetitionformulatingoptimizationproblemsbasedontheirnaturallanguagedescr",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "ArXiv": "2303.08233",
+     "CorpusId": 257532906,
+     "DBLP": "conf/nips/RamamonjisonYLLCGHMBZZ21",
+     "DOI": "10.48550/arXiv.2303.08233"
+    },
+    "paperId": "c9a9735216915e9afa0fc97b02b57148a0491bdd",
+    "title": "NL4Opt Competition: Formulating Optimization Problems Based on Their Natural Language Descriptions",
+    "venue": "Neural Information Processing Systems",
+    "year": 2023
+   }
+  ],
+  "next": 1,
+  "offset": 0,
+  "total": 3
+ }
+}

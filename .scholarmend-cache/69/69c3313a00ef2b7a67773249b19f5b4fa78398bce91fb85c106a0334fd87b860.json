@@ -1,0 +1,21 @@
+{
+ "key": "s2:search:neurosymbolicadaptivecollaborationofarenabasedargumentativellmsforcontestableleg",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "ArXiv": "2602.18916",
+     "CorpusId": 285972697,
+     "DBLP": "journals/corr/abs-2602-18916",
+     "DOI": "10.48550/arXiv.2602.18916"
+    },
+    "paperId": "ab4e273379f4cde481f3cb9d45d89f9f525cb31e",
+    "title": "Adaptive Collaboration of Arena-Based Argumentative LLMs for Explainable and Contestable Legal Reasoning",
+    "venue": "arXiv.org",
+    "year": 2026
+   }
+  ],
+  "offset": 0,
+  "total": 1
+ }
+}

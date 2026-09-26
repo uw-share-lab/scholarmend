@@ -1,0 +1,22 @@
+{
+ "key": "s2:search:zoopflexploringblackboxfoundation",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "ArXiv": "2310.05143",
+     "CorpusId": 263829686,
+     "DBLP": "journals/corr/abs-2310-05143",
+     "DOI": "10.48550/arXiv.2310.05143"
+    },
+    "paperId": "c8d5c5ebc1aaada257141aa4f65e890bb8224b4d",
+    "title": "ZooPFL: Exploring Black-box Foundation Models for Personalized Federated Learning",
+    "venue": "arXiv.org",
+    "year": 2023
+   }
+  ],
+  "next": 1,
+  "offset": 0,
+  "total": 257
+ }
+}

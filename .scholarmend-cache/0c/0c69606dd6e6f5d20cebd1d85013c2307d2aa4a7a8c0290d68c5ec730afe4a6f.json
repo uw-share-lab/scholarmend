@@ -1,0 +1,22 @@
+{
+ "key": "s2:search:dualcptdualbranchmodelingforcellularphenotypetransition",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "CorpusId": 290738961,
+     "DOI": "10.21203/rs.3.rs-9306408/v2",
+     "PubMed": "42539088",
+     "PubMedCentral": "13419571"
+    },
+    "paperId": "18465fd8dd98e49a38f10607292faa0b566d5874",
+    "title": "Poly-Pharmacologic Disruption of the Proliferative-to-Mesenchymal Fate Branch Point Reverses EndMT and Pulmonary Hypertension",
+    "venue": "Research Square",
+    "year": 2026
+   }
+  ],
+  "next": 1,
+  "offset": 0,
+  "total": 3
+ }
+}

@@ -1,0 +1,21 @@
+{
+ "key": "s2:search:ceracontextengineeredreviewsarchitectureforsyntheticdatasetgeneration",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "CorpusId": 283769399,
+     "DBLP": "journals/bib/Mathew25",
+     "DOI": "10.1093/bib/bbaf631.044",
+     "PubMedCentral": "12699701"
+    },
+    "paperId": "d4b3fb87cf99a00d520030c828dc3ea46fcec9e2",
+    "title": "Function-aware biosecurity screening: datasets, benchmarks, and detection systems for next-generation pathogen identification",
+    "venue": "Briefings Bioinform.",
+    "year": 2025
+   }
+  ],
+  "offset": 0,
+  "total": 1
+ }
+}

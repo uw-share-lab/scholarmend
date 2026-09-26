@@ -1,0 +1,22 @@
+{
+ "key": "s2:search:towardsasafetyaiframeworkforhealthcareeducation",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "ArXiv": "2508.06849",
+     "CorpusId": 280567384,
+     "DBLP": "journals/corr/abs-2508-06849",
+     "DOI": "10.48550/arXiv.2508.06849"
+    },
+    "paperId": "db32ce7fb691d5baefad22d3e98b979868dfa436",
+    "title": "Towards Experience-Centered AI: A Framework for Integrating Lived Experience in Design and Development",
+    "venue": "AAAI/ACM Conference on AI, Ethics, and Society",
+    "year": 2025
+   }
+  ],
+  "next": 1,
+  "offset": 0,
+  "total": 67
+ }
+}

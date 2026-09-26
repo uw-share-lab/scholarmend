@@ -1,0 +1,20 @@
+{
+ "key": "s2:search:lossfunctionwithmemoryfortrustworthinessthresholdlearningcaseoffaceandfacialexpr",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "CorpusId": 257431901,
+     "DBLP": "conf/mod/SelitskiyS22",
+     "DOI": "10.1007/978-3-031-25599-1_7"
+    },
+    "paperId": "644da9e879567629fc2182343370e9f03d94638e",
+    "title": "Loss Function with Memory for Trustworthiness Threshold Learning: Case of Face and Facial Expression Recognition",
+    "venue": "International Conference on Machine Learning, Optimization, and Data Science",
+    "year": 2022
+   }
+  ],
+  "offset": 0,
+  "total": 1
+ }
+}

@@ -1,0 +1,22 @@
+{
+ "key": "s2:search:algorithmicfairnessacrossalignmentproceduresandagenticsystems",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "ArXiv": "2605.01147",
+     "CorpusId": 287948174,
+     "DBLP": "journals/corr/abs-2605-01147",
+     "DOI": "10.48550/arXiv.2605.01147"
+    },
+    "paperId": "6d09ab6db922fc71d94a63241d790ba18f158965",
+    "title": "Position: Safety and Fairness in Agentic AI Depend on Interaction Topology, Not on Model Scale or Alignment",
+    "venue": "arXiv.org",
+    "year": 2026
+   }
+  ],
+  "next": 1,
+  "offset": 0,
+  "total": 20
+ }
+}

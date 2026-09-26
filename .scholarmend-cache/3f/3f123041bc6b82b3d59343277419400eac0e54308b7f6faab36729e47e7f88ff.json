@@ -1,0 +1,21 @@
+{
+ "key": "s2:search:weaktostronggeneralizationbeyondaccuracyapilotstudyinsafetytoxicityandlegalreaso",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "ArXiv": "2410.12621",
+     "CorpusId": 273375426,
+     "DBLP": "journals/corr/abs-2410-12621",
+     "DOI": "10.48550/arXiv.2410.12621"
+    },
+    "paperId": "509a85b7194c4d4b055135ac545ed478b2320214",
+    "title": "Weak-to-Strong Generalization beyond Accuracy: a Pilot Study in Safety, Toxicity, and Legal Reasoning",
+    "venue": "arXiv.org",
+    "year": 2024
+   }
+  ],
+  "offset": 0,
+  "total": 1
+ }
+}

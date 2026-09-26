@@ -31,12 +31,12 @@ still sum to 73/17.
 only the RIS, so a year that resolves but is not written is not delivered. This
 distinction hid a Critical defect through eleven passing reviews.
 
-**4. The seven overrides.** `overrides-2026-09-20.csv` records individually
-adjudicated records. Not yet covered by a committed test (see `BACKLOG.md` §2).
+**4. The ten overrides.** `overrides-2026-09-20.csv` records individually
+adjudicated records. Covered by `tests/test_acceptance.py`.
 
 **5. The PMLR and PMC routes.** Ten PMLR volumes and three PMC-bridged records
-were verified by hand at merge time and are still not asserted by the suite
-(`BACKLOG.md` §1). v267 must resolve to ICML 2025; v287 (CHIL) and v297 (ML4H)
+were verified by hand at merge time and are asserted in
+`tests/test_acceptance.py`. v267 must resolve to ICML 2025; v287 (CHIL) and v297 (ML4H)
 must retrieve their titles and decline to name a venue.
 
 ## Rules

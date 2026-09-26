@@ -24,6 +24,7 @@ from ..cache import Cache
 from ..models import Claim
 
 API = "https://api2.openreview.net"
+API_V1 = "https://api.openreview.net"
 _VENUEID = re.compile(r"^(?P<org>[A-Za-z][\w.-]*?)(?:\.cc|\.org)?/(?P<year>\d{4})/(?P<track>.+)$")
 
 
@@ -42,6 +43,56 @@ def login(user: str, password: str) -> str:
     if not token:
         raise AuthError("OpenReview accepted the request but returned no token")
     return token
+
+
+# What a withdrawn or non-public submission answers, to any account. Matched
+# on the message, because a bare 403 could as well be an expired session.
+_HIDDEN = "does not have permission to see"
+
+# Cached for such a forum instead of the 403 itself: the refusal names the
+# logged-in user, and this cache is committed to a public repository. Delete
+# the entry to ask again, if the forum may since have been made public.
+HIDDEN = {"hidden": True}
+
+
+def _flatten(content: dict) -> dict:
+    """API v2 wraps each field as {"value": ...}; v1 stores it bare."""
+    return {name: field.get("value") if isinstance(field, dict) else field
+            for name, field in (content or {}).items()}
+
+
+def submission_note(forum_id: str, token: str) -> dict | None:
+    """The forum's submission note with plain-valued content, or ``None``.
+
+    Asked of API v2 first. Some 2022-2023 workshops were never migrated and
+    exist only on v1, where api2 answers 404 (verified live 2026-09-25 on
+    LpBlkATV24M, NeurIPS.cc/2022/Workshop/RobustSeq). A forum the account may
+    not see comes back as ``HIDDEN``. Anything else propagates as a failure,
+    which the cache never stores.
+    """
+    from ..http import HttpError, get_json
+
+    headers = {"Authorization": f"Bearer {token}"}
+    try:
+        payload = get_json(f"{API}/notes?id={forum_id}", headers=headers)
+        api = "v2"
+    except HttpError as error:
+        if error.status == 403 and _HIDDEN in error.body:
+            return HIDDEN
+        if error.status != 404:
+            raise
+        try:
+            payload = get_json(f"{API_V1}/notes?id={forum_id}", headers=headers)
+        except HttpError as v1_error:
+            if v1_error.status == 404:
+                raise error from v1_error
+            raise
+        api = "v1"
+    notes = payload.get("notes") or []
+    note = notes[0] if notes else {}
+    if note.get("id") != forum_id:
+        return None
+    return {"api": api, "content": _flatten(note.get("content") or {})}
 
 
 def openreview_key(forum_id: str) -> str:
@@ -114,25 +165,23 @@ class OpenReviewResolver:
                     "SCHOLARMEND_OPENREVIEW_PASSWORD, or run with --offline against "
                     "a populated cache."
                 )
-            from ..http import get_json
-
-            # The forum id is the submission note's own id in API v2, and the
+            # The forum id is the submission note's own id, and the
             # submission note is the one that states content.venueid. Asking
             # for "any note in the forum" returned a Decision note on 25 of 96
             # real forums, and deriving a venue from its invitation turned a
             # rejected ICLR paper into ICLR main track (verified live,
             # zkNCWtw2fd). A note that does not state its own venueid records
             # nothing: unresolved goes to a human, derived does not.
-            payload = get_json(
-                f"{API}/notes?id={forum_id}",
-                headers={"Authorization": f"Bearer {token}"},
-            )
-            notes = payload.get("notes") or []
-            note = notes[0] if notes else {}
-            if note.get("id") != forum_id:
+            note = submission_note(forum_id, token)
+            if note is HIDDEN:
+                return HIDDEN
+            if note is None:
                 return {}
-            venueid = ((note.get("content") or {}).get("venueid") or {}).get("value")
-            return {"venueid": venueid} if venueid else {}
+            venueid = note["content"].get("venueid")
+            if not venueid:
+                return {}
+            # v2 entries keep their original shape; only a v1 answer says so.
+            return {"venueid": venueid, "api": "v1"} if note["api"] == "v1" else {"venueid": venueid}
 
         cached = self.cache.fetch(openreview_key(forum_id), loader)
         venueid = cached.get("venueid")
@@ -152,18 +201,15 @@ class OpenReviewResolver:
             token = self._bearer()
             if not token:
                 raise AuthError("OpenReview needs credentials to fetch an abstract")
-            from ..http import get_json
-
-            payload = get_json(f"{API}/notes?id={forum_id}",
-                               headers={"Authorization": f"Bearer {token}"})
-            notes = payload.get("notes") or []
-            note = notes[0] if notes else {}
-            if note.get("id") != forum_id:
+            note = submission_note(forum_id, token)
+            if note is HIDDEN:
+                return HIDDEN
+            if note is None:
                 return {}
-            content = note.get("content") or {}
+            content = note["content"]
             return {
-                "title": (content.get("title") or {}).get("value") or "",
-                "abstract": (content.get("abstract") or {}).get("value") or "",
+                "title": content.get("title") or "",
+                "abstract": content.get("abstract") or "",
             }
 
         cached = self.cache.fetch(abstract_key(forum_id), loader)

@@ -1,0 +1,22 @@
+{
+ "key": "s2:search:auggensyntheticaugmentationusingdiffusionmodelscanimproverecognition",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "ArXiv": "2503.11544",
+     "CorpusId": 277043083,
+     "DBLP": "conf/nips/RahimiTM25",
+     "DOI": "10.52202/085713-4501"
+    },
+    "paperId": "160fff3ad3611c9f16e1ec8dd168882e98c4fcf2",
+    "title": "AugGen: Synthetic Augmentation using Diffusion Models Can Improve Recognition",
+    "venue": "Neural Information Processing Systems",
+    "year": 2025
+   }
+  ],
+  "next": 1,
+  "offset": 0,
+  "total": 380
+ }
+}

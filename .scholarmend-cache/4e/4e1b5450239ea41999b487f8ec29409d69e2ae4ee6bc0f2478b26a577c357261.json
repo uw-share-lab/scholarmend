@@ -1,0 +1,20 @@
+{
+ "key": "s2:search:largelanguagemodelsprinciplesapplicationsandcuttingedgeadvances",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "CorpusId": 284022944,
+     "DOI": "10.1109/MLPRAE67267.2025.11291015"
+    },
+    "paperId": "6d47e4a756ecbb99eb05263ac7dbb3fb279f5816",
+    "title": "Large Language Models: Principles, Applications, and Cutting-edge Advances",
+    "venue": "2025 2nd International Conference on Machine Learning, Pattern Recognition and Automation Engineering (MLPRAE)",
+    "year": 2025
+   }
+  ],
+  "next": 1,
+  "offset": 0,
+  "total": 99
+ }
+}

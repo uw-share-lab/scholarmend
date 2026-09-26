@@ -1,0 +1,18 @@
+{
+ "key": "s2:search:neurosymbolicprogrammingintheageoffoundationmodelspitfallsandopportunities",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "CorpusId": 276864885
+    },
+    "paperId": "6260f943a3164ec7c6245058769dab1cc850003b",
+    "title": "Neuro-Symbolic Programming in the Age of Foundation Models: Pitfalls and Opportunities",
+    "venue": "",
+    "year": null
+   }
+  ],
+  "offset": 0,
+  "total": 1
+ }
+}

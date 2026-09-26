@@ -1,0 +1,19 @@
+{
+ "key": "s2:search:evaluatingneurosymbolicaiarchitecturesdesignprinciplesqualitativebenchmarkcompar",
+ "payload": {
+  "data": [
+   {
+    "externalIds": {
+     "CorpusId": 289322976,
+     "DBLP": "conf/nesy/BougzimeJCD25"
+    },
+    "paperId": "470cadf70c5ee09fc4d8c76ce3228ee2d102a33f",
+    "title": "Evaluating Neuro-Symbolic AI Architectures: Design Principles, Qualitative Benchmark, Comparative Analysis and Results",
+    "venue": "International Workshop on Neural-Symbolic Learning and Reasoning",
+    "year": 2025
+   }
+  ],
+  "offset": 0,
+  "total": 1
+ }
+}
