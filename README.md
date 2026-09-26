@@ -22,7 +22,8 @@ it: a rerun then reproduces byte-identically and makes no API calls.
 
     scholarmend --input ../Trust-Evals-LitReview/corpus --out out --offline
 
-`--offline` fails loudly on a cache miss rather than reaching the network.
+`--offline` never reaches the network. A record whose lookup is missing from
+the cache falls back to tier 1, and the run exits 1 to say it was partial.
 
 ### Outputs
 

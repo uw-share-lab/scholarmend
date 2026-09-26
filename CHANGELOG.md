@@ -12,8 +12,9 @@ First release on PyPI.
   unresolved, and why).
 - Never drops a record and never guesses. A venue it can't determine keeps
   Scholar's value and is marked unresolved for a human to check.
-- `--offline` replays a committed response cache and fails on a miss, so a
-  rerun is reproducible.
+- `--offline` replays a committed response cache and never reaches the
+  network. A record whose lookup is missing from the cache falls back to
+  URL-only resolution, and the run exits 1 so you know it was partial.
 - `--abstracts` replaces Scholar's snippet with the full abstract, but only
   when the source shows the record's own title.
 - No runtime dependencies. Python 3.10 to 3.13.
