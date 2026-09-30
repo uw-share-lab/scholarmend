@@ -25,6 +25,9 @@ PRECEDENCE: dict[str, tuple[str, ...]] = {
     # PMLR record, discarding the identity evidence a human adjudicating
     # one of them needs.
     "venue_id": ("openreview_api", "pmlr_index"),
+    # OpenReview's content.venue, verbatim ("ICLR 2022 Poster"). Evidence for a
+    # consumer to classify, not an answer: nothing here parses it.
+    "venue_string": ("openreview_api",),
     "version": ("proceedings_url", "openreview_api", "pmlr_index", "arxiv_url"),
     # Preprint sources are welcome here: Scholar truncates 71% of author lists.
     "authors": ("openreview_api", "semanticscholar", "openalex", "arxiv_url", "scholar"),

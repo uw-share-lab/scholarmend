@@ -87,7 +87,7 @@ Covidence upload, not on the corpus:
 ```bash
 pip install -e ".[dev]"
 
-pytest                         # 208 tests, offline, ~1s
+pytest                         # 225 tests, offline, ~1s
 ruff check src tests
 mypy src
 
