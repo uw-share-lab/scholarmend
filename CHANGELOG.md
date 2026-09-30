@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.4
+
+- `resolved.json` now carries OpenReview's `content.venue` as a
+  `venue_string` claim (for example `ICLR 2022 Poster` or
+  `ICLR 2022 Submitted`), verbatim, with the note's venueid as evidence. On
+  OpenReview API v1 venue-years (ICLR up to 2023, NeurIPS 2021-22), a
+  rejected paper carries the bare venueid too, so this string is the only
+  place the decision shows. scholarmend passes it through without
+  interpreting it. It is a claim only: the RIS projection is unchanged.
+- Only forums fetched from now on carry it. Cache entries written before
+  0.1.4 hold a venueid alone and are not refetched, so they give no
+  `venue_string` claim. On the full 3,326-record corpus, `--offline` output
+  (`resolved.json`, `mended.ris`, `report.txt`) is byte-identical to 0.1.3.
+
 ## 0.1.3
 
 Documentation only; the code is unchanged from 0.1.2.

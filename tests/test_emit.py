@@ -286,3 +286,13 @@ def test_a_recovered_abstract_replaces_the_snippet_on_its_own_line():
 def test_scholars_own_snippet_is_never_rewritten():
     record = _with_snippet()
     assert project_ris(record, resolve_record(record)) == record.raw
+
+
+def test_the_json_carries_openreviews_venue_string_claim():
+    record, ledger = first()
+    ledger.add(Claim(field="venue_string", value="ICLR 2022 Submitted", source="openreview_api",
+                     tier=2, confidence=0.99, evidence="venueid=ICLR.cc/2022/Conference"))
+    doc = to_json(record, ledger)
+    assert [c["value"] for c in doc["claims"] if c["field"] == "venue_string"] == ["ICLR 2022 Submitted"]
+    # a claim, never a RIS line: content.venue has no tag, and JF is the resolved venue
+    assert "ICLR 2022 Submitted" not in project_ris(record, ledger)

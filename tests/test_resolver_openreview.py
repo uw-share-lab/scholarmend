@@ -355,3 +355,45 @@ def test_no_venueid_prediction_disagrees_with_a_reviewer_label():
         if forum in truth and _predict(venueid) != truth[forum]
     ]
     assert disagreements == [], disagreements
+
+
+def test_a_v1_forums_content_venue_is_kept_as_a_verbatim_claim(tmp_path, monkeypatch):
+    """On API v1 a rejected paper carries the bare venueid too, so only
+    content.venue ("ICLR 2022 Submitted" vs "ICLR 2022 Poster") says whether it
+    was accepted. It is passed on verbatim for the consumer to classify."""
+    routed_api(monkeypatch, {
+        V2: not_found(),
+        V1: {"notes": [{"id": "F1", "content": {"venueid": "ICLR.cc/2022/Conference",
+                                                "venue": "ICLR 2022 Submitted"}}]},
+    })
+    cache = Cache(tmp_path)
+    claims = OpenReviewResolver(cache, token="t").resolve("F1")
+    claim = next(c for c in claims if c.field == "venue_string")
+    assert (claim.value, claim.source, claim.tier) == ("ICLR 2022 Submitted", "openreview_api", 2)
+    assert claim.evidence == "venueid=ICLR.cc/2022/Conference"
+    assert cache.get(openreview_key("F1")) == {
+        "venueid": "ICLR.cc/2022/Conference", "venue": "ICLR 2022 Submitted", "api": "v1"}
+
+
+def test_a_v2_forums_content_venue_is_kept_too(tmp_path, monkeypatch):
+    fake_api(monkeypatch, [{"id": "F1", "content": {"venueid": {"value": "ICML.cc/2025/Conference"},
+                                                    "venue": {"value": "ICML 2025 poster"}}}])
+    claims = OpenReviewResolver(Cache(tmp_path), token="t").resolve("F1")
+    assert value(claims, "venue_string") == "ICML 2025 poster"
+
+
+def test_a_cache_entry_from_before_content_venue_was_stored_still_resolves(tmp_path):
+    """The committed entries hold only a venueid. They are not refetched: they
+    resolve as before, with no venue_string claim, and --offline stays clean."""
+    cache = Cache(tmp_path, offline=True)
+    cache.put(openreview_key("F1"), {"venueid": "ICML.cc/2025/Conference"})
+    claims = OpenReviewResolver(cache).resolve("F1")
+    assert value(claims, "venue") == "ICML"
+    assert value(claims, "venue_string") is None
+
+
+def test_a_content_venue_without_a_venueid_records_nothing(tmp_path, monkeypatch):
+    fake_api(monkeypatch, [{"id": "F1", "content": {"venue": {"value": "ICLR 2022 Poster"}}}])
+    cache = Cache(tmp_path)
+    assert OpenReviewResolver(cache, token="t").resolve("F1") == []
+    assert cache.get(openreview_key("F1")) == {}

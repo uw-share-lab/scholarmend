@@ -180,12 +180,30 @@ class OpenReviewResolver:
             venueid = note["content"].get("venueid")
             if not venueid:
                 return {}
+            entry = {"venueid": venueid}
+            # content.venue is the only status evidence for an API v1 venue-year,
+            # which gives a rejected paper the bare venueid too. Entries cached
+            # before it was stored lack it and are not refetched: the venueid
+            # they hold is what the gold labels validated.
+            venue = note["content"].get("venue")
+            if isinstance(venue, str) and venue:
+                entry["venue"] = venue
             # v2 entries keep their original shape; only a v1 answer says so.
-            return {"venueid": venueid, "api": "v1"} if note["api"] == "v1" else {"venueid": venueid}
+            if note["api"] == "v1":
+                entry["api"] = "v1"
+            return entry
 
         cached = self.cache.fetch(openreview_key(forum_id), loader)
         venueid = cached.get("venueid")
-        return parse_venueid(venueid) if venueid else []
+        if not venueid:
+            return []
+        claims = parse_venueid(venueid)
+        if cached.get("venue"):
+            # Verbatim, never parsed here: which strings mean accepted differs
+            # by venue and year, and that table belongs to the consumer.
+            claims.append(Claim(field="venue_string", value=cached["venue"], source="openreview_api",
+                                tier=2, confidence=0.99, evidence=f"venueid={venueid}"))
+        return claims
 
     def abstract(self, forum_id: str, title: str) -> list[Claim]:
         """The submission note's own abstract, under a key of its own.
