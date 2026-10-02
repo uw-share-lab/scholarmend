@@ -28,6 +28,9 @@ PRECEDENCE: dict[str, tuple[str, ...]] = {
     # OpenReview's content.venue, verbatim ("ICLR 2022 Poster"). Evidence for a
     # consumer to classify, not an answer: nothing here parses it.
     "venue_string": ("openreview_api",),
+    # The invitation an API v1 note was submitted under, verbatim
+    # ("ICLR.cc/2017/workshop/-/submission"). Evidence too, never parsed here.
+    "invitation": ("openreview_api",),
     "version": ("proceedings_url", "openreview_api", "pmlr_index", "arxiv_url"),
     # Preprint sources are welcome here: Scholar truncates 71% of author lists.
     "authors": ("openreview_api", "semanticscholar", "openalex", "arxiv_url", "scholar"),

@@ -397,3 +397,47 @@ def test_a_content_venue_without_a_venueid_records_nothing(tmp_path, monkeypatch
     cache = Cache(tmp_path)
     assert OpenReviewResolver(cache, token="t").resolve("F1") == []
     assert cache.get(openreview_key("F1")) == {}
+
+
+# Both notes are real (recorded 2026-09-29): same venueid, same content.venue.
+ICLR_2017 = {"venueid": "ICLR.cc/2017/conference", "venue": "Submitted to ICLR 2017"}
+
+
+@pytest.mark.parametrize(("forum_id", "invitation"), [
+    ("S1J0E-71l", "ICLR.cc/2017/conference/-/submission"),  # a main-track rejection
+    ("rkB_5hEKe", "ICLR.cc/2017/workshop/-/submission"),  # its workshop-listing twin
+])
+def test_a_v1_notes_submission_invitation_is_kept_as_a_verbatim_claim(
+        tmp_path, monkeypatch, forum_id, invitation):
+    """18 ICLR 2017 workshop-listing notes carry the venueid and content.venue
+    of the 245 main-track rejections. The invitation the note was submitted
+    under is the only field that tells the two listings apart."""
+    routed_api(monkeypatch, {
+        V2: not_found(),
+        V1: {"notes": [{"id": forum_id, "invitation": invitation, "content": dict(ICLR_2017)}]},
+    })
+    cache = Cache(tmp_path)
+    claims = OpenReviewResolver(cache, token="t").resolve(forum_id)
+    claim = next(c for c in claims if c.field == "invitation")
+    assert (claim.value, claim.source, claim.tier) == (invitation, "openreview_api", 2)
+    assert claim.evidence == "venueid=ICLR.cc/2017/conference"
+    assert value(claims, "venue_string") == "Submitted to ICLR 2017"
+    assert cache.get(openreview_key(forum_id)) == {**ICLR_2017, "api": "v1", "invitation": invitation}
+
+
+def test_a_v2_note_gives_no_invitation_claim(tmp_path, monkeypatch):
+    """An API v2 note lists every invitation that ever edited it, and its
+    venueid names the track already. Nothing is stored or claimed."""
+    fake_api(monkeypatch, [{"id": "F1", "invitations": ["ICML.cc/2025/Conference/-/Submission"],
+                            "content": {"venueid": {"value": "ICML.cc/2025/Conference"}}}])
+    cache = Cache(tmp_path)
+    assert value(OpenReviewResolver(cache, token="t").resolve("F1"), "invitation") is None
+    assert cache.get(openreview_key("F1")) == {"venueid": "ICML.cc/2025/Conference"}
+
+
+def test_a_v1_cache_entry_from_before_the_invitation_was_stored_still_resolves(tmp_path):
+    cache = Cache(tmp_path, offline=True)
+    cache.put(openreview_key("F1"), {**ICLR_2017, "api": "v1"})
+    claims = OpenReviewResolver(cache).resolve("F1")
+    assert value(claims, "venue_string") == "Submitted to ICLR 2017"
+    assert value(claims, "invitation") is None
