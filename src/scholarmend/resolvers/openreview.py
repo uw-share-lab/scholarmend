@@ -92,7 +92,12 @@ def submission_note(forum_id: str, token: str) -> dict | None:
     note = notes[0] if notes else {}
     if note.get("id") != forum_id:
         return None
-    return {"api": api, "content": _flatten(note.get("content") or {})}
+    found = {"api": api, "content": _flatten(note.get("content") or {})}
+    # A v1 note is submitted under exactly one invitation and keeps it. A v2
+    # note lists every invitation that has edited it, so there is no one answer.
+    if api == "v1" and isinstance(note.get("invitation"), str):
+        found["invitation"] = note["invitation"]
+    return found
 
 
 def openreview_key(forum_id: str) -> str:
@@ -191,6 +196,11 @@ class OpenReviewResolver:
             # v2 entries keep their original shape; only a v1 answer says so.
             if note["api"] == "v1":
                 entry["api"] = "v1"
+                # A v1 venueid need not name the listing: ICLR 2017 workshop
+                # copies of rejected papers carry the conference's venueid and
+                # content.venue, and differ only in this.
+                if note.get("invitation"):
+                    entry["invitation"] = note["invitation"]
             return entry
 
         cached = self.cache.fetch(openreview_key(forum_id), loader)
@@ -202,6 +212,10 @@ class OpenReviewResolver:
             # Verbatim, never parsed here: which strings mean accepted differs
             # by venue and year, and that table belongs to the consumer.
             claims.append(Claim(field="venue_string", value=cached["venue"], source="openreview_api",
+                                tier=2, confidence=0.99, evidence=f"venueid={venueid}"))
+        if cached.get("invitation"):
+            # Verbatim as well: which listing an invitation names is the consumer's to read.
+            claims.append(Claim(field="invitation", value=cached["invitation"], source="openreview_api",
                                 tier=2, confidence=0.99, evidence=f"venueid={venueid}"))
         return claims
 

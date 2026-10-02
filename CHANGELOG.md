@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.1.5
+
+- `resolved.json` now carries the invitation an OpenReview API v1 note was
+  submitted under as an `invitation` claim (for example
+  `ICLR.cc/2017/workshop/-/submission`), verbatim, with the note's venueid as
+  evidence. A v1 venueid does not always name the listing: 18 notes in the
+  ICLR 2017 workshop listing are copies of rejected conference papers and
+  carry the same venueid (`ICLR.cc/2017/conference`) and `venue_string`
+  (`Submitted to ICLR 2017`) as the 245 main-track rejections. The invitation
+  is the one field that differs. scholarmend passes it through without
+  interpreting it. It is a claim only: the RIS projection is unchanged.
+- API v2 notes give no `invitation` claim. A v2 note lists every invitation
+  that has edited it, and its venueid already names the track.
+- Only v1 forums fetched from now on carry it. Cache entries written before
+  0.1.5 are not refetched, so they give no `invitation` claim. On the full
+  3,326-record corpus, `--offline` output (`resolved.json`, `mended.ris`,
+  `report.txt`) is byte-identical to 0.1.4.
+
 ## 0.1.4
 
 - `resolved.json` now carries OpenReview's `content.venue` as a

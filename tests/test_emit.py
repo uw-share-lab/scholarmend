@@ -296,3 +296,14 @@ def test_the_json_carries_openreviews_venue_string_claim():
     assert [c["value"] for c in doc["claims"] if c["field"] == "venue_string"] == ["ICLR 2022 Submitted"]
     # a claim, never a RIS line: content.venue has no tag, and JF is the resolved venue
     assert "ICLR 2022 Submitted" not in project_ris(record, ledger)
+
+
+def test_the_json_carries_a_v1_notes_invitation_claim():
+    record, ledger = first()
+    ledger.add(Claim(field="invitation", value="ICLR.cc/2017/workshop/-/submission",
+                     source="openreview_api", tier=2, confidence=0.99,
+                     evidence="venueid=ICLR.cc/2017/conference"))
+    doc = to_json(record, ledger)
+    assert [c["value"] for c in doc["claims"] if c["field"] == "invitation"] == [
+        "ICLR.cc/2017/workshop/-/submission"]
+    assert "ICLR.cc/2017/workshop" not in project_ris(record, ledger)
